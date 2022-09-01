@@ -1,0 +1,10 @@
+/* Tailwidn css Config */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+select {
+  background-color: transparent;
+}
