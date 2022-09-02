@@ -129,7 +129,6 @@ exports.loginUser = async(req,res)=>{
                   lName: user.lName,
                   verified: user.verified,
                   token: token,
-                  message: "login success!"
                 })
             }
             else{

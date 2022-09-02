@@ -1,10 +1,10 @@
 import React,{useState} from 'react'
 import {NavLink, useNavigate } from "react-router-dom";
 import { useFormik } from 'formik'
-import register from '../register.png'
 import {BiErrorCircle} from 'react-icons/bi'
 import {AiOutlineCheckCircle} from 'react-icons/ai'
 import {signUp} from '../validation/index'
+import DotShape from '../svg/dotShape';
 import {useDispatch} from 'react-redux'
 import { createUser } from '../features/users/userSlice';
 import DotLoader from "react-spinners/DotLoader";
@@ -85,10 +85,16 @@ const Registration = () => {
   const getDates =Array.from(new Array( days() ),(val,index)=> 1 + index)
  
   return (
-  <div className='h-screen flex items-center justify-center bg-main_bg'>
+  <div className='min-h-screen flex items-center justify-center bg-main_bg relative'>
+    <div className='absolute bottom-7 left-7'>
+      <DotShape/>
+    </div>
+    <div className='absolute top-7 right-7'>
+      <DotShape/>
+    </div>
     <div className='w-2/5'>
-    <h2 className='font-primary text-4xl font-bold text-primary_color mb-5'>Registration <span className='text-white'>Form</span></h2>
-    <div className='grid grid-cols-2 gap-3 items-center'>
+    <h2 className='font-primary text-4xl text-center font-bold text-primary_color mb-5'>Registration <span className='text-white'>Form</span></h2>
+    <div className='w-96 m-auto'>
         <div>
             <form onSubmit={formik.handleSubmit}>
               <input 
@@ -220,15 +226,10 @@ const Registration = () => {
               <DotLoader color="#D17274" loading={loading} size={30} />
             </form>
         </div>
-        <div>
-          <picture>
-            <img src={register} alt="register"/>
-          </picture>
-        </div>
         {failed && <p className='text-red mb-2 font-primary text-xl font-normal'><BiErrorCircle style={{display: "inline-block"}}/> {failed}</p> }
         {success && <p className='text-green mb-2 font-primary text-lg font-normal'><AiOutlineCheckCircle style={{display: "inline-block"}}/> {success}</p> }
     </div>
-    <p className='text-white font-primary text-lg mt-3'>Already have an account? <NavLink className="text-primary_color hover:underline" to="/login">Sign in</NavLink></p>
+    <p className='text-center text-white font-primary text-lg mt-3'>Already have an account? <NavLink className="text-primary_color hover:underline" to="/login">Sign in</NavLink></p>
     </div>
   </div>
   )
