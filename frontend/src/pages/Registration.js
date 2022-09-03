@@ -5,6 +5,11 @@ import {BiErrorCircle} from 'react-icons/bi'
 import {AiOutlineCheckCircle} from 'react-icons/ai'
 import {signUp} from '../validation/index'
 import LineShape from '../svg/lineShape'
+import BigCircle from '../svg/Bigcircle'
+import Signup from '../svg/Registrationpic'
+import Circle1 from '../svg/circle1'
+import Square2 from '../svg/square2'
+import SquareShape from '../svg/square'
 import DotShape from '../svg/dotShape';
 import {useDispatch} from 'react-redux'
 import { createUser } from '../features/users/userSlice';
@@ -90,19 +95,53 @@ const Registration = () => {
     <div className='btm-shape absolute bottom-7 left-7'>
       <DotShape/>
     </div>
-    <div className='top-shape absolute top-7 right-7'>
+    <div className='top-shape absolute top-12 right-12'>
       <DotShape/>
     </div>
     <div className='line-shape absolute top-[350px] left-[350px]'>
       <LineShape/>
     </div>
-    <div className='line-shape-right absolute bottom-[350px] right-[350px]'>
+    <div className='square-shape absolute top-[250px] left-[50px]'>
+      <SquareShape/>
+    </div>
+    <div className='line-shape-right absolute bottom-[50px] right-[50px]'>
       <LineShape/>
     </div>
+    <div className='absolute top-[25px] left-[25px]'>
+      <Circle1/>
+    </div>
+    <div className='absolute top-[250px] right-[250px]'>
+      <Circle1/>
+    </div>
+    <div className='absolute bottom-[100px] left-[70%]'>
+      <Circle1/>
+    </div>
+    <div className='big_circle absolute bottom-[300px] left-[80%]'>
+      <BigCircle/>
+    </div>
+    <div className='big_circle_left absolute top-[800px] right-[80%]'>
+      <BigCircle/>
+    </div>
+    <div className='square-shape absolute top-[350px] right-[150px]'>
+      <SquareShape/>
+    </div>
+    <div className='absolute top-[860px] right-[55%]'>
+      <Circle1/>
+    </div>
+    <div className='absolute top-[760px] right-[30%]'>
+      <Square2/>
+    </div>
+    <div className='line-shape-right absolute top-[460px] left-[20%]'>
+      <Square2/>
+    </div>
+    <div className='line-shape-right absolute top-[660px] left-[10%]'>
+      <Square2/>
+    </div>
     <div className='w-2/5'>
-    <h2 className='font-primary text-4xl text-center font-bold text-primary_color mb-5'>Registration <span className='text-white'>Form</span></h2>
-    <div className='w-96 m-auto'>
-        <div>
+    <h2 className='font-primary text-4xl font-bold text-primary_color mb-5'>Registration <span className='text-white'>Form</span></h2>
+    <div className='w-[800px]'>
+        <div className='flex items-center'>
+        <div className='w-[380px]'>
             <form onSubmit={formik.handleSubmit}>
               <input 
               className='w-full p-3 rounded-md bg-secondary_bg font-primary text-sm focus:outline-0 text-white mb-5' type="text" 
@@ -233,10 +272,14 @@ const Registration = () => {
               <DotLoader color="#D17274" loading={loading} size={30} />
             </form>
         </div>
+        <div className='w-[420px]'>
+            <Signup/>
+        </div>
+        </div>
         {failed && <p className='text-red mb-2 font-primary text-xl font-normal'><BiErrorCircle style={{display: "inline-block"}}/> {failed}</p> }
         {success && <p className='text-green mb-2 font-primary text-lg font-normal'><AiOutlineCheckCircle style={{display: "inline-block"}}/> {success}</p> }
     </div>
-    <p className='text-center text-white font-primary text-lg mt-3'>Already have an account? <NavLink className="text-primary_color hover:underline" to="/login">Sign in</NavLink></p>
+    <p className='text-white font-primary text-lg mt-3'>Already have an account? <NavLink className="text-primary_color hover:underline" to="/login">Sign in</NavLink></p>
     </div>
   </div>
   )

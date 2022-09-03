@@ -9,7 +9,7 @@ select {
 
 /* shape-animation */
 .top-shape {
-  animation: topshape 6s infinite;
+  animation: topshape 3s infinite;
 }
 
 @keyframes topshape {
@@ -25,7 +25,7 @@ select {
 }
 
 .btm-shape {
-  animation: btmshape 6s infinite;
+  animation: btmshape 3s infinite;
 }
 
 @keyframes btmshape {
@@ -41,7 +41,7 @@ select {
 }
 
 .line-shape {
-  animation: lineshape 30s infinite;
+  animation: lineshape 10s infinite;
 }
 
 @keyframes lineshape {
@@ -56,8 +56,24 @@ select {
   }
 }
 
+.square-shape {
+  animation: squareshape 10s infinite;
+}
+
+@keyframes squareshape {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 .line-shape-right {
-  animation: lineshapeRight 6s infinite;
+  animation: lineshapeRight 4s infinite;
 }
 
 @keyframes lineshapeRight {
@@ -69,5 +85,37 @@ select {
   }
   100% {
     transform: scale(0.9) translateX(15px);
+  }
+}
+
+.big_circle {
+  animation: bigcircle 3s infinite;
+}
+
+@keyframes bigcircle {
+  0% {
+    transform: scale(1.3);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.3);
+  }
+}
+
+.big_circle_left {
+  animation: bigcircleleft 3s infinite;
+}
+
+@keyframes bigcircleleft {
+  0% {
+    transform: scale(1.3) translateY(-15px);
+  }
+  50% {
+    transform: scale(1) translateY(15px);
+  }
+  100% {
+    transform: scale(1.3) translateY(-15px);
   }
 }
