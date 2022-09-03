@@ -4,6 +4,7 @@ import { useFormik } from 'formik'
 import {BiErrorCircle} from 'react-icons/bi'
 import {AiOutlineCheckCircle} from 'react-icons/ai'
 import {signUp} from '../validation/index'
+import LineShape from '../svg/lineShape'
 import DotShape from '../svg/dotShape';
 import {useDispatch} from 'react-redux'
 import { createUser } from '../features/users/userSlice';
@@ -86,11 +87,17 @@ const Registration = () => {
  
   return (
   <div className='min-h-screen flex items-center justify-center bg-main_bg relative'>
-    <div className='absolute bottom-7 left-7'>
+    <div className='btm-shape absolute bottom-7 left-7'>
       <DotShape/>
     </div>
-    <div className='absolute top-7 right-7'>
+    <div className='top-shape absolute top-7 right-7'>
       <DotShape/>
+    </div>
+    <div className='line-shape absolute top-[350px] left-[350px]'>
+      <LineShape/>
+    </div>
+    <div className='line-shape-right absolute bottom-[350px] right-[350px]'>
+      <LineShape/>
     </div>
     <div className='w-2/5'>
     <h2 className='font-primary text-4xl text-center font-bold text-primary_color mb-5'>Registration <span className='text-white'>Form</span></h2>

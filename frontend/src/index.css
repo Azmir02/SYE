@@ -3,8 +3,71 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 select {
   background-color: transparent;
+}
+
+/* shape-animation */
+.top-shape {
+  animation: topshape 6s infinite;
+}
+
+@keyframes topshape {
+  0% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(-8px);
+  }
+}
+
+.btm-shape {
+  animation: btmshape 6s infinite;
+}
+
+@keyframes btmshape {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+.line-shape {
+  animation: lineshape 30s infinite;
+}
+
+@keyframes lineshape {
+  0% {
+    transform: rotate(360deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.line-shape-right {
+  animation: lineshapeRight 6s infinite;
+}
+
+@keyframes lineshapeRight {
+  0% {
+    transform: scale(0.9) translateX(15px);
+  }
+  50% {
+    transform: scale(1) translateX(-15px);
+  }
+  100% {
+    transform: scale(0.9) translateX(15px);
+  }
 }

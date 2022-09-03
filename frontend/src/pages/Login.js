@@ -55,10 +55,10 @@ const Login = () => {
 
   return (
     <div className='min-h-screen flex items-center justify-center bg-main_bg relative'>
-       <div className='absolute bottom-7 left-7'>
+       <div className='btm-shape absolute bottom-7 left-7'>
       <DotShape/>
     </div>
-    <div className='absolute top-7 right-7'>
+    <div className='top-shape absolute top-7 right-7'>
       <DotShape/>
     </div>
         <form className='w-[350px]' onSubmit={formik.handleSubmit}>
