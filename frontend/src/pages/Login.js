@@ -4,10 +4,18 @@ import avatar from '../avater.png'
 import {NavLink,useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {signIn} from '../validation/index'
+import Circle1 from '../svg/circle1'
+import Square2 from '../svg/square2'
+import SquareShape from '../svg/square'
+import DotShape from '../svg/dotShape';
+import LineShape from '../svg/lineShape'
+import SilverLine from '../svg/silverline'
+import Triangle1 from '../svg/triangle'
+import BigCircle from '../svg/Bigcircle'
+import Line1 from '../svg/line'
 import {BiErrorCircle} from 'react-icons/bi'
 import { LoginUser } from '../features/users/loginUser';
 import DotLoader from "react-spinners/DotLoader";
-import DotShape from '../svg/dotShape';
 import axios from 'axios';
 
 let initialValues = {
@@ -32,11 +40,9 @@ const Login = () => {
        }) 
        setLoading(false)
        setFailed('')
-      setTimeout(()=>{
        dispatch(LoginUser(data))
        localStorage.setItem('user',JSON.stringify(data))
        navigate('/');
-      },100)
     }
     catch(err){
      setLoading(false)
@@ -47,7 +53,7 @@ const Login = () => {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: signIn,
-    onSubmit: async () => {
+    onSubmit: () => {
       loginUser()
     },
   });
@@ -55,11 +61,62 @@ const Login = () => {
 
   return (
     <div className='min-h-screen flex items-center justify-center bg-main_bg relative'>
-       <div className='btm-shape absolute bottom-7 left-7'>
+      <div className='btm-shape absolute bottom-7 left-7'>
       <DotShape/>
     </div>
-    <div className='top-shape absolute top-7 right-7'>
+    <div className='top-shape absolute top-12 right-12'>
       <DotShape/>
+    </div>
+    <div className='line-shape absolute top-[350px] left-[350px] hidden 2xl:block'>
+      <LineShape/>
+    </div>
+    <div className='square-shape absolute top-[250px] left-[14px] '>
+      <SquareShape/>
+    </div>
+    <div className='line-shape-right absolute bottom-[50px] right-[50px] '>
+      <LineShape/>
+    </div>
+    <div className='absolute top-[25px] left-[25px] hidden sm:block'>
+      <Circle1/>
+    </div>
+    <div className='absolute top-[250px] right-[250px] hidden sm:block'>
+      <Circle1/>
+    </div>
+    <div className='absolute bottom-[100px] left-[70%] '>
+      <Circle1/>
+    </div>
+    <div className='big_circle absolute bottom-[300px] left-[80%] hidden sm:block'>
+      <BigCircle/>
+    </div>
+    <div className='big_circle_left absolute top-[600px] right-[80%] hidden lg:block'>
+      <BigCircle/>
+    </div>
+    <div className='square-shape absolute top-[350px] right-[150px] hidden md:block'>
+      <SquareShape/>
+    </div>
+    <div className='absolute top-[700px] right-[55%] hidden lg:block'>
+      <Circle1/>
+    </div>
+    <div className='absolute top-[700px] right-[30%] opacity-0 lg:opacity-100'>
+      <Square2/>
+    </div>
+    <div className='line-shape-right absolute top-[460px] left-[20%] opacity-0 xl:opacity-100'>
+      <Square2/>
+    </div>
+    <div className='line-shape-right absolute top-[660px] left-[10%] hidden xl:block'>
+      <Square2/>
+    </div>
+    <div className='triangle absolute top-[200px] right-[60%] hidden sm:block'>
+      <Triangle1/>
+    </div>
+    <div className='triangle absolute top-[500px] right-[20%] hidden sm:block'>
+      <Line1/>
+    </div>
+    <div className='absolute top-[700px] right-[40%] hidden sm:block'>
+      <SilverLine/>
+    </div>
+    <div className='absolute top-[100px] right-[45%] hidden sm:block'>
+      <SilverLine/>
     </div>
         <form className='w-[350px]' onSubmit={formik.handleSubmit}>
           <div className='avatar w-20 h-20 m-auto mb-5 overflow-hidden border-2 border-primary_color border-solid rounded-full bg-secondary_bg'>

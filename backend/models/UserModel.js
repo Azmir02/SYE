@@ -35,9 +35,22 @@ const UserModel = new Schema({
         require : true,
     },
 
-    date:{
-        type    : Date,
+    bMonth:{
+        type    : Number,
         require : true,
+        trim    : true
+    },
+
+    bDay:{
+        type    : Number,
+        require : true,
+        trim    : true
+    },
+
+    bYear:{
+        type    : Number,
+        require : true,
+        trim    : true
     },
 
     gender:{

@@ -14,7 +14,9 @@ exports.newuser = async (req,res)=>{
             username,
             email,
             password,
-            date,
+            bMonth,
+            bDay,
+            bYear,
             gender,
             verified
          } = req.body;
@@ -64,7 +66,9 @@ exports.newuser = async (req,res)=>{
             username: finalUsername,
             email,
             password: encrypt,
-            date,
+            bMonth,
+            bDay,
+            bYear,
             gender,
             verified
           }).save()

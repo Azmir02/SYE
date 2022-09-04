@@ -119,3 +119,19 @@ select {
     transform: scale(1.3) translateY(-15px);
   }
 }
+
+.triangle {
+  animation: triangle linear 15s infinite;
+}
+
+@keyframes triangle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

@@ -91,57 +91,56 @@ const Registration = () => {
   const getDates =Array.from(new Array( days() ),(val,index)=> 1 + index)
  
   return (
-  <div className='min-h-screen flex items-center justify-center bg-main_bg relative'>
-    <div className='btm-shape absolute bottom-7 left-7'>
+  <div className='min-h-screen flex items-center justify-center bg-main_bg'>
+    <div className='btm-shape absolute bottom-7 left-7 hidden md:block'>
       <DotShape/>
     </div>
-    <div className='top-shape absolute top-12 right-12'>
+    <div className='top-shape absolute top-12 right-12 hidden md:block'>
       <DotShape/>
     </div>
-    <div className='line-shape absolute top-[350px] left-[350px]'>
+    <div className='line-shape absolute top-[350px] left-[350px] hidden 2xl:block'>
       <LineShape/>
     </div>
-    <div className='square-shape absolute top-[250px] left-[50px]'>
+    <div className='square-shape absolute top-[250px] left-[14px] hidden lg:block'>
       <SquareShape/>
     </div>
-    <div className='line-shape-right absolute bottom-[50px] right-[50px]'>
+    <div className='line-shape-right absolute bottom-[50px] right-[50px] hidden md:block'>
       <LineShape/>
     </div>
-    <div className='absolute top-[25px] left-[25px]'>
+    <div className='absolute top-[25px] left-[25px] hidden md:block'>
       <Circle1/>
     </div>
-    <div className='absolute top-[250px] right-[250px]'>
+    <div className='absolute top-[250px] right-[250px] hidden xl:block'>
       <Circle1/>
     </div>
-    <div className='absolute bottom-[100px] left-[70%]'>
+    <div className='absolute bottom-[100px] left-[70%] hidden md:block'>
       <Circle1/>
     </div>
-    <div className='big_circle absolute bottom-[300px] left-[80%]'>
+    <div className='big_circle absolute bottom-[300px] left-[80%] hidden xl:block'>
       <BigCircle/>
     </div>
-    <div className='big_circle_left absolute top-[800px] right-[80%]'>
+    <div className='big_circle_left absolute top-[600px] right-[80%] hidden 2xl:block'>
       <BigCircle/>
     </div>
-    <div className='square-shape absolute top-[350px] right-[150px]'>
+    <div className='square-shape absolute top-[350px] right-[150px] hidden lg:block'>
       <SquareShape/>
     </div>
-    <div className='absolute top-[860px] right-[55%]'>
+    <div className='absolute top-[700px] right-[55%] hidden 2xl:block'>
       <Circle1/>
     </div>
-    <div className='absolute top-[760px] right-[30%]'>
+    <div className='absolute top-[700px] right-[30%] opacity-0 2xl:opacity-100'>
       <Square2/>
     </div>
-    <div className='line-shape-right absolute top-[460px] left-[20%]'>
+    <div className='line-shape-right absolute top-[460px] left-[20%] opacity-0 2xl:opacity-100'>
       <Square2/>
     </div>
-    <div className='line-shape-right absolute top-[660px] left-[10%]'>
+    <div className='line-shape-right absolute top-[660px] left-[10%] hidden xl:block'>
       <Square2/>
     </div>
-    <div className='w-2/5'>
-    <h2 className='font-primary text-4xl font-bold text-primary_color mb-5'>Registration <span className='text-white'>Form</span></h2>
-    <div className='w-[800px]'>
-        <div className='flex items-center'>
-        <div className='w-[380px]'>
+    <div className='2xl:w-3/6 lg:w-9/12 w-full px-5'>
+    <h2 className='font-primary md:text-4xl font-bold text-primary_color mb-5 text-3xl'>Registration <span className='text-white'>Form</span></h2>
+    <div className='grid md:grid-cols-2 gap-4 items-center'>
+        <div className='max-w-[100%]'>
             <form onSubmit={formik.handleSubmit}>
               <input 
               className='w-full p-3 rounded-md bg-secondary_bg font-primary text-sm focus:outline-0 text-white mb-5' type="text" 
@@ -215,7 +214,7 @@ const Registration = () => {
               <label className='text-secondary_color font-primary mb-2 inline-block font-medium focus:outline-none'>Select Gender</label>
               <div className='flex justify-between'>
                 <div 
-                className='w-[30%] gender_box flex justify-between items-center border rounded-md border-box px-5 py-2 border-secondary_bg'>
+                className='md:w-[30%] gender_box flex justify-between items-center border rounded-md border-box px-5 py-2 border-secondary_bg'>
                   <label 
                   htmlFor="male" 
                   className='mr-2 text-secondary_color text-base font-medium font-primary'>Male</label>
@@ -233,7 +232,7 @@ const Registration = () => {
   
                 </div>
                 <div 
-                className='w-[30%] gender_box flex justify-between items-center border rounded-md border-box px-5 py-2 border-secondary_bg'>
+                className='max-w-[30%] gender_box flex justify-between items-center border rounded-md border-box px-5 py-2 border-secondary_bg'>
                   <label 
                   htmlFor="female" 
                   className='mr-2 text-secondary_color text-base font-medium font-primary'>Female</label>
@@ -250,7 +249,7 @@ const Registration = () => {
                 
                 </div>
                 <div 
-                className='w-[30%] gender_box flex justify-between items-center border rounded-md border-box px-5 py-2 border-secondary_bg'>
+                className='max-w-[30%] gender_box flex justify-between items-center border rounded-md border-box px-5 py-2 border-secondary_bg'>
                   <label 
                   htmlFor="other" 
                   className='mr-2 text-secondary_color text-base font-medium font-primary'>Others</label>
@@ -268,17 +267,16 @@ const Registration = () => {
               </div>
               {formik.errors.gender  && formik.touched.gender ? <p className='text-red mb-2 font-primary text-base font-normal mt-4'>{formik.errors.gender}</p> : null}
 
-              <button className='bg-primary_color px-5 py-3 mt-6 mb-4 rounded-md font-primary font-normal text-base transition ease-linear duration-150 hover:shadow-[0px_0px_27px_rgba(80,_147,_243,_0.72)] text-white' type='submit'>Create Account</button>
+              <button className='bg-primary_color p-3 md:px-5 md:py-3 mt-6 mb-4 rounded-md font-primary font-normal text-sm md:text-base transition ease-linear duration-150 hover:shadow-[0px_0px_27px_rgba(80,_147,_243,_0.72)] text-white' type='submit'>Create Account</button>
               <DotLoader color="#D17274" loading={loading} size={30} />
             </form>
         </div>
-        <div className='w-[420px]'>
+        <div className='max-w-[420px] hidden md:block'>
             <Signup/>
         </div>
         </div>
         {failed && <p className='text-red mb-2 font-primary text-xl font-normal'><BiErrorCircle style={{display: "inline-block"}}/> {failed}</p> }
         {success && <p className='text-green mb-2 font-primary text-lg font-normal'><AiOutlineCheckCircle style={{display: "inline-block"}}/> {success}</p> }
-    </div>
     <p className='text-white font-primary text-lg mt-3'>Already have an account? <NavLink className="text-primary_color hover:underline" to="/login">Sign in</NavLink></p>
     </div>
   </div>

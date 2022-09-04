@@ -11,7 +11,7 @@ module.exports = {
       'primary_color' : "#1FA0EF",
       'secondary_color' : "#848F95",
       'title_color' : "#66717F",
-      "black" : "##29313D", 
+      "black" : "#29313D", 
       'white': '#fff',
       'green' : "#21D997",
       'blue'  : "#5093F3",
@@ -21,7 +21,8 @@ module.exports = {
     fontFamily: {
       primary: ['Hind Siliguri', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+    },
   },
   plugins: [],
 }
