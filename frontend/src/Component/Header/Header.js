@@ -28,7 +28,7 @@ const Header = () => {
         </div>
         {
             show &&
-             <div className='absolute top-[-5px] left-[-12px]' ref={clickOutside}>
+             <div className='absolute top-[-12px] left-[-12px]' ref={clickOutside}>
                 <Searchbox setShow={setShow}/>
             </div>
         }
