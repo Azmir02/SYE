@@ -5,6 +5,7 @@ import HomeActive from '../../svg/homeActive'
 import Messenger from '../../svg/messenger'
 import ArrowDown from '../../svg/arrowDown'
 import OutsideClick from '../../helpers/click'
+import Menu from '../../svg/menu'
 import { useSelector } from 'react-redux'
 import Notifications from '../../svg/notifications'
 import { Link } from 'react-router-dom'
@@ -33,11 +34,14 @@ const Header = () => {
             </div>
         }
        </div>
-       <div className="right-part w-[405px] flex items-center">
+       <div className="right-part w-[450px] flex items-center">
        <Link className='ml-2 flex items-center bg-[#F1F4F7] w-[120px] px-4 py-2 rounded-full box-border' to="/">
-        <HomeActive/>
-        <span className='inline-block ml-2 font-primary text-lg text-black'>Home</span>
+            <HomeActive/>
+            <span className='inline-block ml-2 font-primary text-lg text-black'>Home</span>
         </Link>
+        <div className='ml-5 w-7 h-7 rounded-full'>
+            <Menu/>
+        </div>
         <div className='ml-5'>
             <Messenger/>
         </div>
