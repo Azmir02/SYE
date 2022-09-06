@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux'
 import Notifications from '../../svg/notifications'
 import { Link } from 'react-router-dom'
 import Searchbox from './Searchbox'
+import MenuOption from './MenuOption'
 
 const Header = () => {
     const users = useSelector((users)=>(users.login.loggedin))
@@ -34,25 +35,30 @@ const Header = () => {
             </div>
         }
        </div>
-       <div className="right-part w-[450px] flex items-center">
-       <Link className='ml-2 flex items-center bg-[#F1F4F7] w-[120px] px-4 py-2 rounded-full box-border' to="/">
+       <div className="right-part w-[450px] flex items-center justify-between">
+       <div>
+        <Link className='ml-2 flex items-center bg-[#F1F4F7] w-[120px] px-4 py-2 rounded-full box-border' to="/">
             <HomeActive/>
             <span className='inline-block ml-2 font-primary text-lg text-black'>Home</span>
         </Link>
-        <div className='ml-5 w-7 h-7 rounded-full'>
+       </div>
+        <div className=' w-[40px] h-[40px] relative rounded-full flex items-center justify-center hover:bg-[#F0F2F5] cursor-pointer'>
             <Menu/>
+            <div className="absolute top-[50px] cursor-auto left-[-480px]">
+                <MenuOption/>
+            </div>
         </div>
-        <div className='ml-5'>
+        <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center hover:bg-[#F0F2F5] cursor-pointer'>
             <Messenger/>
         </div>
-        <div className='ml-5 relative after:absolute after:content[] after:w-[1px] after:h-[30px] after:bg-secondary_color after:top-[-5px] after:right-0 pr-2'>
+        <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center hover:bg-[#F0F2F5] cursor-pointer relative'>
             <Notifications/>
-            <span className='absolute top-[-7px] right-[5px] w-[20px] h-[20px] bg-red rounded-full text-center text-white font-primary text-sm font-medium'>5</span>
+            <span className='absolute top-[0px] right-[6px] w-[20px] h-[20px] bg-red rounded-full text-center text-white font-primary text-sm font-medium'>5</span>
         </div>
-        <div className='ml-2 flex items-center justify-between bg-[#F1F4F7] rounded-full px-4 py-2'>
+        <div className=' flex items-center justify-between bg-[#F1F4F7] rounded-full px-4 py-2'>
             <div className='w-[30px] h-[30px] rounded-full bg-white overflow-hidden'></div>
             <span className='inline-block ml-3 text-base font-primary text-black whitespace-nowrap w-[74px] overflow-hidden text-ellipsis'>{users?.fName}</span>
-            <div className='ml-4'>
+            <div className=''>
                 <ArrowDown/>
             </div>
         </div>
