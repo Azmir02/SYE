@@ -44,7 +44,7 @@ const Header = () => {
        </div>
         <div className=' w-[40px] h-[40px] relative rounded-full flex items-center justify-center hover:bg-[#F0F2F5] cursor-pointer'>
             <Menu/>
-            <div className="absolute top-[50px] cursor-auto left-[-480px]">
+            <div className="absolute top-[50px] cursor-auto left-[-430px]">
                 <MenuOption/>
             </div>
         </div>
