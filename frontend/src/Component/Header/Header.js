@@ -15,9 +15,12 @@ import MenuOption from './MenuOption'
 const Header = () => {
     const users = useSelector((users)=>(users.login.loggedin))
     const [show,setShow] = useState(false)
+    const [menushow,setMenushow] = useState(false)
     const clickOutside = useRef(null)
-    OutsideClick(clickOutside,()=>{
+    const outsideClick = useRef(null)
+    OutsideClick(outsideClick,()=>{
         setShow(false)
+        setMenushow(false)
     })
     
   return (
@@ -28,12 +31,14 @@ const Header = () => {
             <Search color="#65676B"/>
             <input type="text" className='focus:outline-none ml-2 bg-[#F0F2F5] font-primary text-base' placeholder='#Explore' onClick={()=>{setShow(true)}}/>
         </div>
+
         {
             show &&
              <div className='absolute top-[-12px] left-[-12px]' ref={clickOutside}>
                 <Searchbox setShow={setShow}/>
             </div>
         }
+
        </div>
        <div className="right-part w-[450px] flex items-center justify-between">
        <div>
@@ -42,10 +47,13 @@ const Header = () => {
             <span className='inline-block ml-2 font-primary text-lg text-black'>Home</span>
         </Link>
        </div>
-        <div className=' w-[40px] h-[40px] relative rounded-full flex items-center justify-center hover:bg-[#F0F2F5] cursor-pointer'>
+        <div onClick={()=>{setMenushow((prev)=>!prev)}} className=' w-[40px] h-[40px] relative rounded-full flex items-center justify-center hover:bg-[#F0F2F5] cursor-pointer' ref={outsideClick}>
             <Menu/>
             <div className="absolute top-[50px] cursor-auto left-[-430px]">
-                <MenuOption/>
+                {
+                    menushow &&
+                    <MenuOption/>
+                }
             </div>
         </div>
         <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center hover:bg-[#F0F2F5] cursor-pointer'>
