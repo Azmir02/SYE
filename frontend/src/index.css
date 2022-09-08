@@ -135,3 +135,13 @@ select {
     transform: rotate(0deg);
   }
 }
+
+/* menu scrollbar */
+.main-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-menu::-webkit-scrollbar-thumb {
+  background-color: #c5c7ca;
+  border-radius: 5px;
+}

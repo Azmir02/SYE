@@ -11,6 +11,7 @@ import Notifications from '../../svg/notifications'
 import { Link } from 'react-router-dom'
 import Searchbox from './Searchbox'
 import MenuOption from './MenuOption'
+import Usermenu from './usermenu/Usermenu'
 
 const Header = () => {
     const users = useSelector((users)=>(users.login.loggedin))
@@ -47,8 +48,10 @@ const Header = () => {
             <span className='inline-block ml-2 font-primary text-lg text-black'>Home</span>
         </Link>
        </div>
-        <div onClick={()=>{setMenushow((prev)=>!prev)}} className=' w-[40px] h-[40px] relative rounded-full flex items-center justify-center hover:bg-[#F0F2F5] cursor-pointer' ref={outsideClick}>
-            <Menu/>
+        <div className='relative' ref={outsideClick}>
+            <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center hover:bg-[#F0F2F5] cursor-pointer' onClick={()=>{setMenushow((prev)=>!prev)}}>
+                <Menu/>
+            </div>
             <div className="absolute top-[50px] cursor-auto left-[-430px]">
                 {
                     menushow &&
@@ -63,11 +66,14 @@ const Header = () => {
             <Notifications/>
             <span className='absolute top-[0px] right-[6px] w-[20px] h-[20px] bg-red rounded-full text-center text-white font-primary text-sm font-medium'>5</span>
         </div>
-        <div className=' flex items-center justify-between bg-[#F1F4F7] rounded-full px-4 py-2'>
+        <div className=' flex items-center justify-between bg-[#F1F4F7] rounded-full px-4 py-2 cursor-pointer relative'>
             <div className='w-[30px] h-[30px] rounded-full bg-white overflow-hidden'></div>
             <span className='inline-block ml-3 text-base font-primary text-black whitespace-nowrap w-[74px] overflow-hidden text-ellipsis'>{users?.fName}</span>
-            <div className=''>
+            <div>
                 <ArrowDown/>
+            </div>
+            <div className='absolute top-[50px] cursor-auto left-[-196px]'>
+                <Usermenu/>
             </div>
         </div>
        </div>
