@@ -153,7 +153,7 @@ export const menu_option = [
         icon: "messkids",
         description: "Let children message close friends and family."
     }
-]
+];
 
 export const creat = [
     {
@@ -199,5 +199,5 @@ export const creat = [
         title: "job",
         icon: "m_post_job",
     },
-]
+];
 
