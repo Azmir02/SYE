@@ -84,6 +84,12 @@ export const menu_option = [
     },
 
     {
+        title: "Memories",
+        icon: "memories",
+        description: "Browse your old photos videos and post on Facebook"
+    },
+
+    {
         title: "Saved",
         icon: "saved",
         description: "Find posts, photos and videos that you've saved for later."
@@ -121,7 +127,7 @@ export const menu_option = [
 
     {
         title: "Community Help",
-        icon: "community Help",
+        icon: "community",
         description: "Get involved in your community by creating a drive, requesting or offering help or volunteering."
     },
 
