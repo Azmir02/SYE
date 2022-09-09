@@ -16,7 +16,7 @@ const Searchbox = ({setShow}) => {
                 </div>
                 <div className="search flex items-center bg-[#F0F2F5] px-4 py-2 rounded-full" onClick={()=>{input.current.focus()}}>
                     {showicon && <Search color="#65676B"/>}
-                    <input type="text" className='focus:outline-none ml-2 bg-[#F0F2F5] font-primary text-base' placeholder='#Explore' ref={input} onClick={()=>{setShowicon(false)}} onBlur={()=>{setShowicon(true)}} />
+                    <input type="text" className='focus:outline-none ml-2 bg-[#F0F2F5] font-primary text-base' placeholder='Search' ref={input} onClick={()=>{setShowicon(false)}} onBlur={()=>{setShowicon(true)}} />
                 </div>
             </div>
             <div className='flex justify-between items-center mt-5'>
