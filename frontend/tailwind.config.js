@@ -21,8 +21,7 @@ module.exports = {
     fontFamily: {
       primary: ['Hind Siliguri', 'sans-serif'],
     },
-    extend: {
-    },
+    extend: {},
   },
   plugins: [],
 }

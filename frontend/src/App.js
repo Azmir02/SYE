@@ -1,27 +1,20 @@
-import { Routes,Route,useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux'
+import { Routes,Route} from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import './styles/icons/icons.css'
-import { useEffect } from "react";
+import Loggedinuser from "./Routers/Loggedinuser";
 
 function App() {
-  const users = useSelector((users)=>(users.login.loggedin))
-  const navigate = useNavigate()
-
-  useEffect(()=>{
-    if(users){
-      navigate('/');
-    }
-  },[])
 
   return (
     <div>
       <Routes>
-        <Route path="/" element={ <Home/>}/>
+        <Route element={<Loggedinuser/>}>
+          <Route path="/" element={ <Home/>}/>
+        </Route>
         <Route path="/login" element={ <Login/>}/>
-        <Route path="/register" element={ <Registration/>}/>
+          <Route path="/register" element={ <Registration/>}/>
       </Routes>
     </div>
   );
