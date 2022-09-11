@@ -56,7 +56,7 @@ const Header = () => {
         </Link>
        </div>
         <div className='relative' ref={menuClick}>
-            <div className='w-[40px] h-[40px] rounded-full flex items-center justify-center hover:bg-[#F0F2F5] cursor-pointer' onClick={()=>{setMenushow((prev)=>!prev)}}>
+            <div className={`w-[40px] h-[40px] rounded-full flex items-center justify-center hover:bg-[#F0F2F5] cursor-pointer ${menushow && 'active_button'}`} onClick={()=>{setMenushow((prev)=>!prev)}}>
                 <Menu/>
             </div>
             <div className="absolute top-[50px] cursor-auto left-[-430px]">

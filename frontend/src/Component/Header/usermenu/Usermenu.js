@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Darkmode from './Darkmode'
 import Helpmenu from './Helpmenu'
 import Profile from './Profile'
 import Settingsmenu from './Settingsmenu'
@@ -41,7 +42,7 @@ const Usermenu = ({user}) => {
                 </div>
                 <i className='right_icon'></i>
             </div>
-            <div className='flex items-center justify-between my-3'>
+            <div className='flex items-center justify-between my-3' onClick={()=>{setVisible(3)}}>
                 <div className='w-[40px] h-[40px] rounded-full bg-[#F0F2F5] flex items-center justify-center'>
                     <i className='dark_filled_icon'></i>
                 </div>
@@ -64,6 +65,7 @@ const Usermenu = ({user}) => {
         }
         {visible === 1 && <Settingsmenu setVisible={setVisible}/>}
         {visible === 2 && <Helpmenu setVisible={setVisible}/>}
+        {visible === 3 && <Darkmode setVisible={setVisible}/>}
     </div>
   )
 }
