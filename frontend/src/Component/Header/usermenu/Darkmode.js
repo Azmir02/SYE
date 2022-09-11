@@ -37,7 +37,7 @@ const Darkmode = ({setVisible}) => {
         <div className='mt-2'>
             <div className='flex justify-between mt-5 mb-2 cursor-pointer'>
                 <div className='w-[40px] h-[40px] rounded-full bg-[#F0F2F5] flex items-center justify-center'>
-                    <i className='dark_filled_icon'></i>
+                    <i className='compact_icon'></i>
                 </div>
                 <div className='ml-3 w-[230px]'>
                     <p className='font-primary text-lg font-medium leading-[0.8]'>Compact mode</p>

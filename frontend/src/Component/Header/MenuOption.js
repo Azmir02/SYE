@@ -6,11 +6,11 @@ const MenuOption = () => {
   const focused = useRef(null)
 
   return (
-    <div className='w-[750px] h-[90vh] bg-[#F7F8FA] rounded-md shadow-[-3px_4px_12px_0px_rgba(219,219,219,0.75)] p-5 box-border'>
+    <div className='main_menu w-[750px] h-[90vh] bg-[#F7F8FA] rounded-md shadow-[-3px_4px_12px_0px_rgba(219,219,219,0.75)] p-5 box-border'>
       <h2 className='font-primary text-black font-bold text-2xl'>Menu</h2>
-      <div className=' main-menu grid grid-cols-[1.7fr_1fr] gap-4 mt-5 overflow-y-auto  h-[95%] select-none'>
+      <div className=' main-menu grid grid-cols-1 md:grid-cols-[1.7fr_1fr] gap-4 mt-5 overflow-y-auto  h-[95%] select-none'>
         <div className='left bg-white w-full rounded-md p-6'>
-          <div className="search flex items-center bg-[#F0F2F5] px-4 py-2 rounded-full" onClick={()=>{focused.current.focus()}}>
+          <div className="flex items-center bg-[#F0F2F5] px-4 py-2 rounded-full" onClick={()=>{focused.current.focus()}}>
               <Search color="#65676B"/>
               <input type="text" className='focus:outline-none w-[90%] ml-2 bg-[#F0F2F5] font-primary text-base' placeholder='Search' ref={focused}/>
           </div>
@@ -92,7 +92,7 @@ const MenuOption = () => {
           </div>
           
         </div>
-        <div className='right w-[240px] bg-white p-5 h-[530px] sticky top-0 rounded-md'>
+        <div className='right w-full lg:w-[240px] bg-white p-5 h-[530px] sticky top-0 rounded-md'>
           <h2 className='font-primary text-black font-bold text-xl'>Create</h2>
           <div className='mt-4 border-b border-solid border-[#d3d3d3]'>
             {

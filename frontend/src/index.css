@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.pages {
+  background-color: #f0f2f5;
+}
+
 select {
   background-color: transparent;
 }
@@ -167,12 +171,12 @@ select {
   padding: 2px;
 }
 
-.radio_radio:after{
-  content: '';
+.radio_radio:after {
+  content: "";
   width: 100%;
   height: 100%;
   display: block;
-  background-color: #5093F3;
+  background-color: #5093f3;
   border-radius: 50%;
   transform: scale(0);
 }
@@ -184,9 +188,46 @@ select {
 /* active button */
 
 .active_button {
-  background-color: #F0F2F5;
+  background-color: #f0f2f5;
+}
+
+.active svg {
+  fill: #5093f3;
 }
 
 .active_button svg {
-  fill: #5093F3;
+  fill: #5093f3;
+}
+
+/* header responsive */
+
+@media (max-width: 1023.99px) {
+  .search {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  .searchbox {
+    width: 280px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1022px) {
+  .right-part {
+    width: 220px;
+  }
+
+  .main_menu {
+    width: 643px;
+  }
+}
+
+@media (max-width: 767.99px) {
+  .main_menu {
+    width: 400px;
+  }
+
+  .right-part {
+    width: 220px;
+  }
 }

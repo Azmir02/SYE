@@ -5,7 +5,9 @@ import Header from '../Component/Header/Header'
 const Home = () => {
   return (
     <>
-        <Header/>
+      <Header/>
+      <div className='pages'>
+      </div>
     </>
   )
 }

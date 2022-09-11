@@ -9,12 +9,12 @@ const Searchbox = ({setShow}) => {
         input.current.focus()
     },[])
     return (
-        <div className='w-[350px] px-5 py-3 min-h-[500px] box-border bg-white shadow-[6px_6px_19px_0px_rgba(230,_230,_230,_0.75)] rounded-md'>
+        <div className='searchbox w-[350px] px-2 py-2 lg:px-5 lg:py-3 min-h-[500px] box-border bg-white shadow-[6px_6px_19px_0px_rgba(230,_230,_230,_0.75)] rounded-md'>
             <div className='flex items-center justify-between'>
                 <div className='cursor-pointer' onClick={()=>{setShow(false)}}>
                     <Return color="#65676B"/>
                 </div>
-                <div className="search flex items-center bg-[#F0F2F5] px-4 py-2 rounded-full" onClick={()=>{input.current.focus()}}>
+                <div className="flex items-center bg-[#F0F2F5] px-2 py-1 lg:px-4 lg:py-2 rounded-full" onClick={()=>{input.current.focus()}}>
                     {showicon && <Search color="#65676B"/>}
                     <input type="text" className='focus:outline-none ml-2 bg-[#F0F2F5] font-primary text-base' placeholder='Search' ref={input} onClick={()=>{setShowicon(false)}} onBlur={()=>{setShowicon(true)}} />
                 </div>
