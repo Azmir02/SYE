@@ -9,7 +9,7 @@ const Profile = ({user}) => {
             <div className='w-[40px] h-[40px] rounded-full bg-primary_bg'>
                 
             </div>
-            <div className='w-[62%] md:w-[70%] ml-2'>
+            <div className='w-[62%] ml-2'>
                 <h4 className='capitalize font-primary text-lg font-medium text-black'>{user?.fName} {user?.lName}</h4>
             </div>
         </Link>

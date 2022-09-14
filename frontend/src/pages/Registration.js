@@ -14,6 +14,7 @@ import DotShape from '../svg/dotShape';
 import {useDispatch} from 'react-redux'
 import { createUser } from '../features/users/userSlice';
 import DotLoader from "react-spinners/DotLoader";
+import { Helmet } from "react-helmet-async";
 import axios from 'axios';
 
 const Registration = () => {
@@ -141,6 +142,9 @@ const Registration = () => {
     <h2 className='font-primary md:text-4xl font-bold text-primary_color mb-5 text-3xl'>Registration <span className='text-white'>Form</span></h2>
     <div className='grid md:grid-cols-2 gap-4 items-center'>
         <div className='max-w-[100%]'>
+        <Helmet>
+          <title>Registration</title>
+        </Helmet>
             <form onSubmit={formik.handleSubmit}>
               <input 
               className='w-full p-3 rounded-md bg-secondary_bg font-primary text-sm focus:outline-0 text-white mb-5' type="text" 

@@ -37,7 +37,7 @@ const Header = () => {
     })
     
   return (
-    <div className="heading flex justify-between items-center px-4 py-2 shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] sticky top-0 left-0 w-full">
+    <div className="heading flex justify-between items-center px-4 py-2 shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] fixed top-0 left-0 w-full z-[999]">
        <div className="left-part w-[320px] flex lg:justify-between items-center relative">
         <Logo/>
         <div className="search ml-5 lg:ml-0 px-0 py-0 flex items-center justify-center lg:justify-start bg-[#F0F2F5] lg:px-4 lg:py-2 rounded-full" onClick={()=>{setShow(true)}}>

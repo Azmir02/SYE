@@ -16,6 +16,7 @@ import Line1 from '../svg/line'
 import {BiErrorCircle} from 'react-icons/bi'
 import { LoginUser } from '../features/users/loginUser';
 import DotLoader from "react-spinners/DotLoader";
+import { Helmet } from "react-helmet-async";
 import axios from 'axios';
 
 let initialValues = {
@@ -119,6 +120,9 @@ const Login = () => {
       <SilverLine/>
     </div>
         <form className='w-[350px]' onSubmit={formik.handleSubmit}>
+        <Helmet>
+          <title>Login</title>
+        </Helmet>
           <div className='avatar w-20 h-20 m-auto mb-5 overflow-hidden border-2 border-primary_color border-solid rounded-full bg-secondary_bg'>
             <picture>
               <img className='m-auto mb-4 mt-[12px]' src={avatar} alt="avatar" />
