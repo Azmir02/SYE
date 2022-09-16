@@ -89,7 +89,7 @@ const Registration = () => {
   const days = ()=>{
     return new Date(formik.values.bYear,formik.values.bMonth,0).getDate()
   }
-  const getDates =Array.from(new Array( days() ),(val,index)=> 1 + index)
+  const getDates =  Array.from(new Array( days() ),(val,index)=> 1 + index)
  
   return (
   <div className='min-h-screen flex items-center justify-center bg-main_bg'>

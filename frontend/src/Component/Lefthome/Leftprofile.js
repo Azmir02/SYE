@@ -1,9 +1,8 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-const Userleft = () => {
-  const users = useSelector((users)=>(users.login.loggedin))
+const Leftprofile = ({user}) => {
+
   return (
     <div className='bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]'>
         <div className='relative'>
@@ -16,7 +15,7 @@ const Userleft = () => {
         </div>
         <div className='mt-16 px-12'>
           <div className='text-center'>
-            <h4 className='capitalize font-primary text-lg font-medium text-black'>{users?.fName} {users?.lName}</h4>
+            <h4 className='capitalize font-primary text-lg font-medium text-black'>{user?.fName} {user?.lName}</h4>
             <span className='capitalize font-primary text-sm font-regular text-secondary_color'>Mern stack developer</span>
             <p className='font-primary text-base font-regular text-secondary_color mt-3'>It’s a sunny day for malody boy. I’m a malody boy </p>
           </div>
@@ -36,10 +35,10 @@ const Userleft = () => {
           </div>
         </div>
         <div className='text-center py-5 text-blue'>
-          <Link to="/profile" className='font-primary text-base font-bold'>My Profile</Link>
+          <Link to="/profile" className='font-primary text-base font-medium'>My Profile</Link>
         </div>
     </div>
   )
 }
 
-export default Userleft
+export default Leftprofile

@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../Component/Header/Header'
 import { Helmet } from "react-helmet-async";
-import Userleft from '../Component/Left_home/Userleft/Userleft';
+import Userleft from '../Component/Lefthome/Userleft';
 
 
 const Home = () => {
