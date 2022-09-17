@@ -201,3 +201,30 @@ export const creat = [
     },
 ];
 
+
+export const stories = [
+    {
+        profile_picture : "../../stories/profile1.jpg",
+        profile_name    : "Shawon",
+        Image   : "../../stories/1.jpg"
+    },
+
+    {
+        profile_picture : "../../stories/profile2.jpg",
+        profile_name    : "Masum Mehedi",
+        Image   : "../../stories/2.png"
+    },
+
+    {
+        profile_picture : "../../stories/profile3.png",
+        profile_name    : "Sohel Rana",
+        Image   : "../../stories/3.jpg"
+    },
+
+    {
+        profile_picture : "../../stories/profile4.jfif",
+        profile_name    : "Arif",
+        Image   : "../../stories/4.jpg"
+    }
+]
+
