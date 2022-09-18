@@ -10,7 +10,7 @@ export const userSlice = createSlice({
         LoginUser: (state,action)=>{
             state.loggedin = action.payload
         }
-    }
+    },
 })
 
 export const {LoginUser} = userSlice.actions

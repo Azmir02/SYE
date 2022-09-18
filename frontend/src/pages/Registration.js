@@ -56,7 +56,7 @@ const Registration = () => {
         dispatch(createUser(rest))
         localStorage.setItem('user',JSON.stringify(rest))
         navigate('/login');
-       },100)
+       },3000)
      }
      catch(err){
       setLoading(false)

@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import './styles/icons/icons.css'
 import Loggedinuser from "./Routers/Loggedinuser";
+import Activepage from "./pages/Activepage";
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route element={<Loggedinuser/>}>
           <Route path="/" element={ <Home/>}/>
+          <Route path="/activate/:token" element={ <Activepage/>}/>
         </Route>
         <Route path="/login" element={ <Login/>}/>
         <Route path="/register" element={ <Registration/>}/>

@@ -152,3 +152,7 @@ exports.loginUser = async(req,res)=>{
         })
     }
 }
+
+exports.auth = (req,res)=>{
+    res.json("Welcome from auth");
+}

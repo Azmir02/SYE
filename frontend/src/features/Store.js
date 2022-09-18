@@ -4,8 +4,8 @@ import loginSlice from './users/loginUser'
 
 const store = configureStore({
     reducer:{
-        user: authSlice,
-        login: loginSlice
+        registration: authSlice,
+        login   : loginSlice
 
     }
 })

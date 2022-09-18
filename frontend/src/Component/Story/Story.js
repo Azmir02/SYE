@@ -24,12 +24,10 @@ const Story = () => {
             </div>
             {
             stories.map((item,index)=>(
-                <>
-                <div className='relative rounded-md group cursor-pointer shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] w-[18%] overflow-hidden'>
-                    <Storyprsn key={index} image={item.Image} profile_picture={item.profile_picture} profile_name={item.profile_name}/>
+                <div key={index} className='relative rounded-md group cursor-pointer shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] w-[18%] overflow-hidden'>
+                    <Storyprsn  image={item.Image} profile_picture={item.profile_picture} profile_name={item.profile_name}/>
                     <div className='absolute top-0 left-0 w-full h-full transition-all ease-out duration-100 group-hover:bg-[rgba(41,_49,_61,_.2)] rounded-md'></div>
-                </div>
-                </>                
+                </div>               
             ))
             }
         </div>
