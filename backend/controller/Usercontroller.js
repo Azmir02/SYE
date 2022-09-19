@@ -100,20 +100,34 @@ exports.newuser = async (req,res)=>{
 }
 
 exports.emailVarified = async (req,res)=>{
+    try{
+    const varified = req.user.id 
     const {token} = req.body
     const user = jwt.verify(token, process.env.SECRET_TOKEN)
     const check = await Users.findById(user.id)
+
+    if(varified !== user.id){
+       return res.status(404).json({
+            message: "you don't have authorization to complete this operation"
+        })
+    }
+    
     if(check.verified === true) {
         return res.status(400).json({
             message: "this email is already verified"
         })
     }
+    
     else{
         await Users.findByIdAndUpdate(user.id,{verified: true});
         return res.status(200).json({
             message: "account has been activated successfully"
         })
        
+    }
+    }
+    catch(err){
+        res.status(404).json({message:err.message})
     }
 }
 
