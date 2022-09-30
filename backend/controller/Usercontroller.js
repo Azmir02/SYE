@@ -117,7 +117,6 @@ exports.emailVarified = async (req,res)=>{
             message: "this email is already verified"
         })
     }
-    
     else{
         await Users.findByIdAndUpdate(user.id,{verified: true});
         return res.status(200).json({
@@ -167,6 +166,27 @@ exports.loginUser = async(req,res)=>{
     }
 }
 
-exports.auth = (req,res)=>{
-    res.json("Welcome from auth");
+exports.reauthorization= async(req,res)=>{
+   try{
+    let id = req.user.id
+    const user = await Users.findById(id)
+    if(user.verified === true) {
+        return res.status(404).json({
+            message: "This account is already activated"
+        })
+    }
+    const emailToken = jwtToken({ id: user._id.toString()},'1h')
+
+    const url = `${process.env.BASE_URL}/activate/${emailToken}`
+
+    sendEmailvarification(user.email,user.fName,url)
+    return res.status(200).json({
+        message: "Email varificatin link has been sent to your account"
+    })
+   }
+   catch(err){
+    res.status(400).json({
+        message: err.message
+    })
+   }
 }

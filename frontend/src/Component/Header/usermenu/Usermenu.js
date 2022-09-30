@@ -3,9 +3,24 @@ import Darkmode from './Darkmode'
 import Helpmenu from './Helpmenu'
 import Profile from './Profile'
 import Settingsmenu from './Settingsmenu'
+import {useDispatch} from 'react-redux'
+import { createUser } from '../../../features/users/userSlice';
+import { LoginUser } from '../../../features/users/loginUser';
+import { useNavigate } from 'react-router-dom'
 
 const Usermenu = ({user}) => {
     const [visible,setVisible] = useState(0)
+    let dispatch = useDispatch()
+    let navigate = useNavigate()
+
+    // logout-functionality
+    const handleLogout = ()=>{
+        localStorage.removeItem('user')
+        dispatch(createUser(null))
+        dispatch(LoginUser(null))
+        navigate('/login')
+    }
+
   return (
     <div className='w-[360px] bg-white p-7 relative rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]'>
         {
@@ -51,7 +66,7 @@ const Usermenu = ({user}) => {
                 </div>
                 <i className='right_icon'></i>
             </div>
-            <div className='flex items-center justify-between my-3'>
+            <div className='flex items-center justify-between my-3' onClick={handleLogout}>
                 <div className='w-[40px] h-[40px] rounded-full bg-[#F0F2F5] flex items-center justify-center'>
                     <i className='logout_filled_icon'></i>
                 </div>

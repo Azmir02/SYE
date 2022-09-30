@@ -6,6 +6,7 @@ import Friendreq from '../Component/Righthome/Friendrequest/Friendreq';
 import Contacts from '../Component/Righthome/Contacts';
 import Story from '../Component/Story/Story';
 import Post from '../Component/Posts/Post';
+import Reauth from '../Component/re-authorization/Reauth';
 
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
           </div>
           <div className='px-[200px]'>
             <Story/>
+            <Reauth/>
             <Post/>
           </div>
           <div className='pr-3'>

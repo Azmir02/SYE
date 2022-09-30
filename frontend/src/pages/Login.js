@@ -89,9 +89,6 @@ const Login = () => {
     <div className='big_circle absolute bottom-[300px] left-[80%] hidden sm:block'>
       <BigCircle/>
     </div>
-    <div className='big_circle_left absolute top-[600px] right-[80%] hidden lg:block'>
-      <BigCircle/>
-    </div>
     <div className='square-shape absolute top-[350px] right-[150px] hidden md:block'>
       <SquareShape/>
     </div>
