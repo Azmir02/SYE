@@ -6,10 +6,10 @@ import Leftprofile from './Leftprofile'
 const Userleft = () => {
   const users = useSelector((users)=>(users.login.loggedin))
   return (
-    <>
+    <div>
       <Leftprofile user={users}/>
       <Leftoption/>
-    </>
+    </div>
   )
 }
 

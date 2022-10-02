@@ -7,7 +7,7 @@ import Shortcut from './Shortcut'
 const Leftoption = () => {
   const [visible,setVisible] = useState(false)
   return (
-    <div className='mt-3 sticky top-[75px] left-0 '>
+    <div className='mt-3 sticky top-[75px] left-0'>
       <div className='bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] px-5 py-4 overflow-y-auto h-[390px] main-menu'>
         {
           left_home.slice(0,5).map((item,index)=>(

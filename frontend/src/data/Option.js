@@ -225,6 +225,12 @@ export const stories = [
         profile_picture : "../../stories/profile4.jfif",
         profile_name    : "Arif",
         Image   : "../../stories/4.jpg"
+    },
+
+    {
+        profile_picture : "../../stories/profile5.png",
+        profile_name    : "Jhony",
+        Image   : "../../stories/5.jfif"
     }
 ]
 

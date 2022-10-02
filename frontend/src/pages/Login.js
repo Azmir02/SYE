@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { useFormik } from 'formik'
 import avatar from '../avater.png'
-import {NavLink,useNavigate} from 'react-router-dom'
+import {Link, NavLink,useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {signIn} from '../validation/index'
 import Circle1 from '../svg/circle1'
@@ -147,6 +147,9 @@ const Login = () => {
 
             {formik.errors.password  && formik.touched.password ? <p className='text-red mb-2 font-primary text-base font-normal'>{formik.errors.password}</p> : null}
 
+          <div className='text-center'>
+            <Link className='text-blue hover:underline font-primary text-base font-normal' to = "/reset">Forgotten password ?</Link>
+          </div>
           <div className='text-center'>
             <button className='bg-primary_color px-8 py-3 mt-5 rounded-md font-primary font-normal text-base transition ease-linear duration-150 hover:shadow-[0px_0px_27px_rgba(80,_147,_243,_0.72)] text-white' type='submit'>Sign In</button>
           </div>

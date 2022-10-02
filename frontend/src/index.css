@@ -5,6 +5,7 @@
 
 .pages {
   background-color: #f0f2f5;
+  width: fit-content;
 }
 
 select {

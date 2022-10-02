@@ -3,8 +3,10 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import './styles/icons/icons.css'
-import Loggedinuser from "./Routers/Loggedinuser";
+import Loggedinuser from "./Routers/Loggedinuser"; 
 import Activepage from "./pages/Activepage";
+import Notloggedin from "./Routers/Notloggedin";
+import Finduser from "./pages/resetpass/Finduser";
 
 function App() {
 
@@ -15,8 +17,12 @@ function App() {
           <Route path="/" element={ <Home/>}/>
           <Route path="/activate/:token" element={ <Activepage/>}/>
         </Route>
+        <Route element={<Notloggedin/>}>
+          <Route path="/login" element={ <Login/>}/>
+        </Route>
         <Route path="/login" element={ <Login/>}/>
         <Route path="/register" element={ <Registration/>}/>
+        <Route path="/reset" element={ <Finduser/>}/>
       </Routes>
     </div>
   );

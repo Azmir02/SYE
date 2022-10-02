@@ -18,16 +18,16 @@ const Home = () => {
 
       <Header/>
       <div className='pages'>
-        <div className='grid grid-cols-[1fr,3fr,1fr] gap-6 py-5 pl-4 mt-[69px]'>
-          <div>
+        <div className='grid grid-cols-1 lg:grid-cols-[1fr,1fr] xl:grid-cols-[1fr,3fr,1fr] gap-1 xl:gap-2 py-5 pl-1 md:pl-4 mt-[69px]'>
+          <div className='hidden lg:block'>
             <Userleft/>
           </div>
-          <div className='px-[200px]'>
+          <div className='px-2 md:px-[100px] lg:px-[10px] 2xl:px-[20px] 3xl:px-[200px]'>
             <Story/>
             <Reauth/>
             <Post/>
           </div>
-          <div className='pr-3'>
+          <div className='pr-3 hidden 2xl:block'>
             <Friendreq/>
             <Contacts/>
           </div>

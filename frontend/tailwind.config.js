@@ -16,12 +16,16 @@ module.exports = {
       'green' : "#21D997",
       'blue'  : "#5093F3",
       'red' : "#D17274",
-      'yellow'  : "#D9A94A"
+      'yellow'  : "#D9A94A",
+      'purple-100'  : "#f3e8ff",
+      'pink-100'  : "#fce7f3",
+      'cyan-100'  : "#cffafe"
     },
     fontFamily: {
       primary: ['Hind Siliguri', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+    },
   },
   plugins: [],
 }
