@@ -1,14 +1,12 @@
 import React from 'react'
-import * as Yup from 'yup'
 import { Helmet } from 'react-helmet-async'
-import { useFormik } from 'formik'
 import { Link,useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { createUser } from '../../features/users/userSlice';
 import { LoginUser } from '../../features/users/loginUser';
 import Logo from '../../svg/logo'
 
-const Resetpass = ({users}) => {
+const Resetpass = ({users,loading,userInfos}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -19,22 +17,8 @@ const Resetpass = ({users}) => {
         navigate('/login')
     }
 
-    let initialValues = {
-        code : '',
-      }
 
-    const userCode = Yup.object({
-        code: Yup.string().min("5","Code must be 5 characters").max("5",'Code must be 5 characters').required("Please Enter Verification code"),
-    })
-
-
-    const formik = useFormik({
-        initialValues: initialValues,
-        validationSchema: userCode,
-        onSubmit: async () => {
-         
-        },
-      });
+   
   return (
     <>
     <Helmet>
@@ -67,28 +51,34 @@ const Resetpass = ({users}) => {
             <div className='px-8 py-4 rounded-md bg-white min-w-[320px] w-[520px]'>
                 <h2 className='font-primary font-medium text-2xl text-black'>Reset Your Password</h2>
                 <div className='w-full h-[1px] bg-[#F0F2F5] mt-2'></div>
-                <p className='font-primary font-normal text-base text-title_color mt-2'>Please enter code that been sent your account.</p>
-            <form onSubmit={formik.handleSubmit}>
-
-              <input 
-              className='w-full p-3 mt-5 rounded-md border border-solid border-[#F0F2F5] font-primary text-sm focus:outline-0  mb-5' 
-              type="text" 
-              placeholder='Enter Code' 
-              autoComplete='off'
-              name="code" 
-              value={formik.values.code}
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange} />
-
-              {formik.errors.code  && formik.touched.code ? <p className='text-red font-primary text-base font-normal'>{formik.errors.code}</p> : null}
-              
-              <div className='w-full h-[1px] bg-[#F0F2F5] mt-2'></div>
-
-              <Link to='/login'>
-                <button className='bg-[#F0F2F5] p-3 md:px-5 md:py-2 mt-4 rounded-md font-primary font-normal text-sm md:text-base text-title_color mr-3' type='button'>Not you ?</button>
-                </Link>
-              <button className='bg-primary_color p-3 md:px-5 md:py-2 mt-4 rounded-md font-primary font-normal text-sm md:text-base text-white' type='submit'>Continue</button>
-            </form>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
+                    <div>
+                        <p className='font-primary font-normal text-base text-title_color mt-2'>How do you want to recive the code to reset your password ?</p>
+                        <label htmlFor="email" className='radio cursor-pointer mt-3 flex items-center'>
+                            <div className='mr-4'>
+                                <input type="radio" className='radio-input'  checked/>
+                                <div className='radio_radio'></div>
+                            </div>
+                            <div>
+                                <span className='font-primary text-base text-title_color font-normal block'>Send code via email</span>
+                                <span className='font-primary text-base text-title_color font-normal'>{userInfos.email}</span>
+                            </div>
+                        </label>
+                    </div>
+                    <div className='text-center'>
+                        <div className='w-[100px] h-[100px] rounded-full bg-title_color mx-auto my-2'>
+                            {/* <img src={userInfos.picture} alt="profilepicture" /> */}
+                        </div>
+                        <span className='font-primary text-base text-title_color font-normal'>{userInfos.email}</span>
+                        <span className='font-primary text-base text-title_color font-normal block'>Facebook user</span>
+                    </div>
+                </div>
+               <div className='text-center md:text-right'>
+                    <Link to="/login">
+                        <button className='bg-[#F0F2F5] p-3 md:px-5 md:py-2 mt-5 rounded-md font-primary font-normal text-sm md:text-base text-title_color mr-3' type='button'>Not You ?</button>
+                    </Link>
+                    <button className='bg-primary_color p-3 md:px-5 md:py-2 mt-5 rounded-md font-primary font-normal text-sm md:text-base text-white' type='submit'>Continue</button>
+               </div>
             </div>
         </div>
     </div>

@@ -21,7 +21,7 @@ const Searchbox = ({setShow}) => {
             </div>
             <div className='flex justify-between items-center mt-5'>
                 <span className='font-primary text-[#848F95] text-base font-regular'>Recent Searches</span>
-                <a href="#" className='font-primary text-base text-blue hover:underline'>See more</a>
+                <button className='font-primary text-base text-blue hover:underline'>See more</button>
             </div>
         </div>
     )

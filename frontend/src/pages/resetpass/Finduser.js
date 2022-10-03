@@ -11,10 +11,15 @@ import Logo from '../../svg/logo'
 import { useState } from 'react'
 import Secretcode from './Secretcode'
 import Resetpass from './Resetpass'
+import Changepass from './Changepass'
+import axios from 'axios'
 
 const Finduser = () => {
     const users = useSelector((users)=>(users.login.loggedin))
-    const [visible,setVisible] = useState(2)
+    const [visible,setVisible] = useState(0)
+    const [error,setError] = useState("")
+    const [loading,setLoading] = useState(true)
+    const [userInfos,setUserInfos] = useState('')
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -33,12 +38,28 @@ const Finduser = () => {
         email: Yup.string().email().required("Please Enter An Email Address"),
     })
 
+    const handleSearch = async ()=>{
+        try {
+            setLoading(true)
+            const {data} = await axios.post ('/api/resetpass',{
+                email : formik.values.email, 
+            })
+            setLoading(false)
+            setUserInfos(data)
+            setVisible(1)
+        } catch (error) {
+            setLoading(false)
+            setError(error.response.data.message)
+        }
+    }
+
 
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: findUser,
-        onSubmit: async () => {
-         
+        enableReinitialize: true,
+        onSubmit: () => {
+         handleSearch()
         },
       });
   return (
@@ -96,6 +117,7 @@ const Finduser = () => {
                 </Link>
                 <button className='bg-primary_color p-3 md:px-5 md:py-2 mt-4 rounded-md font-primary font-normal text-sm md:text-base text-white' type='submit'>Search</button>
                 </form>
+                {error && <p className='text-red font-primary font-normal mt-5 text-lg'>{error}</p>}
                 </div>
             </div>
         </div>
@@ -103,11 +125,15 @@ const Finduser = () => {
     }
 
     {
-        visible === 1 && <Secretcode users={users} setVisible={setVisible}/>
+        visible === 1 && userInfos && <Resetpass users={users} setVisible={setVisible} loading={loading} userInfos={userInfos}/>
     }
-    
+
     {
-        visible === 2 && <Resetpass users={users} setVisible={setVisible}/>
+        visible === 2 && <Secretcode users={users} setVisible={setVisible} loading={loading} userInfos={userInfos}/>
+    }
+
+    {
+        visible === 3 && <Changepass users={users} setVisible={setVisible} loading={loading} userInfos={userInfos}/>
     }
     </>
   )

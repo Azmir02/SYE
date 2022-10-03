@@ -8,7 +8,7 @@ import { createUser } from '../../features/users/userSlice';
 import { LoginUser } from '../../features/users/loginUser';
 import Logo from '../../svg/logo'
 
-const Secretcode = ({setVisible,users,loading,userInfos}) => {
+const Changepass = ({setVisible,users}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -20,17 +20,19 @@ const Secretcode = ({setVisible,users,loading,userInfos}) => {
     }
 
     let initialValues = {
-        code : '',
+        password    : '',
+        conf_password   : ''
       }
 
-    const userCode = Yup.object({
-        code: Yup.string().min("5","Code must be 5 characters").max("5",'Code must be 5 characters').required("Please Enter Verification code"),
+    const newPassword = Yup.object({
+        password: Yup.string().min(8).required("Please Enter Password"),
+        conf_password: Yup.string().required("Confirm Your Password").oneOf([Yup.ref('password')],"Password must be matched")
     })
 
 
     const formik = useFormik({
         initialValues: initialValues,
-        validationSchema: userCode,
+        validationSchema: newPassword,
         onSubmit: async () => {
          
         },
@@ -65,26 +67,40 @@ const Secretcode = ({setVisible,users,loading,userInfos}) => {
         </div>
         <div className='h-[80vh] flex justify-center items-center px-5'>
             <div className='px-8 py-4 rounded-md bg-white min-w-[320px] w-[520px]'>
-                <h2 className='font-primary font-medium text-2xl text-black'>Code Verification</h2>
+                <h2 className='font-primary font-medium text-2xl text-black'>Change Password</h2>
                 <div className='w-full h-[1px] bg-[#F0F2F5] mt-2'></div>
-                <p className='font-primary font-normal text-base text-title_color mt-2'>Please enter code that been sent your account.</p>
+                <p className='font-primary font-normal text-base text-title_color mt-2'>Pick a strong password.</p>
             <form onSubmit={formik.handleSubmit}>
 
               <input 
-              className='w-full p-3 mt-5 rounded-md border border-solid border-[#F0F2F5] font-primary text-sm focus:outline-0  mb-5' 
-              type="text" 
-              placeholder='Enter Code' 
+              className='w-full p-3 mt-5 rounded-md border border-solid border-[#F0F2F5] font-primary text-sm focus:outline-0 mb-3' 
+              type="password" 
+              placeholder='New password' 
               autoComplete='off'
-              name="code" 
-              value={formik.values.code}
+              name="password" 
+              value={formik.values.password}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange} />
 
-              {formik.errors.code  && formik.touched.code ? <p className='text-red font-primary text-base font-normal'>{formik.errors.code}</p> : null}
+              {formik.errors.password  && formik.touched.password ? <p className='text-red font-primary text-base font-normal leading-[0.8]'>{formik.errors.password}</p> : null}
+
+              <input 
+              className='w-full p-3 mt-3 rounded-md border border-solid border-[#F0F2F5] font-primary text-sm focus:outline-0 mb-3' 
+              type="password" 
+              placeholder='Confirm password' 
+              autoComplete='off'
+              name="conf_password" 
+              value={formik.values.conf_password}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange} />
+
+              {formik.errors.conf_password  && formik.touched.conf_password ? <p className='text-red font-primary text-base font-normal'>{formik.errors.conf_password}</p> : null}
               
               <div className='w-full h-[1px] bg-[#F0F2F5] mt-2'></div>
 
-              <button className='bg-[#F0F2F5] p-3 md:px-5 md:py-2 mt-4 rounded-md font-primary font-normal text-sm md:text-base text-title_color mr-3' type='button' onClick={()=>setVisible(0)}>Back</button>
+                <Link to="/login">
+                    <button className='bg-[#F0F2F5] p-3 md:px-5 md:py-2 mt-5 rounded-md font-primary font-normal text-sm md:text-base text-title_color mr-3' type='button'>Cancle</button>
+                </Link>
               <button className='bg-primary_color p-3 md:px-5 md:py-2 mt-4 rounded-md font-primary font-normal text-sm md:text-base text-white' type='submit'>Continue</button>
             </form>
             </div>
@@ -94,4 +110,4 @@ const Secretcode = ({setVisible,users,loading,userInfos}) => {
   )
 }
 
-export default Secretcode
+export default Changepass

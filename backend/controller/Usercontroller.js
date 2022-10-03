@@ -190,3 +190,23 @@ exports.reauthorization= async(req,res)=>{
     })
    }
 }
+
+exports.resetpass = async (req,res)=>{
+    try {
+        const { email } = req.body
+        const matchEmail = await Users.findOne({email}).select("-password")
+        if(!matchEmail){
+            return res.status(404).json({
+                message: "Email dosen't exist"
+            })
+        }
+        res.status(200).json({
+            email   : matchEmail.email,
+            // picture : matchEmail.picture
+        })
+    } catch (error) {
+        res.status(404).json({
+            messasge: error.message
+        })
+    }
+}
