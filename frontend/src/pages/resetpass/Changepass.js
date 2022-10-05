@@ -7,8 +7,9 @@ import { useDispatch } from 'react-redux'
 import { createUser } from '../../features/users/userSlice';
 import { LoginUser } from '../../features/users/loginUser';
 import Logo from '../../svg/logo'
+import axios from 'axios'
 
-const Changepass = ({setVisible,users}) => {
+const Changepass = ({setVisible,users,setError,error,setLoading,userInfos}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -29,12 +30,29 @@ const Changepass = ({setVisible,users}) => {
         conf_password: Yup.string().required("Confirm Your Password").oneOf([Yup.ref('password')],"Password must be matched")
     })
 
+    const {email} = userInfos;
+
+    const handleChangepassword = async()=>{
+        try {
+            setLoading(true)
+            await axios.post('/api/changepassword',{
+                email,
+                password:formik.values.password
+            })
+            setLoading(false)
+            setError('')
+            navigate('/')
+        } catch (error) {
+            setLoading(false)
+            setError(error.response.data.message)
+        }
+    }
 
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: newPassword,
         onSubmit: async () => {
-         
+         handleChangepassword()
         },
       });
   return (
@@ -103,6 +121,7 @@ const Changepass = ({setVisible,users}) => {
                 </Link>
               <button className='bg-primary_color p-3 md:px-5 md:py-2 mt-4 rounded-md font-primary font-normal text-sm md:text-base text-white' type='submit'>Continue</button>
             </form>
+            {error && <p className='text-red font-primary font-normal mt-5 text-lg'>{error}</p>}
             </div>
         </div>
     </div>

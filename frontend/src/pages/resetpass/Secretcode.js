@@ -7,8 +7,9 @@ import { useDispatch } from 'react-redux'
 import { createUser } from '../../features/users/userSlice';
 import { LoginUser } from '../../features/users/loginUser';
 import Logo from '../../svg/logo'
+import axios from 'axios'
 
-const Secretcode = ({setVisible,users,loading,userInfos}) => {
+const Secretcode = ({setVisible,users,loading,userInfos,setError,error,setLoading}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -27,12 +28,29 @@ const Secretcode = ({setVisible,users,loading,userInfos}) => {
         code: Yup.string().min("5","Code must be 5 characters").max("5",'Code must be 5 characters').required("Please Enter Verification code"),
     })
 
+    const {email} = userInfos;
+
+    const handleCode = async()=>{
+        try {
+            setLoading(true);
+            await axios.post('/api/verifyresetcode',{
+                email,
+                code: formik.values.code
+            })
+            setLoading(false)
+            setError('')
+            setVisible(3)
+        } catch (error) {
+            setLoading(false)
+            setError(error.response.data.message)
+        }
+    }
 
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: userCode,
         onSubmit: async () => {
-         
+            handleCode()
         },
       });
   return (
@@ -84,9 +102,12 @@ const Secretcode = ({setVisible,users,loading,userInfos}) => {
               
               <div className='w-full h-[1px] bg-[#F0F2F5] mt-2'></div>
 
-              <button className='bg-[#F0F2F5] p-3 md:px-5 md:py-2 mt-4 rounded-md font-primary font-normal text-sm md:text-base text-title_color mr-3' type='button' onClick={()=>setVisible(0)}>Back</button>
+                <Link to="/login">
+                    <button className='bg-[#F0F2F5] p-3 md:px-5 md:py-2 mt-5 rounded-md font-primary font-normal text-sm md:text-base text-title_color mr-3' type='button'>Cancle</button>
+                </Link>
               <button className='bg-primary_color p-3 md:px-5 md:py-2 mt-4 rounded-md font-primary font-normal text-sm md:text-base text-white' type='submit'>Continue</button>
             </form>
+            {error && <p className='text-red font-primary font-normal mt-5 text-lg'>{error}</p>}
             </div>
         </div>
     </div>

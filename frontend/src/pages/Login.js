@@ -138,7 +138,7 @@ const Login = () => {
 
           <input 
             className='w-full p-3 rounded-md bg-secondary_bg font-primary text-sm focus:outline-0 text-white mb-5' type="password" 
-            placeholder='New Password'
+            placeholder='Password'
             autoComplete='off' 
             name='password' 
             value={formik.values.password}

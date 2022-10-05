@@ -46,6 +46,7 @@ const Finduser = () => {
             })
             setLoading(false)
             setUserInfos(data)
+            setError('')
             setVisible(1)
         } catch (error) {
             setLoading(false)
@@ -125,15 +126,15 @@ const Finduser = () => {
     }
 
     {
-        visible === 1 && userInfos && <Resetpass users={users} setVisible={setVisible} loading={loading} userInfos={userInfos}/>
+        visible === 1 && userInfos && <Resetpass users={users} setVisible={setVisible} loading={loading} userInfos={userInfos} setError={setError} setLoading={setLoading} error={error}/>
     }
 
     {
-        visible === 2 && <Secretcode users={users} setVisible={setVisible} loading={loading} userInfos={userInfos}/>
+        visible === 2 && <Secretcode users={users} setVisible={setVisible} loading={loading} userInfos={userInfos} setError={setError} error={error} setLoading={setLoading}/>
     }
 
     {
-        visible === 3 && <Changepass users={users} setVisible={setVisible} loading={loading} userInfos={userInfos}/>
+        visible === 3 && <Changepass users={users} setVisible={setVisible} loading={loading} userInfos={userInfos} setError={setError} error={error} setLoading={setLoading}/>
     }
     </>
   )

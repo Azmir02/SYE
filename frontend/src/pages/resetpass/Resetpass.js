@@ -5,8 +5,9 @@ import { useDispatch } from 'react-redux'
 import { createUser } from '../../features/users/userSlice';
 import { LoginUser } from '../../features/users/loginUser';
 import Logo from '../../svg/logo'
+import axios from 'axios';
 
-const Resetpass = ({users,loading,userInfos}) => {
+const Resetpass = ({users,loading,userInfos,setError,setLoading,error,setVisible}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -17,7 +18,22 @@ const Resetpass = ({users,loading,userInfos}) => {
         navigate('/login')
     }
 
+    const {email} = userInfos;
 
+    const sendCode = async ()=>{
+        try {
+            setLoading(true)
+            await axios.post('/api/resetcode',{
+                email,
+            })
+            setLoading(false)
+            setError('')
+            setVisible(2)
+        } catch (error) {
+            setLoading(false);
+            setError(error.response.data.messasge);
+        }
+    }
    
   return (
     <>
@@ -56,7 +72,7 @@ const Resetpass = ({users,loading,userInfos}) => {
                         <p className='font-primary font-normal text-base text-title_color mt-2'>How do you want to recive the code to reset your password ?</p>
                         <label htmlFor="email" className='radio cursor-pointer mt-3 flex items-center'>
                             <div className='mr-4'>
-                                <input type="radio" className='radio-input'  checked/>
+                                <input type="radio" className='radio-input' defaultChecked={true}/>
                                 <div className='radio_radio'></div>
                             </div>
                             <div>
@@ -77,8 +93,9 @@ const Resetpass = ({users,loading,userInfos}) => {
                     <Link to="/login">
                         <button className='bg-[#F0F2F5] p-3 md:px-5 md:py-2 mt-5 rounded-md font-primary font-normal text-sm md:text-base text-title_color mr-3' type='button'>Not You ?</button>
                     </Link>
-                    <button className='bg-primary_color p-3 md:px-5 md:py-2 mt-5 rounded-md font-primary font-normal text-sm md:text-base text-white' type='submit'>Continue</button>
+                    <button onClick={sendCode} className='bg-primary_color p-3 md:px-5 md:py-2 mt-5 rounded-md font-primary font-normal text-sm md:text-base text-white' type='submit'>Continue</button>
                </div>
+               {error && <p className='text-red font-primary font-normal mt-5 text-lg'>{error}</p>}
             </div>
         </div>
     </div>

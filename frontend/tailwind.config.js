@@ -25,6 +25,9 @@ module.exports = {
       primary: ['Hind Siliguri', 'sans-serif'],
     },
     extend: {
+      screens:{
+        '3xl': '1600px'
+      }
     },
   },
   plugins: [],
