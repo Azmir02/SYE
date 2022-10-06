@@ -16,7 +16,6 @@ const Reauth = () => {
         }
         }
         )
-        console.log(data);
         setSuccess(data.message)
       }
       catch(err){

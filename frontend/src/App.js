@@ -7,11 +7,13 @@ import Loggedinuser from "./Routers/Loggedinuser";
 import Activepage from "./pages/Activepage";
 import Notloggedin from "./Routers/Notloggedin";
 import Finduser from "./pages/resetpass/Finduser";
+import Postpopup from "./Component/postpopup/Postpopup";
 
 function App() {
 
   return (
     <div>
+      <Postpopup/>
       <Routes>
         <Route element={<Loggedinuser/>}>
           <Route path="/" element={ <Home/>}/>
