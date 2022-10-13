@@ -240,7 +240,3 @@ select {
 .massonary2 img:nth-child(1) {
   grid-row: 2/3;
 }
-
-.massonary2 img {
-  height: 140px;
-}

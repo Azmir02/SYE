@@ -1,19 +1,29 @@
-const express = require('express')
-const { connect } = require('./database/dbConfig')
-const userRouter = require('./routes/UserRouter')
-require('dotenv').config();
+const express = require("express");
+const { connect } = require("./database/dbConfig");
+const userRouter = require("./routes/UserRouter");
+const postRouter = require("./routes/Postrouter");
+const uploadRouter = require("./routes/UploadRouter");
+const fileUpload = require("express-fileupload");
+require("dotenv").config();
 
 // Database-connection
-connect()
+connect();
 
 // middleware
-const app = express()
-app.use(express.json())
+const app = express();
+app.use(express.json());
+
+// for file upload
+app.use(
+  fileUpload({
+    useTempFiles: true,
+  })
+);
 
 //all-work
-app.use('/api',userRouter);
-
-
+app.use("/api", userRouter);
+app.use("/api", postRouter);
+app.use("/api", uploadRouter);
 
 const Port = process.env.PORT || 8000;
-app.listen(Port)
+app.listen(Port);

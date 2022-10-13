@@ -43,8 +43,27 @@ const Imageviewer = ({
           onChange={handleImageUpload}
         />
         {images && images.length ? (
-          <div className="">
-            <div className="relative">
+          <div className="relative">
+            <div className="group">
+              <div className="absolute top-[15px] left-[15px] hidden group-hover:block">
+                <div className="flex">
+                  <button className="px-3 py-2 bg-white flex items-center rounded-md">
+                    <i className="edit_icon"></i>
+                    <span className="text-sm font-bold text-black ml-2">
+                      Edit All
+                    </span>
+                  </button>
+                  <button
+                    className="px-3 py-2 bg-white flex items-center rounded-md ml-3"
+                    onClick={() => chooseFile.current.click()}
+                  >
+                    <i className="addPhoto_icon"></i>
+                    <span className="text-sm font-bold text-black ml-2">
+                      Add photos/videos
+                    </span>
+                  </button>
+                </div>
+              </div>
               <div
                 className="w-[40px] h-[40px] flex items-center justify-center bg-white rounded-full border border-[#f2f2f2] border-solid cursor-pointer hover:bg-[#F2F2F2] absolute top-3 right-3"
                 onClick={handleClose}
@@ -74,24 +93,30 @@ const Imageviewer = ({
                     alt="images"
                   />
                 ))}
-                {images.length >= 5 ? <span>+{images.length - 5}</span> : ""}
-              </div>
-              <div className="flex justify-between items-center px-3 bg-[#F7F8FA] py-2 mt-2 mb-2 rounded-md">
-                <div className="flex items-center">
-                  <div className="w-[40px] h-[40px] bg-[#E4E6EB] rounded-full flex items-center justify-center cursor-pointer">
-                    <i className="phone_icon"></i>
-                  </div>
-                  <span className="text-[13px] text-black ml-3">
-                    Add photos and videos from your mobile device.
-                  </span>
+                <div className="absolute top-[460px] right-[83px]">
+                  {images.length >= 5 && (
+                    <span className="font-medium text-black text-[20px] w-[50px] h-[50px] bg-[rgba(255,_255,_255,_.9)] rounded-full flex items-center justify-center">
+                      +{images.length - 5}
+                    </span>
+                  )}
                 </div>
-                <button
-                  className="px-3 py-2 bg-[#EAEBED] rounded-md text-base font-semibold hover:bg-[#E4E6EB]"
-                  type="button"
-                >
-                  Add
-                </button>
               </div>
+            </div>
+            <div className="flex justify-between items-center px-3 bg-[#F7F8FA] py-2 mt-2 mb-2 rounded-md">
+              <div className="flex items-center">
+                <div className="w-[40px] h-[40px] bg-[#E4E6EB] rounded-full flex items-center justify-center cursor-pointer">
+                  <i className="phone_icon"></i>
+                </div>
+                <span className="text-[13px] text-black ml-3">
+                  Add photos and videos from your mobile device.
+                </span>
+              </div>
+              <button
+                className="px-3 py-2 bg-[#EAEBED] rounded-md text-base font-semibold hover:bg-[#E4E6EB]"
+                type="button"
+              >
+                Add
+              </button>
             </div>
           </div>
         ) : (
