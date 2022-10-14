@@ -1,23 +1,56 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
-
+import OutsideClick from "../../helpers/click";
 import Addpost from "./Addpost";
 import Emojipicker from "./Emojipicker";
 import Imageviewer from "./Imageviewer";
+import { createPost } from "../../functions/Createpost";
 
-const Postpopup = () => {
-  const users = useSelector((users) => users.login.loggedin);
+const Postpopup = ({ setVisible }) => {
+  const user = useSelector((users) => users.login.loggedin);
+  const closePopup = useRef(null);
   const [text, setText] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
   const [images, setImages] = useState([]);
+  const [background, setBackground] = useState("");
+
+  OutsideClick(closePopup, () => {
+    setVisible(false);
+  });
+
+  const handlePost = async () => {
+    if (background) {
+      setLoading(true);
+      const response = await createPost(
+        null,
+        null,
+        text,
+        background,
+        user.id,
+        user.token
+      );
+      setLoading(false);
+      setBackground("");
+      setText("");
+      setVisible(false);
+    }
+  };
 
   return (
     <>
       <div className="min-h-screen flex items-center justify-center bg-[rgba(255,255,255,_0.8)] w-full fixed top-0 left-0 z-[9999]">
-        <div className="w-[500px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative">
+        <div
+          className="w-[500px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative"
+          ref={closePopup}
+        >
           <div className="text-center py-5 border-b border-[#E4E6EB] border-solid">
             <h3 className="font-bold text-lg text-black">Create Post</h3>
-            <div className="w-[40px] h-[40px] flex items-center justify-center bg-[#E4E6EB] rounded-full absolute top-[13px] right-[20px] cursor-pointer">
+            <div
+              onClick={() => setVisible(false)}
+              className="w-[40px] h-[40px] flex items-center justify-center bg-[#E4E6EB] rounded-full absolute top-[13px] right-[20px] cursor-pointer"
+            >
               <i className="exit_icon"></i>
             </div>
           </div>
@@ -27,7 +60,7 @@ const Postpopup = () => {
             </div>
             <div className="ml-3">
               <p className="font-semibold text-base text-black capitalize">
-                {users.fName} {users.lName}
+                {user.fName} {user.lName}
               </p>
               <div className="bg-[#E4E6EB] p-2 flex items-center justify-between rounded-md cursor-pointer">
                 <img src="../../../icons/public.png" alt="globe" />
@@ -39,27 +72,43 @@ const Postpopup = () => {
             </div>
           </div>
 
-          <div className="py-3 px-4">
+          <div>
             {!show ? (
               <>
-                <Emojipicker users={users} setText={setText} text={text} />
-                <div className="mt-2">
+                <Emojipicker
+                  users={user}
+                  setText={setText}
+                  text={text}
+                  setBackground={setBackground}
+                  background={background}
+                />
+                <div className="mt-2 px-4">
                   <Addpost setShow={setShow} show={show} />
                 </div>
-                <div className="w-full mb-3">
-                  <button
-                    disabled
-                    type="button"
-                    className="w-full bg-[#E4E6EB] py-2 rounded-md text-base font-bold text-title_color"
-                  >
-                    Post
-                  </button>
+                <div className="w-full mb-3 py-3 px-4">
+                  {text ? (
+                    <button
+                      type="button"
+                      className="w-full bg-blue py-2 rounded-md text-base font-bold text-white"
+                      onClick={handlePost}
+                    >
+                      Post
+                    </button>
+                  ) : (
+                    <button
+                      disabled
+                      type="button"
+                      className="w-full bg-[#E4E6EB] py-2 rounded-md text-base font-bold text-title_color"
+                    >
+                      Post
+                    </button>
+                  )}
                 </div>
               </>
             ) : (
               <>
                 <Imageviewer
-                  users={users}
+                  users={user}
                   setText={setText}
                   text={text}
                   setImages={setImages}
@@ -67,10 +116,10 @@ const Postpopup = () => {
                   setShow={setShow}
                   show={show}
                 />
-                <div className="mt-2">
+                <div className="mt-2 px-4">
                   <Addpost setShow={setShow} show={show} />
                 </div>
-                <div className="w-full mb-3">
+                <div className="w-full mb-3 py-3 px-4">
                   <button
                     type="button"
                     className="w-full bg-blue py-2 rounded-md text-base font-bold text-white"

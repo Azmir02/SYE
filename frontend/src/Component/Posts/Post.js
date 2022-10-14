@@ -4,13 +4,16 @@ import Feeling from "../../svg/feeling";
 import LiveVideo from "../../svg/liveVideo";
 import Photo from "../../svg/photo";
 
-const Post = () => {
+const Post = ({ setVisible }) => {
   const users = useSelector((users) => users.login.loggedin);
   return (
     <div className="mt-5 p-2 md:p-5 bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]">
       <div className="flex items-center justify-between">
         <div className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] rounded-full overflow-hidden bg-[#F1F4F7]"></div>
-        <div className="w-[90%] px-3 md:px-5 py-2 rounded-full bg-[#f0f2f5] cursor-pointer hover:bg-[#E7E9EB]">
+        <div
+          className="w-[90%] px-3 md:px-5 py-2 rounded-full bg-[#f0f2f5] cursor-pointer hover:bg-[#E7E9EB]"
+          onClick={() => setVisible(true)}
+        >
           <span className="font-primar md:text-base text-primary_bg text-sm">
             What's on you mind <span className="capitalize">{users.fName}</span>{" "}
             ?

@@ -8,7 +8,7 @@ import Story from "../Component/Story/Story";
 import Post from "../Component/Posts/Post";
 import Reauth from "../Component/re-authorization/Reauth";
 
-const Home = () => {
+const Home = ({ setVisible }) => {
   return (
     <>
       <Helmet>
@@ -24,7 +24,7 @@ const Home = () => {
           <div className="px-2 md:px-[100px] lg:px-[10px] 2xl:px-[20px] 3xl:px-[200px]">
             <Story />
             <Reauth />
-            <Post />
+            <Post setVisible={setVisible} />
           </div>
           <div className="pr-3 hidden 2xl:block">
             <Friendreq />

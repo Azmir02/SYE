@@ -240,3 +240,33 @@ select {
 .massonary2 img:nth-child(1) {
   grid-row: 2/3;
 }
+
+.bgPost {
+  height: 350px;
+  width: 100%;
+  background-size: cover;
+}
+
+.bgPost textarea {
+  background: transparent;
+  text-align: center;
+  height: 100%;
+  color: #fff;
+  font-size: 30px;
+  line-height: 45px;
+  font-weight: 600;
+  font-family: "Hind Siliguri", "sans-serif";
+}
+
+.bgPost textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bgPost textarea::-webkit-scrollbar-thumb {
+  background-color: #c5c7ca;
+  border-radius: 5px;
+}
+
+.bgPost textarea::placeholder {
+  color: rgba(255, 255, 255, 0.685);
+}

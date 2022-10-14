@@ -5,7 +5,7 @@ exports.createPost = async (req, res) => {
     const post = await new Post(req.body).save();
     res.json(post);
   } catch (error) {
-    req.status(404).json({
+    return res.status(404).json({
       message: error.message,
     });
   }
