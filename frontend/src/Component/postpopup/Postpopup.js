@@ -4,7 +4,11 @@ import OutsideClick from "../../helpers/click";
 import Addpost from "./Addpost";
 import Emojipicker from "./Emojipicker";
 import Imageviewer from "./Imageviewer";
+import { PulseLoader } from "react-spinners";
 import { createPost } from "../../functions/Createpost";
+import Posterror from "./Posterror";
+import dataURItoBlob from "../../helpers/dataURItoBlob";
+import { uploadIamge } from "../../functions/UploadImages";
 
 const Postpopup = ({ setVisible }) => {
   const user = useSelector((users) => users.login.loggedin);
@@ -32,9 +36,48 @@ const Postpopup = ({ setVisible }) => {
         user.token
       );
       setLoading(false);
+      if (response === "done") {
+        setBackground("");
+        setText("");
+        setVisible(false);
+      } else {
+        setError(response);
+      }
+    } else if (images && images.length) {
+      setLoading(true);
+      const postImages = images.map((item) => dataURItoBlob(item));
+      const path = `${user.username}/post images`;
+      let formData = new FormData();
+      formData.append("location", path);
+      postImages.forEach((img) => {
+        formData.append("file", img);
+      });
+      const responseImage = await uploadIamge(formData, path, user.token);
+      await createPost(null, responseImage, text, null, user.id, user.token);
+      setLoading(false);
       setBackground("");
       setText("");
       setVisible(false);
+    } else if (text) {
+      setLoading(true);
+      const response = await createPost(
+        null,
+        null,
+        text,
+        null,
+        user.id,
+        user.token
+      );
+      setLoading(false);
+      if (response === "done") {
+        setBackground("");
+        setText("");
+        setVisible(false);
+      } else {
+        setError(response);
+      }
+    } else {
+      console.log("nothing");
     }
   };
 
@@ -45,6 +88,7 @@ const Postpopup = ({ setVisible }) => {
           className="w-[500px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative"
           ref={closePopup}
         >
+          {error && <Posterror error={error} setError={setError} />}
           <div className="text-center py-5 border-b border-[#E4E6EB] border-solid">
             <h3 className="font-bold text-lg text-black">Create Post</h3>
             <div
@@ -92,7 +136,7 @@ const Postpopup = ({ setVisible }) => {
                       className="w-full bg-blue py-2 rounded-md text-base font-bold text-white"
                       onClick={handlePost}
                     >
-                      Post
+                      {loading ? <PulseLoader color="#fff" size={5} /> : "Post"}
                     </button>
                   ) : (
                     <button
@@ -121,10 +165,11 @@ const Postpopup = ({ setVisible }) => {
                 </div>
                 <div className="w-full mb-3 py-3 px-4">
                   <button
+                    onClick={handlePost}
                     type="button"
                     className="w-full bg-blue py-2 rounded-md text-base font-bold text-white"
                   >
-                    Post
+                    {loading ? <PulseLoader color="#fff" size={5} /> : "Post"}
                   </button>
                 </div>
               </>

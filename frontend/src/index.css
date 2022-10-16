@@ -270,3 +270,16 @@ select {
 .bgPost textarea::placeholder {
   color: rgba(255, 255, 255, 0.685);
 }
+
+.authorize_err {
+  animation: animate 0.3s linear;
+}
+
+@keyframes animate {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
