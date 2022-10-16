@@ -1,279 +1,274 @@
-const Users = require('../models/UserModel')
-const { varifyEmail , validateLength, validateUsername }  = require('../handaler/Varification')
-const {sendEmailvarification, sendResetcode} = require('../handaler/Mail')
-const { jwtToken } = require('../handaler/Token');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const Code = require('../models/Code');
-const { generateCode } = require('../handaler/GenerateCode');
- 
+const Users = require("../models/UserModel");
+const {
+  varifyEmail,
+  validateLength,
+  validateUsername,
+} = require("../handaler/Varification");
+const { sendEmailvarification, sendResetcode } = require("../handaler/Mail");
+const { jwtToken } = require("../handaler/Token");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const Code = require("../models/Code");
+const { generateCode } = require("../handaler/GenerateCode");
 
-exports.newuser = async (req,res)=>{
-    try{
-        const { 
-            fName,
-            lName,
-            username,
-            email,
-            password,
-            bMonth,
-            bDay,
-            bYear,
-            gender,
-            verified
-         } = req.body;
+exports.newuser = async (req, res) => {
+  try {
+    const {
+      fName,
+      lName,
+      username,
+      email,
+      password,
+      bMonth,
+      bDay,
+      bYear,
+      gender,
+      verified,
+    } = req.body;
 
-        if(!varifyEmail(email)) {
-            return res.status(400).json({
-                message : "Invalid Email Address"
-            });
-        }
-
-        const chekEmail = await Users.findOne({email})
-
-        if(chekEmail) {
-            return res.status(400).json({
-                message : "Email already has been exist"
-            })
-        }
-
-        if(!validateLength(fName,3,15)){
-            return res.status(400).json({
-                message : "Firstname should be minimum 3 and max 15 characters"
-            })
-        }
-
-        if(!validateLength(lName,3,15)){
-            return res.status(400).json({
-                message : "lastname should be minimum 3 and max 15 characters"
-            })
-        }
-
-        if(!validateLength(password,8,40)){
-            return res.status(400).json({
-                message : "Password should be minimum 8 characters"
-            })
-        }
-
-        // bcrypt-Password
-        const encrypt = await bcrypt.hash(password, 10);
-
-        // generate username
-        let tempUsername = fName + lName
-        let finalUsername = await validateUsername(tempUsername)
-
-         const User = await new Users({ 
-            fName,
-            lName,
-            username: finalUsername,
-            email,
-            password: encrypt,
-            bMonth,
-            bDay,
-            bYear,
-            gender,
-            verified
-          }).save()
-
-          const emailToken = jwtToken({ id: User._id.toString()},'1h')
-
-          const url = `${process.env.BASE_URL}/activate/${emailToken}`
-
-          sendEmailvarification(User.email,User.fName,url)
-
-          const token = jwtToken({ id: User._id.toString()},'7d')
-          
-          res.send({
-            id: User._id,
-            username: User.username,
-            email: User.email,
-            fName: User.fName,
-            lName: User.lName,
-            verified: User.verified,
-            token: token,
-            message: "Registration success! Please activate your email before"
-          })
-        
-    }
-    catch(err){
-        console.log(err.message);
+    if (!varifyEmail(email)) {
+      return res.status(400).json({
+        message: "Invalid Email Address",
+      });
     }
 
-}
+    const chekEmail = await Users.findOne({ email });
 
-exports.emailVarified = async (req,res)=>{
-    try{
-    const varified = req.user.id 
-    const {token} = req.body
-    const user = jwt.verify(token, process.env.SECRET_TOKEN)
-    const check = await Users.findById(user.id)
+    if (chekEmail) {
+      return res.status(400).json({
+        message: "Email already has been exist",
+      });
+    }
 
-    if(varified !== user.id){
-       return res.status(404).json({
-            message: "you don't have authorization to complete this operation"
-        })
+    if (!validateLength(fName, 3, 15)) {
+      return res.status(400).json({
+        message: "Firstname should be minimum 3 and max 15 characters",
+      });
     }
-    
-    if(check.verified === true) {
-        return res.status(400).json({
-            message: "this email is already verified"
-        })
-    }
-    else{
-        await Users.findByIdAndUpdate(user.id,{verified: true});
-        return res.status(200).json({
-            message: "account has been activated successfully"
-        })
-       
-    }
-    }
-    catch(err){
-        res.status(404).json({message:err.message})
-    }
-}
 
-exports.loginUser = async(req,res)=>{
-    try{
-        const {email,password} = req.body
-        const user = await Users.findOne({email})
-        console.log(user);
-        if(user){
-            if(bcrypt.compareSync(password, user.password)){
-                const token = jwtToken({ id: user._id.toString()},'7d')
-                res.send({
-                  id: user._id,
-                  username: user.username,
-                  email: user.email,
-                  fName: user.fName,
-                  lName: user.lName,
-                  verified: user.verified,
-                  token: token,
-                })
-            }
-            else{
-                res.status(404).json({
-                    message: "Password Incorrrect"
-                })
-            }
-        }else{
-            res.status(404).json({
-                message: "Invalid Email"
-            })
-        }
+    if (!validateLength(lName, 3, 15)) {
+      return res.status(400).json({
+        message: "lastname should be minimum 3 and max 15 characters",
+      });
     }
-    catch(err){
+
+    if (!validateLength(password, 8, 40)) {
+      return res.status(400).json({
+        message: "Password should be minimum 8 characters",
+      });
+    }
+
+    // bcrypt-Password
+    const encrypt = await bcrypt.hash(password, 10);
+
+    // generate username
+    let tempUsername = fName + lName;
+    let finalUsername = await validateUsername(tempUsername);
+
+    const User = await new Users({
+      fName,
+      lName,
+      username: finalUsername,
+      email,
+      password: encrypt,
+      bMonth,
+      bDay,
+      bYear,
+      gender,
+      verified,
+    }).save();
+
+    const emailToken = jwtToken({ id: User._id.toString() }, "1h");
+
+    const url = `${process.env.BASE_URL}/activate/${emailToken}`;
+
+    sendEmailvarification(User.email, User.fName, url);
+
+    const token = jwtToken({ id: User._id.toString() }, "7d");
+
+    res.send({
+      id: User._id,
+      username: User.username,
+      email: User.email,
+      fName: User.fName,
+      lName: User.lName,
+      profilePicture: User.profilePicture,
+      verified: User.verified,
+      token: token,
+      message: "Registration success! Please activate your email before",
+    });
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+exports.emailVarified = async (req, res) => {
+  try {
+    const varified = req.user.id;
+    const { token } = req.body;
+    const user = jwt.verify(token, process.env.SECRET_TOKEN);
+    const check = await Users.findById(user.id);
+
+    if (varified !== user.id) {
+      return res.status(404).json({
+        message: "you don't have authorization to complete this operation",
+      });
+    }
+
+    if (check.verified === true) {
+      return res.status(400).json({
+        message: "this email is already verified",
+      });
+    } else {
+      await Users.findByIdAndUpdate(user.id, { verified: true });
+      return res.status(200).json({
+        message: "account has been activated successfully",
+      });
+    }
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
+
+exports.loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await Users.findOne({ email });
+    console.log(user);
+    if (user) {
+      if (bcrypt.compareSync(password, user.password)) {
+        const token = jwtToken({ id: user._id.toString() }, "7d");
+        res.send({
+          id: user._id,
+          username: user.username,
+          email: user.email,
+          fName: user.fName,
+          lName: user.lName,
+          profilePicture: user.profilePicture,
+          verified: user.verified,
+          token: token,
+        });
+      } else {
         res.status(404).json({
-            message: err.message
-        })
+          message: "Password Incorrrect",
+        });
+      }
+    } else {
+      res.status(404).json({
+        message: "Invalid Email",
+      });
     }
-}
+  } catch (err) {
+    res.status(404).json({
+      message: err.message,
+    });
+  }
+};
 
-exports.reauthorization= async(req,res)=>{
-   try{
-    let id = req.user.id
-    const user = await Users.findById(id)
-    if(user.verified === true) {
-        return res.status(404).json({
-            message: "This account is already activated"
-        })
+exports.reauthorization = async (req, res) => {
+  try {
+    let id = req.user.id;
+    const user = await Users.findById(id);
+    if (user.verified === true) {
+      return res.status(404).json({
+        message: "This account is already activated",
+      });
     }
-    const emailToken = jwtToken({ id: user._id.toString()},'1h')
+    const emailToken = jwtToken({ id: user._id.toString() }, "1h");
 
-    const url = `${process.env.BASE_URL}/activate/${emailToken}`
+    const url = `${process.env.BASE_URL}/activate/${emailToken}`;
 
-    sendEmailvarification(user.email,user.fName,url)
+    sendEmailvarification(user.email, user.fName, url);
     return res.status(200).json({
-        message: "Email varificatin link has been sent to your account"
-    })
-   }
-   catch(err){
+      message: "Email varificatin link has been sent to your account",
+    });
+  } catch (err) {
     res.status(400).json({
-        message: err.message
-    })
-   }
-}
+      message: err.message,
+    });
+  }
+};
 
-exports.resetpass = async (req,res)=>{
-    try {
-        const { email } = req.body
-        const matchEmail = await Users.findOne({email}).select("-password")
-        if(!matchEmail){
-            return res.status(404).json({
-                message: "Email dosen't exist"
-            })
-        }
-        res.status(200).json({
-            email   : matchEmail.email,
-            // picture : matchEmail.picture
-        })
-    } catch (error) {
-        res.status(404).json({
-            messasge: error.message
-        })
+exports.resetpass = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const matchEmail = await Users.findOne({ email }).select("-password");
+    if (!matchEmail) {
+      return res.status(404).json({
+        message: "Email dosen't exist",
+      });
     }
-}
+    res.status(200).json({
+      email: matchEmail.email,
+      // picture : matchEmail.picture
+    });
+  } catch (error) {
+    res.status(404).json({
+      messasge: error.message,
+    });
+  }
+};
 
-exports.resetcode = async (req,res)=>{
-    try {
-        const {email} = req.body;
-        const user = await Users.findOne({email}).select("-password")
-        await Code.findOneAndRemove({user: user._id})
-        const code = generateCode(5)
-        const saveCode = await new Code ({
-            user: user._id,
-            code
-        }).save();
-        sendResetcode(user.email,user.fName,code);
-        return res.status(200).json({
-            messasge: "Reset code has been sent to your email"
-        })
-    } catch (error) {
-        res.status(404).json({
-            messasge: error.message
-        })
+exports.resetcode = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await Users.findOne({ email }).select("-password");
+    await Code.findOneAndRemove({ user: user._id });
+    const code = generateCode(5);
+    const saveCode = await new Code({
+      user: user._id,
+      code,
+    }).save();
+    sendResetcode(user.email, user.fName, code);
+    return res.status(200).json({
+      messasge: "Reset code has been sent to your email",
+    });
+  } catch (error) {
+    res.status(404).json({
+      messasge: error.message,
+    });
+  }
+};
+
+exports.verifyresetcode = async (req, res) => {
+  try {
+    const { email, code } = req.body;
+    const user = await Users.findOne({ email });
+    const dbcode = await Code.findOne({ user: user._id });
+
+    if (dbcode.code !== code) {
+      return res.status(404).json({
+        message: "Code doesn't matched",
+      });
     }
-}
+    return res.status(200).json({
+      messasge: "Thank you",
+    });
+  } catch (error) {
+    res.status(404).json({
+      messasge: error.message,
+    });
+  }
+};
 
-exports.verifyresetcode = async (req,res)=>{
-    try {
-        const {email,code} = req.body;
-        const user = await Users.findOne({ email });
-        const dbcode = await Code.findOne({ user: user._id });
-        
-        if(dbcode.code !== code){
-            return res.status(404).json({
-                message: "Code doesn't matched"
-            })
-        }
-        return res.status(200).json({
-            messasge: "Thank you"
-        })
-
-    } catch (error) {
-        res.status(404).json({
-            messasge: error.message
-        })
-    }
-}
-
-exports.changepassword = async (req,res) => {
-    try {
-        const {email,password} = req.body;
-        const cryptedPassword = await bcrypt.hash(password, 10);
-        await Users.findOneAndUpdate(
-        {
-            email
-        },
-        {
-            password: cryptedPassword
-        }      
-        )
-        return res.status(200).json({
-            messasge: "Password changed"
-        })
-    } catch (error) {
-        res.status(404).json({
-            messasge: error.message
-        })
-    }
-}
+exports.changepassword = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const cryptedPassword = await bcrypt.hash(password, 10);
+    await Users.findOneAndUpdate(
+      {
+        email,
+      },
+      {
+        password: cryptedPassword,
+      }
+    );
+    return res.status(200).json({
+      messasge: "Password changed",
+    });
+  } catch (error) {
+    res.status(404).json({
+      messasge: error.message,
+    });
+  }
+};

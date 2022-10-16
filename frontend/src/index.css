@@ -272,7 +272,7 @@ select {
 }
 
 .authorize_err {
-  animation: animate 0.3s linear;
+  animation: animate 0.2s linear;
 }
 
 @keyframes animate {

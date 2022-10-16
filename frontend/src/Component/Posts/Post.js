@@ -9,7 +9,13 @@ const Post = ({ setVisible }) => {
   return (
     <div className="mt-5 p-2 md:p-5 bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]">
       <div className="flex items-center justify-between">
-        <div className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] rounded-full overflow-hidden bg-[#F1F4F7]"></div>
+        <div className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] rounded-full overflow-hidden bg-[#F1F4F7]">
+          <img
+            className="w-full h-full object-cover"
+            src={users.profilePicture}
+            alt="profilePicture"
+          />
+        </div>
         <div
           className="w-[90%] px-3 md:px-5 py-2 rounded-full bg-[#f0f2f5] cursor-pointer hover:bg-[#E7E9EB]"
           onClick={() => setVisible(true)}

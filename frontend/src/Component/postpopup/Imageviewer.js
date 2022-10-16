@@ -9,12 +9,31 @@ const Imageviewer = ({
   images,
   setShow,
   show,
+  setError,
 }) => {
   const chooseFile = useRef(null);
 
   const handleImageUpload = (e) => {
-    const chooseFile = Array.from(e.target.files);
+    let chooseFile = Array.from(e.target.files);
     chooseFile.forEach((img) => {
+      if (
+        img.type !== "image/jpeg" &&
+        img.type !== "image/png" &&
+        img.type !== "image/webp" &&
+        img.type !== "image/gif"
+      ) {
+        chooseFile = chooseFile.filter((item) => item.name !== img.name);
+        setError(
+          `${img.name} unsopported file! onlye jpg,png,webp,gif file are supported`
+        );
+        return;
+      } else if (img.size > 1024 * 1024 * 10) {
+        chooseFile = chooseFile.filter((item) => item.name !== img.name);
+        setError(
+          `${img.name} is too large! please choose atleast under 10MB file.`
+        );
+        return;
+      }
       const renderFiles = new FileReader();
       renderFiles.readAsDataURL(img);
       renderFiles.onload = (renderImage) => {
@@ -41,6 +60,7 @@ const Imageviewer = ({
           <input
             type="file"
             multiple
+            accept="image/jpeg,image/png,image/webp,image/gif"
             className="hidden"
             ref={chooseFile}
             onChange={handleImageUpload}

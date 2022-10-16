@@ -138,7 +138,9 @@ const Header = () => {
             }}
             className="flex items-center justify-between lg:bg-[#F1F4F7] lg:rounded-full lg:px-4 lg:py-2 cursor-pointer"
           >
-            <div className="lg:w-[30px] lg:h-[30px] w-[40px] h-[40px] rounded-full bg-[#F1F4F7] lg:bg-white overflow-hidden"></div>
+            <div className="lg:w-[30px] lg:h-[30px] w-[40px] h-[40px] rounded-full bg-[#F1F4F7] lg:bg-white overflow-hidden">
+              <img src={users.profilePicture} alt="profilePicture" />
+            </div>
             <div className="hidden lg:flex items-center">
               <span className="md:block inline-block ml-3 text-base font-primary text-black whitespace-nowrap w-[74px] overflow-hidden text-ellipsis">
                 {users?.fName}

@@ -48,7 +48,7 @@ const Postpopup = ({ setVisible }) => {
       const postImages = images.map((item) => dataURItoBlob(item));
       const path = `${user.username}/post images`;
       let formData = new FormData();
-      formData.append("location", path);
+      formData.append("path", path);
       postImages.forEach((img) => {
         formData.append("file", img);
       });
@@ -77,7 +77,7 @@ const Postpopup = ({ setVisible }) => {
         setError(response);
       }
     } else {
-      console.log("nothing");
+      setError("Please choos a file");
     }
   };
 
@@ -99,8 +99,12 @@ const Postpopup = ({ setVisible }) => {
             </div>
           </div>
           <div className="py-3 px-4 flex items-center">
-            <div className="w-[40px] h-[40px] bg-[#E4E6EB] rounded-full">
-              {/* for user image */}
+            <div className="w-[40px] h-[40px] bg-[#E4E6EB] rounded-full overflow-hidden">
+              <img
+                className="w-full h-full object-cover"
+                src={user.profilePicture}
+                alt="profilePicture"
+              />
             </div>
             <div className="ml-3">
               <p className="font-semibold text-base text-black capitalize">
@@ -159,6 +163,7 @@ const Postpopup = ({ setVisible }) => {
                   images={images}
                   setShow={setShow}
                   show={show}
+                  setError={setError}
                 />
                 <div className="mt-2 px-4">
                   <Addpost setShow={setShow} show={show} />

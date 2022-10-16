@@ -37,6 +37,12 @@ const UserModel = new Schema(
       require: true,
     },
 
+    profilePicture: {
+      type: String,
+      default:
+        "https://res.cloudinary.com/dk0xywcum/image/upload/v1665931000/ozztqkdoefb2sjc280mn.png",
+    },
+
     cover: {
       type: String,
       trim: true,
