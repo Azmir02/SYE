@@ -9,15 +9,16 @@ import Post from "../Component/Posts/Post";
 import Reauth from "../Component/re-authorization/Reauth";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import Showpost from "../Component/Posts/Showpost";
 
 function reducer(state, action) {
   switch (action.type) {
     case "POSTS_REQUEST":
       return { ...state, loading: true, error: "" };
     case "POSTS_SUCCESS":
-      return { ...state, loading: false, posts:action.payload, error: "" };
+      return { ...state, loading: false, posts: action.payload, error: "" };
     case "POSTS_ERROR":
-      return { ...state, loading: false, error:action.payload };
+      return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }
@@ -44,7 +45,6 @@ const Home = ({ setVisible }) => {
           Authorization: `Bearer ${users.token}`,
         },
       });
-      console.log(data)
       dispatch({
         type: "POSTS_SUCCESS",
         payload: data,
@@ -57,7 +57,6 @@ const Home = ({ setVisible }) => {
     }
   };
   console.log(posts);
-
   return (
     <>
       <Helmet>
@@ -74,6 +73,9 @@ const Home = ({ setVisible }) => {
             <Story />
             <Reauth />
             <Post setVisible={setVisible} />
+            {posts.map((item) => (
+              <Showpost key={item._id} posts={item} />
+            ))}
           </div>
           <div className="pr-3 hidden 2xl:block">
             <Friendreq />
