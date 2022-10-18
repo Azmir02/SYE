@@ -10,3 +10,14 @@ exports.createPost = async (req, res) => {
     });
   }
 };
+
+exports.getPost = async (req, res) => {
+  try {
+    const findAllPost = await Post.find();
+    res.json(findAllPost);
+  } catch (error) {
+    return res.status(404).json({
+      message: error.message,
+    });
+  }
+};

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useReducer } from "react";
 import Header from "../Component/Header/Header";
 import { Helmet } from "react-helmet-async";
 import Userleft from "../Component/Lefthome/Userleft";
@@ -7,8 +7,56 @@ import Contacts from "../Component/Righthome/Contacts";
 import Story from "../Component/Story/Story";
 import Post from "../Component/Posts/Post";
 import Reauth from "../Component/re-authorization/Reauth";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
+function reducer(state, action) {
+  switch (action.type) {
+    case "POST_REQUEST":
+      return { ...state, loading: true, error: "" };
+    case "POST_SUCCESS":
+      return { ...state, loading: false, posts: action.paylaod, error: "" };
+    case "POST_ERROR":
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+}
 const Home = ({ setVisible }) => {
+  const users = useSelector((users) => users.login.loggedin);
+  const [{ loading, posts, error }, dispatch] = useReducer(reducer, {
+    loading: false,
+    posts: [],
+    error: "",
+  });
+
+  useEffect(() => {
+    getPost();
+  }, []);
+
+  const getPost = async () => {
+    try {
+      dispatch({
+        type: "POST_REQUEST",
+      });
+
+      const { data } = await axios.get("/api/getPost", {
+        headers: {
+          Authorization: `Bearer ${users.token}`,
+        },
+      });
+      dispatch({
+        type: "POST_SUCCESS",
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: "POST_ERROR",
+        payload: error.response.data.messasge,
+      });
+    }
+  };
+  console.log(posts);
   return (
     <>
       <Helmet>
