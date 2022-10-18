@@ -12,12 +12,12 @@ import { useSelector } from "react-redux";
 
 function reducer(state, action) {
   switch (action.type) {
-    case "POST_REQUEST":
+    case "POSTS_REQUEST":
       return { ...state, loading: true, error: "" };
-    case "POST_SUCCESS":
-      return { ...state, loading: false, posts: action.paylaod, error: "" };
-    case "POST_ERROR":
-      return { ...state, loading: false, error: action.payload };
+    case "POSTS_SUCCESS":
+      return { ...state, loading: false, posts:action.payload, error: "" };
+    case "POSTS_ERROR":
+      return { ...state, loading: false, error:action.payload };
     default:
       return state;
   }
@@ -37,26 +37,27 @@ const Home = ({ setVisible }) => {
   const getPost = async () => {
     try {
       dispatch({
-        type: "POST_REQUEST",
+        type: "POSTS_REQUEST",
       });
-
       const { data } = await axios.get("/api/getPost", {
         headers: {
           Authorization: `Bearer ${users.token}`,
         },
       });
+      console.log(data)
       dispatch({
-        type: "POST_SUCCESS",
+        type: "POSTS_SUCCESS",
         payload: data,
       });
     } catch (error) {
       dispatch({
-        type: "POST_ERROR",
-        payload: error.response.data.messasge,
+        type: "POSTS_ERROR",
+        payload: error.response.data.message,
       });
     }
   };
   console.log(posts);
+
   return (
     <>
       <Helmet>
