@@ -13,10 +13,9 @@ exports.createPost = async (req, res) => {
 
 exports.getPost = async (req, res) => {
   try {
-    const findAllPost = await Post.find().populate(
-      "user",
-      "fName lName username profilePicture gender"
-    );
+    const findAllPost = await Post.find()
+      .populate("user", "fName lName username profilePicture gender")
+      .sort({ createdAt: -1 });
     res.json(findAllPost);
   } catch (error) {
     return res.status(404).json({
