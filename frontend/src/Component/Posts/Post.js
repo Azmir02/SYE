@@ -61,5 +61,4 @@ const Post = ({ setVisible }) => {
     </div>
   );
 };
-
 export default Post;

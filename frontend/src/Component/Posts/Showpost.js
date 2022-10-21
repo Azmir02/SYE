@@ -5,7 +5,7 @@ import Dots from "../../svg/dots";
 
 const Showpost = ({ posts }) => {
   return (
-    <div className="my-5 bg-white rounded-md">
+    <div className="my-5 bg-white rounded-md pb-2">
       <div className="flex p-5 items-center justify-between">
         <div className="flex items-center w-[300px]">
           <div className="w-[50px] h-[50px] border-2 border-solid border-[#D9D9D9] rounded-full overflow-hidden">
@@ -63,7 +63,7 @@ const Showpost = ({ posts }) => {
           </h4>
           {posts.images && posts.images.length && (
             <div
-              className={`relative ${
+              className={`relative cursor-pointer ${
                 posts.images.length === 1
                   ? "overflow-hidden w-full h-full"
                   : posts.images.length === 2
@@ -87,7 +87,7 @@ const Showpost = ({ posts }) => {
               ))}
               <div className="absolute top-[69%] right-[20%]">
                 {posts.images.length >= 5 && (
-                  <span className="font-medium text-black text-[50px]  rounded-full flex items-center justify-center">
+                  <span className="font-medium text-black text-[40px] w-[80px] h-[80px] bg-[rgba(255,_255,_255,_0.8)] rounded-full flex items-center justify-center">
                     +{posts.images.length - 4}
                   </span>
                 )}
@@ -96,6 +96,37 @@ const Showpost = ({ posts }) => {
           )}
         </>
       )}
+      <div className="mt-3 flex px-5 py-3 items-center justify-between border-y border-solid border-[#F0F2F5] w-full">
+        <div className="w-[40%]">reacts</div>
+        <div className="w-[40%] text-right">
+          <span className="font-primary text-title_color text-base mr-3 cursor-pointer">
+            2 comments
+          </span>
+          <span className="font-primary text-title_color text-base cursor-pointer">
+            1 share
+          </span>
+        </div>
+      </div>
+      <div className="flex justify-between px-5 my-2">
+        <div className="flex items-center justify-center cursor-pointer w-[200px] py-3 hover:bg-[#F0F2F5] hover:rounded-md transition-all ease-linear duration-150">
+          <i className="like_icon"></i>
+          <span className="font-primary text-title_color text-base ml-2">
+            Like
+          </span>
+        </div>
+        <div className="flex items-center justify-center cursor-pointer w-[200px] hover:bg-[#F0F2F5] hover:rounded-md transition-all ease-linear duration-150">
+          <i className="comment_icon"></i>
+          <span className="font-primary text-title_color text-base ml-2">
+            Comment
+          </span>
+        </div>
+        <div className="flex items-center justify-center cursor-pointer w-[200px] hover:bg-[#F0F2F5] hover:rounded-md transition-all ease-linear duration-150">
+          <i className="share_icon"></i>
+          <span className="font-primary text-title_color text-base ml-2">
+            Share
+          </span>
+        </div>
+      </div>
     </div>
   );
 };

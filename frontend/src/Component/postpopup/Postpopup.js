@@ -162,7 +162,6 @@ const Postpopup = ({ setVisible }) => {
                   setImages={setImages}
                   images={images}
                   setShow={setShow}
-                  show={show}
                   setError={setError}
                 />
                 <div className="mt-2 px-4">

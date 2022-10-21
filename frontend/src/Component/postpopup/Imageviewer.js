@@ -8,7 +8,6 @@ const Imageviewer = ({
   setImages,
   images,
   setShow,
-  show,
   setError,
 }) => {
   const chooseFile = useRef(null);
