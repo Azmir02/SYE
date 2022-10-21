@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import Dots from "../../svg/dots";
+import Reacts from "./Reacts";
 
 const Showpost = ({ posts }) => {
+  const [showReacts, setShowReacts] = useState(false);
   return (
     <div className="my-5 bg-white rounded-md pb-2">
       <div className="flex p-5 items-center justify-between">
@@ -107,13 +109,28 @@ const Showpost = ({ posts }) => {
           </span>
         </div>
       </div>
-      <div className="flex justify-between px-5 my-2">
-        <div className="flex items-center justify-center cursor-pointer w-[200px] py-3 hover:bg-[#F0F2F5] hover:rounded-md transition-all ease-linear duration-150">
+      <div className="flex justify-between px-5 my-2 relative ">
+        <div
+          className="flex items-center justify-center cursor-pointer w-[200px] py-3 hover:bg-[#F0F2F5] hover:rounded-md transition-all ease-linear duration-150"
+          onMouseOver={() => {
+            setTimeout(() => {
+              setShowReacts(true);
+            }, 500);
+          }}
+          onMouseLeave={() => {
+            setTimeout(() => {
+              setShowReacts(false);
+            }, 500);
+          }}
+        >
           <i className="like_icon"></i>
           <span className="font-primary text-title_color text-base ml-2">
             Like
           </span>
         </div>
+        {showReacts && (
+          <Reacts showReacts={showReacts} setShowReacts={setShowReacts} />
+        )}
         <div className="flex items-center justify-center cursor-pointer w-[200px] hover:bg-[#F0F2F5] hover:rounded-md transition-all ease-linear duration-150">
           <i className="comment_icon"></i>
           <span className="font-primary text-title_color text-base ml-2">

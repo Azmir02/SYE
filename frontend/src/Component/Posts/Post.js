@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Feeling from "../../svg/feeling";
-import LiveVideo from "../../svg/liveVideo";
+import ProductUpload from "../../svg/productUpload";
 import Photo from "../../svg/photo";
 
 const Post = ({ setVisible }) => {
@@ -29,11 +29,11 @@ const Post = ({ setVisible }) => {
       <div className="flex items-center justify-center mt-5">
         <div className="w-[190px] flex items-center justify-between hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150 px-2 md:px-4 py-2 cursor-pointer">
           <div className="w-[20%]">
-            <LiveVideo color="#D17274" />
+            <ProductUpload color="#D17274" />
           </div>
           <div className="w-[80%] text-center">
             <span className="text-sm md:text-base font-primary font-medium text-black">
-              Live video
+              Upload product
             </span>
           </div>
         </div>

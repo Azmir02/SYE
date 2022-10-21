@@ -283,3 +283,16 @@ select {
     width: 100%;
   }
 }
+
+.show_reacts {
+  animation: animate 0.2s linear;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

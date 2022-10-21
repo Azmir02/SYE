@@ -56,7 +56,7 @@ const Home = ({ setVisible }) => {
       });
     }
   };
-  console.log(posts);
+
   return (
     <>
       <Helmet>
