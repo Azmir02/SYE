@@ -74,7 +74,7 @@ const Home = ({ setVisible }) => {
             <Reauth />
             <Post setVisible={setVisible} />
             {posts.map((item) => (
-              <Showpost key={item._id} posts={item} />
+              <Showpost key={item._id} posts={item} user={users} />
             ))}
           </div>
           <div className="pr-3 hidden 2xl:block">

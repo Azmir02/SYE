@@ -200,7 +200,7 @@ exports.resetpass = async (req, res) => {
     }
     res.status(200).json({
       email: matchEmail.email,
-      // picture : matchEmail.picture
+      picture: matchEmail.profilePicture,
     });
   } catch (error) {
     res.status(404).json({

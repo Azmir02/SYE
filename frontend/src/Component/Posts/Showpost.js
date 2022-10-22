@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Dots from "../../svg/dots";
 import Reacts from "./Reacts";
 
-const Showpost = ({ posts }) => {
+const Showpost = ({ posts, user }) => {
   const [showReacts, setShowReacts] = useState(false);
   return (
     <div className="my-5 bg-white rounded-md pb-2">
@@ -142,6 +142,21 @@ const Showpost = ({ posts }) => {
           <span className="font-primary text-title_color text-base ml-2">
             Share
           </span>
+        </div>
+      </div>
+      <div className="border-t border-solid border-[#F0F2F5] pt-2 px-5">
+        <div className="flex justify-between">
+          <div className="w-[40px] h-[40px] rounded-full overflow-hidden">
+            <img src={user?.profilePicture} alt="" />
+          </div>
+          <div className="w-[90%]">
+            <input type="file" hidden />
+            <input
+              type="text"
+              className="w-full rounded-full py-2 px-5  outline-none placeholder:text-title_color"
+              placeholder="write a comment..."
+            />
+          </div>
         </div>
       </div>
     </div>
