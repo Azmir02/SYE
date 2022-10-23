@@ -17,7 +17,7 @@ const Post = ({ setVisible }) => {
           />
         </div>
         <div
-          className="w-[90%] px-3 md:px-5 py-2 rounded-full bg-[#f0f2f5] cursor-pointer hover:bg-[#E7E9EB]"
+          className="w-[85%] md:w-[90%] px-3 md:px-5 py-2 rounded-full bg-[#f0f2f5] cursor-pointer hover:bg-[#E7E9EB]"
           onClick={() => setVisible(true)}
         >
           <span className="font-primar md:text-base text-primary_bg text-sm">
@@ -32,7 +32,7 @@ const Post = ({ setVisible }) => {
             <ProductUpload color="#D17274" />
           </div>
           <div className="w-[80%] text-center">
-            <span className="text-sm md:text-base font-primary font-medium text-black">
+            <span className="text-sm lg:text-base font-primary font-medium text-black">
               Upload product
             </span>
           </div>
@@ -42,19 +42,21 @@ const Post = ({ setVisible }) => {
             <Photo color="#21D997" />
           </div>
           <div className="w-[80%] text-center">
-            <span className="text-sm md:text-base font-primary font-medium text-black">
+            <span className="text-sm lg:text-base font-primary font-medium text-black">
               Photo/video
             </span>
           </div>
         </div>
-        <div className="w-[190px] flex items-center px-2 md:px-4 py-2 cursor-pointer hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150">
-          <div className="w-[20%]">
-            <Feeling color="#D9A94A" />
-          </div>
-          <div className="w-[80%] text-center">
-            <span className="text-sm md:text-base font-primary font-medium text-black">
-              Feeling/Activity
-            </span>
+        <div className="hidden md:block">
+          <div className="w-[190px] flex items-center px-2 md:px-4 py-2 cursor-pointer hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150">
+            <div className="w-[20%]">
+              <Feeling color="#D9A94A" />
+            </div>
+            <div className="w-[80%] text-center">
+              <span className="text-sm lg:text-base font-primary font-medium text-black">
+                Feeling/Activity
+              </span>
+            </div>
           </div>
         </div>
       </div>

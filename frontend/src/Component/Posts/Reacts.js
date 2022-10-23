@@ -36,7 +36,7 @@ const Reacts = ({ showReacts, setShowReacts }) => {
   return (
     <>
       <div
-        className="show_reacts w-[370px] flex justify-between px-2 py-1 bg-white rounded-full absolute top-[-61px] left-[15px] z-[1] shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]"
+        className="show_reacts w-[310px] flex justify-between px-2 py-1 bg-white rounded-full absolute top-[-50px] left-[15px] z-[1] shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]"
         onMouseOver={() => {
           setTimeout(() => {
             setShowReacts(true);
@@ -50,7 +50,7 @@ const Reacts = ({ showReacts, setShowReacts }) => {
       >
         {reactsEmoji.map((reacts, i) => (
           <img
-            className="w-[45px] h-[45px] cursor-pointer hover:scale-125 transition-all ease-linear duration-150"
+            className="w-[45px] h-[45px] cursor-pointer scale-[1.5] hover:scale-[1.9] transition-all ease-linear duration-150"
             src={reacts.image}
             key={i}
             alt="reacts"

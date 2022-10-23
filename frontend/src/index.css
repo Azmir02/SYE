@@ -202,14 +202,18 @@ select {
 
 /* header responsive */
 
-@media (max-width: 1023.99px) {
+@media (max-width: 575.99px) {
   .search {
     width: 40px;
     height: 40px;
     border-radius: 50%;
   }
   .searchbox {
-    width: 280px;
+    width: 313px;
+  }
+
+  .main_menu {
+    width: 317px;
   }
 }
 
@@ -223,7 +227,7 @@ select {
   }
 }
 
-@media (max-width: 767.99px) {
+/* @media (max-width: 767.99px) {
   .main_menu {
     width: 400px;
   }
@@ -231,7 +235,7 @@ select {
   .right-part {
     width: 220px;
   }
-}
+} */
 
 .massonary img:nth-child(1) {
   grid-row: 1/3;

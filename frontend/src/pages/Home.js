@@ -65,7 +65,7 @@ const Home = ({ setVisible }) => {
 
       <Header />
       <div className="pages">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr,1fr] xl:grid-cols-[1fr,3fr,1fr] gap-1 xl:gap-2 py-5 pl-1 md:pl-4 mt-[69px]">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr,1fr] xl:grid-cols-[1fr,2fr,1fr] 2xl:grid-cols-[1fr,3fr,1fr] gap-1 xl:gap-2 py-5 pl-1 md:pl-4 mt-[69px]">
           <div className="hidden lg:block">
             <Userleft />
           </div>
@@ -77,7 +77,7 @@ const Home = ({ setVisible }) => {
               <Showpost key={item._id} posts={item} user={users} />
             ))}
           </div>
-          <div className="pr-3 hidden 2xl:block">
+          <div className="pr-3 hidden xl:block">
             <Friendreq />
             <Contacts />
           </div>

@@ -6,6 +6,7 @@ import Messenger from "../../svg/messenger";
 import Watch from "../../svg/watch";
 import Gaming from "../../svg/gaming";
 import ArrowDown from "../../svg/arrowDown";
+import Cartbag from "../../svg/shoppingBag";
 import Market from "../../svg/market";
 import Friends from "../../svg/friends";
 import OutsideClick from "../../helpers/click";
@@ -38,8 +39,10 @@ const Header = () => {
 
   return (
     <div className="heading flex justify-between items-center px-4 py-2 shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] fixed top-0 left-0 w-full z-[999] bg-white">
-      <div className="left-part w-[320px] flex lg:justify-between items-center relative">
-        <Logo />
+      <div className="left-part 2xl:w-[30%] flex items-center relative">
+        <div className="2xl:mr-5">
+          <Logo />
+        </div>
         <div
           className="search ml-5 lg:ml-0 px-0 py-0 flex items-center justify-center lg:justify-start bg-[#F0F2F5] lg:px-4 lg:py-2 rounded-full"
           onClick={() => {
@@ -57,11 +60,14 @@ const Header = () => {
           />
         </div>
 
-        <div className="absolute top-[-12px] left-[-12px]" ref={clickOutside}>
+        <div
+          className="absolute top-[-5px] md:top-[-12px] left-[-16px] md:left-[-12px] z-[1]"
+          ref={clickOutside}
+        >
           {show && <Searchbox setShow={setShow} />}
         </div>
       </div>
-      <div className="middle-part w-[623px] mx-auto flex items-center justify-center">
+      <div className="middle-part  2xl:w-[66%] mx-auto flex items-center justify-center">
         <Link
           to="/"
           className="hidden sm:block hover:bg-[#F0F2F5] lg:px-5 lg:py-2 px-2 py-2 md:px-5 md:py-2 2xl:px-12 2xl:py-3 rounded-md transition-all ease-linear duration-100"
@@ -82,9 +88,15 @@ const Header = () => {
         </Link>
         <Link
           to="/"
-          className="hover:bg-[#F0F2F5] px-2 py-2 lg:px-5 lg:py-2 2xl:px-12 2xl:py-3 rounded-md transition-all ease-linear duration-100"
+          className="hover:bg-[#F0F2F5] hidden md:block px-2 py-2 lg:px-5 lg:py-2 2xl:px-12 2xl:py-3 rounded-md transition-all ease-linear duration-100"
         >
           <Friends />
+        </Link>
+        <Link
+          to="/"
+          className="hover:bg-[#F0F2F5] hidden md:block px-2 py-2 lg:px-5 lg:py-2 2xl:px-12 2xl:py-3 rounded-md transition-all ease-linear duration-100"
+        >
+          <Cartbag color="#000" />
         </Link>
         <Link
           to="/"
@@ -93,18 +105,7 @@ const Header = () => {
           <Gaming />
         </Link>
       </div>
-      <div className="right-part w-[450px] flex items-center justify-between">
-        <div className="hidden lg:block">
-          <Link
-            className="ml-2 flex items-center bg-[#F1F4F7] w-[120px] px-2 py-2 xl:px-4 xl:py-2 rounded-full box-border"
-            to="/"
-          >
-            <HomeActive />
-            <span className="inline-block ml-2 font-primary text-base xl:text-lg text-black">
-              Home
-            </span>
-          </Link>
-        </div>
+      <div className="right-part  2xl:w-[30%] flex items-center justify-end">
         <div className="relative" ref={menuClick}>
           <div
             className={`w-[40px] h-[40px] rounded-full flex items-center justify-center hover:bg-[#F0F2F5] cursor-pointer ${
@@ -116,7 +117,7 @@ const Header = () => {
           >
             <Menu />
           </div>
-          <div className="menus absolute top-[50px] cursor-auto left-[-280px] md:left-[-451px] lg:left-[-430px]">
+          <div className="menus absolute top-[50px] cursor-auto left-[-189px] md:left-[-451px] lg:left-[-430px]">
             {menushow && <MenuOption />}
           </div>
         </div>
@@ -150,7 +151,7 @@ const Header = () => {
               <ArrowDown />
             </div>
           </div>
-          <div className="absolute top-[50px] cursor-auto left-[-328px] lg:left-[-196px]">
+          <div className="absolute top-[50px] cursor-auto left-[-255px] md:left-[-328px] lg:left-[-196px]">
             {usermenu && <Usermenu user={users} />}
           </div>
         </div>
