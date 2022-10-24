@@ -4,6 +4,7 @@ import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import Dots from "../../svg/dots";
 import Reacts from "./Reacts";
+import Menu from "../UserMenulist/Menu";
 
 const Showpost = ({ posts, user }) => {
   const [showReacts, setShowReacts] = useState(false);
@@ -88,8 +89,11 @@ const Showpost = ({ posts, user }) => {
             </span>
           </div>
         </div>
-        <div className="cursor-pointer w-[40px] h-[40px] flex items-center justify-center transition-all duration-100 ease-linear hover:bg-[#f2f2f2] rounded-full">
-          <Dots color="#29313D" />
+        <div className="relative">
+          <div className="cursor-pointer w-[40px] h-[40px] flex items-center justify-center transition-all duration-100 ease-linear hover:bg-[#f2f2f2] rounded-full">
+            <Dots color="#29313D" />
+          </div>
+          <Menu user={user} posts={posts} />
         </div>
       </div>
       {posts.background ? (
