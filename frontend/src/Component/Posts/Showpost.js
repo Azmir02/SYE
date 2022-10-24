@@ -29,10 +29,6 @@ const Showpost = ({ posts, user }) => {
     textRef.current.selectionEnd = cursorPosition;
   }, [cursorPosition]);
 
-  useEffect(() => {
-    textRef.current.focus();
-  }, []);
-
   const handleImageUpload = (e) => {
     const files = e.target.files[0];
     if (
@@ -199,25 +195,29 @@ const Showpost = ({ posts, user }) => {
 
       <div className="pt-2 border-t border-solid border-[#F0F2F5] ">
         {commentimages && (
-          <div className="w-[180px] rounded-md overflow-hidden ml-[80px] ">
+          <div className="w-[180px] relative rounded-md ml-[80px] ">
             <img
               src={commentimages}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-md"
               alt=""
             />
+            <div
+              className="absolute top-[-8px] right-[-11px] w-[30px] h-[30px] bg-[#F0F2F5] rounded-full flex items-center justify-center cursor-pointer"
+              onClick={() => setCommentimages("")}
+            >
+              <i className="exit_icon"></i>
+            </div>
           </div>
         )}
       </div>
 
       <div className="py-2 px-5 relative">
         <div className="flex justify-between items-center">
-          <div className="w-[40px] h-[40px] rounded-full overflow-hidden cursor-pointer">
-            <img
-              onClick={() => textRef.current.focus()}
-              src={user?.profilePicture}
-              alt=""
-            />
-          </div>
+          <Link to="/profile">
+            <div className="w-[40px] h-[40px] rounded-full overflow-hidden cursor-pointer">
+              <img src={user?.profilePicture} alt="" />
+            </div>
+          </Link>
           <div className="w-[87%] flex items-center md:w-[92%] relative bg-[#F0F2F5] rounded-[50px]">
             <input
               type="file"

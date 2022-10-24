@@ -227,16 +227,6 @@ select {
   }
 }
 
-/* @media (max-width: 767.99px) {
-  .main_menu {
-    width: 400px;
-  }
-
-  .right-part {
-    width: 220px;
-  }
-} */
-
 .massonary img:nth-child(1) {
   grid-row: 1/3;
 }
