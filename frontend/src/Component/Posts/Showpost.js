@@ -5,16 +5,25 @@ import { Link } from "react-router-dom";
 import Dots from "../../svg/dots";
 import Reacts from "./Reacts";
 import Menu from "../UserMenulist/Menu";
+import OutsideClick from "../../helpers/click";
 
 const Showpost = ({ posts, user }) => {
   const [showReacts, setShowReacts] = useState(false);
   const [cursorPosition, setCursorPosition] = useState();
+  const [visible, setVisible] = useState(false);
   const [picker, setPicker] = useState(false);
   const [commentimages, setCommentimages] = useState("");
   const [error, setError] = useState("");
   const [text, setText] = useState("");
   const textRef = useRef(null);
   const chooseFile = useRef(null);
+  const hideMenu = useRef(null);
+
+  OutsideClick(hideMenu, () => {
+    setVisible(false);
+  });
+
+  console.log(hideMenu.current);
 
   const handleEmoji = ({ emoji }, e) => {
     const ref = textRef.current;
@@ -90,10 +99,14 @@ const Showpost = ({ posts, user }) => {
           </div>
         </div>
         <div className="relative">
-          <div className="cursor-pointer w-[40px] h-[40px] flex items-center justify-center transition-all duration-100 ease-linear hover:bg-[#f2f2f2] rounded-full">
+          <div
+            className="cursor-pointer w-[40px] h-[40px] flex items-center justify-center transition-all duration-100 ease-linear hover:bg-[#f2f2f2] rounded-full"
+            onClick={() => setVisible((prev) => !prev)}
+            ref={hideMenu}
+          >
             <Dots color="#29313D" />
           </div>
-          <Menu user={user} posts={posts} />
+          {visible && <Menu user={user} posts={posts} />}
         </div>
       </div>
       {posts.background ? (
