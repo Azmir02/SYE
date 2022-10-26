@@ -10,22 +10,11 @@ import Reauth from "../Component/re-authorization/Reauth";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import Showpost from "../Component/Posts/Showpost";
+import { getpostreducer } from "../functions/getPost";
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "POSTS_REQUEST":
-      return { ...state, loading: true, error: "" };
-    case "POSTS_SUCCESS":
-      return { ...state, loading: false, posts: action.payload, error: "" };
-    case "POSTS_ERROR":
-      return { ...state, loading: false, error: action.payload };
-    default:
-      return state;
-  }
-}
 const Home = ({ setVisible }) => {
   const users = useSelector((users) => users.login.loggedin);
-  const [{ loading, posts, error }, dispatch] = useReducer(reducer, {
+  const [{ loading, posts, error }, dispatch] = useReducer(getpostreducer, {
     loading: false,
     posts: [],
     error: "",

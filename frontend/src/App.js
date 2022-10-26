@@ -9,6 +9,7 @@ import Activepage from "./pages/Activepage";
 import Notloggedin from "./Routers/Notloggedin";
 import Finduser from "./pages/resetpass/Finduser";
 import Postpopup from "./Component/postpopup/Postpopup";
+import Profile from "./pages/Profiles/Profile";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -21,6 +22,8 @@ function App() {
         <Route element={<Loggedinuser />}>
           <Route path="/" element={<Home setVisible={setVisible} />} />
           <Route path="/activate/:token" element={<Activepage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:username" element={<Profile />} />
         </Route>
         <Route element={<Notloggedin />}>
           <Route path="/login" element={<Login />} />

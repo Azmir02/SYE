@@ -23,8 +23,6 @@ const Showpost = ({ posts, user }) => {
     setVisible(false);
   });
 
-  console.log(hideMenu.current);
-
   const handleEmoji = ({ emoji }, e) => {
     const ref = textRef.current;
     ref.focus();

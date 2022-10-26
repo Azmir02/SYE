@@ -10,6 +10,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Code = require("../models/Code");
 const { generateCode } = require("../handaler/GenerateCode");
+const { findOne } = require("../models/Code");
 
 exports.newuser = async (req, res) => {
   try {
@@ -269,6 +270,21 @@ exports.changepassword = async (req, res) => {
   } catch (error) {
     res.status(404).json({
       messasge: error.message,
+    });
+  }
+};
+
+exports.getuser = async (req, res) => {
+  try {
+    const { username } = req.params;
+    const getprofile = await Users.findOne({ username }).select("-password");
+    if (!getprofile) {
+      console.log("user nai");
+    }
+    res.json(getprofile);
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
     });
   }
 };
