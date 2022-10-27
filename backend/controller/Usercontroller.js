@@ -279,7 +279,7 @@ exports.getuser = async (req, res) => {
     const { username } = req.params;
     const getprofile = await Users.findOne({ username }).select("-password");
     if (!getprofile) {
-      console.log("user nai");
+      return res.json({ ok: false });
     }
     res.json(getprofile);
   } catch (error) {

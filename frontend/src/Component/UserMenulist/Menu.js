@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Menuitem from "./Menuitem";
 
-const Menu = ({ user, posts }) => {
+const Menu = ({ user, posts, images }) => {
   const [test, setTest] = useState(user.id === posts.user._id ? true : false);
   return (
     <>
@@ -17,8 +17,12 @@ const Menu = ({ user, posts }) => {
         {test && (
           <Menuitem img="../../../icons/lock.png" title="Edit Audience" />
         )}
-        <Menuitem icon="download_icon" title="Download" />
-        <Menuitem icon="fullscreen_icon" title="Enter fullscreen" />
+        {images && images.length && (
+          <Menuitem icon="download_icon" title="Download" />
+        )}
+        {images && images.length && (
+          <Menuitem icon="fullscreen_icon" title="Enter fullscreen" />
+        )}
         <Menuitem
           icon="turnOnNotification_icon"
           title="Turn on notification for this post"

@@ -39,6 +39,9 @@ module.exports = {
         "3xl": "1620px",
       },
     },
+    container: {
+      center: true,
+    },
   },
   plugins: [],
 };

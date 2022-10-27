@@ -1,13 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useReducer, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Header from "../../Component/Header/Header";
 import { getprofilereducer } from "../../functions/getPost";
 
 const Profile = () => {
   const user = useSelector((users) => users.login.loggedin);
   const { username } = useParams();
   var userName = username === undefined ? user.username : username;
+  const navigate = useNavigate();
   const [{ loading, profile, error }, dispatch] = useReducer(
     getprofilereducer,
     {
@@ -31,10 +34,14 @@ const Profile = () => {
           Authorization: `Bearer ${user.token}`,
         },
       });
-      dispatch({
-        type: "PROFILE_SUCCESS",
-        payload: data,
-      });
+      if (data.ok === false) {
+        navigate("/");
+      } else {
+        dispatch({
+          type: "PROFILE_SUCCESS",
+          payload: data,
+        });
+      }
     } catch (error) {
       dispatch({
         type: "PROFILE_ERROR",
@@ -44,11 +51,15 @@ const Profile = () => {
     }
   };
 
-  console.log(profile);
-
   return (
     <div>
-      <div></div>
+      <Helmet>
+        <title>{`${profile.fName} ${profile.lName} | SYE`}</title>
+      </Helmet>
+      <Header />
+      <div className="mt-[70px]">
+        <div className="container">{profile.username}</div>
+      </div>
     </div>
   );
 };

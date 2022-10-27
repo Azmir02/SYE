@@ -104,7 +104,7 @@ const Showpost = ({ posts, user }) => {
           >
             <Dots color="#29313D" />
           </div>
-          {visible && <Menu user={user} posts={posts} />}
+          {visible && <Menu user={user} posts={posts} images={posts.images} />}
         </div>
       </div>
       {posts.background ? (
