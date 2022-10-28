@@ -52,7 +52,7 @@ const Home = ({ setVisible }) => {
         <title>SYE</title>
       </Helmet>
 
-      <Header />
+      <Header page="home" />
       <div className="pages">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr,1fr] xl:grid-cols-[1fr,2fr,1fr] 2xl:grid-cols-[1fr,3fr,1fr] gap-1 xl:gap-2 py-5 pl-1 md:pl-4 mt-[69px]">
           <div className="hidden lg:block">

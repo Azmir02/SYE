@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import Logo from "../../svg/logo";
 import Search from "../../svg/search";
 import HomeActive from "../../svg/homeActive";
+import Home from "../../svg/home";
 import Messenger from "../../svg/messenger";
 import Watch from "../../svg/watch";
 import Gaming from "../../svg/gaming";
@@ -18,7 +19,7 @@ import Searchbox from "./Searchbox";
 import MenuOption from "./MenuOption";
 import Usermenu from "./usermenu/Usermenu";
 
-const Header = () => {
+const Header = ({ page }) => {
   const users = useSelector((users) => users.login.loggedin);
   const [show, setShow] = useState(false);
   const [menushow, setMenushow] = useState(false);
@@ -41,7 +42,9 @@ const Header = () => {
     <div className="heading flex justify-between items-center px-4 py-2 shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] fixed top-0 left-0 w-full z-[999] bg-white">
       <div className="left-part 2xl:w-[30%] flex items-center relative">
         <div className="2xl:mr-5">
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
         </div>
         <div
           className="search ml-5 lg:ml-0 px-0 py-0 flex items-center justify-center lg:justify-start bg-[#F0F2F5] lg:px-4 lg:py-2 rounded-full"
@@ -72,7 +75,7 @@ const Header = () => {
           to="/"
           className="hidden sm:block hover:bg-[#F0F2F5] lg:px-5 lg:py-2 px-2 py-2 md:px-5 md:py-2 2xl:px-12 2xl:py-3 rounded-md transition-all ease-linear duration-100"
         >
-          <HomeActive />
+          {page === "home" ? <HomeActive /> : <Home />}
         </Link>
         <Link
           to="/"

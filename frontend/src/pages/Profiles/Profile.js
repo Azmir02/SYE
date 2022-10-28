@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../../Component/Header/Header";
 import { getprofilereducer } from "../../functions/getPost";
+import Coverphoto from "./Coverphoto";
 
 const Profile = () => {
   const user = useSelector((users) => users.login.loggedin);
@@ -57,8 +58,10 @@ const Profile = () => {
         <title>{`${profile.fName} ${profile.lName} | SYE`}</title>
       </Helmet>
       <Header />
-      <div className="mt-[70px]">
-        <div className="container">{profile.username}</div>
+      <div className="mt-[100px]">
+        <div className="container px-[180px]">
+          <Coverphoto coverPhoto={profile.cover} />
+        </div>
       </div>
     </div>
   );

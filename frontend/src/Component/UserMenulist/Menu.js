@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Menuitem from "./Menuitem";
 
-const Menu = ({ user, posts, images }) => {
+const Menu = ({ user, posts, images, setVisible }) => {
   const [test, setTest] = useState(user.id === posts.user._id ? true : false);
+
   return (
     <>
       <div className="absolute top-[40px] right-0 w-[300px] z-[1] bg-white px-2 py-3 shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] rounded-md">

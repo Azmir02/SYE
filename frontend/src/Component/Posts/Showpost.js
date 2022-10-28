@@ -22,7 +22,6 @@ const Showpost = ({ posts, user }) => {
   OutsideClick(hideMenu, () => {
     setVisible(false);
   });
-
   const handleEmoji = ({ emoji }, e) => {
     const ref = textRef.current;
     ref.focus();
@@ -96,15 +95,21 @@ const Showpost = ({ posts, user }) => {
             </span>
           </div>
         </div>
-        <div className="relative">
+        <div className="relative" ref={hideMenu}>
           <div
             className="cursor-pointer w-[40px] h-[40px] flex items-center justify-center transition-all duration-100 ease-linear hover:bg-[#f2f2f2] rounded-full"
             onClick={() => setVisible((prev) => !prev)}
-            ref={hideMenu}
           >
             <Dots color="#29313D" />
           </div>
-          {visible && <Menu user={user} posts={posts} images={posts.images} />}
+          {visible && (
+            <Menu
+              user={user}
+              posts={posts}
+              images={posts.images}
+              setVisible={setVisible}
+            />
+          )}
         </div>
       </div>
       {posts.background ? (
@@ -270,7 +275,7 @@ const Showpost = ({ posts, user }) => {
               </div>
             </div>
             {picker && (
-              <div className="absolute z-[1] top-[-355px] right-[95px] ">
+              <div className="absolute z-[1] top-[-355px] right-[95px]">
                 <EmojiPicker
                   width={300}
                   height={350}
