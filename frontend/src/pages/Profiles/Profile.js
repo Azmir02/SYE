@@ -59,10 +59,12 @@ const Profile = () => {
         <title>{`${profile.fName} ${profile.lName} | SYE`}</title>
       </Helmet>
       <Header />
-      <div className="mt-[100px]">
-        <div className="container px-0 lg:px-[100px]">
-          <Coverphoto coverPhoto={profile.cover} />
-          <Profileinfos profile={profile} />
+      <div className="bg-[#F7F7FB]">
+        <div className="lg:pt-[100px] pt-[50px] pb-[100px]">
+          <div className="lg:px-[100px] 2xl:px-[200px] 3xl:px-[300px] px-0">
+            <Coverphoto coverPhoto={profile.cover} />
+            <Profileinfos profile={profile} />
+          </div>
         </div>
       </div>
     </div>
