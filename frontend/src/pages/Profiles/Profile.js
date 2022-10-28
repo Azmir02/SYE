@@ -6,6 +6,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../../Component/Header/Header";
 import { getprofilereducer } from "../../functions/getPost";
 import Coverphoto from "./Coverphoto";
+import Profileinfos from "./Profilepictureinfo";
 
 const Profile = () => {
   const user = useSelector((users) => users.login.loggedin);
@@ -59,8 +60,9 @@ const Profile = () => {
       </Helmet>
       <Header />
       <div className="mt-[100px]">
-        <div className="container px-[180px]">
+        <div className="container px-0 lg:px-[100px]">
           <Coverphoto coverPhoto={profile.cover} />
+          <Profileinfos profile={profile} />
         </div>
       </div>
     </div>

@@ -290,3 +290,15 @@ select {
     transform: translateY(0);
   }
 }
+.show_Covermenu {
+  animation: animatemenu 0.3s linear;
+}
+
+@keyframes animatemenu {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
