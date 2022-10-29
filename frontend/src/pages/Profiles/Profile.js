@@ -9,7 +9,7 @@ import Coverphoto from "./Coverphoto";
 import Profilebottom from "./Profilebtm/Profilebottom";
 import Profileinfos from "./Profilepictureinfo";
 
-const Profile = () => {
+const Profile = ({ setVisible }) => {
   const user = useSelector((users) => users.login.loggedin);
   const { username } = useParams();
   var userName = username === undefined ? user.username : username;
@@ -65,7 +65,7 @@ const Profile = () => {
           <div className="lg:px-[100px] 2xl:px-[200px] 3xl:px-[300px] px-0">
             <Coverphoto coverPhoto={profile.cover} />
             <Profileinfos profile={profile} />
-            <Profilebottom profile={profile} />
+            <Profilebottom profile={profile} setVisible={setVisible} />
           </div>
         </div>
       </div>
