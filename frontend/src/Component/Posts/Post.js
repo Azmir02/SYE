@@ -4,7 +4,7 @@ import Feeling from "../../svg/feeling";
 import ProductUpload from "../../svg/productUpload";
 import Photo from "../../svg/photo";
 
-const Post = ({ setVisible }) => {
+const Post = ({ setVisible, profile }) => {
   const users = useSelector((users) => users.login.loggedin);
   return (
     <div className="mt-5 p-2 md:p-5 bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]">
@@ -48,16 +48,29 @@ const Post = ({ setVisible }) => {
           </div>
         </div>
         <div className="hidden md:block">
-          <div className="w-[190px] flex items-center px-2 md:px-4 py-2 cursor-pointer hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150">
-            <div className="w-[20%]">
-              <Feeling color="#D9A94A" />
+          {profile ? (
+            <div className="w-[190px] flex items-center justify-center px-2 md:px-4 py-2 cursor-pointer hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150">
+              <div className="mt-2">
+                <i className="lifeEvent_icon"></i>
+              </div>
+              <div className="text-center ml-3">
+                <span className="text-sm lg:text-base font-primary font-medium text-black">
+                  Life Event
+                </span>
+              </div>
             </div>
-            <div className="w-[80%] text-center">
-              <span className="text-sm lg:text-base font-primary font-medium text-black">
-                Feeling/Activity
-              </span>
+          ) : (
+            <div className="w-[190px] flex items-center px-2 md:px-4 py-2 cursor-pointer hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150">
+              <div className="w-[20%]">
+                <Feeling color="#D9A94A" />
+              </div>
+              <div className="w-[80%] text-center">
+                <span className="text-sm lg:text-base font-primary font-medium text-black">
+                  Feeling/Activity
+                </span>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
