@@ -1,4 +1,5 @@
 const Users = require("../models/UserModel");
+const Post = require("../models/Post");
 const {
   varifyEmail,
   validateLength,
@@ -281,7 +282,11 @@ exports.getuser = async (req, res) => {
     if (!getprofile) {
       return res.json({ ok: false });
     }
-    res.json(getprofile);
+
+    const ownerPost = await Post.find({ user: getprofile._id })
+      .populate("user")
+      .sort({ createdAt: -1 });
+    res.json({ ...getprofile.toObject(), ownerPost });
   } catch (error) {
     res.status(404).json({
       message: error.message,

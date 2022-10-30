@@ -1,11 +1,20 @@
 import React from "react";
 import Post from "../../../Component/Posts/Post";
+import Gridpost from "./Gridpost";
 
-const Profileright = ({ profile, setVisible }) => {
+const Profileright = ({ profile, setVisible, users, visitor }) => {
   return (
     <>
+      {visitor ? (
+        ""
+      ) : (
+        <div>
+          <Post profile={profile} setVisible={setVisible} />
+        </div>
+      )}
+
       <div>
-        <Post profile={profile} setVisible={setVisible} />
+        <Gridpost profile={profile} users={users} />
       </div>
     </>
   );

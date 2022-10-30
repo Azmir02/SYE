@@ -249,7 +249,7 @@ const Showpost = ({ posts, user }) => {
             <input
               ref={textRef}
               type="text"
-              className="w-[95%] py-2 pl-5 md:pr-[160px] rounded-[50px] outline-none placeholder:text-title_color bg-[#F0F2F5]"
+              className="w-[95%] py-2 pl-5 md:pr-[20px] rounded-[50px] outline-none placeholder:text-title_color bg-[#F0F2F5]"
               placeholder="Write a comment..."
               value={text}
               onChange={(e) => setText(e.target.value)}

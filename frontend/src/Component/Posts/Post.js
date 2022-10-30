@@ -27,45 +27,45 @@ const Post = ({ setVisible, profile }) => {
         </div>
       </div>
       <div className="flex items-center justify-center mt-5">
-        <div className="w-[190px] flex items-center justify-between hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150 px-2 md:px-4 py-2 cursor-pointer">
-          <div className="w-[20%]">
+        <div className="flex items-center hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150 px-2 2xl:px-4 py-2 cursor-pointer">
+          <div className="">
             <ProductUpload color="#D17274" />
           </div>
-          <div className="w-[80%] text-center">
-            <span className="text-sm lg:text-base font-primary font-medium text-black">
+          <div className="text-center ml-1 3xl:ml-3">
+            <span className="text-sm 2xl:text-base font-primary font-medium text-black">
               Upload product
             </span>
           </div>
         </div>
-        <div className="w-[190px] flex items-center justify-between hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150 px-2 md:px-4 py-2 cursor-pointer md:mx-5">
-          <div className="w-[20%]">
+        <div className="flex items-center hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150 px-2 2xl:px-4 py-2 cursor-pointer md:mx-5">
+          <div className="">
             <Photo color="#21D997" />
           </div>
-          <div className="w-[80%] text-center">
-            <span className="text-sm lg:text-base font-primary font-medium text-black">
+          <div className="text-center ml-1 3xl:ml-3">
+            <span className="text-sm 2xl:text-base font-primary font-medium text-black">
               Photo/video
             </span>
           </div>
         </div>
         <div className="hidden md:block">
           {profile ? (
-            <div className="w-[190px] flex items-center justify-center px-2 md:px-4 py-2 cursor-pointer hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150">
+            <div className="flex items-center justify-center px-2 2xl:px-4 py-2 cursor-pointer hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150">
               <div className="mt-2">
                 <i className="lifeEvent_icon"></i>
               </div>
-              <div className="text-center ml-3">
-                <span className="text-sm lg:text-base font-primary font-medium text-black">
+              <div className="text-center ml-1 3xl:ml-3">
+                <span className="text-sm 2xl:text-base font-primary font-medium text-black">
                   Life Event
                 </span>
               </div>
             </div>
           ) : (
-            <div className="w-[190px] flex items-center px-2 md:px-4 py-2 cursor-pointer hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150">
-              <div className="w-[20%]">
+            <div className="flex items-center px-2 2xl:px-4 py-2 cursor-pointer hover:bg-[#f8f5fa] hover:rounded-md transition-all ease-linear duration-150">
+              <div className="">
                 <Feeling color="#D9A94A" />
               </div>
-              <div className="w-[80%] text-center">
-                <span className="text-sm lg:text-base font-primary font-medium text-black">
+              <div className="text-center ml-1 3xl:ml-3">
+                <span className="text-sm 2xl:text-base font-primary font-medium text-black">
                   Feeling/Activity
                 </span>
               </div>

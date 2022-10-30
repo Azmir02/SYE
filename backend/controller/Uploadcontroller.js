@@ -25,6 +25,23 @@ exports.uploadImage = async (req, res) => {
   }
 };
 
+// for getting images to frontend
+exports.listimage = async (req, res) => {
+  const { path, sort, max } = req.body;
+
+  cloudinary.v2.search
+    .expression(`${path}`)
+    .sort_by("public_id", `${sort}`)
+    .max_results(max)
+    .execute()
+    .then((result) => res.json(result))
+    .catch((error) => {
+      res.status(404).json({
+        messasge: error.messasge,
+      });
+    });
+};
+
 const uploadToCloudinary = async (file, path) => {
   return new Promise((resolve) => {
     cloudinary.v2.uploader.upload(

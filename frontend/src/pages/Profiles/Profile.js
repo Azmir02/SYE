@@ -23,6 +23,7 @@ const Profile = ({ setVisible }) => {
     }
   );
 
+  var visitor = userName !== user.username ? true : false;
   useEffect(() => {
     getUserProfile();
   }, [userName]);
@@ -61,11 +62,18 @@ const Profile = ({ setVisible }) => {
       </Helmet>
       <Header />
       <div className="bg-[#F7F7FB]">
-        <div className="lg:pt-[100px] pt-[50px] pb-[100px]">
-          <div className="lg:px-[100px] 2xl:px-[200px] 3xl:px-[300px] px-0">
-            <Coverphoto coverPhoto={profile.cover} />
-            <Profileinfos profile={profile} />
-            <Profilebottom profile={profile} setVisible={setVisible} />
+        <div className="lg:pt-[100px] pt-[50px] pb-[10px]">
+          <div className="2xl:px-[150px] 3xl:px-[300px] px-0">
+            <Coverphoto coverPhoto={profile.cover} visitor={visitor} />
+            <Profileinfos profile={profile} visitor={visitor} />
+            <Profilebottom
+              profile={profile}
+              setVisible={setVisible}
+              users={user}
+              visitor={visitor}
+              username={userName}
+              friends={profile.friends}
+            />
           </div>
         </div>
       </div>

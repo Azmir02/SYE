@@ -75,6 +75,10 @@ const UserModel = new Schema(
       type: Boolean,
       default: false,
     },
+    friends: {
+      type: Array,
+      default: [],
+    },
 
     followers: {
       type: Array,
