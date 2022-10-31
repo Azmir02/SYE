@@ -302,3 +302,15 @@ select {
     transform: translateY(0);
   }
 }
+
+/* cropper */
+.reactEasyCrop_Container img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.reactEasyCrop_CropAreaGrid {
+  width: 300px !important;
+  height: 300px !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+}

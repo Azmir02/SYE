@@ -87,7 +87,7 @@ const Profilepicpopup = ({ setShow }) => {
           )}
         </div>
       </div>
-      {images && <Picturecropper setImages={setImages} />}
+      {images && <Picturecropper setImages={setImages} images={images} />}
     </div>
   );
 };
