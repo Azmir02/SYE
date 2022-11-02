@@ -75,6 +75,39 @@ const Picturecropper = ({ setImages, images }) => {
           <i className="plus_icon"></i>
         </div>
       </div>
+      <div className="flex justify-center items-center">
+        <button className="flex items-center bg-[#F0F2F5] px-4 py-2 rounded-md">
+          <i className="crop_icon"></i>
+          <span className="ml-2 font-primary text-medium text-base text-black">
+            Crop Photo
+          </span>
+        </button>
+        <button className="flex items-center bg-[#F0F2F5] px-4 py-2 rounded-md ml-3">
+          <i className="temp_icon"></i>
+          <span className="ml-2 font-primary text-medium text-base text-black">
+            Make Temporary
+          </span>
+        </button>
+      </div>
+      <div className="mt-8 border-b border-solid border-[#F0F2F5] pb-5">
+        <h4 className="font-primary text-medium text-lg text-black">
+          Your Profile Is Public
+        </h4>
+      </div>
+      <div className="flex justify-end items-center mt-5">
+        <div>
+          <button className="hover:bg-[#F0F2F5] px-5 py-2 rounded-md">
+            <span className="font-primary text-normal text-base text-blue">
+              cancle
+            </span>
+          </button>
+          <button className="px-5 py-2 bg-blue rounded-md ml-3">
+            <span className="font-primary text-normal text-base text-white">
+              Save
+            </span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
