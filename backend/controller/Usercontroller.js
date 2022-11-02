@@ -293,3 +293,17 @@ exports.getuser = async (req, res) => {
     });
   }
 };
+
+exports.getprofilepicture = async (req, res) => {
+  try {
+    const { url } = req.body;
+    const updateprofilepictures = await Users.findByIdAndUpdate(req.user.id, {
+      profilePicture: url,
+    });
+    res.json(updateprofilepictures);
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
+};
