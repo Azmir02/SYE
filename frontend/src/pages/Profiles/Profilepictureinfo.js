@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Profileinfooptions from "./Profileinfooptions";
 import Profilepicpopup from "./Profilepicture/Profilepicpopup";
 
 const Profileinfos = ({ profile, visitor }) => {
   const [show, setShow] = useState(false);
+  const uploadPhoto = useRef(null);
   return (
     <>
       <div className="bg-white rounded-b-md pb-[18px]">
@@ -14,6 +15,7 @@ const Profileinfos = ({ profile, visitor }) => {
               style={{
                 backgroundImage: `url(${profile.profilePicture})`,
               }}
+              ref={uploadPhoto}
             ></div>
             {visitor ? (
               ""
@@ -169,7 +171,7 @@ const Profileinfos = ({ profile, visitor }) => {
           <Profileinfooptions />
         </div>
       </div>
-      {show && <Profilepicpopup setShow={setShow} />}
+      {show && <Profilepicpopup setShow={setShow} uploadPhoto={uploadPhoto} />}
     </>
   );
 };

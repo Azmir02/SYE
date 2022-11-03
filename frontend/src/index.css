@@ -314,3 +314,22 @@ select {
   height: 300px !important;
   color: rgba(255, 255, 255, 0.5) !important;
 }
+
+/* input range style */
+.customize[type="range"] {
+  -webkit-appearance: none;
+  width: 55%;
+  height: 4px;
+  background: #ececec;
+}
+
+.customize[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #23d2e2;
+  outline: none;
+  border-radius: 50%;
+  box-shadow: 0px 24px 50px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #e8e8e8;
+}

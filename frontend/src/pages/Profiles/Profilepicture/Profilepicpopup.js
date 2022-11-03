@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import OutsideClick from "../../../helpers/click";
 import Picturecropper from "./Picturecropper";
 
-const Profilepicpopup = ({ setShow }) => {
+const Profilepicpopup = ({ setShow, uploadPhoto }) => {
   const [error, setError] = useState("");
   const [images, setImages] = useState("");
   const user = useSelector((users) => users.login.loggedin);
@@ -104,6 +104,7 @@ const Profilepicpopup = ({ setShow }) => {
             setError={setError}
             error={error}
             setShow={setShow}
+            uploadPhoto={uploadPhoto}
           />
         )}
       </div>

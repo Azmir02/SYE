@@ -5,6 +5,8 @@ import { UploadProfilepicture } from "../../../functions/Profilepicupload";
 import { PulseLoader } from "react-spinners";
 import { uploadIamge } from "../../../functions/UploadImages";
 import getCroppedImg from "../../../helpers/getCroppedImg";
+import { LoginUser } from "../../../features/users/loginUser";
+import { useDispatch } from "react-redux";
 
 const Picturecropper = ({
   setImages,
@@ -13,11 +15,13 @@ const Picturecropper = ({
   setError,
   error,
   setShow,
+  uploadPhoto,
 }) => {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const dispatch = useDispatch();
   const [zoom, setZoom] = useState(1);
   const zoomRange = useRef(null);
 
@@ -79,6 +83,14 @@ const Picturecropper = ({
         if (profilepicpost === "done") {
           setShow(false);
           setLoading(false);
+          uploadPhoto.current.style.backgroundImage = `url(${resprofilepic[0].url})`;
+          localStorage.setItem(
+            "user",
+            JSON.stringify({ ...user, profilePicture: resprofilepic[0].url })
+          );
+          dispatch(
+            LoginUser({ ...user, profilePicture: resprofilepic[0].url })
+          );
         } else {
           setError(profilepicpost);
         }
@@ -136,7 +148,7 @@ const Picturecropper = ({
           max={3}
           step={0.2}
           ref={zoomRange}
-          className="w-[400px]"
+          className="w-[400px] customize"
           type="range"
           onChange={(e) => setZoom(e.target.value)}
         />
