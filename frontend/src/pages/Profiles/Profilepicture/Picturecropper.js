@@ -2,11 +2,20 @@ import React, { useCallback, useRef, useState } from "react";
 import Cropper from "react-easy-crop";
 import { createPost } from "../../../functions/Createpost";
 import { UploadProfilepicture } from "../../../functions/Profilepicupload";
+import { PulseLoader } from "react-spinners";
 import { uploadIamge } from "../../../functions/UploadImages";
 import getCroppedImg from "../../../helpers/getCroppedImg";
 
-const Picturecropper = ({ setImages, images, user, setError, error }) => {
+const Picturecropper = ({
+  setImages,
+  images,
+  user,
+  setError,
+  error,
+  setShow,
+}) => {
   const [text, setText] = useState("");
+  const [loading, setLoading] = useState(false);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [zoom, setZoom] = useState(1);
@@ -45,6 +54,7 @@ const Picturecropper = ({ setImages, images, user, setError, error }) => {
 
   const handleProfilepicture = async () => {
     try {
+      setLoading(true);
       const img = await getCroppedImage();
       const blob = await fetch(img).then((b) => b.blob());
       const path = `${user.username}/profile_picture`;
@@ -57,6 +67,7 @@ const Picturecropper = ({ setImages, images, user, setError, error }) => {
         user.token
       );
       if (uploadProfilepicture === "done") {
+        setLoading(false);
         const profilepicpost = await createPost(
           "profilePicture",
           resprofilepic,
@@ -66,6 +77,8 @@ const Picturecropper = ({ setImages, images, user, setError, error }) => {
           user.token
         );
         if (profilepicpost === "done") {
+          setShow(false);
+          setLoading(false);
         } else {
           setError(profilepicpost);
         }
@@ -158,7 +171,10 @@ const Picturecropper = ({ setImages, images, user, setError, error }) => {
       </div>
       <div className="flex justify-end items-center mt-5">
         <div>
-          <button className="hover:bg-[#F0F2F5] px-5 py-2 rounded-md">
+          <button
+            className="hover:bg-[#F0F2F5] px-5 py-2 rounded-md"
+            onClick={() => setImages("")}
+          >
             <span className="font-primary text-normal text-base text-blue">
               cancle
             </span>
@@ -166,10 +182,15 @@ const Picturecropper = ({ setImages, images, user, setError, error }) => {
           <button
             className="px-5 py-2 bg-blue rounded-md ml-3"
             onClick={() => handleProfilepicture()}
+            disabled={loading}
           >
-            <span className="font-primary text-normal text-base text-white">
-              Save
-            </span>
+            {loading ? (
+              <PulseLoader size={5} color="#fff" />
+            ) : (
+              <span className="font-primary text-normal text-base text-white">
+                Save
+              </span>
+            )}
           </button>
         </div>
       </div>

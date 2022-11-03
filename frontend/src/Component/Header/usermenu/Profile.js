@@ -8,7 +8,13 @@ const Profile = ({ user }) => {
         to="/profile"
         className="flex items-center relative after:absolute after:bottom-0 after:left-0 after:content[] after:bg-[#d3d3d3] after:w-[238px] md:after:w-[290px] after:h-[1px] pb-3"
       >
-        <div className="w-[40px] h-[40px] rounded-full bg-primary_bg"></div>
+        <div className="w-[40px] h-[40px] rounded-full overflow-hidden">
+          <img
+            className="w-full h-full object-cover"
+            src={user.profilePicture}
+            alt="picture"
+          />
+        </div>
         <div className="w-[62%] ml-2">
           <h4 className="capitalize font-primary text-lg font-medium text-black">
             {user?.fName} {user?.lName}
