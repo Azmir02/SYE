@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import Picturecropper from "./Picturecropper";
 
 const Profilepicpopup = ({ setShow }) => {
   const [error, setError] = useState("");
   const [images, setImages] = useState("");
+  const user = useSelector((users) => users.login.loggedin);
   const chooseFile = useRef(null);
 
   const handleImageUpload = (e) => {
@@ -87,7 +89,15 @@ const Profilepicpopup = ({ setShow }) => {
           )}
         </div>
       </div>
-      {images && <Picturecropper setImages={setImages} images={images} />}
+      {images && (
+        <Picturecropper
+          setImages={setImages}
+          images={images}
+          user={user}
+          setError={setError}
+          error={error}
+        />
+      )}
     </div>
   );
 };

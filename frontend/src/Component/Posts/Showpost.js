@@ -64,8 +64,8 @@ const Showpost = ({ posts, user }) => {
   return (
     <div className="my-5 bg-white rounded-md pb-2">
       <div className="flex p-5 items-center justify-between">
-        <div className="flex items-center w-[300px]">
-          <div className="w-[50px] h-[50px] border-2 border-solid border-[#D9D9D9] rounded-full overflow-hidden">
+        <div className="flex items-center w-[420px]">
+          <div className="w-[50px] h-[50px] border-2 border-solid border-[#D9D9D9] rounded-full overflow-hidden mr-3">
             <Link to={`/profile/${posts.user.username}`}>
               <img
                 className="w-full h-full object-cover"
@@ -74,25 +74,27 @@ const Showpost = ({ posts, user }) => {
               />
             </Link>
           </div>
-          <div className="w-[200px] ml-3">
-            <h4 className="font-primary font-medium text-black capitalize text-lg leading-[0.8]">
+          <div className="w-[280px]">
+            <h4 className="font-primary font-medium text-black capitalize text-lg leading-[0.8] inline-block">
               <Link to={`/profile/${posts.user.username}`}>
                 {posts.user.fName} {posts.user.lName}
               </Link>
-              {posts.type === "profilePicture" &&
-                `update${
-                  posts.user.gender === "male" ? "his" : "her"
-                } profile picture`}
-              {posts.type === "cover" &&
-                `update${
-                  posts.user.gender === "male" ? "his" : "her"
-                } cover photo`}
             </h4>
-            <span className="font-primary font-regular text-title_color text-sm ">
+            <span className="font-primary font-normal text-title_color capitalize text-base leading-[0.8] ml-1">
+              {posts.type === "profilePicture" &&
+                `Update ${
+                  posts.user.gender === "male" ? "his" : "her"
+                } Profile Picture`}
+              {posts.type === "cover" &&
+                `Update${
+                  posts.user.gender === "male" ? "his" : "her"
+                } Cover Photo`}
+            </span>
+            <p className="font-primary font-regular text-title_color text-sm ">
               <Moment fromNow interval={30}>
                 {posts.createdAt}
               </Moment>
-            </span>
+            </p>
           </div>
         </div>
         <div className="relative" ref={hideMenu}>
@@ -306,5 +308,3 @@ const Showpost = ({ posts, user }) => {
 };
 
 export default Showpost;
-
-// onChange={(e) => setText(e.target.value)}

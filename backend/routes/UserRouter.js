@@ -23,6 +23,6 @@ userRouter.route("/resetcode").post(resetcode);
 userRouter.route("/verifyresetcode").post(verifyresetcode);
 userRouter.route("/changepassword").post(changepassword);
 userRouter.route("/getuser/:username").get(authUser, getuser);
-userRouter.route("/getprofilepicture").get(authUser, getprofilepicture);
+userRouter.route("/getprofilepicture").put(authUser, getprofilepicture);
 
 module.exports = userRouter;
