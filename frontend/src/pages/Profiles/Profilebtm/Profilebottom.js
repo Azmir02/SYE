@@ -9,11 +9,17 @@ const Profilebottom = ({
   visitor,
   username,
   friends,
+  photo,
 }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.5fr] gap-4 mt-4">
       <div>
-        <Profileleft users={users} username={username} friends={friends} />
+        <Profileleft
+          users={users}
+          username={username}
+          friends={friends}
+          photo={photo}
+        />
       </div>
       <div>
         <Profileright

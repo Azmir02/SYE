@@ -11,6 +11,7 @@ import Profileinfos from "./Profilepictureinfo";
 
 const Profile = ({ setVisible }) => {
   const user = useSelector((users) => users.login.loggedin);
+  const [photo, setPhoto] = useState({});
   const { username } = useParams();
   var userName = username === undefined ? user.username : username;
   const navigate = useNavigate();
@@ -22,6 +23,10 @@ const Profile = ({ setVisible }) => {
       error: "",
     }
   );
+
+  const path = `${userName}/*`;
+  const sort = "desc";
+  const max = 30;
 
   var visitor = userName !== user.username ? true : false;
   useEffect(() => {
@@ -41,6 +46,24 @@ const Profile = ({ setVisible }) => {
       if (data.ok === false) {
         navigate("/");
       } else {
+        try {
+          const images = await axios.post(
+            `/api/listimage`,
+            { path, sort, max },
+            {
+              headers: {
+                Authorization: `Bearer ${user.token}`,
+              },
+            }
+          );
+          setPhoto(images.data);
+        } catch (error) {
+          // dispatch({
+          //   type: "PHOTO_ERROR",
+          //   payload: error.response.data.message,
+          // });
+          console.log(error);
+        }
         dispatch({
           type: "PROFILE_SUCCESS",
           payload: data,
@@ -55,6 +78,7 @@ const Profile = ({ setVisible }) => {
     }
   };
 
+  console.log(photo);
   return (
     <div>
       <Helmet>
@@ -65,7 +89,7 @@ const Profile = ({ setVisible }) => {
         <div className="lg:pt-[100px] pt-[50px] pb-[10px]">
           <div className="2xl:px-[150px] 3xl:px-[300px] px-0">
             <Coverphoto coverPhoto={profile.cover} visitor={visitor} />
-            <Profileinfos profile={profile} visitor={visitor} />
+            <Profileinfos photo={photo} profile={profile} visitor={visitor} />
             <Profilebottom
               profile={profile}
               setVisible={setVisible}
@@ -73,6 +97,7 @@ const Profile = ({ setVisible }) => {
               visitor={visitor}
               username={userName}
               friends={profile.friends}
+              photo={photo}
             />
           </div>
         </div>

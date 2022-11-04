@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import OutsideClick from "../../../helpers/click";
 import Picturecropper from "./Picturecropper";
 
-const Profilepicpopup = ({ setShow, uploadPhoto }) => {
+const Profilepicpopup = ({ setShow, uploadPhoto, photo }) => {
   const [error, setError] = useState("");
   const [images, setImages] = useState("");
   const user = useSelector((users) => users.login.loggedin);
@@ -94,6 +94,56 @@ const Profilepicpopup = ({ setShow, uploadPhoto }) => {
                 </div>
               </div>
             )}
+          </div>
+          <div className="px-5 mt-[30px]">
+            <h4 className="text-xl font-primary font-semibold text-black">
+              Profile pictures(
+              {
+                photo.resources.filter(
+                  (img) => img.folder === `${user.username}/profile_picture`
+                ).length
+              }
+              )
+            </h4>
+            <div className="flex flex-wrap mt-3 gap-2">
+              {photo.resources
+                .filter(
+                  (img) => img.folder === `${user.username}/profile_picture`
+                )
+                .map((files, i) => (
+                  <img
+                    className="w-[100px] h-[100px] object-cover rounded-md cursor-pointer"
+                    src={files.url}
+                    key={i}
+                    alt="profilePicture"
+                  />
+                ))}
+            </div>
+          </div>
+          <div className="px-5 mt-[30px]">
+            <h4 className="text-xl font-primary font-semibold text-black">
+              Others pictures(
+              {
+                photo.resources.filter(
+                  (img) => img.folder !== `${user.username}/profile_picture`
+                ).length
+              }
+              )
+            </h4>
+            <div className="flex flex-wrap mt-3 gap-2">
+              {photo.resources
+                .filter(
+                  (img) => img.folder !== `${user.username}/profile_picture`
+                )
+                .map((files, i) => (
+                  <img
+                    className="w-[100px] h-[100px] object-cover rounded-md cursor-pointer"
+                    src={files.url}
+                    key={i}
+                    alt="otherPicture"
+                  />
+                ))}
+            </div>
           </div>
         </div>
         {images && (

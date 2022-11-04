@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Profileinfooptions from "./Profileinfooptions";
 import Profilepicpopup from "./Profilepicture/Profilepicpopup";
 
-const Profileinfos = ({ profile, visitor }) => {
+const Profileinfos = ({ profile, visitor, photo }) => {
   const [show, setShow] = useState(false);
   const uploadPhoto = useRef(null);
   return (
@@ -171,7 +171,13 @@ const Profileinfos = ({ profile, visitor }) => {
           <Profileinfooptions />
         </div>
       </div>
-      {show && <Profilepicpopup setShow={setShow} uploadPhoto={uploadPhoto} />}
+      {show && (
+        <Profilepicpopup
+          photo={photo}
+          setShow={setShow}
+          uploadPhoto={uploadPhoto}
+        />
+      )}
     </>
   );
 };

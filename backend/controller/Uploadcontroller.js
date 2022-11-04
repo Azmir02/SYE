@@ -52,7 +52,7 @@ const uploadToCloudinary = async (file, path) => {
       (err, res) => {
         if (err) {
           removeFile(file.tempFilePath);
-          return res.json({
+          return res.status(404).json({
             messasge: "File upload failed",
           });
         }

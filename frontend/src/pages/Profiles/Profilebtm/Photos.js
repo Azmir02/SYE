@@ -2,49 +2,7 @@ import axios from "axios";
 import React, { useEffect, useReducer } from "react";
 import { imagereducer } from "../../../functions/getPost";
 
-const Photos = ({ users, username }) => {
-  const [{ loading, photo, error }, dispatch] = useReducer(imagereducer, {
-    loading: false,
-    photo: {},
-    error: "",
-  });
-  useEffect(() => {
-    showImage();
-  }, [username]);
-
-  const path = `${username}/*`;
-  const sort = "desc";
-  const max = 30;
-
-  const showImage = async () => {
-    try {
-      dispatch({
-        type: "PHOTO_REQUEST",
-      });
-      const { data } = await axios.post(
-        `/api/listimage`,
-        { path, sort, max },
-        {
-          headers: {
-            Authorization: `Bearer ${users.token}`,
-          },
-        }
-      );
-      dispatch({
-        type: "PHOTO_SUCCESS",
-        payload: data,
-      });
-    } catch (error) {
-      dispatch({
-        type: "PHOTO_ERROR",
-        payload: error.response.data.message,
-      });
-      console.log(error);
-    }
-  };
-
-  console.log(photo);
-
+const Photos = ({ photo }) => {
   return (
     <div className="w-full p-4 bg-white rounded-md mt-5 shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]">
       <div className="flex items-center justify-between">
