@@ -48,7 +48,7 @@ const Profilepicpopup = ({ setShow, uploadPhoto, photo }) => {
           ref={chooseFile}
           onChange={handleImageUpload}
         />
-        <div className="w-[500px] md:w-[700px] h-[600px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative">
+        <div className="w-[500px] md:w-[700px] h-[600px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative main-menu overflow-y-auto pb-3">
           <div className="border-b border-solid border-[#F0F2F5] relative py-5">
             <div className="text-center">
               <h4 className="text-black font-primary text-xl font-bold">
@@ -99,23 +99,24 @@ const Profilepicpopup = ({ setShow, uploadPhoto, photo }) => {
             <h4 className="text-xl font-primary font-semibold text-black">
               Profile pictures(
               {
-                photo.resources.filter(
+                photo.filter(
                   (img) => img.folder === `${user.username}/profile_picture`
                 ).length
               }
               )
             </h4>
             <div className="flex flex-wrap mt-3 gap-2">
-              {photo.resources
+              {photo
                 .filter(
                   (img) => img.folder === `${user.username}/profile_picture`
                 )
                 .map((files, i) => (
                   <img
                     className="w-[100px] h-[100px] object-cover rounded-md cursor-pointer"
-                    src={files.url}
+                    src={files.secure_url}
                     key={i}
                     alt="profilePicture"
+                    onClick={() => setImages(files.secure_url)}
                   />
                 ))}
             </div>
@@ -124,23 +125,24 @@ const Profilepicpopup = ({ setShow, uploadPhoto, photo }) => {
             <h4 className="text-xl font-primary font-semibold text-black">
               Others pictures(
               {
-                photo.resources.filter(
+                photo.filter(
                   (img) => img.folder !== `${user.username}/profile_picture`
                 ).length
               }
               )
             </h4>
             <div className="flex flex-wrap mt-3 gap-2">
-              {photo.resources
+              {photo
                 .filter(
                   (img) => img.folder !== `${user.username}/profile_picture`
                 )
                 .map((files, i) => (
                   <img
                     className="w-[100px] h-[100px] object-cover rounded-md cursor-pointer"
-                    src={files.url}
+                    src={files.secure_url}
                     key={i}
                     alt="otherPicture"
+                    onClick={() => setImages(files.secure_url)}
                   />
                 ))}
             </div>

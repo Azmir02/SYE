@@ -58,10 +58,6 @@ const Profile = ({ setVisible }) => {
           );
           setPhoto(images.data);
         } catch (error) {
-          // dispatch({
-          //   type: "PHOTO_ERROR",
-          //   payload: error.response.data.message,
-          // });
           console.log(error);
         }
         dispatch({
@@ -77,8 +73,6 @@ const Profile = ({ setVisible }) => {
       console.log(error);
     }
   };
-
-  console.log(photo);
   return (
     <div>
       <Helmet>
@@ -89,7 +83,11 @@ const Profile = ({ setVisible }) => {
         <div className="lg:pt-[100px] pt-[50px] pb-[10px]">
           <div className="2xl:px-[150px] 3xl:px-[300px] px-0">
             <Coverphoto coverPhoto={profile.cover} visitor={visitor} />
-            <Profileinfos photo={photo} profile={profile} visitor={visitor} />
+            <Profileinfos
+              photo={photo.resources}
+              profile={profile}
+              visitor={visitor}
+            />
             <Profilebottom
               profile={profile}
               setVisible={setVisible}
