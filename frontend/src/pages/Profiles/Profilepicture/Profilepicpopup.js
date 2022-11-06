@@ -48,7 +48,13 @@ const Profilepicpopup = ({ setShow, uploadPhoto, photo }) => {
           ref={chooseFile}
           onChange={handleImageUpload}
         />
-        <div className="w-[500px] md:w-[700px] h-[600px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative main-menu overflow-y-auto pb-3">
+        <div
+          className={`${
+            error
+              ? "w-[500px] md:w-[700px] h-[600px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative main-menu overflow-y-hidden pb-3"
+              : "w-[500px] md:w-[700px] h-[600px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative main-menu overflow-y-auto pb-3"
+          }`}
+        >
           <div className="border-b border-solid border-[#F0F2F5] relative py-5">
             <div className="text-center">
               <h4 className="text-black font-primary text-xl font-bold">
@@ -78,22 +84,6 @@ const Profilepicpopup = ({ setShow, uploadPhoto, photo }) => {
                 Add frame
               </span>
             </div>
-            <div></div>
-            {error && (
-              <div className="authorize_err absolute top-0 left-0 w-full h-full bg-[rgba(255,_255,_255,_.9)] z-[9999] flex items-center justify-center">
-                <div className="text-center w-[300px] mx-auto">
-                  <p className="text-red font-primary text-base font-regular">
-                    {error}
-                  </p>
-                  <button
-                    onClick={() => setError(false)}
-                    className="bg-blue hover:bg-[#1870d5] transition-all ease-linear duration-100 px-3 py-2 rounded-md text-white font-primary text-base font-medium mt-3"
-                  >
-                    Try Again
-                  </button>
-                </div>
-              </div>
-            )}
           </div>
           <div className="px-5 mt-[30px]">
             <h4 className="text-xl font-primary font-semibold text-black">
@@ -147,6 +137,21 @@ const Profilepicpopup = ({ setShow, uploadPhoto, photo }) => {
                 ))}
             </div>
           </div>
+          {error && (
+            <div className="authorize_err absolute top-0 left-0 w-full h-full bg-[rgba(255,_255,_255,_.9)] z-[9999] flex items-center justify-center">
+              <div className="text-center w-[300px] mx-auto">
+                <p className="text-red font-primary text-base font-regular">
+                  {error}
+                </p>
+                <button
+                  onClick={() => setError(false)}
+                  className="bg-blue hover:bg-[#1870d5] transition-all ease-linear duration-100 px-3 py-2 rounded-md text-white font-primary text-base font-medium mt-3"
+                >
+                  Try Again
+                </button>
+              </div>
+            </div>
+          )}
         </div>
         {images && (
           <Picturecropper

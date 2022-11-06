@@ -95,6 +95,7 @@ exports.newuser = async (req, res) => {
       fName: User.fName,
       lName: User.lName,
       profilePicture: User.profilePicture,
+      cover: User.cover,
       verified: User.verified,
       token: token,
       message: "Registration success! Please activate your email before",
@@ -136,7 +137,6 @@ exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await Users.findOne({ email });
-    console.log(user);
     if (user) {
       if (bcrypt.compareSync(password, user.password)) {
         const token = jwtToken({ id: user._id.toString() }, "7d");
@@ -147,6 +147,7 @@ exports.loginUser = async (req, res) => {
           fName: user.fName,
           lName: user.lName,
           profilePicture: user.profilePicture,
+          cover: user.cover,
           verified: user.verified,
           token: token,
         });
@@ -297,10 +298,24 @@ exports.getuser = async (req, res) => {
 exports.getprofilepicture = async (req, res) => {
   try {
     const { url } = req.body;
-    const updateprofilepictures = await Users.findByIdAndUpdate(req.user.id, {
+    await Users.findByIdAndUpdate(req.user.id, {
       profilePicture: url,
     });
-    res.json(updateprofilepictures);
+    res.json(url);
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
+};
+
+exports.getcoverpicture = async (req, res) => {
+  try {
+    const { url } = req.body;
+    await Users.findByIdAndUpdate(req.user.id, {
+      cover: url,
+    });
+    res.json(url);
   } catch (error) {
     res.status(404).json({
       message: error.message,

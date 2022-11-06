@@ -11,7 +11,7 @@ const Profileinfos = ({ profile, visitor, photo }) => {
         <div className="text-center border-b border-solid border-[#F0F2F5] pb-5 xl:pb-0">
           <div className="relative inline-block cursor-pointer z-[1]">
             <div
-              className="w-[150px] h-[150px] rounded-full bg-cover bg-no-repeat border-4 border-solid border-white translate-y-[-60%] translate-x-[-50%] absolute left-[50%]"
+              className="w-[150px] h-[150px] rounded-full bg-cover bg-no-repeat border-4 border-solid border-white translate-y-[-60%] translate-x-[-50%] absolute left-[50%] z-[1]"
               style={{
                 backgroundImage: `url(${profile.profilePicture})`,
               }}
@@ -21,7 +21,7 @@ const Profileinfos = ({ profile, visitor, photo }) => {
               ""
             ) : (
               <div
-                className="w-[40px] h-[40px] bg-white rounded-full flex items-center justify-center absolute bottom-[-50px] right-[-75px]"
+                className="w-[40px] h-[40px] bg-white rounded-full flex items-center justify-center absolute bottom-[-50px] right-[-75px] z-[2]"
                 onClick={() => setShow(true)}
               >
                 <i className="camera_filled_icon"></i>
@@ -70,7 +70,7 @@ const Profileinfos = ({ profile, visitor, photo }) => {
           {visitor ? (
             ""
           ) : (
-            <div className="flex justify-center xl:justify-end pr-5 xl:translate-y-[-100%]">
+            <div className="flex justify-center xl:justify-end pr-5 xl:translate-y-[-100%] relative z-[1]">
               <button className="flex items-center bg-blue px-5 py-3 rounded-md">
                 <img src="../../../icons/plus.png" className="invert" alt="" />
                 <span className="font-primary text-base text-white font-normal ml-2">

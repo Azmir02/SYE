@@ -7,9 +7,13 @@ const Leftprofile = ({ user }) => {
       <div className="hidden w-[265px] 3xl:w-full xl:block bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] ">
         <div className="relative">
           <div className="overflow-hidden bg-red h-[100px] rounded-tl-md rounded-tr-md">
-            coverPhoto
+            <img
+              src={user?.cover}
+              className="w-full h-full object-cover"
+              alt="coverPhoto"
+            />
           </div>
-          <div className="w-[110px] h-[110px] absolute top-10 left-[50%] translate-x-[-50%] rounded-full overflow-hidden bg-[#EEF0F3] m-auto">
+          <div className="w-[80px] h-[80px] absolute top-[55px] left-[50%] translate-x-[-50%] rounded-full overflow-hidden bg-[#EEF0F3] m-auto">
             <img
               className="object-cover w-full h-full"
               src={user.profilePicture}
@@ -17,7 +21,7 @@ const Leftprofile = ({ user }) => {
             />
           </div>
         </div>
-        <div className="mt-16 px-12 xl:px-5 3xl:px-12">
+        <div className="mt-12 px-12 xl:px-5 3xl:px-12">
           <div className="text-center">
             <Link to="/profile">
               <h4 className="capitalize font-primary text-lg font-medium text-black">

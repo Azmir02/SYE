@@ -87,7 +87,7 @@ const Showpost = ({ posts, user }) => {
                 } Profile Picture`}
               {posts.type === "cover" &&
                 `Update${
-                  posts.user.gender === "male" ? "his" : "her"
+                  posts.user.gender === "male" ? " his" : "her"
                 } Cover Photo`}
             </span>
             <p className="font-primary font-regular text-title_color text-sm ">

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../../Component/Header/Header";
 import { getprofilereducer } from "../../functions/getPost";
-import Coverphoto from "./Coverphoto";
+import Coverphoto from "./Coverphoto/Coverphoto";
 import Profilebottom from "./Profilebtm/Profilebottom";
 import Profileinfos from "./Profilepictureinfo";
 
@@ -46,6 +46,7 @@ const Profile = ({ setVisible }) => {
       if (data.ok === false) {
         navigate("/");
       } else {
+        // for all and profile picture
         try {
           const images = await axios.post(
             `/api/listimage`,
@@ -70,9 +71,9 @@ const Profile = ({ setVisible }) => {
         type: "PROFILE_ERROR",
         payload: error.response.data.message,
       });
-      console.log(error);
     }
   };
+
   return (
     <div>
       <Helmet>
@@ -82,7 +83,13 @@ const Profile = ({ setVisible }) => {
       <div className="bg-[#F7F7FB]">
         <div className="lg:pt-[100px] pt-[50px] pb-[10px]">
           <div className="2xl:px-[150px] 3xl:px-[300px] px-0">
-            <Coverphoto coverPhoto={profile.cover} visitor={visitor} />
+            <Coverphoto
+              coverPhoto={profile.cover}
+              visitor={visitor}
+              user={user}
+              profile={profile}
+              photo={photo}
+            />
             <Profileinfos
               photo={photo.resources}
               profile={profile}

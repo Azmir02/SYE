@@ -303,17 +303,40 @@ select {
   }
 }
 
+.cover_err {
+  animation: coveranimate 0.3s linear;
+}
+
+@keyframes coveranimate {
+  0% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 /* cropper */
-.reactEasyCrop_Container img {
+.profile_cropper .reactEasyCrop_Container img {
   width: 100%;
   object-fit: contain;
 }
 
-.reactEasyCrop_CropAreaGrid {
+.profile_cropper .reactEasyCrop_CropAreaGrid {
   width: 300px !important;
   height: 300px !important;
   color: rgba(255, 255, 255, 0.5) !important;
 }
+/* Cover cropper */
+.cover_cropper .reactEasyCrop_Container img {
+  width: 100%;
+  object-fit: cover;
+}
+
+/* .cover_cropper .reactEasyCrop_CropAreaGrid {
+  width: 100% !important;
+  height: 100% !important;
+} */
 
 /* input range style */
 .customize[type="range"] {

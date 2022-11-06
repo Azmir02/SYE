@@ -123,7 +123,7 @@ const Picturecropper = ({
           onChange={(e) => setText(e.target.value)}
         ></textarea>
       </div>
-      <div className="mt-5 flex items-center justify-center relative w-full h-[400px]">
+      <div className="mt-5 flex items-center justify-center relative w-full h-[400px] profile_cropper">
         <Cropper
           image={images}
           crop={crop}
@@ -211,4 +211,3 @@ const Picturecropper = ({
 };
 
 export default Picturecropper;
-// onClick={() => handleProfilepicture()}
