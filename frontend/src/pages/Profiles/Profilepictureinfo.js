@@ -7,7 +7,7 @@ const Profileinfos = ({ profile, visitor, photo }) => {
   const uploadPhoto = useRef(null);
   return (
     <>
-      <div className="bg-white rounded-b-md pb-[18px]">
+      <div className="bg-white rounded-b-md">
         <div className="text-center border-b border-solid border-[#F0F2F5] pb-5 xl:pb-0">
           <div className="relative inline-block cursor-pointer z-[1]">
             <div
