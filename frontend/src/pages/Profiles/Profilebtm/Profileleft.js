@@ -1,13 +1,13 @@
 import React from "react";
 import Photos from "./Photos";
 import Friendslist from "./Friendslist";
-import Profileinfooption from "../Profileinfos/Profileinfooption";
+import ProfileInfos from "../Profileinfos/ProfileInfos";
 
 const Profileleft = ({ users, username, friends, photo, profile }) => {
   return (
     <div>
       <div>
-        <Profileinfooption details={profile} />
+        <ProfileInfos details={profile} />
       </div>
       <div>
         <Photos photo={photo} />
