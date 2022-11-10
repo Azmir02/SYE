@@ -21,6 +21,7 @@ const Profilebottom = ({
           friends={friends}
           photo={photo}
           profile={profile.details}
+          visitor={visitor}
         />
       </div>
       <div>

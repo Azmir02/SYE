@@ -31,9 +31,16 @@ const Leftprofile = ({ user }) => {
             <span className="capitalize font-primary leading-[0.8] text-sm font-regular text-secondary_color">
               Mern stack developer
             </span>
-            <p className="font-primary text-base font-regular text-secondary_color mt-2 pb-2">
-              It’s a sunny day for malody boy. I’m a malody boy
-            </p>
+            <div className="flex justify-center pb-3 mt-3">
+              <div className="w-[50%]">
+                <p>Friends</p>
+                <span>100</span>
+              </div>
+              <div className="w-[50%]">
+                <p>Followers</p>
+                <span>100</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

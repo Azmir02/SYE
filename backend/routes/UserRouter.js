@@ -11,6 +11,7 @@ const {
   getuser,
   getprofilepicture,
   getcoverpicture,
+  updatedetails,
 } = require("../controller/Usercontroller");
 const { authUser } = require("../middleware/Authentication");
 const userRouter = express.Router();
@@ -26,5 +27,6 @@ userRouter.route("/changepassword").post(changepassword);
 userRouter.route("/getuser/:username").get(authUser, getuser);
 userRouter.route("/getprofilepicture").put(authUser, getprofilepicture);
 userRouter.route("/getcoverpicture").put(authUser, getcoverpicture);
+userRouter.route("/updatedetails").put(authUser, updatedetails);
 
 module.exports = userRouter;

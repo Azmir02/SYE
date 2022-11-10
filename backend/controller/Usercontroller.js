@@ -322,3 +322,23 @@ exports.getcoverpicture = async (req, res) => {
     });
   }
 };
+
+exports.updatedetails = async (req, res) => {
+  try {
+    const { infos } = req.body;
+    const update = await Users.findByIdAndUpdate(
+      req.user.id,
+      {
+        details: infos,
+      },
+      {
+        new: true,
+      }
+    );
+    res.json(update.details);
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
+};
