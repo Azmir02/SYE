@@ -15,9 +15,14 @@ const Profileinfooption = ({ details }) => {
     highschool: details?.highschool ? details.highschool : "",
     instagram: details?.instagram ? details.instagram : "mr.c_r_o_o_k",
   };
-  const [infos, setinfos] = useState(initial);
+  const [infos, setInfos] = useState(initial);
   const [showBio, setShowBio] = useState(true);
+  const [max, setMax] = useState(100);
 
+  const handleBio = (e) => {
+    setInfos({ ...infos, bio: e.target.value });
+    setMax(100 - e.target.value.length);
+  };
   return (
     <div>
       <div className="text-center">
@@ -26,7 +31,7 @@ const Profileinfooption = ({ details }) => {
             {infos.bio && <span>{infos.bio}</span>}
           </span>
         )}
-        {showBio && <Editbio />}
+        {showBio && <Editbio max={max} handleBio={handleBio} infos={infos} />}
         <button className="bg-[#F7F7FB] w-full py-2 rounded-md mt-3 text-title_color font-normal text-base font-primary">
           Edit Bio
         </button>
