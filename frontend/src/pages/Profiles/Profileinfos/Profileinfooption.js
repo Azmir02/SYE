@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Editbio from "./Editbio";
+import Editdetails from "./Editdetails";
 
 const Profileinfooption = ({ userDtails, users, visitor }) => {
   const [details, setDetails] = useState(userDtails);
@@ -16,11 +17,13 @@ const Profileinfooption = ({ userDtails, users, visitor }) => {
     instagram: details?.instagram ? details.instagram : "",
   };
   const [infos, setInfos] = useState(initial);
-  const [showBio, setShowBio] = useState(false);
+  const [show, setShow] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [max, setMax] = useState(100);
 
-  const handleBio = (e) => {
-    setInfos({ ...infos, bio: e.target.value });
+  const handlechange = (e) => {
+    const { name, value } = e.target;
+    setInfos({ ...infos, [name]: value });
     setMax(100 - e.target.value.length);
   };
 
@@ -37,7 +40,7 @@ const Profileinfooption = ({ userDtails, users, visitor }) => {
           },
         }
       );
-      setShowBio(false);
+      setShow(false);
       setDetails(data);
     } catch (error) {
       console.log(error);
@@ -49,23 +52,25 @@ const Profileinfooption = ({ userDtails, users, visitor }) => {
   return (
     <div>
       <div className="text-center">
-        {!showBio && (
+        {!show && (
           <span className="text-title_color font-primary text-lg font-medium block">
             {details?.bio && <span>{details?.bio}</span>}
           </span>
         )}
-        {showBio && (
+        {show && (
           <Editbio
             max={max}
-            handleBio={handleBio}
-            infos={infos}
-            setShowBio={setShowBio}
             handleEdit={handleEdit}
+            infos={infos}
+            setShow={setShow}
+            handlechange={handlechange}
+            placeholder="Edit bio"
+            name="bio"
           />
         )}
         {!visitor && (
           <button
-            onClick={() => setShowBio(true)}
+            onClick={() => setShow(true)}
             className="bg-[#F7F7FB] w-full py-2 rounded-md mt-3 text-title_color font-normal text-base font-primary"
           >
             Edit Bio
@@ -189,9 +194,19 @@ const Profileinfooption = ({ userDtails, users, visitor }) => {
         </div>
       </div>
       {!visitor && (
-        <button className="bg-[#F7F7FB] w-full py-2 rounded-md mt-3 text-title_color font-normal text-base font-primary">
+        <button
+          onClick={() => setVisible(true)}
+          className="bg-[#F7F7FB] w-full py-2 rounded-md mt-3 text-title_color font-normal text-base font-primary"
+        >
           Edit Details
         </button>
+      )}
+      {visible && !visitor && (
+        <Editdetails
+          details={details}
+          handlechange={handlechange}
+          handleEdit={handleEdit}
+        />
       )}
     </div>
   );

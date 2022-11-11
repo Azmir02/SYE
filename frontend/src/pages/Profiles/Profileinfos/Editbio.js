@@ -1,14 +1,22 @@
 import React from "react";
 
-const Editbio = ({ max, handleBio, infos, setShowBio, handleEdit }) => {
+const Editbio = ({
+  max,
+  handlechange,
+  infos,
+  setShow,
+  handleEdit,
+  placeholder,
+  name,
+}) => {
   return (
     <div>
       <div>
         <textarea
-          placeholder="Enter your bio.."
+          placeholder={placeholder}
           className="w-full outline-none resize-none bg-[#F0F2F5] p-3 mt-2 h-[100px] rounded-lg font-primary text-base font-normal"
-          onChange={handleBio}
-          name="bio"
+          onChange={handlechange}
+          name={name}
           value={infos?.bio}
           maxLength="100"
         ></textarea>
@@ -22,7 +30,7 @@ const Editbio = ({ max, handleBio, infos, setShowBio, handleEdit }) => {
         <div className="text-end mt-3">
           <button
             className="bg-[#F0F2F5] px-4 py-2 rounded-md text-black font-primary text-base ml-2"
-            onClick={() => setShowBio(false)}
+            onClick={() => setShow(false)}
           >
             cancle
           </button>
