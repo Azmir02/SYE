@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Profileinfooptions from "./Profileinfooptions";
 import Profilepicpopup from "./Profilepicture/Profilepicpopup";
 
-const Profileinfos = ({ profile, visitor, photo }) => {
+const Profileinfos = ({ profile, visitor, photo, othername }) => {
   const [show, setShow] = useState(false);
   const uploadPhoto = useRef(null);
   return (
@@ -36,7 +36,7 @@ const Profileinfos = ({ profile, visitor, photo }) => {
                   {profile.fName} {profile.lName}
                 </h3>
                 <h4 className="text-title_color font-primary text-base capitalize">
-                  (designation)
+                  ({othername?.details?.othername})
                 </h4>
               </div>
               <div className="flex justify-center">
@@ -160,7 +160,7 @@ const Profileinfos = ({ profile, visitor, photo }) => {
                     {profile.fName} {profile.lName}
                   </h3>
                   <h4 className="text-title_color font-primary text-base capitalize">
-                    (designation)
+                    ({othername?.details?.othername})
                   </h4>
                 </div>
               </div>

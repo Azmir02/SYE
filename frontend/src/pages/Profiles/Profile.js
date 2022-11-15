@@ -12,6 +12,7 @@ import Profileinfos from "./Profilepictureinfo";
 const Profile = ({ setVisible }) => {
   const user = useSelector((users) => users.login.loggedin);
   const [photo, setPhoto] = useState({});
+  const [othername, setOthername] = useState();
   const { username } = useParams();
   var userName = username === undefined ? user.username : username;
   const navigate = useNavigate();
@@ -61,6 +62,7 @@ const Profile = ({ setVisible }) => {
         } catch (error) {
           console.log(error);
         }
+        setOthername(data);
         dispatch({
           type: "PROFILE_SUCCESS",
           payload: data,
@@ -94,6 +96,7 @@ const Profile = ({ setVisible }) => {
               photo={photo.resources}
               profile={profile}
               visitor={visitor}
+              othername={othername}
             />
             <Profilebottom
               profile={profile}

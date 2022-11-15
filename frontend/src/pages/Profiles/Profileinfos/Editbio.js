@@ -8,6 +8,7 @@ const Editbio = ({
   handleEdit,
   placeholder,
   name,
+  detail,
 }) => {
   return (
     <div>
@@ -17,14 +18,14 @@ const Editbio = ({
           className="w-full outline-none resize-none bg-[#F0F2F5] p-3 mt-2 h-[100px] rounded-lg font-primary text-base font-normal"
           onChange={handlechange}
           name={name}
-          value={infos?.bio}
+          value={infos?.[name]}
           maxLength="100"
         ></textarea>
       </div>
       <div>
         <div className="text-end">
           <span className="font-normal font-primary text-sm text-title_color">
-            {max} Characters remaining
+            {!detail && `${max} Characters remaining `}
           </span>
         </div>
         <div className="text-end mt-3">

@@ -206,6 +206,7 @@ const Profileinfooption = ({ userDtails, users, visitor }) => {
           details={details}
           handlechange={handlechange}
           handleEdit={handleEdit}
+          infos={infos}
         />
       )}
     </div>

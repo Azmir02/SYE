@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import Editbio from "./Editbio";
 
-const Details = ({ text, img, value, handlechange, handleEdit }) => {
+const Details = ({
+  text,
+  img,
+  value,
+  handlechange,
+  handleEdit,
+  placeholder,
+  name,
+  infos,
+}) => {
   const [show, setShow] = useState(false);
   return (
     <div>
@@ -30,10 +39,12 @@ const Details = ({ text, img, value, handlechange, handleEdit }) => {
       {show && (
         <Editbio
           setShow={setShow}
-          placeholder="Add Othername"
-          name="othername"
+          placeholder={placeholder}
+          name={name}
           handlechange={handlechange}
           handleEdit={handleEdit}
+          infos={infos}
+          detail
         />
       )}
     </div>
