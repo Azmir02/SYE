@@ -8,6 +8,7 @@ const Editbio = ({
   handleEdit,
   placeholder,
   name,
+  setShowBio,
   detail,
 }) => {
   return (
@@ -31,12 +32,15 @@ const Editbio = ({
         <div className="text-end mt-3">
           <button
             className="bg-[#F0F2F5] px-4 py-2 rounded-md text-black font-primary text-base ml-2"
-            onClick={() => setShow(false)}
+            onClick={() => (!detail ? setShowBio(false) : setShow(false))}
           >
             cancle
           </button>
           <button
-            onClick={handleEdit}
+            onClick={() => {
+              handleEdit();
+              setShow(false);
+            }}
             className="bg-blue px-4 py-2 rounded-md text-white font-primary text-base ml-2"
           >
             save

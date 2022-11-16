@@ -36,7 +36,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                   {profile.fName} {profile.lName}
                 </h3>
                 <h4 className="text-title_color font-primary text-base capitalize">
-                  ({othername?.details?.othername})
+                  {othername && `(${othername})`}
                 </h4>
               </div>
               <div className="flex justify-center">
@@ -121,7 +121,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                     {profile.fName} {profile.lName}
                   </h3>
                   <h4 className="text-title_color font-primary text-base capitalize">
-                    (designation)
+                    {othername && `(${othername})`}
                   </h4>
                 </div>
               </div>
@@ -160,7 +160,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                     {profile.fName} {profile.lName}
                   </h3>
                   <h4 className="text-title_color font-primary text-base capitalize">
-                    ({othername?.details?.othername})
+                    {othername && `(${othername})`}
                   </h4>
                 </div>
               </div>

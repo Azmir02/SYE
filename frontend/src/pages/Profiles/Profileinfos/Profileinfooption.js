@@ -5,6 +5,9 @@ import Editdetails from "./Editdetails";
 
 const Profileinfooption = ({ userDtails, users, visitor }) => {
   const [details, setDetails] = useState(userDtails);
+  useEffect(() => {
+    setDetails(userDtails);
+  }, [userDtails]);
   const initial = {
     bio: details?.bio ? details.bio : "",
     othername: details?.othername ? details.othername : "",
@@ -17,7 +20,7 @@ const Profileinfooption = ({ userDtails, users, visitor }) => {
     instagram: details?.instagram ? details.instagram : "",
   };
   const [infos, setInfos] = useState(initial);
-  const [show, setShow] = useState(false);
+  const [showBio, setShowBio] = useState(false);
   const [visible, setVisible] = useState(false);
   const [max, setMax] = useState(100);
 
@@ -40,37 +43,43 @@ const Profileinfooption = ({ userDtails, users, visitor }) => {
           },
         }
       );
-      setShow(false);
+      setShowBio(false);
       setDetails(data);
     } catch (error) {
       console.log(error);
     }
   };
-  useEffect(() => {
-    setDetails(userDtails);
-  }, [userDtails]);
+
   return (
     <div>
       <div className="text-center">
-        {!show && (
+        {!showBio && (
           <span className="text-title_color font-primary text-lg font-medium block">
             {details?.bio && <span>{details?.bio}</span>}
           </span>
         )}
-        {show && (
+        {showBio && (
           <Editbio
             max={max}
             handleEdit={handleEdit}
-            infos={infos}
-            setShow={setShow}
             handlechange={handlechange}
+            infos={infos}
+            setShowBio={setShowBio}
             placeholder="Edit bio"
             name="bio"
           />
         )}
-        {!visitor && (
+        {!visitor && !showBio && !details?.bio && (
           <button
-            onClick={() => setShow(true)}
+            onClick={() => setShowBio(true)}
+            className="bg-[#F7F7FB] w-full py-2 rounded-md mt-3 text-title_color font-normal text-base font-primary"
+          >
+            Add Bio
+          </button>
+        )}
+        {!visitor && details?.bio && (
+          <button
+            onClick={() => setShowBio(true)}
             className="bg-[#F7F7FB] w-full py-2 rounded-md mt-3 text-title_color font-normal text-base font-primary"
           >
             Edit Bio

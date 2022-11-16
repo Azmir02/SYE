@@ -34,6 +34,8 @@ const Profile = ({ setVisible }) => {
     getUserProfile();
   }, [userName]);
 
+  console.log(othername);
+
   const getUserProfile = async () => {
     try {
       dispatch({
@@ -62,7 +64,6 @@ const Profile = ({ setVisible }) => {
         } catch (error) {
           console.log(error);
         }
-        setOthername(data);
         dispatch({
           type: "PROFILE_SUCCESS",
           payload: data,
@@ -75,6 +76,10 @@ const Profile = ({ setVisible }) => {
       });
     }
   };
+
+  useEffect(() => {
+    setOthername(profile.details?.othername);
+  }, [profile]);
 
   return (
     <div>
