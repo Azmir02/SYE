@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Editbio from "./Editbio";
 import Editdetails from "./Editdetails";
 
-const Profileinfooption = ({ userDtails, users, visitor }) => {
+const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
   const [details, setDetails] = useState(userDtails);
   useEffect(() => {
     setDetails(userDtails);
@@ -24,13 +24,7 @@ const Profileinfooption = ({ userDtails, users, visitor }) => {
   const [visible, setVisible] = useState(false);
   const [max, setMax] = useState(100);
 
-  const handlechange = (e) => {
-    const { name, value } = e.target;
-    setInfos({ ...infos, [name]: value });
-    setMax(100 - e.target.value.length);
-  };
-
-  const handleEdit = async () => {
+  const updateDetails = async () => {
     try {
       let { data } = await axios.put(
         "/api/updatedetails",
@@ -45,9 +39,16 @@ const Profileinfooption = ({ userDtails, users, visitor }) => {
       );
       setShowBio(false);
       setDetails(data);
+      setOthername(data.othername);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handlechange = (e) => {
+    const { name, value } = e.target;
+    setInfos({ ...infos, [name]: value });
+    setMax(100 - e.target.value.length);
   };
 
   return (
@@ -61,7 +62,7 @@ const Profileinfooption = ({ userDtails, users, visitor }) => {
         {showBio && (
           <Editbio
             max={max}
-            handleEdit={handleEdit}
+            updateDetails={updateDetails}
             handlechange={handlechange}
             infos={infos}
             setShowBio={setShowBio}
@@ -212,10 +213,10 @@ const Profileinfooption = ({ userDtails, users, visitor }) => {
       )}
       {visible && !visitor && (
         <Editdetails
-          details={details}
+          updateDetails={updateDetails}
           handlechange={handlechange}
-          handleEdit={handleEdit}
           infos={infos}
+          details={details}
         />
       )}
     </div>

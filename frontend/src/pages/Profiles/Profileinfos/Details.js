@@ -6,7 +6,7 @@ const Details = ({
   img,
   value,
   handlechange,
-  handleEdit,
+  updateDetails,
   placeholder,
   name,
   infos,
@@ -27,10 +27,7 @@ const Details = ({
           </div>
         ) : (
           <div className="flex mt-3">
-            <div
-              className="flex items-center cursor-pointer"
-              onClick={() => setShow(true)}
-            >
+            <div className="flex items-center cursor-pointer">
               <i className="rounded_plus_icon"></i>
               <span className="font-primary font-medium text-base text-blue ml-3">
                 Add {text}
@@ -45,7 +42,7 @@ const Details = ({
           placeholder={placeholder}
           name={name}
           handlechange={handlechange}
-          handleEdit={handleEdit}
+          updateDetails={updateDetails}
           infos={infos}
           detail
         />

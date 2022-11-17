@@ -34,8 +34,6 @@ const Profile = ({ setVisible }) => {
     getUserProfile();
   }, [userName]);
 
-  console.log(othername);
-
   const getUserProfile = async () => {
     try {
       dispatch({
@@ -78,7 +76,7 @@ const Profile = ({ setVisible }) => {
   };
 
   useEffect(() => {
-    setOthername(profile.details?.othername);
+    setOthername(profile?.details?.othername);
   }, [profile]);
 
   return (
@@ -111,6 +109,7 @@ const Profile = ({ setVisible }) => {
               username={userName}
               friends={profile.friends}
               photo={photo}
+              setOthername={setOthername}
             />
           </div>
         </div>

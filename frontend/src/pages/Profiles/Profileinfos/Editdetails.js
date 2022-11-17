@@ -1,7 +1,7 @@
 import React from "react";
 import Details from "./Details";
 
-const Editdetails = ({ details, handlechange, handleEdit, infos }) => {
+const Editdetails = ({ details, handlechange, updateDetails, infos }) => {
   return (
     <div className="fixed top-0 left-0 w-full h-screen bg-[rgba(255,255,255,0.8)] z-[999] flex items-center justify-center">
       <div className="w-[500px] md:w-[700px] h-[800px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative main-menu overflow-y-auto pb-3">
@@ -36,8 +36,21 @@ const Editdetails = ({ details, handlechange, handleEdit, infos }) => {
             placeholder="Add Othername"
             name="othername"
             value={details?.othername}
+            updateDetails={updateDetails}
             handlechange={handlechange}
-            handleEdit={handleEdit}
+            infos={infos}
+          />
+        </div>
+        <div className="mt-7 px-5">
+          <h4 className="text-black font-primary text-xl font-medium">Work</h4>
+          <Details
+            text="Workplace"
+            img="job"
+            placeholder="Add Workplace"
+            name="workplace"
+            value={details?.workplace}
+            updateDetails={updateDetails}
+            handlechange={handlechange}
             infos={infos}
           />
         </div>

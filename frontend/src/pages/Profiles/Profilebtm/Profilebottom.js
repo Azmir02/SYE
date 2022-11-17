@@ -10,8 +10,8 @@ const Profilebottom = ({
   username,
   friends,
   photo,
+  setOthername,
 }) => {
-  console.log(profile);
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.5fr] gap-4 mt-4">
       <div>
@@ -22,6 +22,7 @@ const Profilebottom = ({
           photo={photo}
           profile={profile.details}
           visitor={visitor}
+          setOthername={setOthername}
         />
       </div>
       <div>

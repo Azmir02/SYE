@@ -335,7 +335,7 @@ exports.updatedetails = async (req, res) => {
         new: true,
       }
     );
-    res.json(update.details);
+    res.send(update.details);
   } catch (error) {
     res.status(404).json({
       message: error.message,
