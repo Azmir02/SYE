@@ -39,6 +39,7 @@ const Editbio = ({
           <button
             onClick={() => {
               updateDetails();
+              setShow(false);
             }}
             className="bg-blue px-4 py-2 rounded-md text-white font-primary text-base ml-2"
           >

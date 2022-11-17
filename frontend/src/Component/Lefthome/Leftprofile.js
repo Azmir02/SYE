@@ -28,8 +28,8 @@ const Leftprofile = ({ user }) => {
                 {user?.fName} {user?.lName}
               </h4>
             </Link>
-            <span className="capitalize font-primary leading-[0.8] text-sm font-regular text-secondary_color">
-              Mern stack developer
+            <span className="capitalize font-primary leading-[0.8] text-base font-semibold text-secondary_color">
+              ({user.details})
             </span>
             <div className="flex justify-center pb-3 mt-3">
               <div className="w-[50%]">

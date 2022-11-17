@@ -96,6 +96,7 @@ exports.newuser = async (req, res) => {
       lName: User.lName,
       profilePicture: User.profilePicture,
       cover: User.cover,
+      details: User.details.othername,
       verified: User.verified,
       token: token,
       message: "Registration success! Please activate your email before",
@@ -149,6 +150,7 @@ exports.loginUser = async (req, res) => {
           profilePicture: user.profilePicture,
           cover: user.cover,
           verified: user.verified,
+          details: user.details.othername,
           token: token,
         });
       } else {
@@ -324,6 +326,7 @@ exports.getcoverpicture = async (req, res) => {
 };
 
 exports.updatedetails = async (req, res) => {
+  console.log(req.body);
   try {
     const { infos } = req.body;
     const update = await Users.findByIdAndUpdate(

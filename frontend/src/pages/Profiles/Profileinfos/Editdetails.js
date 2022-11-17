@@ -44,11 +44,76 @@ const Editdetails = ({ details, handlechange, updateDetails, infos }) => {
         <div className="mt-7 px-5">
           <h4 className="text-black font-primary text-xl font-medium">Work</h4>
           <Details
-            text="Workplace"
+            text="Job"
             img="job"
-            placeholder="Add Workplace"
+            placeholder="Add Job"
+            name="job"
+            value={details?.job}
+            updateDetails={updateDetails}
+            handlechange={handlechange}
+            infos={infos}
+          />
+          <Details
+            text="Workplace Place"
+            img="job"
+            placeholder="Add Workplace Place"
             name="workplace"
             value={details?.workplace}
+            updateDetails={updateDetails}
+            handlechange={handlechange}
+            infos={infos}
+          />
+        </div>
+        <div className="mt-7 px-5">
+          <h4 className="text-black font-primary text-xl font-medium">
+            Education
+          </h4>
+          <Details
+            text="Highschool"
+            img="studies"
+            placeholder="Add Highschool"
+            name="highschool"
+            value={details?.highschool}
+            updateDetails={updateDetails}
+            handlechange={handlechange}
+            infos={infos}
+          />
+          <Details
+            text="College"
+            img="studies"
+            placeholder="Add College"
+            name="college"
+            value={details?.college}
+            updateDetails={updateDetails}
+            handlechange={handlechange}
+            infos={infos}
+          />
+        </div>
+        <div className="mt-7 px-5">
+          <h4 className="text-black font-primary text-xl font-medium">
+            Current City
+          </h4>
+          <Details
+            text="Currentcity"
+            img="home"
+            placeholder="Add Currentcity"
+            name="currentcity"
+            value={details?.currentcity}
+            updateDetails={updateDetails}
+            handlechange={handlechange}
+            infos={infos}
+          />
+        </div>
+        <div className="mt-7 px-5">
+          <h4 className="text-black font-primary text-xl font-medium">
+            Hometown
+          </h4>
+          <Details
+            text="Hometown"
+            img="home"
+            placeholder="Add Hometown"
+            name="hometown"
+            value={details?.hometown}
             updateDetails={updateDetails}
             handlechange={handlechange}
             infos={infos}

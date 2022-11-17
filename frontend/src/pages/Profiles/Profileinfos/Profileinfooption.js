@@ -5,9 +5,6 @@ import Editdetails from "./Editdetails";
 
 const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
   const [details, setDetails] = useState(userDtails);
-  useEffect(() => {
-    setDetails(userDtails);
-  }, [userDtails]);
   const initial = {
     bio: details?.bio ? details.bio : "",
     othername: details?.othername ? details.othername : "",
@@ -23,6 +20,11 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
   const [showBio, setShowBio] = useState(false);
   const [visible, setVisible] = useState(false);
   const [max, setMax] = useState(100);
+
+  useEffect(() => {
+    setDetails(userDtails);
+    setInfos(userDtails);
+  }, [userDtails]);
 
   const updateDetails = async () => {
     try {
@@ -44,7 +46,6 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
       console.log(error);
     }
   };
-
   const handlechange = (e) => {
     const { name, value } = e.target;
     setInfos({ ...infos, [name]: value });

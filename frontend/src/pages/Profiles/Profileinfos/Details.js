@@ -18,7 +18,11 @@ const Details = ({
         {value ? (
           <div className="flex mt-3 items-center justify-between cursor-pointer">
             <div className="flex items-center">
-              <img src={`../../../icons/${img}.png`} alt="" />
+              <img
+                className="invert-[40%]"
+                src={`../../../icons/${img}.png`}
+                alt=""
+              />
               <span className="font-primary font-medium text-base text-title_color ml-3">
                 {value}
               </span>
