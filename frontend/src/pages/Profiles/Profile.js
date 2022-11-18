@@ -85,7 +85,7 @@ const Profile = ({ setVisible }) => {
 
   // Dynamic height function
   useEffect(() => {
-    setHeight(profileTop.current.clientHeight);
+    setHeight(profileTop.current.clientHeight + 80);
     window.addEventListener("scroll", getScroll, { passive: true });
   }, [scrollheight]);
 

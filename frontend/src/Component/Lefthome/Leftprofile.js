@@ -10,14 +10,14 @@ const Leftprofile = ({ user }) => {
             <img
               src={user?.cover}
               className="w-full h-full object-cover"
-              alt="coverPhoto"
+              alt=""
             />
           </div>
           <div className="w-[80px] h-[80px] absolute top-[55px] left-[50%] translate-x-[-50%] rounded-full overflow-hidden bg-[#EEF0F3] m-auto">
             <img
               className="object-cover w-full h-full"
               src={user.profilePicture}
-              alt="profilePicture"
+              alt=""
             />
           </div>
         </div>
@@ -29,7 +29,7 @@ const Leftprofile = ({ user }) => {
               </h4>
             </Link>
             <span className="capitalize font-primary leading-[0.8] text-base font-semibold text-secondary_color">
-              ({user.details})
+              {user.details && `(${user.details})`}
             </span>
             <div className="flex justify-center pb-3 mt-3">
               <div className="w-[50%]">

@@ -326,7 +326,6 @@ exports.getcoverpicture = async (req, res) => {
 };
 
 exports.updatedetails = async (req, res) => {
-  console.log(req.body);
   try {
     const { infos } = req.body;
     const update = await Users.findByIdAndUpdate(
@@ -339,6 +338,112 @@ exports.updatedetails = async (req, res) => {
       }
     );
     res.send(update.details);
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
+};
+
+exports.addfriend = async (req, res) => {
+  try {
+    if (req.user.id !== req.params.id) {
+      let sender = await Users.findById(req.user.id);
+      let reciver = await Users.findById(req.params.id);
+
+      if (
+        !reciver.friends.includes(sender._id) &&
+        !reciver.request.includes(sender._id)
+      ) {
+        await reciver.updateOne({
+          $push: { request: sender._id },
+        });
+        await reciver.updateOne({
+          $push: { followers: sender._id },
+        });
+        await sender.updateOne({
+          $push: { following: reciver._id },
+        });
+        res.json({ message: "Friend request has been sent" });
+      } else {
+        return res.json({
+          message: "Already friend",
+        });
+      }
+    } else {
+      return res.json({
+        message: "You can't send request to your self",
+      });
+    }
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
+};
+exports.cancelrequest = async (req, res) => {
+  try {
+    if (req.user.id !== req.params.id) {
+      let sender = await Users.findById(req.user.id);
+      let reciver = await Users.findById(req.params.id);
+
+      if (
+        reciver.friends.includes(sender._id) &&
+        reciver.request.includes(sender._id)
+      ) {
+        await reciver.updateOne({
+          $pull: { request: sender._id },
+        });
+        await reciver.updateOne({
+          $pull: { followers: sender._id },
+        });
+        await sender.updateOne({
+          $pull: { following: reciver._id },
+        });
+        res.json({ message: "Cancel request" });
+      } else {
+        return res.json({
+          message: "Already cancled",
+        });
+      }
+    } else {
+      return res.json({
+        message: "You can't cancel request to your self",
+      });
+    }
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
+};
+exports.follow = async (req, res) => {
+  try {
+    if (req.user.id !== req.params.id) {
+      let sender = await Users.findById(req.user.id);
+      let reciver = await Users.findById(req.params.id);
+
+      if (
+        !reciver.friends.includes(sender._id) &&
+        !reciver.request.includes(sender._id)
+      ) {
+        await reciver.updateOne({
+          $push: { followers: sender._id },
+        });
+        await sender.updateOne({
+          $push: { following: reciver._id },
+        });
+        res.json({ message: "Successfully follow" });
+      } else {
+        return res.json({
+          message: "Already follow",
+        });
+      }
+    } else {
+      return res.json({
+        message: "You can't follow to your self",
+      });
+    }
   } catch (error) {
     res.status(404).json({
       message: error.message,

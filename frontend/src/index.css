@@ -371,9 +371,17 @@ select {
 /* Fixed height */
 .scrollFixed .profileLeft {
   position: fixed;
-  width: 517px;
+  width: 515px;
 }
 .scrollFixed .profileright {
   width: 773px;
-  margin-left: 517px;
+  margin-left: 531px;
+}
+
+.showless .profileLeft {
+  bottom: 10px;
+}
+
+.showmore .profileLeft {
+  bottom: 110px;
 }

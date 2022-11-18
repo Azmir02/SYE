@@ -28,8 +28,11 @@ const Profilebottom = ({
     <div
       className={`grid grid-cols-1 lg:grid-cols-[1fr,1.5fr] gap-4 mt-4 ${
         check && scrollheight >= height && leftheight > 1000
-          ? "scrollFixed"
-          : ""
+          ? "scrollFixed showless"
+          : check &&
+            scrollheight >= height &&
+            leftheight < 1000 &&
+            "scrollFixed showmore"
       }`}
     >
       <div className="profileLeft" ref={profileLeft}>

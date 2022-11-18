@@ -12,6 +12,9 @@ const {
   getprofilepicture,
   getcoverpicture,
   updatedetails,
+  addfriend,
+  cancelrequest,
+  follow,
 } = require("../controller/Usercontroller");
 const { authUser } = require("../middleware/Authentication");
 const userRouter = express.Router();
@@ -28,5 +31,8 @@ userRouter.route("/getuser/:username").get(authUser, getuser);
 userRouter.route("/getprofilepicture").put(authUser, getprofilepicture);
 userRouter.route("/getcoverpicture").put(authUser, getcoverpicture);
 userRouter.route("/updatedetails").put(authUser, updatedetails);
+userRouter.route("/addfriend/:id").put(authUser, addfriend);
+userRouter.route("/cancelrequest/:id").put(authUser, cancelrequest);
+userRouter.route("/follow/:id").put(authUser, follow);
 
 module.exports = userRouter;
