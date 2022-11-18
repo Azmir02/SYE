@@ -9,19 +9,35 @@ const Editbio = ({
   placeholder,
   name,
   setShowBio,
+  rel,
   detail,
 }) => {
   return (
     <div>
       <div>
-        <textarea
-          className="w-full outline-none resize-none bg-[#F0F2F5] p-3 mt-2 h-[100px] rounded-lg font-primary text-base font-normal"
-          placeholder={placeholder}
-          onChange={handlechange}
-          name={name}
-          value={infos?.[name]}
-          maxLength="100"
-        ></textarea>
+        {rel ? (
+          <select
+            name={name}
+            value={infos.relationship}
+            onChange={handlechange}
+            className="w-full outline-none bg-[#F0F2F5] p-1 mt-2 rounded-lg font-primary text-base font-normal cursor-pointer"
+          >
+            <option value="Single">Single</option>
+            <option value="In A Relationship">In A Relationship</option>
+            <option value="It's Complicated">It's Complicated</option>
+            <option value="Married">Married</option>
+            <option value="Divorced">Divorced</option>
+          </select>
+        ) : (
+          <textarea
+            className="w-full outline-none resize-none bg-[#F0F2F5] p-3 mt-2 h-[100px] rounded-lg font-primary text-base font-normal"
+            placeholder={placeholder}
+            onChange={handlechange}
+            name={name}
+            value={infos?.[name]}
+            maxLength="100"
+          ></textarea>
+        )}
       </div>
       <div>
         <div className="text-end">

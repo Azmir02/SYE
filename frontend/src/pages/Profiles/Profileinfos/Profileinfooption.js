@@ -14,6 +14,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
     currentcity: details?.currentcity ? details.currentcity : "",
     college: details?.college ? details.college : "",
     highschool: details?.highschool ? details.highschool : "",
+    relationship: details?.relationship ? details.relationship : "",
     instagram: details?.instagram ? details.instagram : "",
   };
   const [infos, setInfos] = useState(initial);
@@ -114,7 +115,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
       </div>
       <div className="mt-3 flex items-center">
         <div className="w-[5%]">
-          <img className="invert-[40%]" src="../../../icons/home.png" alt="" />
+          <img className="invert-[40%]" src="../../../icons/from.png" alt="" />
         </div>
         <div className="w-[95%]">
           <span className="text-title_color font-primary text-base font-normal block ml-2">
@@ -188,6 +189,24 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
         <div className="w-[5%]">
           <img
             className="invert-[40%]"
+            src="../../../icons/relationship.png"
+            alt=""
+          />
+        </div>
+        <div className="w-[95%]">
+          <span className="text-title_color font-primary text-base font-normal block ml-2">
+            {details?.relationship ? (
+              <span>{details?.relationship}</span>
+            ) : (
+              "Add relationship status"
+            )}
+          </span>
+        </div>
+      </div>
+      <div className="mt-3 flex items-center">
+        <div className="w-[5%]">
+          <img
+            className="invert-[40%]"
             src="../../../icons/instagram.png"
             alt=""
           />
@@ -216,6 +235,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
         <Editdetails
           updateDetails={updateDetails}
           handlechange={handlechange}
+          setVisible={setVisible}
           infos={infos}
           details={details}
         />

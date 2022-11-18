@@ -10,6 +10,7 @@ const Details = ({
   placeholder,
   name,
   infos,
+  rel,
 }) => {
   const [show, setShow] = useState(false);
   return (
@@ -49,6 +50,7 @@ const Details = ({
           updateDetails={updateDetails}
           infos={infos}
           detail
+          rel={rel}
         />
       )}
     </div>

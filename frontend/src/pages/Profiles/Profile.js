@@ -1,5 +1,6 @@
+import React, { useEffect, useReducer, useRef, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import axios from "axios";
-import React, { useEffect, useReducer, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -14,6 +15,9 @@ const Profile = ({ setVisible }) => {
   const [photo, setPhoto] = useState({});
   const [othername, setOthername] = useState();
   const { username } = useParams();
+  const profileTop = useRef(null);
+  const [height, setHeight] = useState();
+  const [scrollheight, setScrollHeight] = useState();
   var userName = username === undefined ? user.username : username;
   const navigate = useNavigate();
   const [{ loading, profile, error }, dispatch] = useReducer(
@@ -79,6 +83,19 @@ const Profile = ({ setVisible }) => {
     setOthername(profile?.details?.othername);
   }, [profile]);
 
+  // Dynamic height function
+  useEffect(() => {
+    setHeight(profileTop.current.clientHeight);
+    window.addEventListener("scroll", getScroll, { passive: true });
+  }, [scrollheight]);
+
+  let check = useMediaQuery({
+    query: "(min-width: 992px)",
+  });
+
+  const getScroll = () => {
+    setScrollHeight(window.pageYOffset);
+  };
   return (
     <div>
       <Helmet>
@@ -88,29 +105,37 @@ const Profile = ({ setVisible }) => {
       <div className="bg-[#F7F7FB]">
         <div className="lg:pt-[100px] pt-[50px] pb-[10px]">
           <div className="2xl:px-[150px] 3xl:px-[300px] px-0">
-            <Coverphoto
-              coverPhoto={profile.cover}
-              visitor={visitor}
-              user={user}
-              profile={profile}
-              photo={photo}
-            />
-            <Profileinfos
-              photo={photo.resources}
-              profile={profile}
-              visitor={visitor}
-              othername={othername}
-            />
-            <Profilebottom
-              profile={profile}
-              setVisible={setVisible}
-              users={user}
-              visitor={visitor}
-              username={userName}
-              friends={profile.friends}
-              photo={photo}
-              setOthername={setOthername}
-            />
+            <div ref={profileTop}>
+              <Coverphoto
+                coverPhoto={profile.cover}
+                visitor={visitor}
+                user={user}
+                profile={profile}
+                photo={photo}
+              />
+              <Profileinfos
+                photo={photo.resources}
+                profile={profile}
+                visitor={visitor}
+                othername={othername}
+              />
+            </div>
+            <div>
+              <Profilebottom
+                profile={profile}
+                setVisible={setVisible}
+                users={user}
+                visitor={visitor}
+                username={userName}
+                friends={profile.friends}
+                photo={photo}
+                setOthername={setOthername}
+                getScroll={getScroll}
+                scrollheight={scrollheight}
+                check={check}
+                height={height}
+              />
+            </div>
           </div>
         </div>
       </div>
