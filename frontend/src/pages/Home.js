@@ -67,7 +67,7 @@ const Home = ({ setVisible }) => {
             ))}
           </div>
           <div className="pr-3 hidden xl:block">
-            <Friendreq />
+            <Friendreq users={users} />
             <Contacts />
           </div>
         </div>

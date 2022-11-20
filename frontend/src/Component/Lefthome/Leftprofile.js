@@ -33,12 +33,24 @@ const Leftprofile = ({ user }) => {
             </span>
             <div className="flex justify-center pb-3 mt-3">
               <div className="w-[50%]">
-                <p>Friends</p>
-                <span>100</span>
+                <p className="font-primary text-lg text-black font-semibold">
+                  Friends
+                </p>
+                <span className="font-primary text-base text-title_color">
+                  {user?.friends && user?.friends?.length
+                    ? user.friends.length
+                    : 0}
+                </span>
               </div>
               <div className="w-[50%]">
-                <p>Followers</p>
-                <span>100</span>
+                <p className="font-primary text-lg text-black font-semibold">
+                  Followers
+                </p>
+                <span className="font-primary text-base text-title_color">
+                  {user?.followers && user?.followers?.length
+                    ? user.followers.length
+                    : 0}
+                </span>
               </div>
             </div>
           </div>

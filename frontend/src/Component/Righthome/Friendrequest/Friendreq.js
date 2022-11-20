@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Friendreq = () => {
+const Friendreq = ({ users }) => {
+  console.log(users.request);
+  console.log();
   return (
     <div className="bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] px-5 py-4 w-[230px] 2xl:w-full">
       <div className="flex items-center justify-between">
@@ -16,6 +18,14 @@ const Friendreq = () => {
         </Link>
       </div>
       <div className="relative pb-2 mb-4 after:absolute after:content[] after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-[#F0F2F5]"></div>
+      {users?.request &&
+        users?.request?.map((item, i) => (
+          <div className="flex" key={i}>
+            <div className="w-[40px] h-[40px] rounded-full border border-solid border-blue overflow-hidden">
+              <img src={item.profilePicture} alt="" />
+            </div>
+          </div>
+        ))}
     </div>
   );
 };

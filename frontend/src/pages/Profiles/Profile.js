@@ -2,13 +2,15 @@ import React, { useEffect, useReducer, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "../../Component/Header/Header";
 import { getprofilereducer } from "../../functions/getPost";
 import Coverphoto from "./Coverphoto/Coverphoto";
 import Profilebottom from "./Profilebtm/Profilebottom";
 import Profileinfos from "./Profilepictureinfo";
+import { createUser } from "../../features/users/userSlice";
+import { LoginUser } from "../../features/users/loginUser";
 
 const Profile = ({ setVisible }) => {
   const user = useSelector((users) => users.login.loggedin);
@@ -20,6 +22,7 @@ const Profile = ({ setVisible }) => {
   const [scrollheight, setScrollHeight] = useState();
   var userName = username === undefined ? user.username : username;
   const navigate = useNavigate();
+  const dispatch2 = useDispatch();
   const [{ loading, profile, error }, dispatch] = useReducer(
     getprofilereducer,
     {
@@ -70,6 +73,31 @@ const Profile = ({ setVisible }) => {
           type: "PROFILE_SUCCESS",
           payload: data,
         });
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            ...user,
+            friends: data.friends,
+            followers: data.followers,
+            request: data.request,
+          })
+        );
+        dispatch2(
+          createUser({
+            ...user,
+            friends: data.friends,
+            followers: data.followers,
+            request: data.request,
+          })
+        );
+        dispatch2(
+          LoginUser({
+            ...user,
+            friends: data.friends,
+            followers: data.followers,
+            request: data.request,
+          })
+        );
       }
     } catch (error) {
       dispatch({
@@ -78,6 +106,7 @@ const Profile = ({ setVisible }) => {
       });
     }
   };
+  console.log(profile);
 
   useEffect(() => {
     setOthername(profile?.details?.othername);

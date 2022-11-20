@@ -99,76 +99,62 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
           </button>
         )}
       </div>
-      {details?.job && details?.workplace && (
-        <div className="mt-3 flex items-center">
-          <div className="w-[5%]">
-            <img className="invert-[40%]" src="../../../icons/job.png" alt="" />
-          </div>
-          <div className="w-[95%]">
-            <span className="text-title_color font-primary text-base font-normal block ml-2">
-              {details?.job && details?.workplace ? (
-                <span>
-                  Work as a <b>{details?.job}</b> at <b>{details?.workplace}</b>
-                </span>
-              ) : details?.job && !details?.workplace ? (
-                <span>
-                  work as <b>{details?.job}</b>
-                </span>
-              ) : !details?.job && details?.workplace ? (
-                <span>
-                  works at <b>{details?.workplace}</b>
-                </span>
-              ) : (
-                "Add work place & job"
-              )}
-            </span>
-          </div>
+      <div className="mt-3 flex items-center">
+        <div className="w-[5%]">
+          <img className="invert-[40%]" src="../../../icons/job.png" alt="" />
         </div>
-      )}
-      {details?.currentcity && (
-        <div className="mt-3 flex items-center">
-          <div className="w-[5%]">
-            <img
-              className="invert-[40%]"
-              src="../../../icons/from.png"
-              alt=""
-            />
-          </div>
-          <div className="w-[95%]">
-            <span className="text-title_color font-primary text-base font-normal block ml-2">
-              {details?.currentcity ? (
-                <span>
-                  Lives in <b>{details?.currentcity}</b>
-                </span>
-              ) : (
-                "Add Currentcity"
-              )}
-            </span>
-          </div>
+        <div className="w-[95%]">
+          <span className="text-title_color font-primary text-base font-normal block ml-2">
+            {details?.job && details?.workplace ? (
+              <span>
+                Work as a <b>{details?.job}</b> at <b>{details?.workplace}</b>
+              </span>
+            ) : details?.job && !details?.workplace ? (
+              <span>
+                work as <b>{details?.job}</b>
+              </span>
+            ) : !details?.job && details?.workplace ? (
+              <span>
+                works at <b>{details?.workplace}</b>
+              </span>
+            ) : (
+              "work place & job"
+            )}
+          </span>
         </div>
-      )}
-      {details?.hometown && (
-        <div className="mt-3 flex items-center">
-          <div className="w-[5%]">
-            <img
-              className="invert-[40%]"
-              src="../../../icons/home.png"
-              alt=""
-            />
-          </div>
-          <div className="w-[95%]">
-            <span className="text-title_color font-primary text-base font-normal block ml-2">
-              {details?.hometown ? (
-                <span>
-                  From <b>{infos.hometown}</b>
-                </span>
-              ) : (
-                "Add Hometown"
-              )}
-            </span>
-          </div>
+      </div>
+      <div className="mt-3 flex items-center">
+        <div className="w-[5%]">
+          <img className="invert-[40%]" src="../../../icons/from.png" alt="" />
         </div>
-      )}
+        <div className="w-[95%]">
+          <span className="text-title_color font-primary text-base font-normal block ml-2">
+            {details?.currentcity ? (
+              <span>
+                Lives in <b>{details?.currentcity}</b>
+              </span>
+            ) : (
+              "Currentcity"
+            )}
+          </span>
+        </div>
+      </div>
+      <div className="mt-3 flex items-center">
+        <div className="w-[5%]">
+          <img className="invert-[40%]" src="../../../icons/home.png" alt="" />
+        </div>
+        <div className="w-[95%]">
+          <span className="text-title_color font-primary text-base font-normal block ml-2">
+            {details?.hometown ? (
+              <span>
+                From <b>{infos.hometown}</b>
+              </span>
+            ) : (
+              "Hometown"
+            )}
+          </span>
+        </div>
+      </div>
       {details?.college && (
         <div className="mt-3 flex items-center">
           <div className="w-[5%]">
@@ -191,70 +177,64 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
           </div>
         </div>
       )}
-      {details?.highschool && (
-        <div className="mt-3 flex items-center">
-          <div className="w-[5%]">
-            <img
-              className="invert-[40%]"
-              src="../../../icons/studies.png"
-              alt=""
-            />
-          </div>
-          <div className="w-[95%]">
-            <span className="text-title_color font-primary text-base font-normal block ml-2">
-              {details?.highschool ? (
-                <span>
-                  Studied at <b>{details?.highschool}</b>
-                </span>
-              ) : (
-                "Add Hightschool"
-              )}
-            </span>
-          </div>
+      <div className="mt-3 flex items-center">
+        <div className="w-[5%]">
+          <img
+            className="invert-[40%]"
+            src="../../../icons/studies.png"
+            alt=""
+          />
         </div>
-      )}
-      {details?.relationship && (
-        <div className="mt-3 flex items-center">
-          <div className="w-[5%]">
-            <img
-              className="invert-[40%]"
-              src="../../../icons/relationship.png"
-              alt=""
-            />
-          </div>
-          <div className="w-[95%]">
-            <span className="text-title_color font-primary text-base font-normal block ml-2">
-              {details?.relationship ? (
-                <span>{details?.relationship}</span>
-              ) : (
-                "Add relationship status"
-              )}
-            </span>
-          </div>
+        <div className="w-[95%]">
+          <span className="text-title_color font-primary text-base font-normal block ml-2">
+            {details?.highschool ? (
+              <span>
+                Studied at <b>{details?.highschool}</b>
+              </span>
+            ) : (
+              "Hightschool"
+            )}
+          </span>
         </div>
-      )}
-      {details?.instagram && (
-        <div className="mt-3 flex items-center">
-          <div className="w-[5%]">
-            <img
-              className="invert-[40%]"
-              src="../../../icons/instagram.png"
-              alt=""
-            />
-          </div>
-          <div className="w-[95%]">
-            <span className="text-title_color font-primary text-base font-normal block ml-2">
-              {details?.instagram ? (
-                <a className="text-blue" href="https://www.instagram.com/">
-                  {details?.instagram}
-                </a>
-              ) : (
-                "Add Instagram account"
-              )}
-            </span>
-          </div>
+      </div>
+      <div className="mt-3 flex items-center">
+        <div className="w-[5%]">
+          <img
+            className="invert-[40%]"
+            src="../../../icons/relationship.png"
+            alt=""
+          />
         </div>
-      )}
+        <div className="w-[95%]">
+          <span className="text-title_color font-primary text-base font-normal block ml-2">
+            {details?.relationship ? (
+              <span>{details?.relationship}</span>
+            ) : (
+              "relationship status"
+            )}
+          </span>
+        </div>
+      </div>
+      <div className="mt-3 flex items-center">
+        <div className="w-[5%]">
+          <img
+            className="invert-[40%]"
+            src="../../../icons/instagram.png"
+            alt=""
+          />
+        </div>
+        <div className="w-[95%]">
+          <span className="text-title_color font-primary text-base font-normal block ml-2">
+            {details?.instagram ? (
+              <a className="text-blue" href="https://www.instagram.com/">
+                {details?.instagram}
+              </a>
+            ) : (
+              "Instagram account"
+            )}
+          </span>
+        </div>
+      </div>
       {!visitor &&
       !details?.othername &&
       !details?.job &&

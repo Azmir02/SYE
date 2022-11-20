@@ -43,7 +43,9 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
               <div className="flex justify-center">
                 <div>
                   <h4 className="font-primary font-semibold text-xl capitalize text-black">
-                    930
+                    {profile.friends && profile.friends.length
+                      ? profile.friends.length
+                      : 0}
                   </h4>
                   <span className="font-primary font-semibold text-base capitalize text-title_color">
                     friends
@@ -51,7 +53,9 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                 </div>
                 <div className="mx-[50px]">
                   <h4 className="font-primary font-semibold text-xl capitalize text-black">
-                    87
+                    {profile.ownerPost && profile.ownerPost.length
+                      ? profile.ownerPost.length
+                      : 0}
                   </h4>
                   <span className="font-primary font-semibold text-base capitalize text-title_color">
                     posts
@@ -59,7 +63,9 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                 </div>
                 <div>
                   <h4 className="font-primary font-semibold text-xl capitalize text-black">
-                    1k
+                    {profile.followers && profile.followers.length
+                      ? profile.followers.length
+                      : 0}
                   </h4>
                   <span className="font-primary font-semibold text-base capitalize text-title_color">
                     followers
@@ -97,7 +103,9 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                 <div className="flex justify-center">
                   <div>
                     <h4 className="font-primary font-semibold text-xl capitalize text-black">
-                      930
+                      {profile.friends && profile.friends.length
+                        ? profile.friends.length
+                        : 0}
                     </h4>
                     <span className="font-primary font-semibold text-base capitalize text-title_color">
                       friends
@@ -105,7 +113,9 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                   </div>
                   <div className="mx-[50px]">
                     <h4 className="font-primary font-semibold text-xl capitalize text-black">
-                      87
+                      {profile.ownerPost && profile.ownerPost.length
+                        ? profile.ownerPost.length
+                        : 0}
                     </h4>
                     <span className="font-primary font-semibold text-base capitalize text-title_color">
                       posts
@@ -113,7 +123,9 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                   </div>
                   <div>
                     <h4 className="font-primary font-semibold text-xl capitalize text-black">
-                      1k
+                      {profile.followers && profile.followers.length
+                        ? profile.followers.length
+                        : 0}
                     </h4>
                     <span className="font-primary font-semibold text-base capitalize text-title_color">
                       followers
@@ -136,7 +148,9 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                 <div className="flex justify-center">
                   <div>
                     <h4 className="font-primary font-semibold text-xl capitalize text-black">
-                      930
+                      {profile.friends && profile.friends.length
+                        ? profile.friends.length
+                        : 0}
                     </h4>
                     <span className="font-primary font-semibold text-base capitalize text-title_color">
                       friends
@@ -144,7 +158,9 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                   </div>
                   <div className="mx-[50px]">
                     <h4 className="font-primary font-semibold text-xl capitalize text-black">
-                      87
+                      {profile.ownerPost && profile.ownerPost.length
+                        ? profile.ownerPost.length
+                        : 0}
                     </h4>
                     <span className="font-primary font-semibold text-base capitalize text-title_color">
                       posts
@@ -152,7 +168,9 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                   </div>
                   <div>
                     <h4 className="font-primary font-semibold text-xl capitalize text-black">
-                      1k
+                      {profile.followers && profile.followers.length
+                        ? profile.followers.length
+                        : 0}
                     </h4>
                     <span className="font-primary font-semibold text-base capitalize text-title_color">
                       followers
