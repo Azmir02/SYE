@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import Friendship from "./Friendship";
 import Profileinfooptions from "./Profileinfooptions";
 import Profilepicpopup from "./Profilepicture/Profilepicpopup";
 
@@ -68,7 +69,10 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
             </div>
           </div>
           {visitor ? (
-            ""
+            <Friendship
+              friendships={profile?.friendship}
+              profileid={profile._id}
+            />
           ) : (
             <div className="flex justify-center xl:justify-end pr-5 xl:translate-y-[-100%] relative z-[1]">
               <button className="flex items-center bg-blue px-5 py-3 rounded-md">
@@ -88,7 +92,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
           )}
 
           {visitor ? (
-            <div className="mt-[60px] hidden xl:block mb-[18px]">
+            <div className="mt-3 hidden xl:block mb-[18px]">
               <div className="grid grid-cols-3 items-center">
                 <div className="flex justify-center">
                   <div>

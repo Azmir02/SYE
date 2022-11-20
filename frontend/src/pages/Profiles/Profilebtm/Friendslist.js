@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Friendslist = ({ friends }) => {
   return (
@@ -13,18 +14,29 @@ const Friendslist = ({ friends }) => {
       </div>
       <div>
         <span className="font-primary text-base text-title_color">
-          {/* (
-          {friends.length === 0
+          (
+          {friends?.length === 0
             ? ""
-            : friends.length === 1
+            : friends?.length === 1
             ? "1 friends"
-            : `${friends.length} friends`}
-          ) */}
+            : `${friends?.length} friends`}
+          )
         </span>
         <div className="grid grid-cols-3 gap-1 mt-3 rounded-md overflow-hidden">
           {friends &&
-            friends.length &&
-            friends.slice(0, 9).map((friends) => <div></div>)}
+            friends?.length &&
+            friends.slice(0, 9).map((friends) => (
+              <div key={friends._id}>
+                <Link to={`/profile/${friends.username}`}>
+                  <div className="cursor-pointer">
+                    <img src={friends.profilePicture} alt="" />
+                    <h5 className="font-primary text-base text-title_color capitalize mt-2">
+                      {friends.fName} {friends.lName}
+                    </h5>
+                  </div>
+                </Link>
+              </div>
+            ))}
         </div>
       </div>
     </div>

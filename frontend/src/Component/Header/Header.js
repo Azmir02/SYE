@@ -93,7 +93,18 @@ const Header = ({ page }) => {
           to="/"
           className="hover:bg-[#F0F2F5] hidden md:block px-2 py-2 lg:px-5 lg:py-2 2xl:px-12 2xl:py-3 rounded-md transition-all ease-linear duration-100"
         >
-          <Friends />
+          {users.friends && users.friends.length ? (
+            <div className="relative">
+              <Friends />
+              <div className="absolute top-[-5px] right-[-5px] w-[20px] h-[20px] text-center leading-[15px] bg-red rounded-full">
+                <span className="text-white font-primary text-sm font-medium">
+                  {users.friends.length}
+                </span>
+              </div>
+            </div>
+          ) : (
+            <Friends />
+          )}
         </Link>
         <Link
           to="/"

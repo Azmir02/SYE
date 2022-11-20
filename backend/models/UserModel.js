@@ -75,25 +75,33 @@ const UserModel = new Schema(
       type: Boolean,
       default: false,
     },
-    friends: {
-      type: Array,
-      default: [],
-    },
+    friends: [
+      {
+        type: ObjectId,
+        ref: "usermodel",
+      },
+    ],
 
-    followers: {
-      type: Array,
-      default: [],
-    },
+    followers: [
+      {
+        type: ObjectId,
+        ref: "usermodel",
+      },
+    ],
 
-    following: {
-      type: Array,
-      default: [],
-    },
+    following: [
+      {
+        type: ObjectId,
+        ref: "usermodel",
+      },
+    ],
 
-    request: {
-      type: Array,
-      default: [],
-    },
+    request: [
+      {
+        type: ObjectId,
+        ref: "usermodel",
+      },
+    ],
 
     search: [
       {

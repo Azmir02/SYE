@@ -15,6 +15,10 @@ const {
   addfriend,
   cancelrequest,
   follow,
+  unfollow,
+  acceprequest,
+  unfriend,
+  deleterequest,
 } = require("../controller/Usercontroller");
 const { authUser } = require("../middleware/Authentication");
 const userRouter = express.Router();
@@ -34,5 +38,9 @@ userRouter.route("/updatedetails").put(authUser, updatedetails);
 userRouter.route("/addfriend/:id").put(authUser, addfriend);
 userRouter.route("/cancelrequest/:id").put(authUser, cancelrequest);
 userRouter.route("/follow/:id").put(authUser, follow);
+userRouter.route("/unfollow/:id").put(authUser, unfollow);
+userRouter.route("/acceprequest/:id").put(authUser, acceprequest);
+userRouter.route("/unfriend/:id").put(authUser, unfriend);
+userRouter.route("/deleterequest/:id").put(authUser, deleterequest);
 
 module.exports = userRouter;
