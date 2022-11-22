@@ -26,7 +26,6 @@ export const getreactPosts = async (postId, token) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(data);
     return data;
   } catch (error) {
     return error.response.data.messasge;

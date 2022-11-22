@@ -15,6 +15,7 @@ const Showpost = ({ posts, user }) => {
   const [picker, setPicker] = useState(false);
   const [commentimages, setCommentimages] = useState("");
   const [reacts, setReacts] = useState();
+  const [check, setCheck] = useState();
   const [error, setError] = useState("");
   const [text, setText] = useState("");
   const textRef = useRef(null);
@@ -44,7 +45,8 @@ const Showpost = ({ posts, user }) => {
 
   const getReacts = async () => {
     let res = await getreactPosts(posts._id, user.token);
-    setReacts(res);
+    setReacts(res.reacts);
+    setCheck(res.check);
   };
 
   const handleImageUpload = (e) => {
@@ -180,7 +182,10 @@ const Showpost = ({ posts, user }) => {
         </>
       )}
       <div className="mt-3 flex px-5 py-3 items-center justify-between border-y border-solid border-[#F0F2F5] w-full">
-        <div className="w-[40%]">reacts</div>
+        <div className="w-[40%] flex">
+          <div></div>
+          <div></div>
+        </div>
         <div className="w-[50%] md:w-[40%] text-right">
           <span className="font-primary text-title_color text-base mr-3 cursor-pointer">
             2 comments
@@ -204,7 +209,16 @@ const Showpost = ({ posts, user }) => {
             }, 500);
           }}
         >
-          <i className="like_icon"></i>
+          {check ? (
+            <img
+              src={`../../../reacts/${check}.svg`}
+              className="w-[20px]"
+              alt=""
+            />
+          ) : (
+            <i className="like_icon"></i>
+          )}
+
           <span className="font-primary text-title_color text-base ml-2">
             Like
           </span>
@@ -215,6 +229,8 @@ const Showpost = ({ posts, user }) => {
             setShowReacts={setShowReacts}
             postsId={posts._id}
             user={user}
+            check={check}
+            setCheck={setCheck}
           />
         )}
         <div className="flex items-center justify-center cursor-pointer w-[200px] hover:bg-[#F0F2F5] hover:rounded-md transition-all ease-linear duration-150">

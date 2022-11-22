@@ -33,10 +33,22 @@ const reactsEmoji = [
   },
 ];
 
-const Reacts = ({ showReacts, setShowReacts, postsId, user }) => {
+const Reacts = ({
+  showReacts,
+  setShowReacts,
+  postsId,
+  user,
+  check,
+  setCheck,
+}) => {
   const handleReacts = async (type) => {
     try {
       reactPosts(postsId, type, user.token);
+      if (check == type) {
+        setCheck();
+      } else {
+        setCheck(type);
+      }
     } catch (error) {
       console.log(error);
     }

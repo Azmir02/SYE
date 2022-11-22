@@ -33,13 +33,18 @@ exports.reactPost = async (req, res) => {
 
 exports.getreactPost = async (req, res) => {
   try {
-    const reacts = await Reacts.find({ postRef: req.params.id });
+    const reactsArray = await Reacts.find({ postRef: req.params.id });
+    // if already react exits
     let check = await Reacts.findOne({
       postRef: req.params.id,
       reactBy: req.user.id,
     });
+
+    let newReacts = reactsArray.reduce((group, react) => {
+      console.log(group);
+    }, {});
     res.json({
-      reacts,
+      reactsArray,
       check: check?.react,
     });
   } catch (error) {
