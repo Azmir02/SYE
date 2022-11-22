@@ -1,4 +1,5 @@
 import React from "react";
+import { reactPosts } from "../../functions/Postsreact";
 
 const reactsEmoji = [
   {
@@ -32,7 +33,14 @@ const reactsEmoji = [
   },
 ];
 
-const Reacts = ({ showReacts, setShowReacts }) => {
+const Reacts = ({ showReacts, setShowReacts, postsId, user }) => {
+  const handleReacts = async (type) => {
+    try {
+      reactPosts(postsId, type, user.token);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <div
@@ -54,6 +62,7 @@ const Reacts = ({ showReacts, setShowReacts }) => {
             src={reacts.image}
             key={i}
             alt="reacts"
+            onClick={() => handleReacts(reacts.name)}
           />
         ))}
       </div>

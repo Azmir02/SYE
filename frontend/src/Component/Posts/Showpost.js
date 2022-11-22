@@ -6,6 +6,7 @@ import Dots from "../../svg/dots";
 import Reacts from "./Reacts";
 import Menu from "../UserMenulist/Menu";
 import OutsideClick from "../../helpers/click";
+import { getreactPosts } from "../../functions/Postsreact";
 
 const Showpost = ({ posts, user }) => {
   const [showReacts, setShowReacts] = useState(false);
@@ -13,6 +14,7 @@ const Showpost = ({ posts, user }) => {
   const [visible, setVisible] = useState(false);
   const [picker, setPicker] = useState(false);
   const [commentimages, setCommentimages] = useState("");
+  const [reacts, setReacts] = useState();
   const [error, setError] = useState("");
   const [text, setText] = useState("");
   const textRef = useRef(null);
@@ -35,6 +37,15 @@ const Showpost = ({ posts, user }) => {
   useEffect(() => {
     textRef.current.selectionEnd = cursorPosition;
   }, [cursorPosition]);
+
+  useEffect(() => {
+    getReacts();
+  }, [posts]);
+
+  const getReacts = async () => {
+    let res = await getreactPosts(posts._id, user.token);
+    setReacts(res);
+  };
 
   const handleImageUpload = (e) => {
     const files = e.target.files[0];
@@ -199,7 +210,12 @@ const Showpost = ({ posts, user }) => {
           </span>
         </div>
         {showReacts && (
-          <Reacts showReacts={showReacts} setShowReacts={setShowReacts} />
+          <Reacts
+            showReacts={showReacts}
+            setShowReacts={setShowReacts}
+            postsId={posts._id}
+            user={user}
+          />
         )}
         <div className="flex items-center justify-center cursor-pointer w-[200px] hover:bg-[#F0F2F5] hover:rounded-md transition-all ease-linear duration-150">
           <i className="comment_icon"></i>

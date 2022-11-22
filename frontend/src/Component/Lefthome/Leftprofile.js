@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Leftprofile = ({ user }) => {
   return (
     <>
-      <div className="hidden w-[265px] 3xl:w-full xl:block bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] ">
+      <div className="hidden pb-5 w-[265px] 3xl:w-full xl:block bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] ">
         <div className="relative">
           <div className="overflow-hidden bg-red h-[100px] rounded-tl-md rounded-tr-md">
             <img
@@ -31,28 +31,6 @@ const Leftprofile = ({ user }) => {
             <span className="capitalize font-primary leading-[0.8] text-base font-semibold text-secondary_color">
               {user.details && `(${user.details})`}
             </span>
-            <div className="flex justify-center pb-3 mt-3">
-              <div className="w-[50%]">
-                <p className="font-primary text-lg text-black font-semibold">
-                  Friends
-                </p>
-                <span className="font-primary text-base text-title_color">
-                  {user?.friends && user?.friends?.length
-                    ? user.friends.length
-                    : 0}
-                </span>
-              </div>
-              <div className="w-[50%]">
-                <p className="font-primary text-lg text-black font-semibold">
-                  Followers
-                </p>
-                <span className="font-primary text-base text-title_color">
-                  {user?.followers && user?.followers?.length
-                    ? user.followers.length
-                    : 0}
-                </span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

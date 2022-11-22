@@ -100,7 +100,6 @@ exports.newuser = async (req, res) => {
       verified: User.verified,
       friends: User.friends,
       followers: User.followers,
-      request: User.request,
       token: token,
       message: "Registration success! Please activate your email before",
     });
@@ -155,7 +154,6 @@ exports.loginUser = async (req, res) => {
           verified: user.verified,
           friends: user.friends,
           followers: user.followers,
-          request: user.request,
           details: user.details.othername,
           token: token,
         });
@@ -327,7 +325,6 @@ exports.getuser = async (req, res) => {
       "followers",
       "fName lName username profilePicture"
     );
-    await getprofile.populate("request", "fName lName username profilePicture");
     res.json({ ...getprofile.toObject(), ownerPost, friendship });
   } catch (error) {
     res.status(404).json({
