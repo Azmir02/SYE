@@ -321,6 +321,7 @@ exports.getuser = async (req, res) => {
     const ownerPost = await Post.find({ user: getprofile._id })
       .populate("user")
       .sort({ createdAt: -1 });
+
     await getprofile.populate("friends", "fName lName username profilePicture");
     await getprofile.populate(
       "followers",

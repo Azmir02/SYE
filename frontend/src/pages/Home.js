@@ -2,7 +2,6 @@ import React, { useEffect, useReducer } from "react";
 import Header from "../Component/Header/Header";
 import { Helmet } from "react-helmet-async";
 import Userleft from "../Component/Lefthome/Userleft";
-import Friendreq from "../Component/Righthome/Friendrequest/Friendreq";
 import Contacts from "../Component/Righthome/Contacts";
 import Story from "../Component/Story/Story";
 import Post from "../Component/Posts/Post";
@@ -67,7 +66,6 @@ const Home = ({ setVisible }) => {
             ))}
           </div>
           <div className="pr-3 hidden xl:block">
-            <Friendreq users={users} />
             <Contacts />
           </div>
         </div>
