@@ -16,7 +16,7 @@ exports.reactPost = async (req, res) => {
       });
       await newReact.save();
     } else {
-      if (check.react == react) {
+      if (check.react === react) {
         await Reacts.findByIdAndRemove(check._id);
       } else {
         await Reacts.findByIdAndUpdate(check._id, {
@@ -41,11 +41,41 @@ exports.getreactPost = async (req, res) => {
     });
 
     let newReacts = reactsArray.reduce((group, react) => {
-      console.log(group);
+      let key = react["react"];
+      group[key] = group[key] || [];
+      group[key].push(react);
+      return group;
     }, {});
+    const reacts = [
+      {
+        react: "like",
+        count: newReacts.like ? newReacts.like.length : 0,
+      },
+      {
+        react: "love",
+        count: newReacts.love ? newReacts.love.length : 0,
+      },
+      {
+        react: "angry",
+        count: newReacts.angry ? newReacts.angry.length : 0,
+      },
+      {
+        react: "haha",
+        count: newReacts.haha ? newReacts.haha.length : 0,
+      },
+      {
+        react: "sad",
+        count: newReacts.sad ? newReacts.sad.length : 0,
+      },
+      {
+        react: "wow",
+        count: newReacts.wow ? newReacts.wow.length : 0,
+      },
+    ];
     res.json({
-      reactsArray,
+      reacts,
       check: check?.react,
+      total: reactsArray.length,
     });
   } catch (error) {
     return res.status(400).json({

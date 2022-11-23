@@ -6,7 +6,7 @@ import Dots from "../../svg/dots";
 import Reacts from "./Reacts";
 import Menu from "../UserMenulist/Menu";
 import OutsideClick from "../../helpers/click";
-import { getreactPosts } from "../../functions/Postsreact";
+import { getreactPosts, reactPosts } from "../../functions/Postsreact";
 
 const Showpost = ({ posts, user }) => {
   const [showReacts, setShowReacts] = useState(false);
@@ -15,6 +15,7 @@ const Showpost = ({ posts, user }) => {
   const [picker, setPicker] = useState(false);
   const [commentimages, setCommentimages] = useState("");
   const [reacts, setReacts] = useState();
+  const [total, setTotal] = useState();
   const [check, setCheck] = useState();
   const [error, setError] = useState("");
   const [text, setText] = useState("");
@@ -34,6 +35,7 @@ const Showpost = ({ posts, user }) => {
     setText(newText);
     setCursorPosition(start.length + emoji.length);
   };
+  console.log(reacts);
 
   useEffect(() => {
     textRef.current.selectionEnd = cursorPosition;
@@ -47,8 +49,39 @@ const Showpost = ({ posts, user }) => {
     let res = await getreactPosts(posts._id, user.token);
     setReacts(res.reacts);
     setCheck(res.check);
+    setTotal(res.total);
   };
-
+  const handleReacts = async (type) => {
+    try {
+      reactPosts(posts._id, type, user.token);
+      if (check === type) {
+        setCheck();
+        let index = reacts.findIndex((x) => x.react === check);
+        if (index !== -1) {
+          setReacts([...reacts, (reacts[index].count = --reacts[index].count)]);
+          setTotal((prev) => --prev);
+        }
+      } else {
+        setCheck(type);
+        let index = reacts.findIndex((x) => x.react === type);
+        let index1 = reacts.findIndex((x) => x.react === check);
+        if (index !== -1) {
+          setReacts([...reacts, (reacts[index].count = ++reacts[index].count)]);
+          setTotal((prev) => ++prev);
+        }
+        if (index1 !== -1) {
+          setReacts([
+            ...reacts,
+            (reacts[index1].count = --reacts[index1].count),
+          ]);
+          setTotal((prev) => --prev);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(reacts);
   const handleImageUpload = (e) => {
     const files = e.target.files[0];
     if (
@@ -182,9 +215,31 @@ const Showpost = ({ posts, user }) => {
         </>
       )}
       <div className="mt-3 flex px-5 py-3 items-center justify-between border-y border-solid border-[#F0F2F5] w-full">
-        <div className="w-[40%] flex">
-          <div></div>
-          <div></div>
+        <div className="w-[40%] flex items-center">
+          <div className="flex">
+            {reacts &&
+              reacts
+                .sort((a, b) => {
+                  return b.count - a.count;
+                })
+                .slice(0, 3)
+                .map(
+                  (react, i) =>
+                    react.count > 0 && (
+                      <img
+                        key={i}
+                        src={`../../../reacts/${react.react}.svg`}
+                        alt=""
+                        className="w-[20px]"
+                      />
+                    )
+                )}
+          </div>
+          <div>
+            <span className="font-primary text-title_color text-base ml-2">
+              {total ? total : ""}
+            </span>
+          </div>
         </div>
         <div className="w-[50%] md:w-[40%] text-right">
           <span className="font-primary text-title_color text-base mr-3 cursor-pointer">
@@ -208,6 +263,7 @@ const Showpost = ({ posts, user }) => {
               setShowReacts(false);
             }, 500);
           }}
+          onClick={() => handleReacts(check ? check : "like")}
         >
           {check ? (
             <img
@@ -219,18 +275,32 @@ const Showpost = ({ posts, user }) => {
             <i className="like_icon"></i>
           )}
 
-          <span className="font-primary text-title_color text-base ml-2">
-            Like
+          <span
+            className={
+              check === "like"
+                ? "font-primary capitalize text-[#5093F3] text-base font-medium ml-2"
+                : check === "love"
+                ? "font-primary capitalize text-[#F54969] text-base font-medium ml-2"
+                : check === "angry"
+                ? "font-primary capitalize text-[#E54953] text-base font-medium ml-2"
+                : check === "haha"
+                ? "font-primary capitalize text-[#FBCC59] text-base font-medium ml-2"
+                : check === "wow"
+                ? "font-primary capitalize text-[#FBCC59] text-base font-medium ml-2"
+                : check === "sad"
+                ? "font-primary capitalize text-[#FBCC59] text-base ml-2"
+                : "font-primary capitalize text-title_color text-base ml-2"
+            }
+          >
+            {check ? check : "Like"}
           </span>
         </div>
         {showReacts && (
           <Reacts
             showReacts={showReacts}
             setShowReacts={setShowReacts}
-            postsId={posts._id}
             user={user}
-            check={check}
-            setCheck={setCheck}
+            handleReacts={handleReacts}
           />
         )}
         <div className="flex items-center justify-center cursor-pointer w-[200px] hover:bg-[#F0F2F5] hover:rounded-md transition-all ease-linear duration-150">
