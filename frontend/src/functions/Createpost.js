@@ -29,3 +29,24 @@ export const createPost = async (
     return error.response.data.message;
   }
 };
+
+export const createComment = async (postId, comment, image, token) => {
+  try {
+    const { data } = await axios.put(
+      "/api/comment",
+      {
+        postId,
+        comment,
+        image,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};

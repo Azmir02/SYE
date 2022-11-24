@@ -7,11 +7,15 @@ import Reacts from "./Reacts";
 import Menu from "../UserMenulist/Menu";
 import OutsideClick from "../../helpers/click";
 import { getreactPosts, reactPosts } from "../../functions/Postsreact";
+import { createComment } from "../../functions/Createpost";
+import dataURItoBlob from "../../helpers/dataURItoBlob";
+import { uploadIamge } from "../../functions/UploadImages";
 
 const Showpost = ({ posts, user }) => {
   const [showReacts, setShowReacts] = useState(false);
   const [cursorPosition, setCursorPosition] = useState();
   const [visible, setVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [picker, setPicker] = useState(false);
   const [commentimages, setCommentimages] = useState("");
   const [reacts, setReacts] = useState();
@@ -35,7 +39,6 @@ const Showpost = ({ posts, user }) => {
     setText(newText);
     setCursorPosition(start.length + emoji.length);
   };
-  console.log(reacts);
 
   useEffect(() => {
     textRef.current.selectionEnd = cursorPosition;
@@ -81,7 +84,6 @@ const Showpost = ({ posts, user }) => {
       console.log(error);
     }
   };
-  console.log(reacts);
   const handleImageUpload = (e) => {
     const files = e.target.files[0];
     if (
@@ -105,6 +107,34 @@ const Showpost = ({ posts, user }) => {
     readFile.onload = (finishedRead) => {
       setCommentimages(finishedRead.target.result);
     };
+  };
+
+  // for make comment
+  const handleComment = async (e) => {
+    if (e.key === "Enter") {
+      if (commentimages !== "") {
+        setLoading(true);
+        const Images = dataURItoBlob(commentimages);
+        const path = `${user.username}/post_images/${posts._id}`;
+        let formData = new FormData();
+        formData.append("path", path);
+        formData.append("file", Images);
+        const comment = await uploadIamge(formData, path, user.token);
+        const response = await createComment(
+          posts._id,
+          text,
+          comment[0].url,
+          user.token
+        );
+        console.log(response);
+        setCommentimages("");
+        setText("");
+      } else {
+        const comment = await createComment(posts._id, text, null, user.token);
+        setText("");
+        setCommentimages("");
+      }
+    }
   };
 
   return (
@@ -357,6 +387,7 @@ const Showpost = ({ posts, user }) => {
               placeholder="Write a comment..."
               value={text}
               onChange={(e) => setText(e.target.value)}
+              onKeyUp={handleComment}
             />
             <div className="flex items-center pr-2">
               <div
