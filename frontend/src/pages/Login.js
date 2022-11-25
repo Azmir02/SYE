@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { signIn } from "../validation/index";
 import { BiErrorCircle } from "react-icons/bi";
 import { LoginUser } from "../features/users/loginUser";
-import DotLoader from "react-spinners/DotLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
 
@@ -104,18 +104,23 @@ const Login = () => {
 
           <div className="text-center">
             <button
-              className="bg-green hover:bg-[#333333] px-8 py-3 w-[50%] mt-5 rounded-full font-primary font-normal text-base transition ease-linear duration-150  text-white"
+              className="bg-green hover:bg-[#333333] px-8 py-3 w-[50%] mt-2 rounded-full font-primary font-normal text-base transition ease-linear duration-150  text-white"
               type="submit"
+              disabled={loading}
             >
-              Sign In
+              {loading ? (
+                <ClipLoader
+                  className="m-auto mt-2"
+                  color="#fff"
+                  loading={loading}
+                  size={15}
+                />
+              ) : (
+                "Sign In"
+              )}
             </button>
           </div>
-          <DotLoader
-            className="m-auto mt-2"
-            color="#D17274"
-            loading={loading}
-            size={30}
-          />
+
           {error && (
             <p className="text-red mb-2 font-primary text-lg font-normal text-center mt-3">
               <BiErrorCircle style={{ display: "inline-block" }} /> {error}

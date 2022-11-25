@@ -14,7 +14,7 @@ exports.createPost = async (req, res) => {
 exports.getPost = async (req, res) => {
   try {
     const findAllPost = await Post.find()
-      .populate("user", "fName lName username profilePicture gender")
+      .populate("user", "fName lName username profilePicture cover gender")
       .sort({ createdAt: -1 });
     res.json(findAllPost);
   } catch (error) {
@@ -42,7 +42,7 @@ exports.comment = async (req, res) => {
         new: true,
       }
     ).populate("comments.comentedBy", "profilePicture username fName lName");
-    res.json(newComment);
+    res.json(newComment.comments);
   } catch (error) {
     return res.status(404).json({
       message: error.message,

@@ -10,6 +10,7 @@ import { getreactPosts, reactPosts } from "../../functions/Postsreact";
 import { createComment } from "../../functions/Createpost";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadIamge } from "../../functions/UploadImages";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Showpost = ({ posts, user }) => {
   const [showReacts, setShowReacts] = useState(false);
@@ -112,8 +113,9 @@ const Showpost = ({ posts, user }) => {
   // for make comment
   const handleComment = async (e) => {
     if (e.key === "Enter") {
+      setLoading(true);
       if (commentimages !== "") {
-        setLoading(true);
+        setLoading(false);
         const Images = dataURItoBlob(commentimages);
         const path = `${user.username}/post_images/${posts._id}`;
         let formData = new FormData();
@@ -126,11 +128,11 @@ const Showpost = ({ posts, user }) => {
           comment[0].url,
           user.token
         );
-        console.log(response);
         setCommentimages("");
         setText("");
       } else {
         const comment = await createComment(posts._id, text, null, user.token);
+        setLoading(false);
         setText("");
         setCommentimages("");
       }
@@ -225,14 +227,27 @@ const Showpost = ({ posts, user }) => {
                   : "overflow-hidden"
               }`}
             >
-              {posts.images.slice(0, 4).map((item, i) => (
-                <img
-                  className="w-full h-[200px] md:h-[380px] object-cover"
-                  src={item.url}
-                  key={i}
-                  alt="postImage"
-                />
-              ))}
+              {posts.type === "profilePicture" ? (
+                <div>
+                  <div>
+                    <img src={posts.user.cover} alt="" />
+                  </div>
+                  <div className="w-[300px] h-[300px] overflow-hidden rounded-full mx-auto mt-[-168px]">
+                    <img src={posts.user.profilePicture} alt="" />
+                  </div>
+                </div>
+              ) : (
+                posts.images
+                  .slice(0, 4)
+                  .map((item, i) => (
+                    <img
+                      className="w-full h-[200px] md:h-[380px] object-cover"
+                      src={item.url}
+                      key={i}
+                      alt="postImage"
+                    />
+                  ))
+              )}
               <div className="absolute top-[69%] right-[20%]">
                 {posts.images.length >= 5 && (
                   <span className="font-medium text-black text-[22px] md:text-[40px] w-[50px] md:w-[80px] h-[50px] md:h-[80px] bg-[rgba(255,_255,_255,_0.8)] rounded-full flex items-center justify-center">
@@ -389,6 +404,11 @@ const Showpost = ({ posts, user }) => {
               onChange={(e) => setText(e.target.value)}
               onKeyUp={handleComment}
             />
+            <div className="mt-[5px] mr-2">
+              {loading && (
+                <ClipLoader color="#848F95" loading={loading} size={20} />
+              )}
+            </div>
             <div className="flex items-center pr-2">
               <div
                 className="w-[30px] h-[30px] hover:bg-[rgba(197,_199,_202,_.5)] transition-all duration-200 ease-linear rounded-full flex items-center justify-center cursor-pointer"

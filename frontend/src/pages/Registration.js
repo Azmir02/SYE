@@ -7,7 +7,7 @@ import { signUp } from "../validation/index";
 import Signup from "../svg/Registrationpic";
 import { useDispatch } from "react-redux";
 import { createUser } from "../features/users/userSlice";
-import DotLoader from "react-spinners/DotLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
 
@@ -291,10 +291,14 @@ const Registration = () => {
               <button
                 className="bg-green hover:bg-[#333333] px-8 py-3 w-[50%] mt-5 rounded-full font-primary font-normal text-base transition ease-linear duration-150  text-white"
                 type="submit"
+                disabled={loading}
               >
-                Create Account
+                {loading ? (
+                  <ClipLoader color="#fff" loading={loading} size={15} />
+                ) : (
+                  "Create Account"
+                )}
               </button>
-              <DotLoader color="#D17274" loading={loading} size={30} />
             </form>
           </div>
           <div className="max-w-[420px] hidden md:block">

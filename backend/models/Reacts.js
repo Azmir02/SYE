@@ -14,7 +14,7 @@ const Reacts = new mongoose.Schema({
   },
   reactBy: {
     type: ObjectId,
-    ref: "usermodels",
+    ref: "usermodel",
   },
 });
 
