@@ -21,7 +21,7 @@ const Home = ({ setVisible }) => {
 
   useEffect(() => {
     getPost();
-  }, [posts]);
+  }, []);
 
   const getPost = async () => {
     try {

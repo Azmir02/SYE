@@ -33,7 +33,7 @@ const Comment = ({ comment }) => {
         <span className="text-base font-primary text-title_color font-normal cursor-pointer hover:underline leading-[0.8]">
           Reply
         </span>
-        <span className="text-sm font-primary text-title_color font-normal ml-2">
+        <span className="text-sm font-primary text-title_color font-normal ml-5">
           <Moment fromNow interval={30}>
             {comment.commentedAt}
           </Moment>

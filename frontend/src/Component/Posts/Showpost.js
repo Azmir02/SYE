@@ -39,8 +39,6 @@ const Showpost = ({ posts, user }) => {
     setCheck(res.check);
     setTotal(res.total);
   };
-
-  console.log(comment);
   const handleReacts = async (type) => {
     try {
       reactPosts(posts._id, type, user.token);
@@ -310,12 +308,12 @@ const Showpost = ({ posts, user }) => {
               .slice(0, count)
               .map((comment, i) => <Comment comment={comment} key={i} />)}
           {count < comment.length && (
-            <div
+            <span
               className="font-primary text-title_color text-base cursor-pointer hover:underline"
               onClick={() => showMore()}
             >
               View more comments
-            </div>
+            </span>
           )}
         </div>
 
@@ -328,6 +326,7 @@ const Showpost = ({ posts, user }) => {
           postId={posts._id}
           text={text}
           setText={setText}
+          setComment={setComment}
         />
       </div>
     </div>

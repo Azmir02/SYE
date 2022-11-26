@@ -12,6 +12,7 @@ const Createcomment = ({
   setError,
   setCommentimages,
   commentimages,
+  setComment,
   postId,
   text,
   setText,
@@ -79,12 +80,14 @@ const Createcomment = ({
           user.token
         );
         setLoading(false);
+        setComment(response);
         setText("");
         setCommentimages("");
       } else {
         setLoading(true);
         const comment = await createComment(postId, text, null, user.token);
         setText("");
+        setComment(comment);
         setCommentimages("");
         setLoading(false);
       }
