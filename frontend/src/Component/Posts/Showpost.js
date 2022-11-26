@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-import EmojiPicker from "emoji-picker-react";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import Dots from "../../svg/dots";
@@ -7,46 +6,31 @@ import Reacts from "./Reacts";
 import Menu from "../UserMenulist/Menu";
 import OutsideClick from "../../helpers/click";
 import { getreactPosts, reactPosts } from "../../functions/Postsreact";
-import { createComment } from "../../functions/Createpost";
-import dataURItoBlob from "../../helpers/dataURItoBlob";
-import { uploadIamge } from "../../functions/UploadImages";
-import ClipLoader from "react-spinners/ClipLoader";
+import Comment from "./Comment";
+import Createcomment from "./Createcomment";
 
 const Showpost = ({ posts, user }) => {
   const [showReacts, setShowReacts] = useState(false);
-  const [cursorPosition, setCursorPosition] = useState();
   const [visible, setVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [picker, setPicker] = useState(false);
+  const [text, setText] = useState("");
+  const [comment, setComment] = useState([]);
+  const [count, setCount] = useState(1);
   const [commentimages, setCommentimages] = useState("");
   const [reacts, setReacts] = useState();
   const [total, setTotal] = useState();
   const [check, setCheck] = useState();
   const [error, setError] = useState("");
-  const [text, setText] = useState("");
-  const textRef = useRef(null);
-  const chooseFile = useRef(null);
   const hideMenu = useRef(null);
-
   OutsideClick(hideMenu, () => {
     setVisible(false);
   });
-  const handleEmoji = ({ emoji }, e) => {
-    const ref = textRef.current;
-    ref.focus();
-    const start = text.substring(0, ref.selectionStart);
-    const end = text.substring(ref.selectionStart);
-    const newText = start + emoji + end;
-    setText(newText);
-    setCursorPosition(start.length + emoji.length);
-  };
-
-  useEffect(() => {
-    textRef.current.selectionEnd = cursorPosition;
-  }, [cursorPosition]);
 
   useEffect(() => {
     getReacts();
+  }, [posts]);
+
+  useEffect(() => {
+    setComment(posts?.comments);
   }, [posts]);
 
   const getReacts = async () => {
@@ -55,6 +39,8 @@ const Showpost = ({ posts, user }) => {
     setCheck(res.check);
     setTotal(res.total);
   };
+
+  console.log(comment);
   const handleReacts = async (type) => {
     try {
       reactPosts(posts._id, type, user.token);
@@ -85,58 +71,10 @@ const Showpost = ({ posts, user }) => {
       console.log(error);
     }
   };
-  const handleImageUpload = (e) => {
-    const files = e.target.files[0];
-    if (
-      files.type !== "image/jpeg" &&
-      files.type !== "image/png" &&
-      files.type !== "image/webp" &&
-      files.type !== "image/gif"
-    ) {
-      setError(
-        `${files.name} unsopported file! onlye jpg,png,webp,gif file are supported`
-      );
-      return;
-    } else if (files.size > 1024 * 1024 * 5) {
-      setError(
-        `${files.name} is too large! please choose atleast under 10MB file.`
-      );
-      return;
-    }
-    const readFile = new FileReader();
-    readFile.readAsDataURL(files);
-    readFile.onload = (finishedRead) => {
-      setCommentimages(finishedRead.target.result);
-    };
-  };
 
-  // for make comment
-  const handleComment = async (e) => {
-    if (e.key === "Enter") {
-      setLoading(true);
-      if (commentimages !== "") {
-        setLoading(false);
-        const Images = dataURItoBlob(commentimages);
-        const path = `${user.username}/post_images/${posts._id}`;
-        let formData = new FormData();
-        formData.append("path", path);
-        formData.append("file", Images);
-        const comment = await uploadIamge(formData, path, user.token);
-        const response = await createComment(
-          posts._id,
-          text,
-          comment[0].url,
-          user.token
-        );
-        setCommentimages("");
-        setText("");
-      } else {
-        const comment = await createComment(posts._id, text, null, user.token);
-        setLoading(false);
-        setText("");
-        setCommentimages("");
-      }
-    }
+  // showMore comment
+  const showMore = () => {
+    setCount((prev) => prev + 3);
   };
 
   return (
@@ -295,7 +233,7 @@ const Showpost = ({ posts, user }) => {
           </span>
         </div>
       </div>
-      <div className="flex justify-between px-5 py-2 relative ">
+      <div className="flex justify-between px-5 py-2 relative border-b border-solid border-[#F0F2F5]">
         <div
           className="flex items-center justify-center cursor-pointer w-[200px] py-2 hover:bg-[#F0F2F5] hover:rounded-md transition-all ease-linear duration-150"
           onMouseOver={() => {
@@ -362,99 +300,35 @@ const Showpost = ({ posts, user }) => {
         </div>
       </div>
 
-      <div className="pt-2 border-t border-solid border-[#F0F2F5] ">
-        {commentimages && (
-          <div className="w-[180px] relative rounded-md ml-[80px] ">
-            <img
-              src={commentimages}
-              className="w-full h-full object-cover rounded-md"
-              alt=""
-            />
+      <div>
+        <div className="px-5 py-2">
+          {comment &&
+            comment
+              .sort((a, b) => {
+                return new Date(b.commentedAt) - new Date(a.commentedAt);
+              })
+              .slice(0, count)
+              .map((comment, i) => <Comment comment={comment} key={i} />)}
+          {count < comment.length && (
             <div
-              className="absolute top-[-8px] right-[-11px] w-[30px] h-[30px] bg-[#F0F2F5] rounded-full flex items-center justify-center cursor-pointer"
-              onClick={() => setCommentimages("")}
+              className="font-primary text-title_color text-base cursor-pointer hover:underline"
+              onClick={() => showMore()}
             >
-              <i className="exit_icon"></i>
+              View more comments
             </div>
-          </div>
-        )}
-      </div>
-
-      <div className="py-2 px-5 relative">
-        <div className="flex justify-between items-center">
-          <Link to="/profile">
-            <div className="w-[40px] h-[40px] rounded-full overflow-hidden cursor-pointer">
-              <img src={user?.profilePicture} alt="" />
-            </div>
-          </Link>
-          <div className="w-[87%] flex items-center md:w-[92%] relative bg-[#F0F2F5] rounded-[50px]">
-            <input
-              type="file"
-              hidden
-              ref={chooseFile}
-              onChange={handleImageUpload}
-              accept="image/jpeg,image/png,image/webp,image/gif"
-            />
-            <input
-              ref={textRef}
-              type="text"
-              className="w-[95%] py-2 pl-5 md:pr-[20px] rounded-[50px] outline-none placeholder:text-title_color bg-[#F0F2F5]"
-              placeholder="Write a comment..."
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              onKeyUp={handleComment}
-            />
-            <div className="mt-[5px] mr-2">
-              {loading && (
-                <ClipLoader color="#848F95" loading={loading} size={20} />
-              )}
-            </div>
-            <div className="flex items-center pr-2">
-              <div
-                className="w-[30px] h-[30px] hover:bg-[rgba(197,_199,_202,_.5)] transition-all duration-200 ease-linear rounded-full flex items-center justify-center cursor-pointer"
-                onClick={() => setPicker((prev) => !prev)}
-              >
-                <i className="emoji_icon"></i>
-              </div>
-              <div
-                className="cursor-pointer w-[30px] h-[30px] hover:bg-[rgba(197,_199,_202,_.5)] transition-all duration-200 ease-linear rounded-full flex items-center justify-center"
-                onClick={() => chooseFile.current.click()}
-              >
-                <i className="camera_icon"></i>
-              </div>
-              <div className="cursor-pointer w-[30px] h-[30px] hover:bg-[rgba(197,_199,_202,_.5)] transition-all duration-200 ease-linear rounded-full flex items-center justify-center">
-                <i className="gif_icon"></i>
-              </div>
-              <div className="cursor-pointer w-[30px] h-[30px] hover:bg-[rgba(197,_199,_202,_.5)] transition-all duration-200 ease-linear rounded-full flex items-center justify-center">
-                <i className="sticker_icon"></i>
-              </div>
-            </div>
-            {picker && (
-              <div className="absolute z-[1] top-[-355px] right-[95px]">
-                <EmojiPicker
-                  width={300}
-                  height={350}
-                  onEmojiClick={handleEmoji}
-                />
-              </div>
-            )}
-          </div>
+          )}
         </div>
-        {error && (
-          <div className="authorize_err absolute top-0 left-0 w-full h-full bg-[rgba(255,_255,_255,_.9)] z-[9999] flex items-center justify-center">
-            <div className="flex items-center gap-3 w-[80%] justify-between">
-              <p className="text-red font-primary text-base font-regular w-[70%]">
-                {error}
-              </p>
-              <button
-                onClick={() => setError(false)}
-                className="bg-blue hover:bg-[#1870d5] transition-all ease-linear duration-100 px-3 py-2 rounded-md text-white font-primary text-base font-medium"
-              >
-                Try Again
-              </button>
-            </div>
-          </div>
-        )}
+
+        <Createcomment
+          user={user}
+          error={error}
+          setError={setError}
+          commentimages={commentimages}
+          setCommentimages={setCommentimages}
+          postId={posts._id}
+          text={text}
+          setText={setText}
+        />
       </div>
     </div>
   );

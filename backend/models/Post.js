@@ -45,7 +45,7 @@ const postData = new Schema(
 
         commentedAt: {
           type: Date,
-          default: new Date(),
+          require: true,
         },
       },
     ],
