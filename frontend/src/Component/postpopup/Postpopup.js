@@ -10,7 +10,7 @@ import Posterror from "./Posterror";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadIamge } from "../../functions/UploadImages";
 
-const Postpopup = ({ setVisible }) => {
+const Postpopup = ({ setVisible, posts, dispatch, profiles }) => {
   const user = useSelector((users) => users.login.loggedin);
   const closePopup = useRef(null);
   const [text, setText] = useState("");
@@ -36,7 +36,11 @@ const Postpopup = ({ setVisible }) => {
         user.token
       );
       setLoading(false);
-      if (response === "done") {
+      if (response.status === "done") {
+        dispatch({
+          type: profiles ? "PROFILE_POSTS" : "POSTS_SUCCESS",
+          payload: [response.data, ...posts],
+        });
         setBackground("");
         setText("");
         setVisible(false);
@@ -53,11 +57,24 @@ const Postpopup = ({ setVisible }) => {
         formData.append("file", img);
       });
       const responseImage = await uploadIamge(formData, path, user.token);
-      await createPost(null, responseImage, text, null, user.id, user.token);
-      setLoading(false);
-      setBackground("");
-      setText("");
-      setVisible(false);
+      const res = await createPost(
+        null,
+        responseImage,
+        text,
+        null,
+        user.id,
+        user.token
+      );
+      if (res.status === "done") {
+        dispatch({
+          type: profiles ? "PROFILE_POSTS" : "POSTS_SUCCESS",
+          payload: [res.data, ...posts],
+        });
+        setLoading(false);
+        setBackground("");
+        setText("");
+        setVisible(false);
+      }
     } else if (text) {
       setLoading(true);
       const response = await createPost(
@@ -69,7 +86,11 @@ const Postpopup = ({ setVisible }) => {
         user.token
       );
       setLoading(false);
-      if (response === "done") {
+      if (response.status === "done") {
+        dispatch({
+          type: profiles ? "PROFILE_POSTS" : "POSTS_SUCCESS",
+          payload: [response.data, ...posts],
+        });
         setBackground("");
         setText("");
         setVisible(false);
@@ -138,7 +159,7 @@ const Postpopup = ({ setVisible }) => {
                     <button
                       type="button"
                       className="w-full bg-blue py-2 rounded-md text-base font-bold text-white"
-                      onClick={handlePost}
+                      onClick={() => handlePost()}
                     >
                       {loading ? <PulseLoader color="#fff" size={5} /> : "Post"}
                     </button>

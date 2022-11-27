@@ -17,6 +17,12 @@ export function getprofilereducer(state, action) {
       return { ...state, loading: true, error: "" };
     case "PROFILE_SUCCESS":
       return { ...state, loading: false, profile: action.payload, error: "" };
+    case "PROFILE_POSTS":
+      return {
+        loading: false,
+        profile: { ...state.profile, posts: action.payload },
+        error: "",
+      };
     case "PROFILE_ERROR":
       return { ...state, loading: false, error: action.payload };
     default:

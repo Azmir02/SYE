@@ -15,6 +15,7 @@ const Showpost = ({ posts, user }) => {
   const [text, setText] = useState("");
   const [comment, setComment] = useState([]);
   const [count, setCount] = useState(1);
+  const [checkSavePost, setCheckSavePost] = useState();
   const [commentimages, setCommentimages] = useState("");
   const [reacts, setReacts] = useState();
   const [total, setTotal] = useState();
@@ -38,6 +39,7 @@ const Showpost = ({ posts, user }) => {
     setReacts(res.reacts);
     setCheck(res.check);
     setTotal(res.total);
+    setCheckSavePost(res.isPostSave);
   };
   const handleReacts = async (type) => {
     try {
@@ -124,6 +126,8 @@ const Showpost = ({ posts, user }) => {
               posts={posts}
               images={posts.images}
               setVisible={setVisible}
+              checkSavePost={checkSavePost}
+              setCheckSavePost={setCheckSavePost}
             />
           )}
         </div>
@@ -224,7 +228,7 @@ const Showpost = ({ posts, user }) => {
         </div>
         <div className="w-[50%] md:w-[40%] text-right">
           <span className="font-primary text-title_color text-base mr-3 cursor-pointer">
-            2 comments
+            {comment && `${comment.length} Comments`}
           </span>
           <span className="font-primary text-title_color text-base cursor-pointer">
             1 share

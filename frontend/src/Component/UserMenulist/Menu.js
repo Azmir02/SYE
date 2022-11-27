@@ -1,18 +1,38 @@
 import React, { useState } from "react";
+import { SavedPost } from "../../functions/Createpost";
 import Menuitem from "./Menuitem";
 
-const Menu = ({ user, posts, images, setVisible }) => {
+const Menu = ({ user, posts, images, setCheckSavePost, checkSavePost }) => {
   const [test, setTest] = useState(user.id === posts.user._id ? true : false);
+
+  const savePosts = async () => {
+    SavedPost(posts._id, user.token);
+    if (checkSavePost) {
+      setCheckSavePost(false);
+    } else {
+      setCheckSavePost(true);
+    }
+  };
 
   return (
     <>
       <div className="absolute top-[40px] right-0 w-[300px] z-[1] bg-white px-2 py-3 shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] rounded-md">
         {test && <Menuitem icon="pin_icon" title="Pin Post" />}
-        <Menuitem
-          icon="save_icon"
-          title="Save Post"
-          subtitle="Add this to your saved item"
-        />
+        <div onClick={() => savePosts()}>
+          {checkSavePost ? (
+            <Menuitem
+              icon="trash_icon"
+              title="Unsave Post"
+              subtitle="Unsave post to your post item"
+            />
+          ) : (
+            <Menuitem
+              icon="save_icon"
+              title="Save Post"
+              subtitle="Add this to your saved item"
+            />
+          )}
+        </div>
         <div className="w-full h-[1px] bg-[#E6E8EA] my-2"></div>
         {test && <Menuitem icon="edit_icon" title="Edit Post" />}
         {test && (

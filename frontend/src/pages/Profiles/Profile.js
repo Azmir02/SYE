@@ -3,16 +3,18 @@ import { useMediaQuery } from "react-responsive";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
 import { useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../Component/Header/Header";
 import { getprofilereducer } from "../../functions/getPost";
 import Coverphoto from "./Coverphoto/Coverphoto";
 import Profilebottom from "./Profilebtm/Profilebottom";
 import Profileinfos from "./Profilepictureinfo";
+import Postpopup from "../../Component/postpopup/Postpopup";
 
-const Profile = ({ setVisible }) => {
+const Profile = () => {
   const user = useSelector((users) => users.login.loggedin);
   const [photo, setPhoto] = useState({});
+  const [visible, setVisible] = useState(false);
   const [othername, setOthername] = useState();
   const { username } = useParams();
   const profileTop = useRef(null);
@@ -34,6 +36,7 @@ const Profile = ({ setVisible }) => {
   const max = 30;
 
   var visitor = userName !== user.username ? true : false;
+
   useEffect(() => {
     getUserProfile();
   }, [userName]);
@@ -102,6 +105,14 @@ const Profile = ({ setVisible }) => {
         <title>{`${profile.fName} ${profile.lName} | SYE`}</title>
       </Helmet>
       <Header />
+      {visible && (
+        <Postpopup
+          setVisible={setVisible}
+          posts={profile?.posts}
+          dispatch={dispatch}
+          profiles
+        />
+      )}
       <div className="bg-[#F7F7FB]">
         <div className="lg:pt-[100px] pt-[50px] pb-[10px]">
           <div className="2xl:px-[150px] 3xl:px-[300px] px-0">

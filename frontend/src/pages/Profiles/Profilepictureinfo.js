@@ -53,8 +53,8 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                 </div>
                 <div className="mx-[50px]">
                   <h4 className="font-primary font-semibold text-xl capitalize text-black">
-                    {profile.ownerPost && profile.ownerPost.length
-                      ? profile.ownerPost.length
+                    {profile.posts && profile.posts.length
+                      ? profile.posts.length
                       : 0}
                   </h4>
                   <span className="font-primary font-semibold text-base capitalize text-title_color">
@@ -113,8 +113,8 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                   </div>
                   <div className="mx-[50px]">
                     <h4 className="font-primary font-semibold text-xl capitalize text-black">
-                      {profile.ownerPost && profile.ownerPost.length
-                        ? profile.ownerPost.length
+                      {profile.posts && profile.posts.length
+                        ? profile.posts.length
                         : 0}
                     </h4>
                     <span className="font-primary font-semibold text-base capitalize text-title_color">
@@ -158,8 +158,8 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                   </div>
                   <div className="mx-[50px]">
                     <h4 className="font-primary font-semibold text-xl capitalize text-black">
-                      {profile.ownerPost && profile.ownerPost.length
-                        ? profile.ownerPost.length
+                      {profile.posts && profile.posts.length
+                        ? profile.posts.length
                         : 0}
                     </h4>
                     <span className="font-primary font-semibold text-base capitalize text-title_color">

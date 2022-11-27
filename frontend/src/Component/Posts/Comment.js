@@ -30,7 +30,7 @@ const Comment = ({ comment }) => {
         <span className="text-sm font-primary text-title_color font-normal mr-3 cursor-pointer hover:underline leading-[0.8]">
           Like
         </span>
-        <span className="text-base font-primary text-title_color font-normal cursor-pointer hover:underline leading-[0.8]">
+        <span className="text-sm font-primary text-title_color font-normal cursor-pointer hover:underline leading-[0.8]">
           Reply
         </span>
         <span className="text-sm font-primary text-title_color font-normal ml-5">

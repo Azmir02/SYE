@@ -316,7 +316,7 @@ exports.getuser = async (req, res) => {
       friendship.request = true;
     }
 
-    const ownerPost = await Post.find({ user: getprofile._id })
+    const posts = await Post.find({ user: getprofile._id })
       .populate("user")
       .populate(
         "comments.comentedBy",
@@ -329,7 +329,7 @@ exports.getuser = async (req, res) => {
       "followers",
       "fName lName username profilePicture"
     );
-    res.json({ ...getprofile.toObject(), ownerPost, friendship });
+    res.json({ ...getprofile.toObject(), posts, friendship });
   } catch (error) {
     res.status(404).json({
       message: error.message,

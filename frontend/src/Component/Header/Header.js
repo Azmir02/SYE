@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Logo from "../../svg/logo";
 import Search from "../../svg/search";
 import HomeActive from "../../svg/homeActive";
@@ -19,7 +19,7 @@ import Searchbox from "./Searchbox";
 import MenuOption from "./MenuOption";
 import Usermenu from "./usermenu/Usermenu";
 
-const Header = ({ page }) => {
+const Header = ({ page, getPost }) => {
   const users = useSelector((users) => users.login.loggedin);
   const [show, setShow] = useState(false);
   const [menushow, setMenushow] = useState(false);
@@ -74,6 +74,7 @@ const Header = ({ page }) => {
         <Link
           to="/"
           className="hidden sm:block hover:bg-[#F0F2F5] lg:px-5 lg:py-2 px-2 py-2 md:px-5 md:py-2 2xl:px-12 2xl:py-3 rounded-md transition-all ease-linear duration-100"
+          onClick={() => getPost()}
         >
           {page === "home" ? <HomeActive /> : <Home />}
         </Link>

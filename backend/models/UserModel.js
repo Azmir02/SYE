@@ -169,7 +169,7 @@ const UserModel = new Schema(
         },
         savedAt: {
           type: Date,
-          default: new Date(),
+          require: true,
         },
       },
     ],

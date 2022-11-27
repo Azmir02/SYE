@@ -39,10 +39,10 @@ const Gridpost = ({ profile, users }) => {
           </div>
         </div>
       </div>
-      {profile.ownerPost &&
-        profile.ownerPost.length &&
-        profile.ownerPost.map((item) => (
-          <Showpost key={item._id} posts={item} user={users} />
+      {profile?.posts &&
+        profile?.posts?.length &&
+        profile?.posts?.map((posts) => (
+          <Showpost key={posts._id} posts={posts} user={users} />
         ))}
     </div>
   );

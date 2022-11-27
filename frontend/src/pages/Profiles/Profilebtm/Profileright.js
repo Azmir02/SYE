@@ -5,11 +5,9 @@ import Gridpost from "./Gridpost";
 const Profileright = ({ profile, setVisible, users, visitor }) => {
   return (
     <>
-      {visitor ? (
-        ""
-      ) : (
+      {!visitor && (
         <div>
-          <Post profile={profile} setVisible={setVisible} />
+          <Post profile setVisible={setVisible} />
         </div>
       )}
 

@@ -4,7 +4,6 @@ import { useFormik } from "formik";
 import { BiErrorCircle } from "react-icons/bi";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { signUp } from "../validation/index";
-import Signup from "../svg/Registrationpic";
 import { useDispatch } from "react-redux";
 import { createUser } from "../features/users/userSlice";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -32,6 +31,7 @@ const Registration = () => {
 
   const registration = async () => {
     try {
+      setLoading(true);
       let { data } = await axios.post("/api/signup", {
         fName: formik.values.fName,
         lName: formik.values.lName,
