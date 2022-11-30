@@ -649,3 +649,51 @@ exports.search = async (req, res) => {
     });
   }
 };
+
+exports.addsearchhistory = async (req, res) => {
+  try {
+    const { searchUser } = req.body;
+    const search = {
+      user: searchUser,
+      createdAt: new Date(),
+    };
+    const user = await Users.findById(req.user.id);
+    const check = user.search.find((x) => x.user.toString() === searchUser);
+    if (check) {
+      await Users.updateOne(
+        {
+          _id: req.user.id,
+          "search._id": check._id,
+        },
+        {
+          $set: {
+            "search.$.createdAt": new Date(),
+          },
+        }
+      );
+    } else {
+      await Users.findByIdAndUpdate(req.user.id, {
+        $push: {
+          search,
+        },
+      });
+    }
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
+};
+
+exports.getsearchhistory = async (req, res) => {
+  try {
+    const getsearch = await Users.findById(req.user.id)
+      .select("search")
+      .populate("search.user", "fName lName username profilePicture");
+    res.json(getsearch.search);
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
+};

@@ -131,3 +131,33 @@ export const search = async (searchTerm, token) => {
     return error.response.data.message;
   }
 };
+
+export const addsearchHistory = async (searchUser, token) => {
+  try {
+    const { data } = await axios.put(
+      `/api/addsearchhistory`,
+      { searchUser },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
+
+export const getsearchHistory = async (token) => {
+  try {
+    const { data } = await axios.get(`/api/getsearchhistory`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};

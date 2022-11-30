@@ -20,6 +20,8 @@ const {
   unfriend,
   deleterequest,
   search,
+  addsearchhistory,
+  getsearchhistory,
 } = require("../controller/Usercontroller");
 const { authUser } = require("../middleware/Authentication");
 const userRouter = express.Router();
@@ -44,5 +46,7 @@ userRouter.route("/acceprequest/:id").put(authUser, acceprequest);
 userRouter.route("/unfriend/:id").put(authUser, unfriend);
 userRouter.route("/deleterequest/:id").put(authUser, deleterequest);
 userRouter.route("/search/:searchTerm").post(authUser, search);
+userRouter.route("/addsearchhistory").put(authUser, addsearchhistory);
+userRouter.route("/getsearchhistory").get(authUser, getsearchhistory);
 
 module.exports = userRouter;
