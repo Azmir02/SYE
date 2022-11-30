@@ -22,6 +22,7 @@ const Showpost = ({ posts, user }) => {
   const [check, setCheck] = useState();
   const [error, setError] = useState("");
   const hideMenu = useRef(null);
+  const postBody = useRef(null);
   OutsideClick(hideMenu, () => {
     setVisible(false);
   });
@@ -78,7 +79,7 @@ const Showpost = ({ posts, user }) => {
   };
 
   return (
-    <div className="my-5 bg-white rounded-md pb-2">
+    <div className="my-5 bg-white rounded-md pb-2" ref={postBody}>
       <div className="flex p-5 items-center justify-between">
         <div className="flex items-center w-[420px]">
           <div className="w-[50px] h-[50px] border-2 border-solid border-[#D9D9D9] rounded-full overflow-hidden mr-3">
@@ -128,6 +129,7 @@ const Showpost = ({ posts, user }) => {
               setVisible={setVisible}
               checkSavePost={checkSavePost}
               setCheckSavePost={setCheckSavePost}
+              postBody={postBody}
             />
           )}
         </div>

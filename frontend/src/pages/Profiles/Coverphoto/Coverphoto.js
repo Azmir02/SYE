@@ -86,7 +86,7 @@ const Coverphoto = ({ coverPhoto, visitor, user, photo }) => {
           user.id,
           user.token
         );
-        if (coverpost === "done") {
+        if (coverpost.status === "done") {
           setLoading(false);
           setCoverPicture("");
           coverPictures.current.src = `${rescoverpic[0].url}`;

@@ -635,3 +635,17 @@ exports.deleterequest = async (req, res) => {
     });
   }
 };
+
+exports.search = async (req, res) => {
+  try {
+    const searchTerm = req.params.searchTerm;
+    const search = await Users.find({ $text: { $search: searchTerm } }).select(
+      "fName lName username profilePicture"
+    );
+    res.json(search);
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
+};

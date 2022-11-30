@@ -1,8 +1,16 @@
 import React, { useState } from "react";
-import { SavedPost } from "../../functions/Createpost";
+import { removeposts, SavedPost } from "../../functions/Createpost";
+import { saveAs } from "file-saver";
 import Menuitem from "./Menuitem";
 
-const Menu = ({ user, posts, images, setCheckSavePost, checkSavePost }) => {
+const Menu = ({
+  user,
+  posts,
+  images,
+  setCheckSavePost,
+  checkSavePost,
+  postBody,
+}) => {
   const [test, setTest] = useState(user.id === posts.user._id ? true : false);
 
   const savePosts = async () => {
@@ -11,6 +19,21 @@ const Menu = ({ user, posts, images, setCheckSavePost, checkSavePost }) => {
       setCheckSavePost(false);
     } else {
       setCheckSavePost(true);
+    }
+  };
+
+  // for download post images
+  const handleDownload = async () => {
+    posts.images.map((image) => {
+      saveAs(image.url, "image.jpg");
+    });
+  };
+
+  // for remove posts
+  const removepost = async () => {
+    let res = removeposts(posts._id, user.token);
+    if (res.status === "ok") {
+      postBody.current.remove();
     }
   };
 
@@ -39,7 +62,9 @@ const Menu = ({ user, posts, images, setCheckSavePost, checkSavePost }) => {
           <Menuitem img="../../../icons/lock.png" title="Edit Audience" />
         )}
         {images && images.length && (
-          <Menuitem icon="download_icon" title="Download" />
+          <div onClick={() => handleDownload()}>
+            <Menuitem icon="download_icon" title="Download" />
+          </div>
         )}
         {images && images.length && (
           <Menuitem icon="fullscreen_icon" title="Enter fullscreen" />
@@ -56,11 +81,13 @@ const Menu = ({ user, posts, images, setCheckSavePost, checkSavePost }) => {
         )}
         {test && <Menuitem icon="archive_icon" title="Move to archive" />}
         {test && (
-          <Menuitem
-            icon="trash_icon"
-            title="Move to recyclebin"
-            subtitle="items your recyclebin are deleted after 30 days"
-          />
+          <div onClick={() => removepost()}>
+            <Menuitem
+              icon="trash_icon"
+              title="Move to recyclebin"
+              subtitle="items your recyclebin are deleted after 30 days"
+            />
+          </div>
         )}
         {!test && (
           <Menuitem

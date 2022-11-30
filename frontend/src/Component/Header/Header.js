@@ -67,7 +67,7 @@ const Header = ({ page, getPost }) => {
           className="absolute top-[-5px] md:top-[-12px] left-[-16px] md:left-[-12px] z-[1]"
           ref={clickOutside}
         >
-          {show && <Searchbox setShow={setShow} />}
+          {show && <Searchbox setShow={setShow} users={users} />}
         </div>
       </div>
       <div className="middle-part  2xl:w-[66%] mx-auto flex items-center justify-center">

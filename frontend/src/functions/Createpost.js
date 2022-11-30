@@ -67,3 +67,15 @@ export const SavedPost = async (postId, token) => {
     return error.response.data.message;
   }
 };
+export const removeposts = async (postId, token) => {
+  try {
+    const { data } = await axios.delete(`/api/removepost/${postId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return { status: "done", data };
+  } catch (error) {
+    return error.response.data.message;
+  }
+};

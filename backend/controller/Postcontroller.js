@@ -100,3 +100,14 @@ exports.savepost = async (req, res) => {
     });
   }
 };
+
+exports.removepost = async (req, res) => {
+  try {
+    await Post.findByIdAndRemove(req.params.id);
+    res.json({ status: "done" });
+  } catch (error) {
+    return res.status(404).json({
+      message: error.message,
+    });
+  }
+};

@@ -80,7 +80,7 @@ const Picturecropper = ({
           user.id,
           user.token
         );
-        if (profilepicpost === "done") {
+        if (profilepicpost.status === "done") {
           setShow(false);
           setLoading(false);
           uploadPhoto.current.style.backgroundImage = `url(${resprofilepic[0].url})`;
