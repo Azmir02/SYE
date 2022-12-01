@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {
   addsearchHistory,
   getsearchHistory,
+  removesearchHistory,
   search,
 } from "../../functions/Userfriens";
 import Return from "../../svg/return";
@@ -42,7 +43,12 @@ const Searchbox = ({ setShow, users }) => {
     setGetSearch(res);
   };
 
-  console.log(getSearch);
+  // Remove search history
+  const handleRemove = async (searchUser) => {
+    removesearchHistory(searchUser, users.token);
+    getAllSearch();
+  };
+
   return (
     <div className="searchbox w-[350px] px-2 py-2 lg:px-5 lg:py-3 min-h-[500px] box-border bg-white shadow-[6px_6px_19px_0px_rgba(230,_230,_230,_0.75)] rounded-md overflow-y-auto max-h-[50vh] main-menu">
       <div className="flex items-center justify-between">
@@ -113,7 +119,10 @@ const Searchbox = ({ setShow, users }) => {
                     </span>
                   </div>
                 </Link>
-                <div className="w-[40px] h-[40px] hover:bg-[#f5f5f5] rounded-full flex items-center justify-center cursor-pointer">
+                <div
+                  className="w-[40px] h-[40px] hover:bg-[#f5f5f5] rounded-full flex items-center justify-center cursor-pointer"
+                  onClick={() => handleRemove(item.user._id)}
+                >
                   <i className="exit_icon"></i>
                 </div>
               </div>

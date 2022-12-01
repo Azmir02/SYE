@@ -697,3 +697,25 @@ exports.getsearchhistory = async (req, res) => {
     });
   }
 };
+
+exports.removesearchhistory = async (req, res) => {
+  try {
+    const { searchUser } = req.body;
+    await Users.updateOne(
+      {
+        _id: req.user.id,
+      },
+      {
+        $pull: {
+          search: {
+            user: searchUser,
+          },
+        },
+      }
+    );
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
+};

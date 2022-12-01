@@ -161,3 +161,20 @@ export const getsearchHistory = async (token) => {
     return error.response.data.message;
   }
 };
+
+export const removesearchHistory = async (searchUser, token) => {
+  try {
+    const { data } = await axios.put(
+      `/api/removesearchhistory`,
+      { searchUser },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
