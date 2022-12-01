@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import Searchbox from "./Searchbox";
 import MenuOption from "./MenuOption";
 import Usermenu from "./usermenu/Usermenu";
+import { FriendsActive } from "../../svg";
 
 const Header = ({ page, getPost }) => {
   const users = useSelector((users) => users.login.loggedin);
@@ -91,10 +92,10 @@ const Header = ({ page, getPost }) => {
           <Market />
         </Link>
         <Link
-          to="/"
+          to="/friends"
           className="hover:bg-[#F0F2F5] hidden md:block px-2 py-2 lg:px-5 lg:py-2 2xl:px-12 2xl:py-3 rounded-md transition-all ease-linear duration-100"
         >
-          <Friends />
+          {page === "friends" ? <FriendsActive /> : <Friends />}
         </Link>
         <Link
           to="/"

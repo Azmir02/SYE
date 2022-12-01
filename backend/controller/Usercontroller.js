@@ -12,6 +12,7 @@ const bcrypt = require("bcrypt");
 const Code = require("../models/Code");
 const { generateCode } = require("../handaler/GenerateCode");
 const { findOne } = require("../models/Code");
+const mongoose = require("mongoose");
 
 exports.newuser = async (req, res) => {
   try {
@@ -713,6 +714,28 @@ exports.removesearchhistory = async (req, res) => {
         },
       }
     );
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
+};
+
+exports.getfriendsinfopage = async (req, res) => {
+  try {
+    const user = await Users.findById(req.user.id)
+      .select("friends request")
+      .populate("friends", "fName lName profilePicture username")
+      .populate("request", "fName lName profilePicture username");
+    // if user sent request part here
+    const userSentRequest = await Users.find({
+      request: mongoose.Types.ObjectId(req.user.id),
+    }).select("fName lName profilePicture username");
+    res.json({
+      friends: user.friends,
+      request: user.request,
+      userSentRequest,
+    });
   } catch (error) {
     res.status(404).json({
       message: error.message,

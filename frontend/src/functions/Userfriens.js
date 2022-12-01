@@ -178,3 +178,16 @@ export const removesearchHistory = async (searchUser, token) => {
     return error.response.data.message;
   }
 };
+
+export const getFriendsInfopage = async (token) => {
+  try {
+    const { data } = await axios.get(`/api/getfriendsinfopage`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return { status: "done", data };
+  } catch (error) {
+    return error.response.data.message;
+  }
+};

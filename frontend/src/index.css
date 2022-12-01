@@ -385,3 +385,11 @@ select {
 .showmore .profileLeft {
   bottom: 230px;
 }
+
+/* friend page */
+.friend {
+  height: calc(100vh - 56px);
+  width: 100%;
+  margin-top: 56px;
+  display: grid;
+}

@@ -13,6 +13,7 @@ import Postpopup from "./Component/postpopup/Postpopup";
 import Profile from "./pages/Profiles/Profile";
 import { useSelector } from "react-redux";
 import { getpostreducer } from "./functions/getPost";
+import Friends from "./pages/Friends/Friends";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -71,6 +72,16 @@ function App() {
           <Route path="/activate/:token" element={<Activepage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/:username" element={<Profile />} />
+          <Route
+            path="/friends"
+            element={
+              <Friends
+                setVisible={setVisible}
+                getPost={getPost}
+                users={users}
+              />
+            }
+          />
         </Route>
         <Route element={<Notloggedin />}>
           <Route path="/login" element={<Login />} />

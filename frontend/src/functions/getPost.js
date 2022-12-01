@@ -29,3 +29,16 @@ export function getprofilereducer(state, action) {
       return state;
   }
 }
+
+export function getfriendinforeducer(state, action) {
+  switch (action.type) {
+    case "FRIEND_REQUEST":
+      return { ...state, loading: true, error: "" };
+    case "FRIEND_SUCCESS":
+      return { ...state, loading: false, data: action.payload, error: "" };
+    case "FRIEND_ERROR":
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+}
