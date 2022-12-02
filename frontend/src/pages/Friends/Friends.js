@@ -72,7 +72,7 @@ const Friends = ({ getPost, users }) => {
                   Friend Request
                 </span>
               </div>
-              <div className="ml-auto flex justify-center items-center">
+              <div className="ml-auto flex justify-center items-center invisible md:visible">
                 <i className="right_icon"></i>
               </div>
             </div>
@@ -85,7 +85,7 @@ const Friends = ({ getPost, users }) => {
                   Suggestions
                 </span>
               </div>
-              <div className="ml-auto flex justify-center items-center">
+              <div className="ml-auto flex justify-center items-center invisible md:visible">
                 <i className="right_icon"></i>
               </div>
             </div>
@@ -98,7 +98,7 @@ const Friends = ({ getPost, users }) => {
                   All Friends
                 </span>
               </div>
-              <div className="ml-auto flex justify-center items-center">
+              <div className="ml-auto flex justify-center items-center invisible md:visible">
                 <i className="right_icon"></i>
               </div>
             </div>
@@ -111,7 +111,7 @@ const Friends = ({ getPost, users }) => {
                   Birthdays
                 </span>
               </div>
-              <div className="ml-auto flex justify-center items-center">
+              <div className="ml-auto flex justify-center items-center invisible md:visible">
                 <i className="right_icon"></i>
               </div>
             </div>
@@ -124,7 +124,7 @@ const Friends = ({ getPost, users }) => {
                   Custom Lists
                 </span>
               </div>
-              <div className="ml-auto flex justify-center items-center">
+              <div className="ml-auto flex justify-center items-center invisible md:visible">
                 <i className="right_icon"></i>
               </div>
             </div>
@@ -140,11 +140,71 @@ const Friends = ({ getPost, users }) => {
                 See All
               </a>
             </div>
-            <div className="border-b border-solid border-[#CED0D4] pb-3">
+            <div className="border-b border-solid border-[#CED0D4] pb-3 grid grid-cols-2 lg:grid-cols-5 gap-3">
               {data.request &&
                 data.request.map((user, i) => (
                   <div key={i}>
-                    <Card user={user} type="request" />
+                    <Card
+                      user={user}
+                      token={users.token}
+                      getData={getData}
+                      type="request"
+                    />
+                  </div>
+                ))}
+              {data.request &&
+                data.request.map((user, i) => (
+                  <div key={i}>
+                    <Card
+                      user={user}
+                      token={users.token}
+                      getData={getData}
+                      type="request"
+                    />
+                  </div>
+                ))}
+              {data.request &&
+                data.request.map((user, i) => (
+                  <div key={i}>
+                    <Card
+                      user={user}
+                      token={users.token}
+                      getData={getData}
+                      type="request"
+                    />
+                  </div>
+                ))}
+              {data.request &&
+                data.request.map((user, i) => (
+                  <div key={i}>
+                    <Card
+                      user={user}
+                      token={users.token}
+                      getData={getData}
+                      type="request"
+                    />
+                  </div>
+                ))}
+              {data.request &&
+                data.request.map((user, i) => (
+                  <div key={i}>
+                    <Card
+                      user={user}
+                      token={users.token}
+                      getData={getData}
+                      type="request"
+                    />
+                  </div>
+                ))}
+              {data.request &&
+                data.request.map((user, i) => (
+                  <div key={i}>
+                    <Card
+                      user={user}
+                      token={users.token}
+                      getData={getData}
+                      type="request"
+                    />
                   </div>
                 ))}
             </div>
@@ -158,11 +218,16 @@ const Friends = ({ getPost, users }) => {
                 See All
               </a>
             </div>
-            <div className="border-b border-solid border-[#CED0D4] pb-3">
+            <div className="border-b border-solid border-[#CED0D4] pb-3 flex items-center flex-col md:flex-row">
               {data.userSentRequest &&
                 data.userSentRequest.map((user, i) => (
                   <div key={i}>
-                    <Card user={user} type="sentrequest" />
+                    <Card
+                      user={user}
+                      token={users.token}
+                      getData={getData}
+                      type="sentrequest"
+                    />
                   </div>
                 ))}
             </div>
@@ -176,11 +241,11 @@ const Friends = ({ getPost, users }) => {
                 See All
               </a>
             </div>
-            <div className="pb-3">
+            <div className="pb-3 flex flex-col md:flex-row">
               {data.friends &&
                 data.friends.map((user, i) => (
                   <div key={i}>
-                    <Card user={user} />
+                    <Card user={user} token={users.token} getData={getData} />
                   </div>
                 ))}
             </div>
