@@ -42,95 +42,105 @@ const Friends = ({ getPost, users }) => {
         <title>Friends | SYE</title>
       </Helmet>
       <Header page="friends" getPost={getPost} />
-      <div className="friend">
-        <div className="bg-white fixed w-[360px] h-full pt-5 px-3 shadow-[-3px_4px_12px_0px_rgba(219,219,219,0.75)] pb-9">
-          <div className="flex justify-between items-center">
-            <h1 className="font-bold font-primary text-black text-2xl capitalize">
+      <div className="flex justify-between">
+        <div className="bg-white sticky w-[15%] top-[56px] left-0 h-screen pt-[80px] 2xl:px-3 shadow-[-3px_4px_12px_0px_rgba(219,219,219,0.75)] pb-9">
+          <div className="flex justify-evenly 2xl:justify-between items-center">
+            <h1 className="font-bold font-primary text-black text-2xl capitalize hidden lg:block">
               Friends
             </h1>
-            <div className="w-[40px] h-[40px] flex items-center justify-center rounded-full transition-all ease-linear duration-100 hover:bg-[#f2f2f2] cursor-pointer">
+            <div className="w-[40px] h-[40px] flex items-center justify-center rounded-full transition-all ease-linear duration-100 hover:bg-[#f2f2f2] cursor-pointer invisible lg:visible">
               <i className="settings_filled_icon"></i>
             </div>
           </div>
           <div className="mt-5">
-            <div className="flex items-center w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-3 rounded-md">
+            <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md">
               <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-blue">
                 <i className="friends_home_icon invert"></i>
               </div>
-              <div className="ml-3 hidden md:block">
-                <span className="font-normal font-primary text-black text-lg capitalize">
+              <div className="ml-3 hidden lg:block">
+                <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
                   Home
                 </span>
               </div>
             </div>
-            <div className="flex items-center w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-3 rounded-md">
+            <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md">
               <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#D8DADF]">
                 <i className="friends_requests_icon"></i>
               </div>
-              <div className="ml-3 hidden md:block">
-                <span className="font-normal font-primary text-black text-lg capitalize">
+              <div className="ml-3 hidden lg:block">
+                <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
                   Friend Request
                 </span>
               </div>
-              <div className="ml-auto flex justify-center items-center invisible md:visible">
-                <i className="right_icon"></i>
+              <div className="hidden ml-auto 2xl:block">
+                <div className="flex justify-center items-center">
+                  <i className="right_icon"></i>
+                </div>
               </div>
             </div>
-            <div className="flex items-center w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-3 rounded-md">
+            <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md">
               <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#D8DADF]">
                 <i className="friends_suggestions_icon"></i>
               </div>
-              <div className="ml-3 hidden md:block">
-                <span className="font-normal font-primary text-black text-lg capitalize">
+              <div className="ml-3 hidden lg:block">
+                <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
                   Suggestions
                 </span>
               </div>
-              <div className="ml-auto flex justify-center items-center invisible md:visible">
-                <i className="right_icon"></i>
+              <div className="hidden ml-auto 2xl:block">
+                <div className="flex justify-center items-center invisible md:visible">
+                  <i className="right_icon"></i>
+                </div>
               </div>
             </div>
-            <div className="flex items-center w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-3 rounded-md">
+            <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md">
               <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#D8DADF]">
                 <i className="all_friends_icon"></i>
               </div>
-              <div className="ml-3 hidden md:block">
-                <span className="font-normal font-primary text-black text-lg capitalize">
+              <div className="ml-3 hidden lg:block">
+                <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
                   All Friends
                 </span>
               </div>
-              <div className="ml-auto flex justify-center items-center invisible md:visible">
-                <i className="right_icon"></i>
+              <div className="hidden ml-auto 2xl:block">
+                <div className="flex justify-center items-center invisible md:visible">
+                  <i className="right_icon"></i>
+                </div>
               </div>
             </div>
-            <div className="flex items-center w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-3 rounded-md">
+            <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md">
               <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#D8DADF]">
                 <i className="birthdays_icon"></i>
               </div>
-              <div className="ml-3 hidden md:block">
-                <span className="font-normal font-primary text-black text-lg capitalize">
+              <div className="ml-3 hidden lg:block">
+                <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
                   Birthdays
                 </span>
               </div>
-              <div className="ml-auto flex justify-center items-center invisible md:visible">
-                <i className="right_icon"></i>
+              <div className="hidden ml-auto 2xl:block">
+                <div className="ml-auto flex justify-center items-center invisible md:visible">
+                  <i className="right_icon"></i>
+                </div>
               </div>
             </div>
-            <div className="flex items-center w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-3 rounded-md">
+            <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md">
               <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#D8DADF]">
                 <i className="all_friends_icon"></i>
               </div>
-              <div className="ml-3 hidden md:block">
-                <span className="font-normal font-primary text-black text-lg capitalize">
+              <div className="ml-3 hidden lg:block">
+                <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
                   Custom Lists
                 </span>
               </div>
-              <div className="ml-auto flex justify-center items-center invisible md:visible">
-                <i className="right_icon"></i>
+              <div className="hidden ml-auto 2xl:block">
+                <div className="flex justify-center items-center invisible md:visible">
+                  <i className="right_icon"></i>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="bg-[#f7f7fb] absolute pt-6 px-5 top-[56px] left-[100px] w-[calc(100vw-100px)] md:left-[360px] right-0 bottom-0 md:w-[calc(100%-360px)]">
+        <div className="bg-[#f7f7fb] w-[85%] pt-[140px] static px-5">
           <div>
             <div className="flex items-center justify-between">
               <h2 className="font-bold font-primary text-black text-2xl capitalize">
@@ -140,62 +150,7 @@ const Friends = ({ getPost, users }) => {
                 See All
               </a>
             </div>
-            <div className="border-b border-solid border-[#CED0D4] pb-3 grid grid-cols-2 lg:grid-cols-5 gap-3">
-              {data.request &&
-                data.request.map((user, i) => (
-                  <div key={i}>
-                    <Card
-                      user={user}
-                      token={users.token}
-                      getData={getData}
-                      type="request"
-                    />
-                  </div>
-                ))}
-              {data.request &&
-                data.request.map((user, i) => (
-                  <div key={i}>
-                    <Card
-                      user={user}
-                      token={users.token}
-                      getData={getData}
-                      type="request"
-                    />
-                  </div>
-                ))}
-              {data.request &&
-                data.request.map((user, i) => (
-                  <div key={i}>
-                    <Card
-                      user={user}
-                      token={users.token}
-                      getData={getData}
-                      type="request"
-                    />
-                  </div>
-                ))}
-              {data.request &&
-                data.request.map((user, i) => (
-                  <div key={i}>
-                    <Card
-                      user={user}
-                      token={users.token}
-                      getData={getData}
-                      type="request"
-                    />
-                  </div>
-                ))}
-              {data.request &&
-                data.request.map((user, i) => (
-                  <div key={i}>
-                    <Card
-                      user={user}
-                      token={users.token}
-                      getData={getData}
-                      type="request"
-                    />
-                  </div>
-                ))}
+            <div className="border-b border-solid border-[#CED0D4] pb-3 flex items-center gap-3">
               {data.request &&
                 data.request.map((user, i) => (
                   <div key={i}>
@@ -218,7 +173,7 @@ const Friends = ({ getPost, users }) => {
                 See All
               </a>
             </div>
-            <div className="border-b border-solid border-[#CED0D4] pb-3 flex items-center flex-col md:flex-row">
+            <div className="border-b border-solid border-[#CED0D4] pb-3 flex flex-wrap items-center gap-3">
               {data.userSentRequest &&
                 data.userSentRequest.map((user, i) => (
                   <div key={i}>
@@ -241,7 +196,7 @@ const Friends = ({ getPost, users }) => {
                 See All
               </a>
             </div>
-            <div className="pb-3 flex flex-col md:flex-row">
+            <div className="pb-3 flex items-center flex-wrap gap-3">
               {data.friends &&
                 data.friends.map((user, i) => (
                   <div key={i}>

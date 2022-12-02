@@ -22,7 +22,7 @@ const Card = ({ user, type, token, getData }) => {
     <div>
       {type === "request" || type === "sentrequest" ? (
         <div className="flex flex-wrap mt-3">
-          <div className="w-full bg-white flex flex-col 3xl:flex-row p-3 rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]">
+          <div className="w-[300px] bg-white flex flex-col 3xl:flex-row p-3 rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]">
             <Link to={`/profile/${user.username}`}>
               <div className="w-[50px] h-[50px] m-auto 3xl:m-0 rounded-full overflow-hidden">
                 <img
@@ -39,12 +39,14 @@ const Card = ({ user, type, token, getData }) => {
                 </h4>
               </Link>
               {type === "sentrequest" ? (
-                <button
-                  className="font-primary text-sm text-white font-normal bg-blue px-3 py-2 rounded-md mt-2"
-                  onClick={() => cancleRequestHandler(user._id)}
-                >
-                  Cancle Request
-                </button>
+                <div className="3xl:text-start text-center">
+                  <button
+                    className="font-primary text-sm text-white font-normal bg-blue px-3 py-2 rounded-md mt-2"
+                    onClick={() => cancleRequestHandler(user._id)}
+                  >
+                    Cancle Request
+                  </button>
+                </div>
               ) : type === "request" ? (
                 <div className="text-center 3xl:text-start">
                   <button
@@ -65,7 +67,7 @@ const Card = ({ user, type, token, getData }) => {
         </div>
       ) : (
         <Link to={`/profile/${user.username}`}>
-          <div className="w-[200px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] p-3 ">
+          <div className="w-full bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] p-3 ">
             <div className="w-full h-[200px] overflow-hidden">
               <img
                 className="w-full h-full object-cover"
