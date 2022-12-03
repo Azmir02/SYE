@@ -57,9 +57,15 @@ const Friends = ({ getPost, users }) => {
           </div>
           <div className="mt-5">
             <Link to="/friends">
-              <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md">
-                <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-blue">
-                  <i className="friends_home_icon invert"></i>
+              <div
+                className={
+                  type === undefined
+                    ? "clicked flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
+                    : "flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
+                }
+              >
+                <div className="w-[40px] h-[40px] icon rounded-full flex items-center justify-center bg-[#D8DADF]">
+                  <i className="friends_home_icon img"></i>
                 </div>
                 <div className="ml-3 hidden lg:block">
                   <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
@@ -69,9 +75,15 @@ const Friends = ({ getPost, users }) => {
               </div>
             </Link>
             <Link to="/friends/request">
-              <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md">
-                <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#D8DADF]">
-                  <i className="friends_requests_icon"></i>
+              <div
+                className={
+                  type === "request"
+                    ? "clicked flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
+                    : "flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
+                }
+              >
+                <div className="w-[40px] h-[40px] icon rounded-full flex items-center justify-center bg-[#D8DADF]">
+                  <i className="friends_requests_icon img"></i>
                 </div>
                 <div className="ml-3 hidden lg:block">
                   <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
@@ -86,9 +98,15 @@ const Friends = ({ getPost, users }) => {
               </div>
             </Link>
             <Link to="/friends/sent">
-              <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md">
-                <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#D8DADF]">
-                  <i className="friends_requests_icon"></i>
+              <div
+                className={
+                  type === "sent"
+                    ? "clicked flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
+                    : "flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
+                }
+              >
+                <div className="w-[40px] h-[40px] icon rounded-full flex items-center justify-center bg-[#D8DADF]">
+                  <i className="friends_requests_icon img"></i>
                 </div>
                 <div className="ml-3 hidden lg:block">
                   <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
@@ -118,9 +136,15 @@ const Friends = ({ getPost, users }) => {
               </div>
             </div>
             <Link to="/friends/all">
-              <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md">
-                <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#D8DADF]">
-                  <i className="all_friends_icon"></i>
+              <div
+                className={
+                  type === "all"
+                    ? "clicked flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
+                    : "flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
+                }
+              >
+                <div className="w-[40px] h-[40px] icon rounded-full flex items-center justify-center bg-[#D8DADF]">
+                  <i className="all_friends_icon img"></i>
                 </div>
                 <div className="ml-3 hidden lg:block">
                   <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">

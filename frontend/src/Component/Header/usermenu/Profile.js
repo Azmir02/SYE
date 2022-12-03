@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Profile = ({ user }) => {
   return (
-    <div className="w-[275px] md:w-[330px] bg-white p-5 rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]">
+    <div className="w-[275px] md:w-[330px] bg-page_color p-5 rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]">
       <Link
         to="/profile"
         className="flex items-center relative after:absolute after:bottom-0 after:left-0 after:content[] after:bg-[#d3d3d3] after:w-[238px] md:after:w-[290px] after:h-[1px] pb-3"
@@ -16,7 +16,7 @@ const Profile = ({ user }) => {
           />
         </div>
         <div className="w-[62%] ml-2">
-          <h4 className="capitalize font-primary text-lg font-medium text-black">
+          <h4 className="capitalize font-primary text-lg font-medium text-text_color">
             {user?.fName} {user?.lName}
           </h4>
         </div>

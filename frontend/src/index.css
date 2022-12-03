@@ -3,11 +3,48 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --main_bg: #fff;
+  --page_color: #f7f7fb;
+  --input_color: #f0f2f5;
+  --primary_bg: #66717f;
+  --secondary_bg: #28353e;
+  --hover_clr: #f0f2f5;
+  --text_color: #333;
+  --primary_color: #1fa0ef;
+  --secondary_color: #848f95;
+  --title_color: #66717f;
+  --black: #29313d;
+  --white: #fff;
+  --green: #21d997;
+  --blue: #5093f3;
+  --red: #e54953;
+  --yellow: #d9a94a;
+  --purple-100: #f3e8ff;
+  --pink-100: #fce7f3;
+  --cyan-100: #cffafe;
+}
+
 .pages {
-  background-color: #f7f7fb;
+  background-color: var(--page_color);
   width: fit-content;
 }
 
+.dark {
+  --page_color: #0d1526;
+  --main_bg: #182233;
+  --input_color: #0d1526;
+  --text_color: #fff;
+  --hover_clr: rgba(226, 232, 240, 0.1);
+}
+.dark svg {
+  fill: #f7f7fb;
+}
+
+.dark i {
+  color: #f7f7fb;
+  filter: invert();
+}
 select {
   background-color: transparent;
 }
@@ -384,4 +421,15 @@ select {
 
 .showmore .profileLeft {
   bottom: 230px;
+}
+
+.clicked {
+  background-color: #f5f5f5;
+}
+.clicked .icon {
+  background-color: #1fa0ef;
+}
+
+.clicked .img {
+  filter: invert();
 }

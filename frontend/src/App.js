@@ -51,7 +51,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="dark">
       {visible && (
         <Postpopup setVisible={setVisible} posts={posts} dispatch={dispatch} />
       )}
