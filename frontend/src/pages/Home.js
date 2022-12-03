@@ -10,7 +10,7 @@ import Showpost from "../Component/Posts/Showpost";
 
 const Home = ({ setVisible, posts, user, getPost }) => {
   return (
-    <>
+    <div>
       <Helmet>
         <title>SYE</title>
       </Helmet>
@@ -34,7 +34,7 @@ const Home = ({ setVisible, posts, user, getPost }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

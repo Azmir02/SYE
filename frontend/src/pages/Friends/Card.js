@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { acceprequest, cancelrequest } from "../../functions/Userfriens";
+import {
+  acceprequest,
+  cancelrequest,
+  deleterequest,
+} from "../../functions/Userfriens";
 
 const Card = ({ user, type, token, getData }) => {
   // Cancle Request
@@ -14,6 +18,14 @@ const Card = ({ user, type, token, getData }) => {
   // Accept Request
   const confirmHandler = async (userId) => {
     const res = await acceprequest(userId, token);
+    if (res === "done") {
+      getData();
+    }
+  };
+
+  // Delete Request
+  const handleDelete = async (userId) => {
+    const res = await deleterequest(userId, token);
     if (res === "done") {
       getData();
     }
@@ -55,7 +67,10 @@ const Card = ({ user, type, token, getData }) => {
                   >
                     Confirm
                   </button>
-                  <button className="font-primary text-sm text-white font-normal bg-blue px-3 py-2 rounded-md mt-2 ml-1 3xl:ml-2">
+                  <button
+                    className="font-primary text-sm text-white font-normal bg-blue px-3 py-2 rounded-md mt-2 ml-1 3xl:ml-2"
+                    onClick={() => handleDelete(user._id)}
+                  >
                     Delete
                   </button>
                 </div>

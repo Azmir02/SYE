@@ -82,6 +82,16 @@ function App() {
               />
             }
           />
+          <Route
+            path="/friends/:type"
+            element={
+              <Friends
+                setVisible={setVisible}
+                getPost={getPost}
+                users={users}
+              />
+            }
+          />
         </Route>
         <Route element={<Notloggedin />}>
           <Route path="/login" element={<Login />} />
