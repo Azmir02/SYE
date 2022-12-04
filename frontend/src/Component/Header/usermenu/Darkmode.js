@@ -1,7 +1,11 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { themeSwitch } from "../../../features/users/themeSlice";
 import Return from "../../../svg/return";
 
 const Darkmode = ({ setVisible }) => {
+  const theme = useSelector((theme) => theme.theme.mode);
+  const dispatch = useDispatch();
   return (
     <>
       <div>
@@ -36,27 +40,56 @@ const Darkmode = ({ setVisible }) => {
               <label
                 htmlFor="off"
                 className="radio cursor-pointer font-primary text-lg text-text_color flex justify-between items-center mt-3"
+                onClick={() => {
+                  localStorage.setItem("mode", false);
+                  dispatch(themeSwitch(false));
+                }}
               >
                 <span>Off</span>
-                <input
-                  className="radio-input"
-                  name="mode"
-                  id="off"
-                  type="radio"
-                />
+                {theme ? (
+                  <input
+                    className="radio-input"
+                    name="mode"
+                    id="off"
+                    type="radio"
+                  />
+                ) : (
+                  <input
+                    className="radio-input"
+                    name="mode"
+                    id="off"
+                    type="radio"
+                    checked
+                  />
+                )}
+
                 <div className="radio_radio"></div>
               </label>
               <label
                 htmlFor="on"
                 className="radio cursor-pointer font-primary text-lg text-text_color flex justify-between items-center mt-3"
+                onClick={() => {
+                  localStorage.setItem("mode", true);
+                  dispatch(themeSwitch(true));
+                }}
               >
                 <span>On</span>
-                <input
-                  className="radio-input"
-                  name="mode"
-                  id="on"
-                  type="radio"
-                />
+                {theme ? (
+                  <input
+                    className="radio-input"
+                    name="mode"
+                    id="on"
+                    type="radio"
+                    checked
+                  />
+                ) : (
+                  <input
+                    className="radio-input"
+                    name="mode"
+                    id="on"
+                    type="radio"
+                  />
+                )}
                 <div className="radio_radio"></div>
               </label>
             </div>

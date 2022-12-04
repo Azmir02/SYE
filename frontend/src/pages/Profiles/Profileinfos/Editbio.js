@@ -20,7 +20,7 @@ const Editbio = ({
             name={name}
             value={infos.relationship}
             onChange={handlechange}
-            className="w-full outline-none bg-[#F0F2F5] p-1 mt-2 rounded-lg font-primary text-base font-normal cursor-pointer"
+            className="w-full outline-none bg-page_color p-1 mt-2 rounded-lg font-primary text-base font-normal cursor-pointer text-text_color"
           >
             <option value="Single">Single</option>
             <option value="In A Relationship">In A Relationship</option>
@@ -30,7 +30,7 @@ const Editbio = ({
           </select>
         ) : (
           <textarea
-            className="w-full outline-none resize-none bg-[#F0F2F5] p-3 mt-2 h-[100px] rounded-lg font-primary text-base font-normal"
+            className="w-full outline-none resize-none bg-page_color text-text_color p-3 mt-2 h-[100px] rounded-lg font-primary text-base font-normal"
             placeholder={placeholder}
             onChange={handlechange}
             name={name}
@@ -47,7 +47,7 @@ const Editbio = ({
         </div>
         <div className="text-end mt-3">
           <button
-            className="bg-[#F0F2F5] px-4 py-2 rounded-md text-black font-primary text-base ml-2"
+            className="bg-page_color px-4 py-2 rounded-md text-text_color font-primary text-base ml-2"
             onClick={() => (!detail ? setShowBio(false) : setShow(false))}
           >
             cancle

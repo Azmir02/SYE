@@ -104,23 +104,23 @@ const Postpopup = ({ setVisible, posts, dispatch, profiles }) => {
 
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center bg-[rgba(255,255,255,_0.8)] w-full fixed top-0 left-0 z-[9999]">
+      <div className="min-h-screen flex items-center justify-center bg-blur w-full fixed top-0 left-0 z-[9999]">
         <div
-          className="w-[500px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative"
+          className="w-[500px] bg-main_bg rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative"
           ref={closePopup}
         >
           {error && <Posterror error={error} setError={setError} />}
           <div className="text-center py-5 border-b border-[#E4E6EB] border-solid">
-            <h3 className="font-bold text-lg text-black">Create Post</h3>
+            <h3 className="font-bold text-lg text-text_color">Create Post</h3>
             <div
               onClick={() => setVisible(false)}
-              className="w-[40px] h-[40px] flex items-center justify-center bg-[#E4E6EB] rounded-full absolute top-[13px] right-[20px] cursor-pointer"
+              className="w-[40px] h-[40px] flex items-center justify-center bg-page_color rounded-full absolute top-[13px] right-[20px] cursor-pointer"
             >
               <i className="exit_icon"></i>
             </div>
           </div>
           <div className="py-3 px-4 flex items-center">
-            <div className="w-[40px] h-[40px] bg-[#E4E6EB] rounded-full overflow-hidden">
+            <div className="w-[40px] h-[40px] rounded-full overflow-hidden">
               <img
                 className="w-full h-full object-cover"
                 src={user.profilePicture}
@@ -128,12 +128,12 @@ const Postpopup = ({ setVisible, posts, dispatch, profiles }) => {
               />
             </div>
             <div className="ml-3">
-              <p className="font-semibold text-base text-black capitalize">
+              <p className="font-semibold text-base text-text_color capitalize">
                 {user.fName} {user.lName}
               </p>
-              <div className="bg-[#E4E6EB] p-2 flex items-center justify-between rounded-md cursor-pointer">
+              <div className="status bg-page_color p-2 flex items-center justify-between rounded-md cursor-pointer">
                 <img src="../../../icons/public.png" alt="globe" />
-                <span className="text-black text-sm font-semibold leading-[0.8]">
+                <span className="text-text_color text-sm font-semibold leading-[0.8]">
                   public
                 </span>
                 <i className="arrowDown_icon"></i>

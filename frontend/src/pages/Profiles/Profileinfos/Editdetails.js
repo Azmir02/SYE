@@ -14,26 +14,26 @@ const Editdetails = ({
     setVisible(false);
   });
   return (
-    <div className="fixed top-0 left-0 w-full h-screen bg-[rgba(255,255,255,0.8)] z-[999] flex items-center justify-center">
+    <div className="fixed top-0 left-0 w-full h-screen bg-blur z-[999] flex items-center justify-center">
       <div
-        className="w-[500px] md:w-[700px] h-[800px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative main-menu overflow-y-auto pb-3"
+        className="w-[500px] md:w-[700px] h-[800px] bg-main_bg rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative main-menu overflow-y-auto pb-3"
         ref={detailsPopup}
       >
         <div className="border-b border-solid border-[#F0F2F5] relative py-5">
           <div className="text-center">
-            <h4 className="text-black font-primary text-xl font-bold">
+            <h4 className="text-text_color font-primary text-xl font-bold">
               Edit your details
             </h4>
           </div>
           <div
-            className="w-[40px] h-[40px] bg-[#F0F2F5] flex items-center justify-center rounded-full absolute top-[50%] right-[15px] translate-y-[-50%] cursor-pointer"
+            className="w-[40px] h-[40px] bg-page_color flex items-center justify-center rounded-full absolute top-[50%] right-[15px] translate-y-[-50%] cursor-pointer"
             onClick={() => setVisible(false)}
           >
             <i className="exit_icon"></i>
           </div>
         </div>
         <div className="px-5 mt-3">
-          <h3 className="text-black font-primary text-lg font-medium">
+          <h3 className="text-text_color font-primary text-lg font-medium">
             Customize your details
           </h3>
           <div className="flex items-center">
@@ -48,7 +48,7 @@ const Editdetails = ({
           </div>
         </div>
         <div className="mt-7 px-5">
-          <h4 className="text-black font-primary text-xl font-medium">
+          <h4 className="text-text_color font-primary text-xl font-medium">
             Other Name
           </h4>
           <Details
@@ -63,7 +63,9 @@ const Editdetails = ({
           />
         </div>
         <div className="mt-7 px-5">
-          <h4 className="text-black font-primary text-xl font-medium">Work</h4>
+          <h4 className="text-text_color font-primary text-xl font-medium">
+            Work
+          </h4>
           <Details
             text="Job"
             img="job"
@@ -86,7 +88,7 @@ const Editdetails = ({
           />
         </div>
         <div className="mt-7 px-5">
-          <h4 className="text-black font-primary text-xl font-medium">
+          <h4 className="text-text_color font-primary text-xl font-medium">
             Education
           </h4>
           <Details
@@ -111,7 +113,7 @@ const Editdetails = ({
           />
         </div>
         <div className="mt-7 px-5">
-          <h4 className="text-black font-primary text-xl font-medium">
+          <h4 className="text-text_color font-primary text-xl font-medium">
             Current City
           </h4>
           <Details
@@ -126,7 +128,7 @@ const Editdetails = ({
           />
         </div>
         <div className="mt-7 px-5">
-          <h4 className="text-black font-primary text-xl font-medium">
+          <h4 className="text-text_color font-primary text-xl font-medium">
             Hometown
           </h4>
           <Details
@@ -141,7 +143,7 @@ const Editdetails = ({
           />
         </div>
         <div className="mt-7 px-5">
-          <h4 className="text-black font-primary text-xl font-medium">
+          <h4 className="text-text_color font-primary text-xl font-medium">
             Relationship
           </h4>
           <Details
@@ -156,7 +158,7 @@ const Editdetails = ({
           />
         </div>
         <div className="mt-7 px-5">
-          <h4 className="text-black font-primary text-xl font-medium">
+          <h4 className="text-text_color font-primary text-xl font-medium">
             Instagram
           </h4>
           <Details

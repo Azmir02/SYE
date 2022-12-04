@@ -8,7 +8,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
   const uploadPhoto = useRef(null);
   return (
     <>
-      <div className="bg-white rounded-b-md">
+      <div className="bg-main_bg rounded-b-md">
         <div className="text-center border-b border-solid border-[#F0F2F5] pb-5 xl:pb-0">
           <div className="relative inline-block cursor-pointer z-[1]">
             <div
@@ -22,7 +22,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
               ""
             ) : (
               <div
-                className="w-[40px] h-[40px] bg-white rounded-full flex items-center justify-center absolute bottom-[-50px] right-[-75px] z-[2]"
+                className="w-[40px] h-[40px] bg-page_color rounded-full flex items-center justify-center absolute bottom-[-50px] right-[-75px] z-[2]"
                 onClick={() => setShow(true)}
               >
                 <i className="camera_filled_icon"></i>
@@ -33,7 +33,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
           <div className="xl:hidden mt-[60px] mb-[20px]">
             <div className="grid grid-cols-1 xl:grid-cols-3 items-center">
               <div className="mb-3">
-                <h3 className="font-primary font-semibold text-2xl capitalize text-black">
+                <h3 className="font-primary font-semibold text-2xl capitalize text-text_color">
                   {profile.fName} {profile.lName}
                 </h3>
                 <h4 className="text-title_color font-primary text-base capitalize">
@@ -42,7 +42,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
               </div>
               <div className="flex justify-center">
                 <div>
-                  <h4 className="font-primary font-semibold text-xl capitalize text-black">
+                  <h4 className="font-primary font-semibold text-xl capitalize text-text_color">
                     {profile.friends && profile.friends.length
                       ? profile.friends.length
                       : 0}
@@ -52,7 +52,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                   </span>
                 </div>
                 <div className="mx-[50px]">
-                  <h4 className="font-primary font-semibold text-xl capitalize text-black">
+                  <h4 className="font-primary font-semibold text-xl capitalize text-text_color">
                     {profile.posts && profile.posts.length
                       ? profile.posts.length
                       : 0}
@@ -62,7 +62,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                   </span>
                 </div>
                 <div>
-                  <h4 className="font-primary font-semibold text-xl capitalize text-black">
+                  <h4 className="font-primary font-semibold text-xl capitalize text-text_color">
                     {profile.followers && profile.followers.length
                       ? profile.followers.length
                       : 0}
@@ -88,9 +88,9 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                 </span>
               </button>
 
-              <button className="flex items-center bg-[#F0F2F5] px-5 py-3 rounded-md ml-3">
+              <button className="flex items-center bg-page_color px-5 py-3 rounded-md ml-3">
                 <i className="edit_icon"></i>
-                <span className="font-primary text-base text-black font-normal ml-2">
+                <span className="font-primary text-base text-text_color font-normal ml-2">
                   Edit profile
                 </span>
               </button>
@@ -102,7 +102,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
               <div className="grid grid-cols-3 items-center">
                 <div className="flex justify-center">
                   <div>
-                    <h4 className="font-primary font-semibold text-xl capitalize text-black">
+                    <h4 className="font-primary font-semibold text-xl capitalize text-text_color">
                       {profile.friends && profile.friends.length
                         ? profile.friends.length
                         : 0}
@@ -112,7 +112,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                     </span>
                   </div>
                   <div className="mx-[50px]">
-                    <h4 className="font-primary font-semibold text-xl capitalize text-black">
+                    <h4 className="font-primary font-semibold text-xl capitalize text-text_color">
                       {profile.posts && profile.posts.length
                         ? profile.posts.length
                         : 0}
@@ -122,7 +122,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                     </span>
                   </div>
                   <div>
-                    <h4 className="font-primary font-semibold text-xl capitalize text-black">
+                    <h4 className="font-primary font-semibold text-xl capitalize text-text_color">
                       {profile.followers && profile.followers.length
                         ? profile.followers.length
                         : 0}
@@ -133,7 +133,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-primary font-semibold text-2xl capitalize text-black">
+                  <h3 className="font-primary font-semibold text-2xl capitalize text-text_color">
                     {profile.fName} {profile.lName}
                   </h3>
                   <h4 className="text-title_color font-primary text-base capitalize">
@@ -147,7 +147,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
               <div className="grid grid-cols-3 items-center">
                 <div className="flex justify-center">
                   <div>
-                    <h4 className="font-primary font-semibold text-xl capitalize text-black">
+                    <h4 className="font-primary font-semibold text-xl capitalize text-text_color">
                       {profile.friends && profile.friends.length
                         ? profile.friends.length
                         : 0}
@@ -157,7 +157,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                     </span>
                   </div>
                   <div className="mx-[50px]">
-                    <h4 className="font-primary font-semibold text-xl capitalize text-black">
+                    <h4 className="font-primary font-semibold text-xl capitalize text-text_color">
                       {profile.posts && profile.posts.length
                         ? profile.posts.length
                         : 0}
@@ -167,7 +167,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                     </span>
                   </div>
                   <div>
-                    <h4 className="font-primary font-semibold text-xl capitalize text-black">
+                    <h4 className="font-primary font-semibold text-xl capitalize text-text_color">
                       {profile.followers && profile.followers.length
                         ? profile.followers.length
                         : 0}
@@ -178,7 +178,7 @@ const Profileinfos = ({ profile, visitor, photo, othername }) => {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-primary font-semibold text-2xl capitalize text-black">
+                  <h3 className="font-primary font-semibold text-2xl capitalize text-text_color">
                     {profile.fName} {profile.lName}
                   </h3>
                   <h4 className="text-title_color font-primary text-base capitalize">

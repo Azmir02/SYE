@@ -102,15 +102,15 @@ const Picturecropper = ({
     }
   };
   return (
-    <div className="w-[500px] md:w-[700px] h-[900px] bg-white shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] px-5 py-4 rounded-md">
+    <div className="w-[500px] md:w-[700px] h-[900px] bg-main_bg shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] px-5 py-4 rounded-md">
       <div className="border-b border-solid border-[#F0F2F5] relative py-5">
         <div className="text-center">
-          <h4 className="text-black font-primary text-xl font-bold">
+          <h4 className="text-text_color font-primary text-xl font-bold">
             Update Profile Picture
           </h4>
         </div>
         <div
-          className="w-[40px] h-[40px] bg-[#F0F2F5] flex items-center justify-center rounded-full absolute top-[50%] right-[15px] translate-y-[-50%] cursor-pointer"
+          className="w-[40px] h-[40px] bg-page_color flex items-center justify-center rounded-full absolute top-[50%] right-[15px] translate-y-[-50%] cursor-pointer"
           onClick={() => setImages("")}
         >
           <i className="exit_icon"></i>
@@ -118,7 +118,7 @@ const Picturecropper = ({
       </div>
       <div className="mt-5">
         <textarea
-          className="w-full border border-solid border-[#F0F2F5] h-[100px] rounded-md bg-[#f7f7fb] resize-none px-5 py-4 focus:outline-none"
+          className="w-full border border-solid border-[#F0F2F5] h-[100px] rounded-md bg-page_color resize-none px-5 py-4 focus:outline-none"
           placeholder="Description"
           onChange={(e) => setText(e.target.value)}
         ></textarea>
@@ -161,23 +161,23 @@ const Picturecropper = ({
       </div>
       <div className="flex justify-center items-center">
         <button
-          className="flex items-center bg-[#F0F2F5] px-4 py-2 rounded-md"
+          className="flex items-center bg-page_color px-4 py-2 rounded-md"
           onClick={() => getCroppedImage("show")}
         >
           <i className="crop_icon"></i>
-          <span className="ml-2 font-primary text-medium text-base text-black">
+          <span className="ml-2 font-primary text-medium text-base text-text_color">
             Crop Photo
           </span>
         </button>
-        <button className="flex items-center bg-[#F0F2F5] px-4 py-2 rounded-md ml-3">
+        <button className="flex items-center bg-page_color px-4 py-2 rounded-md ml-3">
           <i className="temp_icon"></i>
-          <span className="ml-2 font-primary text-medium text-base text-black">
+          <span className="ml-2 font-primary text-medium text-base text-text_color">
             Make Temporary
           </span>
         </button>
       </div>
       <div className="mt-8 border-b border-solid border-[#F0F2F5] pb-5">
-        <h4 className="font-primary text-medium text-lg text-black">
+        <h4 className="font-primary text-medium text-lg text-text_color">
           Your Profile Is Public
         </h4>
       </div>

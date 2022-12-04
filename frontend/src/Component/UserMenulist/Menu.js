@@ -39,7 +39,7 @@ const Menu = ({
 
   return (
     <>
-      <div className="absolute top-[40px] right-0 w-[300px] z-[1] bg-white px-2 py-3 shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] rounded-md">
+      <div className="postMenu absolute top-[40px] right-0 w-[300px] z-[1] bg-page_color px-2 py-3 shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] rounded-md">
         {test && <Menuitem icon="pin_icon" title="Pin Post" />}
         <div onClick={() => savePosts()}>
           {checkSavePost ? (
@@ -56,7 +56,7 @@ const Menu = ({
             />
           )}
         </div>
-        <div className="w-full h-[1px] bg-[#E6E8EA] my-2"></div>
+        <div className="w-full h-[1px] bg-line_color my-2"></div>
         {test && <Menuitem icon="edit_icon" title="Edit Post" />}
         {test && (
           <Menuitem img="../../../icons/lock.png" title="Edit Audience" />
@@ -75,7 +75,7 @@ const Menu = ({
         />
         {test && <Menuitem icon="delete_icon" title="Turn off translation" />}
         {test && <Menuitem icon="date_icon" title="Edit Date" />}
-        <div className="w-full h-[1px] bg-[#E6E8EA] my-2"></div>
+        <div className="w-full h-[1px] bg-line_color my-2"></div>
         {test && (
           <Menuitem icon="refresh_icon" title="Refresh date atachment" />
         )}

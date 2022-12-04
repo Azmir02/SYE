@@ -190,38 +190,38 @@ const Coverphoto = ({ coverPhoto, visitor, user, photo }) => {
               ref={covermenuoption}
             >
               <div
-                className="w-[50px] md:w-[190px] bg-white rounded-md px-0 lg:px-2 py-3 flex items-center justify-center cursor-pointer hover:bg-[#F0F2F5]"
+                className="w-[50px] md:w-[190px] bg-main_bg rounded-md px-0 lg:px-2 py-3 flex items-center justify-center cursor-pointer hover:bg-page_color"
                 onClick={() => setShowCovermenu((prev) => !prev)}
               >
                 <i className="camera_filled_icon"></i>
-                <span className="ml-3 leading-[0.8] font-primary text-sm lg:text-base font-medium text-black hidden md:block">
+                <span className="ml-3 leading-[0.8] font-primary text-sm lg:text-base font-medium text-text_color hidden md:block">
                   Upload Photo
                 </span>
               </div>
               {showCovermenu && (
-                <div className="w-[240px] bg-white p-2 absolute top-[50px] right-[0px] rounded-md z-[3] show_Covermenu shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]">
+                <div className="w-[240px] bg-page_color p-2 absolute top-[50px] right-[0px] rounded-md z-[3] show_Covermenu shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]">
                   <div
-                    className="flex items-center cursor-pointer hover:bg-[#F0F2F5] px-4 py-3 rounded-md"
+                    className="flex items-center cursor-pointer hover:bg-hover_clr px-4 py-3 rounded-md"
                     onClick={() => setShow(true)}
                   >
                     <i className="photo_icon"></i>
-                    <span className="ml-3 font-primary font-medium text-base text-black">
+                    <span className="ml-3 font-primary font-medium text-base text-text_color">
                       Select Photo
                     </span>
                   </div>
                   <div
-                    className="flex items-center cursor-pointer hover:bg-[#F0F2F5] px-4 py-3 rounded-md"
+                    className="flex items-center cursor-pointer hover:bg-hover_clr px-4 py-3 rounded-md"
                     onClick={() => chooseCover.current.click()}
                   >
                     <i className="upload_icon"></i>
-                    <span className="ml-3 font-primary font-medium text-base text-black">
+                    <span className="ml-3 font-primary font-medium text-base text-text_color">
                       Upload Photo
                     </span>
                   </div>
                   <div className="w-full h-[1px] bg-[#E6E8EA] my-2"></div>
-                  <div className="flex items-center cursor-pointer hover:bg-[#F0F2F5] px-4 py-3 rounded-md">
+                  <div className="flex items-center cursor-pointer hover:bg-hover_clr px-4 py-3 rounded-md">
                     <i className="trash_icon"></i>
-                    <span className="ml-3 font-primary font-medium text-base text-black">
+                    <span className="ml-3 font-primary font-medium text-base text-text_color">
                       Remove
                     </span>
                   </div>

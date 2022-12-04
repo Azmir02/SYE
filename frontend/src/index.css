@@ -7,9 +7,12 @@
   --main_bg: #fff;
   --page_color: #f7f7fb;
   --input_color: #f0f2f5;
+  --line_color: #f0f2f5;
   --primary_bg: #66717f;
+  --single_color: rgba(109, 40, 217, 1);
   --secondary_bg: #28353e;
   --hover_clr: #f0f2f5;
+  --blur: rgba(255, 255, 255, 0.8);
   --text_color: #333;
   --primary_color: #1fa0ef;
   --secondary_color: #848f95;
@@ -32,9 +35,13 @@
 
 .dark {
   --page_color: #0d1526;
+  --secondary_color: rgba(148, 163, 184, 1);
+  --single_color: rgba(56, 189, 248, 1);
   --main_bg: #182233;
   --input_color: #0d1526;
   --text_color: #fff;
+  --title_color: #888;
+  --blur: rgba(13, 21, 38, 0.8);
   --hover_clr: rgba(226, 232, 240, 0.1);
 }
 .dark svg {
@@ -44,6 +51,22 @@
 .dark i {
   color: #f7f7fb;
   filter: invert();
+}
+
+.dark .emoji-icon i {
+  filter: invert(40%);
+}
+
+.dark .postMenu img {
+  filter: invert();
+}
+
+.dark .status img {
+  filter: invert();
+}
+
+.dark .active_button {
+  background-color: var(--hover_clr);
 }
 select {
   background-color: transparent;

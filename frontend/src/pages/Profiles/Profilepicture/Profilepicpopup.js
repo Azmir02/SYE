@@ -39,7 +39,7 @@ const Profilepicpopup = ({ setShow, uploadPhoto, photo }) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full h-screen bg-[rgba(255,255,255,0.8)] z-[999] flex items-center justify-center">
+    <div className="fixed top-0 left-0 w-full h-screen bg-blur z-[999] flex items-center justify-center">
       <div ref={popUppic}>
         <input
           type="file"
@@ -51,18 +51,18 @@ const Profilepicpopup = ({ setShow, uploadPhoto, photo }) => {
         <div
           className={`${
             error
-              ? "w-[500px] md:w-[700px] h-[600px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative main-menu overflow-y-hidden pb-3"
-              : "w-[500px] md:w-[700px] h-[600px] bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative main-menu overflow-y-auto pb-3"
+              ? "w-[500px] md:w-[700px] h-[600px] bg-main_bg rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative main-menu overflow-y-hidden pb-3"
+              : "w-[500px] md:w-[700px] h-[600px] bg-main_bg rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] relative main-menu overflow-y-auto pb-3"
           }`}
         >
           <div className="border-b border-solid border-[#F0F2F5] relative py-5">
             <div className="text-center">
-              <h4 className="text-black font-primary text-xl font-bold">
+              <h4 className="text-text_color font-primary text-xl font-bold">
                 Update Profile Picture
               </h4>
             </div>
             <div
-              className="w-[40px] h-[40px] bg-[#F0F2F5] flex items-center justify-center rounded-full absolute top-[50%] right-[15px] translate-y-[-50%] cursor-pointer"
+              className="w-[40px] h-[40px] hover:bg-hover_clr bg-main_bg flex items-center justify-center rounded-full absolute top-[50%] right-[15px] translate-y-[-50%] cursor-pointer"
               onClick={() => setShow(false)}
             >
               <i className="exit_icon"></i>
@@ -78,15 +78,15 @@ const Profilepicpopup = ({ setShow, uploadPhoto, photo }) => {
                 Upload Image
               </span>
             </div>
-            <div className="w-[45%] flex items-center justify-center px-5 py-2 bg-[#F0F2F5] rounded-md ml-5 cursor-pointer">
+            <div className="w-[45%] flex items-center justify-center px-5 py-2 bg-page_color rounded-md ml-5 cursor-pointer">
               <i className="frame_icon"></i>
-              <span className="text-black font-primary text-semibold text-base ml-2">
+              <span className="text-text_color font-primary text-semibold text-base ml-2">
                 Add frame
               </span>
             </div>
           </div>
           <div className="px-5 mt-[30px]">
-            <h4 className="text-xl font-primary font-semibold text-black">
+            <h4 className="text-xl font-primary font-semibold text-text_color">
               Profile pictures(
               {
                 photo.filter(
@@ -112,7 +112,7 @@ const Profilepicpopup = ({ setShow, uploadPhoto, photo }) => {
             </div>
           </div>
           <div className="px-5 mt-[30px]">
-            <h4 className="text-xl font-primary font-semibold text-black">
+            <h4 className="text-xl font-primary font-semibold text-text_color">
               Others pictures(
               {
                 photo.filter(

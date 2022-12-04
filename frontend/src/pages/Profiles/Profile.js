@@ -10,6 +10,8 @@ import Coverphoto from "./Coverphoto/Coverphoto";
 import Profilebottom from "./Profilebtm/Profilebottom";
 import Profileinfos from "./Profilepictureinfo";
 import Postpopup from "../../Component/postpopup/Postpopup";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Profile = () => {
   const user = useSelector((users) => users.login.loggedin);
@@ -113,23 +115,46 @@ const Profile = () => {
           profiles
         />
       )}
-      <div className="bg-[#F7F7FB]">
+      <div className="bg-page_color">
         <div className="lg:pt-[100px] pt-[50px] pb-[10px]">
           <div className="2xl:px-[150px] 3xl:px-[300px] px-0">
             <div ref={profileTop}>
-              <Coverphoto
-                coverPhoto={profile.cover}
-                visitor={visitor}
-                user={user}
-                profile={profile}
-                photo={photo}
-              />
-              <Profileinfos
-                photo={photo.resources}
-                profile={profile}
-                visitor={visitor}
-                othername={othername}
-              />
+              {loading ? (
+                <>
+                  <div className="h-[450px]">
+                    <Skeleton
+                      height="100%"
+                      containerClassName="avatar-skeleton"
+                      baseColor="#202020"
+                      highlightColor="#444"
+                    />
+                  </div>
+                  <div className="w-[150px] h-[150px]  rounded-full bg-cover bg-no-repeat border-4 border-solid border-white translate-y-[-60%] translate-x-[-50%] absolute left-[50%] z-[1] overflow-hidden">
+                    <Skeleton
+                      height="100%"
+                      containerClassName="avatar-skeleton"
+                      baseColor="#202020"
+                      highlightColor="#444"
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <Coverphoto
+                    coverPhoto={profile.cover}
+                    visitor={visitor}
+                    user={user}
+                    profile={profile}
+                    photo={photo}
+                  />
+                  <Profileinfos
+                    photo={photo.resources}
+                    profile={profile}
+                    visitor={visitor}
+                    othername={othername}
+                  />
+                </>
+              )}
             </div>
             <div>
               <Profilebottom
@@ -145,6 +170,7 @@ const Profile = () => {
                 scrollheight={scrollheight}
                 check={check}
                 height={height}
+                loading={loading}
               />
             </div>
           </div>

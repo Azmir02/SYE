@@ -36,7 +36,7 @@ const Reacts = ({ setShowReacts, handleReacts }) => {
   return (
     <>
       <div
-        className="show_reacts w-[310px] flex justify-between px-2 py-1 bg-white rounded-full absolute top-[-50px] left-[15px] z-[1] shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]"
+        className="show_reacts w-[310px] flex justify-between px-2 py-1 bg-page_color rounded-full absolute top-[-50px] left-[15px] z-[1] shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]"
         onMouseOver={() => {
           setTimeout(() => {
             setShowReacts(true);

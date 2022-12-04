@@ -8,11 +8,11 @@ const Comment = ({ comment }) => {
         <div className="w-[40px] h-[40px] rounded-full overflow-hidden">
           <img src={comment.comentedBy.profilePicture} alt="" />
         </div>
-        <div className="ml-3 bg-[#F0F2F5] px-5 py-2 rounded-full">
-          <h4 className="text-base font-primary text-black font-medium capitalize">
+        <div className="ml-3 bg-page_color px-5 py-2 rounded-full">
+          <h4 className="text-base font-primary text-text_color font-medium capitalize">
             {comment.comentedBy.fName} {comment.comentedBy.lName}
           </h4>
-          <p className="text-base font-primary text-black font-normal leading-[0.8]">
+          <p className="text-base font-primary text-text_color font-normal leading-[0.8]">
             {comment.comment}
           </p>
         </div>

@@ -3,9 +3,9 @@ import Shortdetails from "./Shortdetails";
 
 const Shortcut = () => {
   return (
-    <div className="mt-3 w-[265px] xl:w-full bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] px-5 py-4 overflow-y-auto group">
+    <div className="mt-3 w-[265px] xl:w-full bg-main_bg rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] px-5 py-4 overflow-y-auto group">
       <div className="flex items-center justify-between">
-        <h3 className="text-base font-primary font-medium text-black">
+        <h3 className="text-base font-primary font-medium text-text_color">
           Your Shortcuts
         </h3>
         <span className="hidden group-hover:block text-base font-primary text-blue cursor-pointer">

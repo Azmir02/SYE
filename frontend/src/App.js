@@ -18,6 +18,7 @@ import Friends from "./pages/Friends/Friends";
 function App() {
   const [visible, setVisible] = useState(false);
   const users = useSelector((users) => users.login.loggedin);
+  const theme = useSelector((theme) => theme.theme.mode);
   const [{ loading, posts, error }, dispatch] = useReducer(getpostreducer, {
     loading: false,
     posts: [],
@@ -51,7 +52,7 @@ function App() {
   };
 
   return (
-    <div className="dark">
+    <div className={theme ? "dark" : ""}>
       {visible && (
         <Postpopup setVisible={setVisible} posts={posts} dispatch={dispatch} />
       )}

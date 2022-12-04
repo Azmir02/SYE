@@ -87,7 +87,7 @@ const Imageviewer = ({
                   </div>
                 </div>
                 <div
-                  className="w-[40px] h-[40px] flex items-center justify-center bg-white rounded-full border border-[#f2f2f2] border-solid cursor-pointer hover:bg-[#F2F2F2] absolute top-3 right-3"
+                  className="w-[40px] h-[40px] flex items-center justify-center bg-white rounded-full border border-[#f2f2f2] border-solid cursor-pointer hover:bg-hover_clr absolute top-3 right-3"
                   onClick={handleClose}
                 >
                   <i className="exit_icon"></i>
@@ -145,21 +145,21 @@ const Imageviewer = ({
             <>
               <div className="relative">
                 <div
-                  className="w-[40px] h-[40px] flex items-center justify-center bg-white rounded-full border border-[#f2f2f2] border-solid cursor-pointer hover:bg-[#F2F2F2] absolute top-3 right-3"
+                  className="w-[40px] h-[40px] flex items-center justify-center bg-page_color rounded-full border border-[#f2f2f2] border-solid cursor-pointer hover:bg-hover_clr absolute top-3 right-3"
                   onClick={() => setShow(false)}
                 >
                   <i className="exit_icon"></i>
                 </div>
                 <div
-                  className="bg-[#f9f9f9] rounded-md p-5 h-[250px] flex items-center justify-center cursor-pointer hover:bg-[#EAEBED]"
+                  className="bg-page_color rounded-md p-5 h-[250px] flex items-center justify-center cursor-pointer hover:bg-hover_clr"
                   onClick={() => chooseFile.current.click()}
                 >
                   <div className="text-center">
-                    <div className="w-[40px] h-[40px] flex items-center justify-center bg-[#D8DADF] rounded-full m-auto">
+                    <div className="w-[40px] h-[40px] flex items-center justify-center bg-main_bg rounded-full m-auto">
                       <i className="addPhoto_icon"></i>
                     </div>
                     <div className="mt-3">
-                      <span className="font-semibold text-lg text-black block leading-[0.8]">
+                      <span className="font-semibold text-lg text-text_color block leading-[0.8]">
                         Add photos/videos
                       </span>
                       <span className="font-regular text-sm text-title_color leading-[0.8]">
@@ -169,17 +169,17 @@ const Imageviewer = ({
                   </div>
                 </div>
               </div>
-              <div className="flex justify-between items-center px-3 bg-[#F7F8FA] py-2 mt-2 mb-2 rounded-md">
+              <div className="flex justify-between items-center px-3 bg-page_color py-2 mt-2 mb-2 rounded-md">
                 <div className="flex items-center">
-                  <div className="w-[40px] h-[40px] bg-[#E4E6EB] rounded-full flex items-center justify-center cursor-pointer">
+                  <div className="w-[40px] h-[40px] bg-main_bg rounded-full flex items-center justify-center cursor-pointer">
                     <i className="phone_icon"></i>
                   </div>
-                  <span className="text-[13px] text-black ml-3">
+                  <span className="text-[13px] text-text_color ml-3">
                     Add photos and videos from your mobile device.
                   </span>
                 </div>
                 <button
-                  className="px-3 py-2 bg-[#EAEBED] rounded-md text-base font-semibold hover:bg-[#E4E6EB]"
+                  className="px-3 py-2 bg-main_bg rounded-md text-base font-semibold hover:bg-hover_clr text-text_color"
                   type="button"
                 >
                   Add

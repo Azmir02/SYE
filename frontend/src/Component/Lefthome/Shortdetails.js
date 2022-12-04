@@ -10,7 +10,7 @@ const Shortdetails = ({ link, img, text }) => {
         rel="noreferrer"
       >
         <img className="w-[35px]" src={img} alt="images" />
-        <span className="w-[180px] xl:w-[270px] font-primary text-sm xl:text-base font-semibold text-black">
+        <span className="w-[180px] xl:w-[270px] font-primary text-sm xl:text-base font-semibold text-text_color">
           {text}
         </span>
       </a>

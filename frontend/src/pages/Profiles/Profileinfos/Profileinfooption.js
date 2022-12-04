@@ -64,10 +64,10 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
   };
 
   return (
-    <div>
+    <div className="postMenu">
       <div className="text-center">
         {!showBio && (
-          <span className="text-title_color font-primary text-lg font-medium block">
+          <span className="text-secondary_color font-primary text-lg font-medium block">
             {details?.bio && <span>{details?.bio}</span>}
           </span>
         )}
@@ -85,7 +85,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
         {!visitor && !showBio && !details?.bio && (
           <button
             onClick={() => setShowBio(true)}
-            className="bg-[#F7F7FB] w-full py-2 rounded-md mt-3 text-title_color font-normal text-base font-primary"
+            className="bg-page_color w-full py-2 rounded-md mt-3 text-secondary_color font-normal text-base font-primary"
           >
             Add Bio
           </button>
@@ -93,7 +93,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
         {!visitor && details?.bio && (
           <button
             onClick={() => setShowBio(true)}
-            className="bg-[#F7F7FB] w-full py-2 rounded-md mt-3 text-title_color font-normal text-base font-primary"
+            className="bg-page_color w-full py-2 rounded-md mt-3 text-secondary_color font-normal text-base font-primary"
           >
             Edit Bio
           </button>
@@ -104,7 +104,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
           <img className="invert-[40%]" src="../../../icons/job.png" alt="" />
         </div>
         <div className="w-[95%]">
-          <span className="text-title_color font-primary text-base font-normal block ml-2">
+          <span className="text-secondary_color font-primary text-base font-normal block ml-2">
             {details?.job && details?.workplace ? (
               <span>
                 Work as a <b>{details?.job}</b> at <b>{details?.workplace}</b>
@@ -128,7 +128,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
           <img className="invert-[40%]" src="../../../icons/from.png" alt="" />
         </div>
         <div className="w-[95%]">
-          <span className="text-title_color font-primary text-base font-normal block ml-2">
+          <span className="text-secondary_color font-primary text-base font-normal block ml-2">
             {details?.currentcity ? (
               <span>
                 Lives in <b>{details?.currentcity}</b>
@@ -144,7 +144,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
           <img className="invert-[40%]" src="../../../icons/home.png" alt="" />
         </div>
         <div className="w-[95%]">
-          <span className="text-title_color font-primary text-base font-normal block ml-2">
+          <span className="text-secondary_color font-primary text-base font-normal block ml-2">
             {details?.hometown ? (
               <span>
                 From <b>{infos.hometown}</b>
@@ -165,7 +165,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
             />
           </div>
           <div className="w-[95%]">
-            <span className="text-title_color font-primary text-base font-normal block ml-2">
+            <span className="text-secondary_color font-primary text-base font-normal block ml-2">
               {details?.college ? (
                 <span>
                   Studied at <b>{details?.college}</b>
@@ -186,7 +186,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
           />
         </div>
         <div className="w-[95%]">
-          <span className="text-title_color font-primary text-base font-normal block ml-2">
+          <span className="text-secondary_color font-primary text-base font-normal block ml-2">
             {details?.highschool ? (
               <span>
                 Studied at <b>{details?.highschool}</b>
@@ -206,7 +206,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
           />
         </div>
         <div className="w-[95%]">
-          <span className="text-title_color font-primary text-base font-normal block ml-2">
+          <span className="text-secondary_color font-primary text-base font-normal block ml-2">
             {details?.relationship ? (
               <span>{details?.relationship}</span>
             ) : (
@@ -224,7 +224,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
           />
         </div>
         <div className="w-[95%]">
-          <span className="text-title_color font-primary text-base font-normal block ml-2">
+          <span className="text-secondary_color font-primary text-base font-normal block ml-2">
             {details?.instagram ? (
               <a className="text-blue" href="https://www.instagram.com/">
                 {details?.instagram}
@@ -247,7 +247,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
       !details?.instagram ? (
         <button
           onClick={() => setVisible(true)}
-          className="bg-[#F7F7FB] w-full py-2 rounded-md mt-3 text-title_color font-normal text-base font-primary"
+          className="bg-page_color w-full py-2 rounded-md mt-3 text-secondary_color font-normal text-base font-primary"
         >
           Add Details
         </button>
@@ -255,7 +255,7 @@ const Profileinfooption = ({ userDtails, users, visitor, setOthername }) => {
         !visitor && (
           <button
             onClick={() => setVisible(true)}
-            className="bg-[#F7F7FB] w-full py-2 rounded-md mt-3 text-title_color font-normal text-base font-primary"
+            className="bg-page_color w-full py-2 rounded-md mt-3 text-secondary_color font-normal text-base font-primary"
           >
             Edit Details
           </button>

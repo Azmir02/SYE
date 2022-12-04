@@ -90,8 +90,8 @@ const Registration = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-main_bg">
       <div className="2xl:w-3/6 lg:w-9/12 w-full px-5">
-        <h2 className="font-primary md:text-4xl font-bold text-black mb-5 text-3xl">
-          Registration <span className="text-white">Form</span>
+        <h2 className="font-primary md:text-4xl font-bold text-text_color mb-5 text-3xl">
+          Registration <span className="text-single_color">Form</span>
         </h2>
         <div className="grid md:grid-cols-2 gap-4 items-center">
           <div className="max-w-[100%]">
@@ -100,7 +100,7 @@ const Registration = () => {
             </Helmet>
             <form onSubmit={formik.handleSubmit}>
               <input
-                className="w-full py-3 px-5 rounded-full bg-[#E6E6E6] font-primary text-sm focus:outline-0 text-black mb-5"
+                className="w-full py-3 px-5 rounded-full bg-page_color font-primary text-sm focus:outline-0 text-text_color mb-5"
                 type="text"
                 placeholder="First Name"
                 autoComplete="off"
@@ -117,7 +117,7 @@ const Registration = () => {
               ) : null}
 
               <input
-                className="w-full py-3 px-5 rounded-full bg-[#E6E6E6] font-primary text-sm focus:outline-0 text-black mb-5"
+                className="w-full py-3 px-5 rounded-full bg-page_color font-primary text-sm focus:outline-0 text-text_color mb-5"
                 type="text"
                 placeholder="Last Name"
                 autoComplete="off"
@@ -134,7 +134,7 @@ const Registration = () => {
               ) : null}
 
               <input
-                className="w-full py-3 px-5 rounded-full bg-[#E6E6E6] font-primary text-sm focus:outline-0 text-black mb-5"
+                className="w-full py-3 px-5 rounded-full bg-page_color font-primary text-sm focus:outline-0 text-text_color mb-5"
                 type="email"
                 placeholder="Email"
                 autoComplete="off"
@@ -151,7 +151,7 @@ const Registration = () => {
               ) : null}
 
               <input
-                className="w-full py-3 px-5 rounded-full bg-[#E6E6E6] font-primary text-sm focus:outline-0 text-black mb-5"
+                className="w-full py-3 px-5 rounded-full bg-page_color font-primary text-sm focus:outline-0 text-text_color mb-5"
                 type="password"
                 placeholder="New Password"
                 autoComplete="off"
@@ -316,9 +316,9 @@ const Registration = () => {
             {success}
           </p>
         )}
-        <p className="text-title_color font-primary text-lg mt-3">
+        <p className="text-secondary_color font-primary text-lg mt-3">
           Already have an account?{" "}
-          <NavLink className="text-black hover:underline" to="/login">
+          <NavLink className="text-text_color hover:underline" to="/login">
             Sign in
           </NavLink>
         </p>

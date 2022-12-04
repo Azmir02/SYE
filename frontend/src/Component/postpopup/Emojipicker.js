@@ -72,8 +72,8 @@ const Emojipicker = ({
           onChange={(e) => setText(e.target.value)}
           className={`${
             !changepart
-              ? "resize-none focus:outline-none w-full text-2xl py-3 px-4"
-              : "resize-none focus:outline-none text-base py-3 px-6 w-[444px]"
+              ? "resize-none focus:outline-none w-full text-2xl py-3 px-4 bg-main_bg text-text_color"
+              : "resize-none focus:outline-none text-base py-3 px-6 w-[444px] bg-main_bg text-text_color"
           }`}
           style={{
             paddingTop: `${
@@ -98,7 +98,7 @@ const Emojipicker = ({
           </div>
         )}
         {show ? (
-          <div className="w-[30px] h-[30px] bg-[#E4E6EB] rounded-md cursor-pointer flex items-center justify-center">
+          <div className="w-[30px] h-[30px] bg-page_color rounded-md cursor-pointer flex items-center justify-center">
             <i
               className="right_icon rotate-180 cursor-pointer"
               src="../../../icons/colorful.png"
@@ -128,7 +128,7 @@ const Emojipicker = ({
           </div>
         )}
 
-        <div className="relative">
+        <div className="relative emoji-icon">
           <i
             className={`${
               !changepart ? "emoji_icon_large" : "emoji_icon_large mt-2"

@@ -120,7 +120,7 @@ const Searchbox = ({ setShow, users }) => {
                   </div>
                 </Link>
                 <div
-                  className="w-[40px] h-[40px] hover:bg-[#f5f5f5] rounded-full flex items-center justify-center cursor-pointer"
+                  className="w-[40px] h-[40px] hover:bg-page_color rounded-full flex items-center justify-center cursor-pointer"
                   onClick={() => handleRemove(item.user._id)}
                 >
                   <i className="exit_icon"></i>

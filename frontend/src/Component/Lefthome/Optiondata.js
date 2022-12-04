@@ -9,7 +9,7 @@ const Optiondata = ({ text, icon, notification }) => {
       <div className="w-[80%] xl:w-[85%]">
         {notification !== undefined ? (
           <>
-            <p className="font-primary text-base font-semibold text-black leading-[0.8]">
+            <p className="font-primary text-base font-semibold text-text_color leading-[0.8]">
               {text}
             </p>
             <span className="font-primary text-sm text-title_color">
@@ -17,7 +17,7 @@ const Optiondata = ({ text, icon, notification }) => {
             </span>
           </>
         ) : (
-          <p className="font-primary text-base font-semibold text-black leading-[0.8]">
+          <p className="font-primary text-base font-semibold text-text_color leading-[0.8]">
             {text}
           </p>
         )}

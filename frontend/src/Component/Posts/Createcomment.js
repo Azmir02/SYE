@@ -102,7 +102,7 @@ const Createcomment = ({
               <img src={user?.profilePicture} alt="" />
             </div>
           </Link>
-          <div className="w-[87%] flex items-center md:w-[92%] relative bg-[#F0F2F5] rounded-[50px]">
+          <div className="w-[87%] flex items-center md:w-[92%] relative bg-page_color rounded-[50px]">
             <input
               type="file"
               hidden
@@ -113,7 +113,7 @@ const Createcomment = ({
             <input
               ref={textRef}
               type="text"
-              className="w-[95%] py-2 pl-5 md:pr-[20px] rounded-[50px] outline-none placeholder:text-title_color bg-[#F0F2F5]"
+              className="w-[95%] py-2 pl-5 md:pr-[20px] text-text_color rounded-[50px] outline-none placeholder:text-title_color bg-page_color"
               placeholder="Write a comment..."
               value={text}
               onChange={(e) => setText(e.target.value)}

@@ -79,7 +79,7 @@ const Showpost = ({ posts, user }) => {
   };
 
   return (
-    <div className="my-5 bg-white rounded-md pb-2" ref={postBody}>
+    <div className="my-5 bg-main_bg rounded-md pb-2" ref={postBody}>
       <div className="flex p-5 items-center justify-between">
         <div className="flex items-center w-[420px]">
           <div className="w-[50px] h-[50px] border-2 border-solid border-[#D9D9D9] rounded-full overflow-hidden mr-3">
@@ -92,7 +92,7 @@ const Showpost = ({ posts, user }) => {
             </Link>
           </div>
           <div className="w-[280px]">
-            <h4 className="font-primary font-medium text-black capitalize text-lg leading-[0.8] inline-block">
+            <h4 className="font-primary font-medium text-text_color capitalize text-lg leading-[0.8] inline-block">
               <Link to={`/profile/${posts.user.username}`}>
                 {posts.user.fName} {posts.user.lName}
               </Link>
@@ -116,7 +116,7 @@ const Showpost = ({ posts, user }) => {
         </div>
         <div className="relative" ref={hideMenu}>
           <div
-            className="cursor-pointer w-[40px] h-[40px] flex items-center justify-center transition-all duration-100 ease-linear hover:bg-[#f2f2f2] rounded-full"
+            className="cursor-pointer w-[40px] h-[40px] flex items-center justify-center transition-all duration-100 ease-linear hover:bg-hover_clr rounded-full"
             onClick={() => setVisible((prev) => !prev)}
           >
             <Dots color="#29313D" />
@@ -150,7 +150,7 @@ const Showpost = ({ posts, user }) => {
         </div>
       ) : (
         <>
-          <h4 className="text-black font-primary text-lg font-normal px-5 mb-3">
+          <h4 className="text-text_color font-primary text-lg font-normal px-5 mb-3">
             {posts.text}
           </h4>
           {posts.images && posts.images.length && (
@@ -201,7 +201,7 @@ const Showpost = ({ posts, user }) => {
           )}
         </>
       )}
-      <div className="mt-3 flex px-5 py-3 items-center justify-between border-y border-solid border-[#F0F2F5] w-full">
+      <div className="mt-3 flex px-5 py-3 items-center justify-between border-y border-solid border-page_color w-full">
         <div className="w-[40%] flex items-center">
           <div className="flex">
             {reacts &&
@@ -237,9 +237,9 @@ const Showpost = ({ posts, user }) => {
           </span>
         </div>
       </div>
-      <div className="flex justify-between px-5 py-2 relative border-b border-solid border-[#F0F2F5]">
+      <div className="flex justify-between px-5 py-2 relative border-b border-solid border-page_color">
         <div
-          className="flex items-center justify-center cursor-pointer w-[200px] py-2 hover:bg-[#F0F2F5] hover:rounded-md transition-all ease-linear duration-150"
+          className="flex items-center justify-center cursor-pointer w-[200px] py-2 hover:bg-hover_clr hover:rounded-md transition-all ease-linear duration-150"
           onMouseOver={() => {
             setTimeout(() => {
               setShowReacts(true);
@@ -290,13 +290,13 @@ const Showpost = ({ posts, user }) => {
             handleReacts={handleReacts}
           />
         )}
-        <div className="flex items-center justify-center cursor-pointer w-[200px] hover:bg-[#F0F2F5] hover:rounded-md transition-all ease-linear duration-150">
+        <div className="flex items-center justify-center cursor-pointer w-[200px] hover:bg-hover_clr hover:rounded-md transition-all ease-linear duration-150">
           <i className="comment_icon"></i>
           <span className="font-primary text-title_color text-base ml-2">
             Comment
           </span>
         </div>
-        <div className="flex items-center justify-center cursor-pointer w-[200px] hover:bg-[#F0F2F5] hover:rounded-md transition-all ease-linear duration-150">
+        <div className="flex items-center justify-center cursor-pointer w-[200px] hover:bg-hover_clr hover:rounded-md transition-all ease-linear duration-150">
           <i className="share_icon"></i>
           <span className="font-primary text-title_color text-base ml-2">
             Share

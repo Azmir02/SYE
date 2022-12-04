@@ -49,7 +49,7 @@ const Profileinfooptions = () => {
           More
         </Link>
       </div>
-      <div className="px-3 py-1 bg-[#F0F2F5] rounded-md cursor-pointer">
+      <div className="px-3 py-1 bg-page_color rounded-md cursor-pointer">
         <Dots />
       </div>
     </div>

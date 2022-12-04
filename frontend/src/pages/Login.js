@@ -69,7 +69,7 @@ const Login = () => {
             </picture>
           </div>
           <input
-            className="w-full py-3 px-5 rounded-full bg-[#E6E6E6] font-primary text-sm focus:outline-0 text-black mb-5"
+            className="w-full py-3 px-5 rounded-full bg-page_color font-primary text-sm focus:outline-0 text-text_color mb-5"
             type="email"
             placeholder="Email"
             autoComplete="off"
@@ -86,7 +86,7 @@ const Login = () => {
           ) : null}
 
           <input
-            className="w-full py-3 px-5 rounded-full bg-[#E6E6E6] font-primary text-sm focus:outline-0 text-black mb-5"
+            className="w-full py-3 px-5 rounded-full bg-page_color font-primary text-sm focus:outline-0 text-text_color mb-5"
             type="password"
             placeholder="Password"
             autoComplete="off"
@@ -133,15 +133,15 @@ const Login = () => {
           )}
           <div className="text-center mt-3">
             <Link
-              className="text-title_color hover:underline font-primary text-base font-normal"
+              className="text-secondary_color hover:underline font-primary text-base font-normal"
               to="/reset"
             >
               Forgotten password ?
             </Link>
           </div>
-          <p className="singin text-title_color font-primary text-lg mt-7 text-center">
+          <p className="singin text-secondary_color font-primary text-lg mt-7 text-center">
             Don't have an account?{" "}
-            <NavLink className="text-black hover:underline" to="/register">
+            <NavLink className="text-text_color hover:underline" to="/register">
               Create Now
             </NavLink>
           </p>

@@ -49,7 +49,7 @@ const Story = () => {
         ))}
       </div>
       <div className="hidden lg:block">
-        <div className="absolute top-[50%] right-[-20px] translate-y-[-50%] w-[40px] h-[40px] bg-white rounded-full shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] cursor-pointer flex items-center justify-center hover:bg-[#F1F4F7]">
+        <div className="absolute top-[50%] right-[-20px] translate-y-[-50%] w-[40px] h-[40px] bg-main_bg rounded-full shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] cursor-pointer flex items-center justify-center hover:bg-page_color">
           <ArrowRight />
         </div>
       </div>

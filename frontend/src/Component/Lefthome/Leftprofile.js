@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Leftprofile = ({ user }) => {
   return (
     <>
-      <div className="hidden pb-5 w-[265px] 3xl:w-full xl:block bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] ">
+      <div className="hidden pb-5 w-[265px] 3xl:w-full xl:block bg-main_bg rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] ">
         <div className="relative">
           <div className="overflow-hidden bg-red h-[100px] rounded-tl-md rounded-tr-md">
             <img
@@ -13,7 +13,7 @@ const Leftprofile = ({ user }) => {
               alt=""
             />
           </div>
-          <div className="w-[80px] h-[80px] absolute top-[55px] left-[50%] translate-x-[-50%] rounded-full overflow-hidden bg-[#EEF0F3] m-auto">
+          <div className="w-[80px] h-[80px] absolute top-[55px] left-[50%] translate-x-[-50%] rounded-full overflow-hidden bg-main_bg m-auto">
             <img
               className="object-cover w-full h-full"
               src={user.profilePicture}
@@ -24,7 +24,7 @@ const Leftprofile = ({ user }) => {
         <div className="mt-12 px-12 xl:px-5 3xl:px-12">
           <div className="text-center">
             <Link to="/profile">
-              <h4 className="capitalize font-primary text-lg font-medium text-black">
+              <h4 className="capitalize font-primary text-lg font-medium text-text_color">
                 {user?.fName} {user?.lName}
               </h4>
             </Link>

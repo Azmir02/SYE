@@ -15,6 +15,7 @@ const Profilebottom = ({
   scrollheight,
   height,
   check,
+  loading,
 }) => {
   const [leftheight, setLeftheight] = useState();
   const profileLeft = useRef(null);
@@ -44,6 +45,7 @@ const Profilebottom = ({
           profile={profile.details}
           visitor={visitor}
           setOthername={setOthername}
+          loading={loading}
         />
       </div>
       <div className="profileright">
