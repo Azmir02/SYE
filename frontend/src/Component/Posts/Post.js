@@ -3,18 +3,29 @@ import { useSelector } from "react-redux";
 import Feeling from "../../svg/feeling";
 import ProductUpload from "../../svg/productUpload";
 import Photo from "../../svg/photo";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-const Post = ({ setVisible, profile }) => {
+const Post = ({ setVisible, profile, loading }) => {
   const users = useSelector((users) => users.login.loggedin);
   return (
     <div className="mt-5 p-2 md:p-5 bg-main_bg rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]">
       <div className="flex items-center justify-between">
         <div className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] rounded-full overflow-hidden">
-          <img
-            className="w-full h-full object-cover"
-            src={users.profilePicture}
-            alt="profilePicture"
-          />
+          {loading ? (
+            <Skeleton
+              height="100%"
+              containerClassName="avatar-skeleton"
+              baseColor="#202020"
+              highlightColor="#444"
+            />
+          ) : (
+            <img
+              className="w-full h-full object-cover"
+              src={users.profilePicture}
+              alt="profilePicture"
+            />
+          )}
         </div>
         <div
           className="w-[85%] md:w-[90%] px-3 md:px-5 py-2 rounded-full bg-page_color cursor-pointer hover:bg-hover_clr"

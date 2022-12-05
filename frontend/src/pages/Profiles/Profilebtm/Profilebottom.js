@@ -54,6 +54,7 @@ const Profilebottom = ({
           setVisible={setVisible}
           users={users}
           visitor={visitor}
+          loading={loading}
         />
       </div>
     </div>

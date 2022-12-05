@@ -46,12 +46,12 @@ const Friends = ({ getPost, users }) => {
       </Helmet>
       <Header page="friends" getPost={getPost} />
       <div className="flex justify-between">
-        <div className="bg-white sticky w-[15%] top-[56px] left-0 h-screen pt-[80px] 2xl:px-3 shadow-[-3px_4px_12px_0px_rgba(219,219,219,0.75)] pb-9">
+        <div className="bg-main_bg sticky w-[15%] top-[56px] left-0 h-screen pt-[80px] 2xl:px-3 shadow-[-3px_4px_12px_0px_rgba(219,219,219,0.75)] pb-9">
           <div className="flex justify-evenly 2xl:justify-between items-center">
-            <h1 className="font-bold font-primary text-black text-2xl capitalize hidden lg:block">
+            <h1 className="font-bold font-primary text-text_color text-2xl capitalize hidden lg:block">
               Friends
             </h1>
-            <div className="w-[40px] h-[40px] flex items-center justify-center rounded-full transition-all ease-linear duration-100 hover:bg-[#f2f2f2] cursor-pointer invisible lg:visible">
+            <div className="w-[40px] h-[40px] flex items-center justify-center rounded-full transition-all ease-linear duration-100 hover:bg-hover_clr cursor-pointer invisible lg:visible">
               <i className="settings_filled_icon"></i>
             </div>
           </div>
@@ -60,15 +60,15 @@ const Friends = ({ getPost, users }) => {
               <div
                 className={
                   type === undefined
-                    ? "clicked flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
-                    : "flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
+                    ? "clicked flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-hover_clr py-2 px-0 lg:px-3 rounded-md"
+                    : "flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-hover_clr py-2 px-0 lg:px-3 rounded-md"
                 }
               >
-                <div className="w-[40px] h-[40px] icon rounded-full flex items-center justify-center bg-[#D8DADF]">
+                <div className="w-[40px] h-[40px] icon rounded-full flex items-center justify-center bg-page_color">
                   <i className="friends_home_icon img"></i>
                 </div>
                 <div className="ml-3 hidden lg:block">
-                  <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
+                  <span className="font-normal font-primary text-text_color text-sm 2xl:text-base 3xl:text-lg capitalize">
                     Home
                   </span>
                 </div>
@@ -78,15 +78,15 @@ const Friends = ({ getPost, users }) => {
               <div
                 className={
                   type === "request"
-                    ? "clicked flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
-                    : "flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
+                    ? "clicked flex my-3 items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-hover_clr py-2 px-0 lg:px-3 rounded-md"
+                    : "flex items-center my-3 justify-center lg:justify-start w-full cursor-pointer md:hover:bg-hover_clr py-2 px-0 lg:px-3 rounded-md"
                 }
               >
-                <div className="w-[40px] h-[40px] icon rounded-full flex items-center justify-center bg-[#D8DADF]">
+                <div className="w-[40px] h-[40px] icon rounded-full flex items-center justify-center bg-page_color">
                   <i className="friends_requests_icon img"></i>
                 </div>
                 <div className="ml-3 hidden lg:block">
-                  <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
+                  <span className="font-normal font-primary text-text_color text-sm 2xl:text-base 3xl:text-lg capitalize">
                     Friend Request
                   </span>
                 </div>
@@ -101,15 +101,15 @@ const Friends = ({ getPost, users }) => {
               <div
                 className={
                   type === "sent"
-                    ? "clicked flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
-                    : "flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
+                    ? "clicked flex my-3 items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-hover_clr py-2 px-0 lg:px-3 rounded-md"
+                    : "flex items-center my-3 justify-center lg:justify-start w-full cursor-pointer md:hover:hover_clr py-2 px-0 lg:px-3 rounded-md"
                 }
               >
-                <div className="w-[40px] h-[40px] icon rounded-full flex items-center justify-center bg-[#D8DADF]">
+                <div className="w-[40px] h-[40px] icon rounded-full flex items-center justify-center bg-page_color">
                   <i className="friends_requests_icon img"></i>
                 </div>
                 <div className="ml-3 hidden lg:block">
-                  <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
+                  <span className="font-normal font-primary text-text_color text-sm 2xl:text-base 3xl:text-lg capitalize">
                     Sent Request
                   </span>
                 </div>
@@ -120,12 +120,12 @@ const Friends = ({ getPost, users }) => {
                 </div>
               </div>
             </Link>
-            <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md">
-              <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#D8DADF]">
+            <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-hover_clr py-2 px-0 lg:px-3 rounded-md">
+              <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-page_color">
                 <i className="friends_suggestions_icon"></i>
               </div>
               <div className="ml-3 hidden lg:block">
-                <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
+                <span className="font-normal font-primary text-text_color text-sm 2xl:text-base 3xl:text-lg capitalize">
                   Suggestions
                 </span>
               </div>
@@ -139,15 +139,15 @@ const Friends = ({ getPost, users }) => {
               <div
                 className={
                   type === "all"
-                    ? "clicked flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
-                    : "flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md"
+                    ? "clicked flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-hover_clr py-2 px-0 lg:px-3 rounded-md"
+                    : "flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-hover_clr py-2 px-0 lg:px-3 rounded-md"
                 }
               >
-                <div className="w-[40px] h-[40px] icon rounded-full flex items-center justify-center bg-[#D8DADF]">
+                <div className="w-[40px] h-[40px] icon rounded-full flex items-center justify-center bg-page_color">
                   <i className="all_friends_icon img"></i>
                 </div>
                 <div className="ml-3 hidden lg:block">
-                  <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
+                  <span className="font-normal font-primary text-text_color text-sm 2xl:text-base 3xl:text-lg capitalize">
                     All Friends
                   </span>
                 </div>
@@ -158,12 +158,12 @@ const Friends = ({ getPost, users }) => {
                 </div>
               </div>
             </Link>
-            <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md">
-              <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#D8DADF]">
+            <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-hover_clr py-2 px-0 lg:px-3 rounded-md">
+              <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-page_color">
                 <i className="birthdays_icon"></i>
               </div>
               <div className="ml-3 hidden lg:block">
-                <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
+                <span className="font-normal font-primary text-text_color text-sm 2xl:text-base 3xl:text-lg capitalize">
                   Birthdays
                 </span>
               </div>
@@ -173,12 +173,12 @@ const Friends = ({ getPost, users }) => {
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-[#f5f5f5] py-2 px-0 lg:px-3 rounded-md">
-              <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-[#D8DADF]">
+            <div className="flex items-center justify-center lg:justify-start w-full cursor-pointer md:hover:bg-hover_clr py-2 px-0 lg:px-3 rounded-md">
+              <div className="w-[40px] h-[40px] rounded-full flex items-center justify-center bg-page_color">
                 <i className="all_friends_icon"></i>
               </div>
               <div className="ml-3 hidden lg:block">
-                <span className="font-normal font-primary text-black text-sm 2xl:text-base 3xl:text-lg capitalize">
+                <span className="font-normal font-primary text-text_color text-sm 2xl:text-base 3xl:text-lg capitalize">
                   Custom Lists
                 </span>
               </div>
@@ -190,11 +190,11 @@ const Friends = ({ getPost, users }) => {
             </div>
           </div>
         </div>
-        <div className="bg-[#f7f7fb] w-[85%] pt-[140px] static px-5">
+        <div className="bg-page_color w-[85%] pt-[140px] static px-5">
           {(type === undefined || type === "request") && (
             <div>
               <div className="flex items-center justify-between">
-                <h2 className="font-bold font-primary text-black text-2xl capitalize">
+                <h2 className="font-bold font-primary text-text_color text-2xl capitalize">
                   Friend Request
                 </h2>
                 <Link
@@ -222,7 +222,7 @@ const Friends = ({ getPost, users }) => {
           {(type === undefined || type === "sent") && (
             <div className="mt-9">
               <div className="flex items-center justify-between">
-                <h2 className="font-bold font-primary text-black text-2xl capitalize">
+                <h2 className="font-bold font-primary text-text_color text-2xl capitalize">
                   Send Request
                 </h2>
                 <Link
@@ -250,7 +250,7 @@ const Friends = ({ getPost, users }) => {
           {(type === undefined || type === "all") && (
             <div className="mt-9">
               <div className="flex items-center justify-between mb-3">
-                <h2 className="font-bold font-primary text-black text-2xl capitalize">
+                <h2 className="font-bold font-primary text-text_color text-2xl capitalize">
                   All Friends
                 </h2>
                 <Link

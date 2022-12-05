@@ -456,3 +456,7 @@ select {
 .clicked .img {
   filter: invert();
 }
+
+.dark .clicked {
+  background-color: var(--hover_clr);
+}

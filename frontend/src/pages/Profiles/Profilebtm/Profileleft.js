@@ -41,7 +41,12 @@ const Profileleft = ({
         <Photos photo={photo} loading={loading} />
       </div>
       <div>
-        <Friendslist users={users} username={username} friends={friends} />
+        <Friendslist
+          users={users}
+          username={username}
+          friends={friends}
+          loading={loading}
+        />
       </div>
     </div>
   );

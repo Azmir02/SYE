@@ -67,6 +67,7 @@ function App() {
                 posts={posts}
                 user={users}
                 getPost={getPost}
+                loading={loading}
               />
             }
           />

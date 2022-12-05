@@ -8,7 +8,7 @@ import Post from "../Component/Posts/Post";
 import Reauth from "../Component/re-authorization/Reauth";
 import Showpost from "../Component/Posts/Showpost";
 
-const Home = ({ setVisible, posts, user, getPost }) => {
+const Home = ({ setVisible, posts, user, getPost, loading }) => {
   return (
     <div>
       <Helmet>
@@ -26,7 +26,12 @@ const Home = ({ setVisible, posts, user, getPost }) => {
             <Reauth />
             <Post setVisible={setVisible} />
             {posts.map((item) => (
-              <Showpost key={item._id} posts={item} user={user} />
+              <Showpost
+                key={item._id}
+                posts={item}
+                user={user}
+                loading={loading}
+              />
             ))}
           </div>
           <div className="pr-3 hidden xl:block">

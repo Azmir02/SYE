@@ -34,7 +34,7 @@ const Card = ({ user, type, token, getData }) => {
     <div>
       {type === "request" || type === "sentrequest" ? (
         <div className="flex flex-wrap mt-3">
-          <div className="w-[300px] bg-white flex flex-col 3xl:flex-row p-3 rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]">
+          <div className="w-[300px] bg-main_bg flex flex-col 3xl:flex-row p-3 rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)]">
             <Link to={`/profile/${user.username}`}>
               <div className="w-[50px] h-[50px] m-auto 3xl:m-0 rounded-full overflow-hidden">
                 <img
@@ -46,7 +46,7 @@ const Card = ({ user, type, token, getData }) => {
             </Link>
             <div className="3xl:ml-3">
               <Link to={`/profile/${user.username}`}>
-                <h4 className="font-primary font-medium capitalize text-center 3xl:text-start text-base xl:text-lg">
+                <h4 className="font-primary font-medium capitalize text-center 3xl:text-start text-base xl:text-lg text-text_color">
                   {user.fName} {user.lName}
                 </h4>
               </Link>
@@ -82,7 +82,7 @@ const Card = ({ user, type, token, getData }) => {
         </div>
       ) : (
         <Link to={`/profile/${user.username}`}>
-          <div className="w-full bg-white rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] p-3 ">
+          <div className="w-full bg-main_bg rounded-md shadow-[0px_24px_50px_rgba(0,_0,_0,_0.1)] p-3 ">
             <div className="w-full h-[200px] overflow-hidden">
               <img
                 className="w-full h-full object-cover"
@@ -90,7 +90,7 @@ const Card = ({ user, type, token, getData }) => {
                 alt=""
               />
             </div>
-            <h4 className="font-primary font-medium capitalize text-xl mt-2">
+            <h4 className="font-primary text-text_color font-medium capitalize text-xl mt-2">
               {user.fName} {user.lName}
             </h4>
           </div>
