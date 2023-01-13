@@ -19,8 +19,9 @@ const Searchbox = ({ setShow, users }) => {
     input.current.focus();
   }, []);
 
+  console.log(searchResult);
   const handleSearch = async () => {
-    if (searchTerm === "") {
+    if (searchTerm == "") {
       setSearchTerm();
     } else {
       const response = await search(searchTerm, users.token);
@@ -105,23 +106,23 @@ const Searchbox = ({ setShow, users }) => {
             .map((item, i) => (
               <div key={i} className="mt-5 flex items-center justify-between">
                 <Link
-                  to={`/profile/${item.user.username}`}
-                  onClick={() => searchHistory(item.user._id)}
+                  to={`/profile/${item?.user?.username}`}
+                  onClick={() => searchHistory(item?.user._id)}
                 >
                   <div className="flex items-center">
                     <img
                       className="w-[40px] h-[40px] rounded-full object-cover"
-                      src={item.user.profilePicture}
+                      src={item?.user?.profilePicture}
                       alt=""
                     />
                     <span className="ml-3 font-medium text-text_color font-primary">
-                      {item.user.fName} {item.user.lName}
+                      {item?.user?.fName} {item?.user?.lName}
                     </span>
                   </div>
                 </Link>
                 <div
                   className="w-[40px] h-[40px] hover:bg-page_color rounded-full flex items-center justify-center cursor-pointer"
-                  onClick={() => handleRemove(item.user._id)}
+                  onClick={() => handleRemove(item?.user?._id)}
                 >
                   <i className="exit_icon"></i>
                 </div>
@@ -129,26 +130,27 @@ const Searchbox = ({ setShow, users }) => {
             ))}
       </div>
       <div>
-        {searchResult &&
-          searchResult.map((search, i) => (
-            <div key={i} className="mt-5">
-              <Link
-                to={`/profile/${search.username}`}
-                onClick={() => searchHistory(search._id)}
-              >
-                <div className="flex items-center">
-                  <img
-                    className="w-[40px] h-[40px] rounded-full object-cover"
-                    src={search.profilePicture}
-                    alt=""
-                  />
-                  <span className="ml-3 font-medium text-black font-primary">
-                    {search.fName} {search.lName}
-                  </span>
-                </div>
-              </Link>
-            </div>
-          ))}
+        {searchResult
+          ? searchResult?.map((search, i) => (
+              <div key={i} className="mt-5">
+                <Link
+                  to={`/profile/${search.username}`}
+                  onClick={() => searchHistory(search._id)}
+                >
+                  <div className="flex items-center">
+                    <img
+                      className="w-[40px] h-[40px] rounded-full object-cover"
+                      src={search.profilePicture}
+                      alt=""
+                    />
+                    <span className="ml-3 font-medium text-black font-primary">
+                      {search.fName} {search.lName}
+                    </span>
+                  </div>
+                </Link>
+              </div>
+            ))
+          : ""}
       </div>
     </div>
   );

@@ -109,6 +109,7 @@ const UserModel = new Schema(
           type: ObjectId,
           ref: "usermodel",
           require: true,
+          text: true,
         },
         createdAt: {
           type: Date,
