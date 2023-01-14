@@ -184,12 +184,23 @@ const Showpost = ({ posts, user, loading }) => {
                 >
                   {posts.type === "profilePicture" ? (
                     <div>
-                      <div>
-                        <img src={posts.user.cover} alt="" />
-                      </div>
-                      <div className="w-[300px] h-[300px] overflow-hidden rounded-full mx-auto mt-[-168px]">
-                        <img src={posts.user.profilePicture} alt="" />
-                      </div>
+                      {posts.user.cover ? (
+                        <>
+                          <div className="h-[250px] w-full">
+                            <img src={posts.user.cover} alt="" />
+                          </div>
+                          <div className="w-[300px] h-[300px] overflow-hidden rounded-full mx-auto mt-[-168px]">
+                            <img src={posts.user.profilePicture} alt="" />
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="h-[250px] w-full bg-page_color"></div>
+                          <div className="w-[300px] h-[300px] overflow-hidden rounded-full mx-auto mt-[-168px]">
+                            <img src={posts.user.profilePicture} alt="" />
+                          </div>
+                        </>
+                      )}
                     </div>
                   ) : (
                     posts.images

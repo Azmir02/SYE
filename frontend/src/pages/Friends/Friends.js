@@ -16,6 +16,7 @@ const Friends = ({ getPost, users }) => {
     }
   );
   const { type } = useParams();
+  console.log(type);
 
   useEffect(() => {
     getData();
@@ -38,7 +39,6 @@ const Friends = ({ getPost, users }) => {
       });
     }
   };
-  console.log(data);
   return (
     <div>
       <Helmet>
