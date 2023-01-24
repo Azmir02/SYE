@@ -97,9 +97,8 @@ function App() {
         </Route>
         <Route element={<Notloggedin />}>
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
         </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Registration />} />
         <Route path="/reset" element={<Finduser />} />
       </Routes>
     </div>
