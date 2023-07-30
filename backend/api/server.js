@@ -1,9 +1,9 @@
 const express = require("express");
-const { connect } = require("./database/dbConfig");
-const userRouter = require("./routes/UserRouter");
-const postRouter = require("./routes/Postrouter");
-const uploadRouter = require("./routes/UploadRouter");
-const reactRouter = require("./routes/Reacts");
+const { connect } = require("../database/dbConfig");
+const userRouter = require("../routes/UserRouter");
+const postRouter = require("../routes/Postrouter");
+const uploadRouter = require("../routes/UploadRouter");
+const reactRouter = require("../routes/Reacts");
 const fileUpload = require("express-fileupload");
 require("dotenv").config();
 
