@@ -31,7 +31,10 @@ exports.getPost = async (req, res) => {
     const userPost = await Post.find({ user: req.user.id }).populate(
       "user",
       "profilePicture cover fName lName username"
-    );
+    ).populate(
+      "comments.comentedBy",
+      "profilePicture cover fName lName username"
+    )
     followingPosts.push(...[...userPost]);
     followingPosts.sort((a, b) => {
       return b.createdAt - a.createdAt;
